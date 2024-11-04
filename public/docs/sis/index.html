@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+  Short Integer Solution problem (SIS)
+  #
+
+Let us look at two different ways to define q-ary lattices. From \(\bold{A} \in \mathbb{Z}_q^{h\times w}\)
+$$\Lambda_q(\bold{A^T}) = {\bold{y} \in \mathbb{Z}^w : \bold{y} = \bold{A}^T\bold{s} \text{ mod q }\text{ for some } \bold{s} \in \mathbb{Z}^h}$$
+$$\Lambda^T_q(\bold{A}) = {\bold{y} \in \mathbb{Z}^w : \bold{A}\bold{y} = \bold{0} \text{ mod q }}$$
+The first lattice is generally called the primal problem and relates to the LWE problem since finding a short vector in \(\Lambda_q(\bold{A^T})\) corresponds to solving the LWE problem. The second lattice is generally called the dual problem and relates to the SIS problem since finding a short vector in \(\Lambda^T_q(\bold{A})\) corresponds to solving the SIS problem.">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/docs/sis/">
+  <meta property="og:site_name" content="Lattirust estimator 0.1">
+  <meta property="og:title" content="SIS">
+  <meta property="og:description" content="Short Integer Solution problem (SIS) # Let us look at two different ways to define q-ary lattices. From \(\bold{A} \in \mathbb{Z}_q^{h\times w}\)
+$$\Lambda_q(\bold{A^T}) = {\bold{y} \in \mathbb{Z}^w : \bold{y} = \bold{A}^T\bold{s} \text{ mod q }\text{ for some } \bold{s} \in \mathbb{Z}^h}$$
+$$\Lambda^T_q(\bold{A}) = {\bold{y} \in \mathbb{Z}^w : \bold{A}\bold{y} = \bold{0} \text{ mod q }}$$
+The first lattice is generally called the primal problem and relates to the LWE problem since finding a short vector in \(\Lambda_q(\bold{A^T})\) corresponds to solving the LWE problem. The second lattice is generally called the dual problem and relates to the SIS problem since finding a short vector in \(\Lambda^T_q(\bold{A})\) corresponds to solving the SIS problem.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="website">
+<title>SIS | Lattirust estimator 0.1</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1313/docs/sis/">
+<link rel="stylesheet" href="/book.min.434035e7885c7f5d12818bd9f111cf1a0925c6fb78382667381c3d5eda3fb4f1.css" integrity="sha256-Q0A154hcf10SgYvZ8RHPGgklxvt4OCZnOBw9Xto/tPE=" crossorigin="anonymous">
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/en.search.min.59200bdbcecef7b6aec3dd36612b84a07e5274d366b564a388c40a98f8bf176f.js" integrity="sha256-WSAL287O97auw902YSuEoH5SdNNmtWSjiMQKmPi/F28=" crossorigin="anonymous"></script>
+<link rel="alternate" type="application/rss+xml" href="http://localhost:1313/docs/sis/index.xml" title="Lattirust estimator 0.1" />
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>Lattirust estimator 0.1</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/docs/preliminaries/" class="">Preliminaries</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/docs/sis/" class="active">SIS</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/sis/module-sis/" class="">Module Sis</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/sis/ring-sis/" class="">Ring Sis</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/docs/cost-models/" class="">Cost Models</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>SIS</h3>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#formal-definition">Formal definition</a></li>
+    <li><a href="#estimating-sis-hardness">Estimating SIS hardness</a>
+      <ul>
+        <li><a href="#expected-size-of-small-vectors">Expected size of small vectors</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="short-integer-solution-problem-sis">
+  Short Integer Solution problem (SIS)
+  <a class="anchor" href="#short-integer-solution-problem-sis">#</a>
+</h1>
+<p>Let us look at two different ways to define q-ary lattices. From \(\bold{A} \in \mathbb{Z}_q^{h\times w}\)</p>
+<p>$$\Lambda_q(\bold{A^T}) = {\bold{y} \in \mathbb{Z}^w : \bold{y} = \bold{A}^T\bold{s} \text{ mod q }\text{ for some } \bold{s} \in \mathbb{Z}^h}$$</p>
+<p>$$\Lambda^T_q(\bold{A}) = {\bold{y} \in \mathbb{Z}^w : \bold{A}\bold{y} = \bold{0} \text{ mod q }}$$</p>
+<p>The first lattice is generally called the primal problem and relates to the LWE problem since finding a short vector in \(\Lambda_q(\bold{A^T})\) corresponds to solving the LWE problem. The second lattice is generally called the dual problem and relates to the SIS problem since finding a short vector in \(\Lambda^T_q(\bold{A})\) corresponds to solving the SIS problem.</p>
+<h2 id="formal-definition">
+  Formal definition
+  <a class="anchor" href="#formal-definition">#</a>
+</h2>
+<p>We define \(SIS(h, q, w, \beta)\) as follows:</p>
+<p>Given \(\bold{A} \in \mathbb{Z}_q^{h\times w}\) find the short vector \(\bold{s} \in \mathbb{Z}^w\)   where \(0 &lt; \lVert s \rVert_p \leq \beta\).</p>
+<p>We can note that the problem becomes trivial as soon as \(\beta \geq q\), no matter the norm used.</p>
+<h2 id="estimating-sis-hardness">
+  Estimating SIS hardness
+  <a class="anchor" href="#estimating-sis-hardness">#</a>
+</h2>
+<p>Estimating the hardness of an SIS instance is done via estimating the number of operations required to run lattice reductions attacks on the related SVP problem. This concretely means that we need to know:</p>
+<ol>
+<li>How small we expect the shortest vector to be in our SVP problem.</li>
+<li>How small we expect vectors to be after lattice reduction.</li>
+<li>How to cost lattice reduction.</li>
+</ol>
+<p>We will mostly focus on BKZ as a reduction algorithm and we will present how we estimate all parts of the attack.</p>
+<h3 id="expected-size-of-small-vectors">
+  Expected size of small vectors
+  <a class="anchor" href="#expected-size-of-small-vectors">#</a>
+</h3>
+<p>Given a random matrix \(\bold{A} \in \mathbb{Z}_q^{h\times w}\)</p>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#formal-definition">Formal definition</a></li>
+    <li><a href="#estimating-sis-hardness">Estimating SIS hardness</a>
+      <ul>
+        <li><a href="#expected-size-of-small-vectors">Expected size of small vectors</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
