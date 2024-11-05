@@ -1,7 +1,8 @@
 ---
-weight: 1
+weight: 3
 bookFlatSection: true
 title: "SIS"
+math: true
 ---
 
 # Short Integer Solution problem (SIS)
@@ -30,7 +31,7 @@ Estimating the hardness of an SIS instance is done via estimating the number of 
 2. How small we expect vectors to be after lattice reduction.
 3. How to cost lattice reduction.
 
-We will mostly focus on BKZ as a reduction algorithm and we will present how we estimate all parts of the attack.
+We will mostly focus on BKZ 2.0 as a reduction algorithm and we will present how we estimate all parts of the attack.
 
 ### Expected size of small vectors
 

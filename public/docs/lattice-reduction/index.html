@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+  Lattice reduction
+  #
+
+Lattice reduction algorithms such as LLL and BKZ make iterative local improvements to a basis. This means that the global cost can be seen as two-folds: how costly is it to make the local improvements, which corresponds to solving an exact SVP problem and how costly is the global behavior of the algorithm. This section focuses on the global behavior of lattice reduction algorithms, while the next section (Cost models) will focus about solving local improvements.">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/docs/lattice-reduction/">
+  <meta property="og:site_name" content="Lattirust estimator 0.1">
+  <meta property="og:title" content="Lattice reduction">
+  <meta property="og:description" content="Lattice reduction # Lattice reduction algorithms such as LLL and BKZ make iterative local improvements to a basis. This means that the global cost can be seen as two-folds: how costly is it to make the local improvements, which corresponds to solving an exact SVP problem and how costly is the global behavior of the algorithm. This section focuses on the global behavior of lattice reduction algorithms, while the next section (Cost models) will focus about solving local improvements.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="website">
+<title>Lattice reduction | Lattirust estimator 0.1</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1313/docs/lattice-reduction/">
+<link rel="stylesheet" href="/book.min.434035e7885c7f5d12818bd9f111cf1a0925c6fb78382667381c3d5eda3fb4f1.css" integrity="sha256-Q0A154hcf10SgYvZ8RHPGgklxvt4OCZnOBw9Xto/tPE=" crossorigin="anonymous">
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/en.search.min.1bc6ab34593774cdb89762c8d0400e57a50ce9af722cd875e109315179b44c6f.js" integrity="sha256-G8arNFk3dM24l2LI0EAOV6UM6a9yLNh14QkxUXm0TG8=" crossorigin="anonymous"></script>
+<link rel="alternate" type="application/rss+xml" href="http://localhost:1313/docs/lattice-reduction/index.xml" title="Lattirust estimator 0.1" />
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body);"></script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body, {
+            delimiters: [
+                {left: "$$", right: "$$", display: true},
+                {left: "$", right: "$", display: false}
+            ]
+        });
+    });
+</script>
+
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>Lattirust estimator 0.1</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/docs/preliminaries/" class="">Preliminaries</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/docs/lattice-reduction/" class="active">Lattice reduction</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/docs/cost-models/" class="">Cost Models</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/docs/sis/" class="">SIS</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/sis/module-sis/" class="">Module Sis</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/sis/ring-sis/" class="">Ring Sis</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Lattice reduction</h3>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#useful-quantities-in-lattices">Useful quantities in lattices</a>
+      <ul>
+        <li><a href="#volume">Volume</a></li>
+        <li><a href="#gaussian-heuristic">Gaussian heuristic</a></li>
+      </ul>
+    </li>
+    <li><a href="#lll-algorithm">LLL algorithm</a></li>
+    <li><a href="#bkz-algorithm">BKZ algorithm</a>
+      <ul>
+        <li><a href="#gsa-assumption-and-root-hermite-factor">GSA assumption and root hermite factor</a></li>
+        <li><a href="#further-improvements">Further improvements</a></li>
+      </ul>
+    </li>
+    <li><a href="#costing-the-overall-bkz-behavior">Costing the overall BKZ behavior</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="lattice-reduction">
+  Lattice reduction
+  <a class="anchor" href="#lattice-reduction">#</a>
+</h1>
+<p>Lattice reduction algorithms such as LLL and BKZ make iterative local improvements to a basis. This means that the global cost can be seen as two-folds: how costly is it to make the local improvements, which corresponds to solving an exact SVP problem and how costly is the global behavior of the algorithm. This section focuses on the global behavior of lattice reduction algorithms, while the next section (Cost models) will focus about solving local improvements.</p>
+<h2 id="useful-quantities-in-lattices">
+  Useful quantities in lattices
+  <a class="anchor" href="#useful-quantities-in-lattices">#</a>
+</h2>
+<h3 id="volume">
+  Volume
+  <a class="anchor" href="#volume">#</a>
+</h3>
+<p>In each lattice, we can define the volume of the lattice as the volume of its fundamental parallellepiped (the area delimited by the basis vectors). This quantity is an invariant of the lattice and does not depend on the basis chosen. This means that by applying Gram-Schmidt orthogonalization to any basis will give us an orthogonal basis from which we can approximate the volume of the lattice as</p>
+$$ Vol(\Lambda) =  \prod_{i=0}^{d-1} \lVert \bold{b_i}^*\rVert $$<p>where $\bold{b_i}*$ are the orthogonal Gram-Schmidt vectors. It is also important to remember that $Vol(\Lambda) = |Det(\bold{B})|$, where $\bold{B}$ is the basis matrix.</p>
+<p><img src="volume.png" alt="alt text" /></p>
+<p>This invariant is conceptually important because it tells us that not all basis vectors can be small at the same time.</p>
+<h3 id="gaussian-heuristic">
+  Gaussian heuristic
+  <a class="anchor" href="#gaussian-heuristic">#</a>
+</h3>
+<p>The gaussian heuristics predicts the number of lattice points inside any measurable body $\mathcal{B} \subset \mathbb{R}^d$ is approximately $\frac{Vol(\mathcal{B})}{Vol(\Lambda)}$. Applied to an euclidean d-ball, this would give that the length of the first vector is approximately</p>
+$$\lambda_1(\Lambda) \approx (\frac{Vol(\mathcal{B})}{Vol(\Lambda)})^{\frac{1}{d}} \approx \sqrt{\frac{d}{2\pi e}} Vol(\Lambda)^{\frac{1}{d}}$$<h2 id="lll-algorithm">
+  LLL algorithm
+  <a class="anchor" href="#lll-algorithm">#</a>
+</h2>
+<p>The Lenstra-Lenstra-Lovász (LLL) algorithm is an efficient polynomial-time algorithm in lattice theory that finds a &ldquo;nearly orthogonal&rdquo; basis for a given lattice. It aims to transform any arbitrary basis of a lattice into a reduced basis where the basis vectors are short and close to orthogonal following two conditions:</p>
+<ol>
+<li>Size reduction:
+$$1 \leq j < i \leq n\colon \left|\mu_{i,j}\right|\leq 0.5 \text{ for } \mu_{i,j} =\frac{\langle\mathbf{b}_i,\mathbf{b}^*_j\rangle}{\langle\mathbf{b}^*_j,\mathbf{b}^*_j\rangle}$$</li>
+<li>Lovász condition:
+For $k=2,&hellip;,n$ $$\delta \Vert \mathbf{b}^*_{k-1}\Vert^2  \leq \Vert \mathbf{b}^*_k\Vert^2+ \mu_{k,k-1}^2\Vert\mathbf{b}^*_{k-1}\Vert^2$$</li>
+</ol>
+<p>We say the basis is LLL-reduced if there exists a parameter $\delta \in (0.25, 1)$.</p>
+<p>While there exists some theorems bounding the worst cases of lattice reduction algorithms, they tend to perform better in practices. Reasoning about the behaviors of such algorithms has therefore become a game of heuristics and approximations. Typically, the vectors that are outputed by the LLL algorithm are said to follow the geometrie series assumption in their length. This assumption tells us that the shape after lattice reduction is a line with a flatter slope as lattice reduction gets stronger. The goal of lattice reduction algorithm can therefore be interpreted seen by watching a graph of the log-length of vectors after reductions. The overall goal being to flatten the line, leading to a small basis.</p>
+<p><img src="before_LLL.png" alt="alt text" /></p>
+<p><img src="after_LLL.png" alt="alt text" /></p>
+<h2 id="bkz-algorithm">
+  BKZ algorithm
+  <a class="anchor" href="#bkz-algorithm">#</a>
+</h2>
+<p>The Block Korkine-Zolotarev (BKZ) algorithm is a lattice reduction algorithm that generalizes the LLL algorithm to achieve stronger reduction properties. The BKZ algorithm is defined as a blockwise reduction algorithm that iteratively applies a form of lattice basis reduction to overlapping blocks of vectors within the basis. Assuming we have an SVP oracle, the BKZ algorithm is defined as follows:</p>
+<pre><code>Data: LLL-reduced basis B (pre-processed) and block size beta
+repeat until np changes
+    for k in 0 to d-1
+        LLL on local projected block [k, ..., k+beta-1]
+        v &lt;-- SVP-Oracle(local projected block[k, ..., k+beta-1])
+        insert v into B
+    end
+</code></pre>
+<p>A BKZ-$\beta$ reduced basis satisfies, for $\epsilon &gt; 0$:</p>
+$$\lVert \bold{b_0} \rVert \leq \sqrt{(1 + \epsilon) \gamma_{\beta}}^\frac{d-1}{\beta - 1} Vol(\Lambda(\bold{B}))$$<p>, where </p>
+$$\gamma_\beta =  \sup \{ \lambda_1(\Lambda) | \Lambda \in \mathbb{R}^\beta, Vol(\Lambda) = 1 \}$$<p>is the hermite constant</p>
+<h3 id="gsa-assumption-and-root-hermite-factor">
+  GSA assumption and root hermite factor
+  <a class="anchor" href="#gsa-assumption-and-root-hermite-factor">#</a>
+</h3>
+<p>By combining the gaussian heuristic and the definition of a BKZ-$\beta$ reduced basis, we arrive at the well-known <em>geometric series assumption</em> (GSA), which states that in a lattice of dimension $d&raquo;\beta$, the length of reduced vectors follow a geometric series (which we can plot as a line as we did for LLL).</p>
+<p>We can write</p>
+$$\log(\lVert \bold{b_i}^*\rVert) = \frac{d - 1 - 2i}{2}\log(\alpha_\beta) + \frac{1}{d}\log(Vol(\Lambda))$$<p>where $\alpha_\beta$ is the slope under the geometric assumption that can be calculated from the gaussian assumption as</p>
+$$\alpha_\beta = \sqrt{\frac{d}{2\pi e}}^\frac{2}{\beta - 1}$$<p>We will next want to introduce a value called the <em>root hermite factor</em>. It is a measure used in lattice reduction theory to evaluate the quality of a reduced lattice basis. It is commonly used to assess the effectiveness of lattice reduction algorithms. It quantifies how much longer the shortest vector in a reduced lattice basis is, compared to the length of an ideal shortest vector, scaled by the lattice dimension. Formally we define it as</p>
+$$\lVert \bold{b_0} \rVert = \delta Vol(\Lambda)^\frac{1}{n}$$<p> for an n-dimensional matrix.</p>
+<p>The closer $\delta$ gets to 1, the better the reduction will be. This is of direct impact in our context, since the quality of the reduction will depend on the block-size decided for BKZ. Specifically, we can write for SIS:</p>
+$$\delta_\beta = \frac{1}{\sqrt{\alpha_\beta}}$$$$\lVert \bold{b_0} \rVert \approx \delta_\beta^{d-1} Vol(\Lambda)^{\frac{1}{d}}$$<h3 id="further-improvements">
+  Further improvements
+  <a class="anchor" href="#further-improvements">#</a>
+</h3>
+<p>However, it has been showed in practice that the GSA assumption is a lie. In reality it behaves differently at its tail and this behaviour can be simulated. Also, a lot of tweaks, additions and speed up have been introduced into plain BKZ leading to BKZ 2.0, which provides a stronger reduction.</p>
+<h2 id="costing-the-overall-bkz-behavior">
+  Costing the overall BKZ behavior
+  <a class="anchor" href="#costing-the-overall-bkz-behavior">#</a>
+</h2>
+<p>We</p>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#useful-quantities-in-lattices">Useful quantities in lattices</a>
+      <ul>
+        <li><a href="#volume">Volume</a></li>
+        <li><a href="#gaussian-heuristic">Gaussian heuristic</a></li>
+      </ul>
+    </li>
+    <li><a href="#lll-algorithm">LLL algorithm</a></li>
+    <li><a href="#bkz-algorithm">BKZ algorithm</a>
+      <ul>
+        <li><a href="#gsa-assumption-and-root-hermite-factor">GSA assumption and root hermite factor</a></li>
+        <li><a href="#further-improvements">Further improvements</a></li>
+      </ul>
+    </li>
+    <li><a href="#costing-the-overall-bkz-behavior">Costing the overall BKZ behavior</a></li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

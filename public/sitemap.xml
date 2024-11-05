@@ -4,9 +4,11 @@
   <url>
     <loc>http://localhost:1313/docs/preliminaries/</loc>
   </url><url>
-    <loc>http://localhost:1313/docs/sis/</loc>
+    <loc>http://localhost:1313/docs/lattice-reduction/</loc>
   </url><url>
     <loc>http://localhost:1313/docs/cost-models/</loc>
+  </url><url>
+    <loc>http://localhost:1313/docs/sis/</loc>
   </url><url>
     <loc>http://localhost:1313/docs/sis/module-sis/</loc>
   </url><url>
