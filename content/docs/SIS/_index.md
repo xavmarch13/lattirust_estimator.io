@@ -29,10 +29,9 @@ Estimating the hardness of an SIS instance is done via estimating the number of 
 
 1. How small we expect the shortest vector to be in our SVP problem.
 2. How small we expect vectors to be after lattice reduction.
-3. How to cost lattice reduction.
+3. How to cost lattice reduction (see the lattice reduction section).
 
 We will mostly focus on BKZ 2.0 as a reduction algorithm and we will present how we estimate all parts of the attack.
 
-### Expected size of small vectors
+### L2-Norm strategy
 
-Given a random matrix \\(\bold{A} \in \mathbb{Z}_q^{h\times w}\\) 

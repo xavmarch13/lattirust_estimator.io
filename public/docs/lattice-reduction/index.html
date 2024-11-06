@@ -7,13 +7,13 @@
   Lattice reduction
   #
 
-Lattice reduction algorithms such as LLL and BKZ make iterative local improvements to a basis. This means that the global cost can be seen as two-folds: how costly is it to make the local improvements, which corresponds to solving an exact SVP problem and how costly is the global behavior of the algorithm. This section focuses on the global behavior of lattice reduction algorithms, while the next section (Cost models) will focus about solving local improvements.">
+Lattice reduction algorithms such as LLL and BKZ make iterative local improvements to a basis. This means that the global cost can be seen as two-folds: how costly is it to make the local improvements, which corresponds to solving an exact SVP problem and how costly is the global behavior of the algorithm. This section focuses on the global behavior of lattice reduction algorithms, while the next section (Cost models) will focus about solving local improvements. Lattice reduction is the essential tool that allows to transform an inappropriate basis to solve the SIS problem into an appropriate one and thus its complexity is the bulk of the security estimate.">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
 <meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/docs/lattice-reduction/">
   <meta property="og:site_name" content="Lattirust estimator 0.1">
   <meta property="og:title" content="Lattice reduction">
-  <meta property="og:description" content="Lattice reduction # Lattice reduction algorithms such as LLL and BKZ make iterative local improvements to a basis. This means that the global cost can be seen as two-folds: how costly is it to make the local improvements, which corresponds to solving an exact SVP problem and how costly is the global behavior of the algorithm. This section focuses on the global behavior of lattice reduction algorithms, while the next section (Cost models) will focus about solving local improvements.">
+  <meta property="og:description" content="Lattice reduction # Lattice reduction algorithms such as LLL and BKZ make iterative local improvements to a basis. This means that the global cost can be seen as two-folds: how costly is it to make the local improvements, which corresponds to solving an exact SVP problem and how costly is the global behavior of the algorithm. This section focuses on the global behavior of lattice reduction algorithms, while the next section (Cost models) will focus about solving local improvements. Lattice reduction is the essential tool that allows to transform an inappropriate basis to solve the SIS problem into an appropriate one and thus its complexity is the bulk of the security estimate.">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="website">
 <title>Lattice reduction | Lattirust estimator 0.1</title>
@@ -22,7 +22,7 @@ Lattice reduction algorithms such as LLL and BKZ make iterative local improvemen
 <link rel="canonical" href="http://localhost:1313/docs/lattice-reduction/">
 <link rel="stylesheet" href="/book.min.434035e7885c7f5d12818bd9f111cf1a0925c6fb78382667381c3d5eda3fb4f1.css" integrity="sha256-Q0A154hcf10SgYvZ8RHPGgklxvt4OCZnOBw9Xto/tPE=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.1bc6ab34593774cdb89762c8d0400e57a50ce9af722cd875e109315179b44c6f.js" integrity="sha256-G8arNFk3dM24l2LI0EAOV6UM6a9yLNh14QkxUXm0TG8=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.93a27f72c29d9b9146eb5841b211bc1e3345144b6d2904f397e5e0087df48f58.js" integrity="sha256-k6J/csKdm5FG61hBshG8HjNFFEttKQTzl&#43;XgCH30j1g=" crossorigin="anonymous"></script>
 <link rel="alternate" type="application/rss+xml" href="http://localhost:1313/docs/lattice-reduction/index.xml" title="Lattirust estimator 0.1" />
 <!--
 Made with Book Theme
@@ -236,12 +236,18 @@ https://github.com/alex-shpak/hugo-book
       <ul>
         <li><a href="#volume">Volume</a></li>
         <li><a href="#gaussian-heuristic">Gaussian heuristic</a></li>
+        <li><a href="#root-hermite-factor">Root Hermite Factor</a></li>
+        <li><a href="#geometric-series-assumption">Geometric Series Assumption</a></li>
       </ul>
     </li>
-    <li><a href="#lll-algorithm">LLL algorithm</a></li>
+    <li><a href="#lll-algorithm">LLL algorithm</a>
+      <ul>
+        <li><a href="#cost-of-lll">Cost of LLL</a></li>
+      </ul>
+    </li>
     <li><a href="#bkz-algorithm">BKZ algorithm</a>
       <ul>
-        <li><a href="#gsa-assumption-and-root-hermite-factor">GSA assumption and root hermite factor</a></li>
+        <li><a href="#cost-bkz">Cost BKZ</a></li>
         <li><a href="#further-improvements">Further improvements</a></li>
       </ul>
     </li>
@@ -262,7 +268,7 @@ https://github.com/alex-shpak/hugo-book
   Lattice reduction
   <a class="anchor" href="#lattice-reduction">#</a>
 </h1>
-<p>Lattice reduction algorithms such as LLL and BKZ make iterative local improvements to a basis. This means that the global cost can be seen as two-folds: how costly is it to make the local improvements, which corresponds to solving an exact SVP problem and how costly is the global behavior of the algorithm. This section focuses on the global behavior of lattice reduction algorithms, while the next section (Cost models) will focus about solving local improvements.</p>
+<p>Lattice reduction algorithms such as LLL and BKZ make iterative local improvements to a basis. This means that the global cost can be seen as two-folds: how costly is it to make the local improvements, which corresponds to solving an exact SVP problem and how costly is the global behavior of the algorithm. This section focuses on the global behavior of lattice reduction algorithms, while the next section (Cost models) will focus about solving local improvements. Lattice reduction is the essential tool that allows to transform an inappropriate basis to solve the SIS problem into an appropriate one and thus its complexity is the bulk of the security estimate.</p>
 <h2 id="useful-quantities-in-lattices">
   Useful quantities in lattices
   <a class="anchor" href="#useful-quantities-in-lattices">#</a>
@@ -280,28 +286,47 @@ $$ Vol(\Lambda) =  \prod_{i=0}^{d-1} \lVert \bold{b_i}^*\rVert $$<p>where $\bold
   <a class="anchor" href="#gaussian-heuristic">#</a>
 </h3>
 <p>The gaussian heuristics predicts the number of lattice points inside any measurable body $\mathcal{B} \subset \mathbb{R}^d$ is approximately $\frac{Vol(\mathcal{B})}{Vol(\Lambda)}$. Applied to an euclidean d-ball, this would give that the length of the first vector is approximately</p>
-$$\lambda_1(\Lambda) \approx (\frac{Vol(\mathcal{B})}{Vol(\Lambda)})^{\frac{1}{d}} \approx \sqrt{\frac{d}{2\pi e}} Vol(\Lambda)^{\frac{1}{d}}$$<h2 id="lll-algorithm">
+$$\lambda_1(\Lambda) \approx (\frac{Vol(\mathcal{B})}{Vol(\Lambda)})^{\frac{1}{d}} \approx \sqrt{\frac{d}{2\pi e}} Vol(\Lambda)^{\frac{1}{d}}$$<h3 id="root-hermite-factor">
+  Root Hermite Factor
+  <a class="anchor" href="#root-hermite-factor">#</a>
+</h3>
+<p>We will next want to introduce a value called the <em>root hermite factor</em>. It is a measure used in lattice reduction theory to evaluate the quality of a reduced lattice basis. It is commonly used to assess the effectiveness of lattice reduction algorithms. It quantifies how much longer the shortest vector in a reduced lattice basis is, compared to the length of an ideal shortest vector, scaled by the lattice dimension. Formally we define it as</p>
+$$\lVert \bold{b_1} \rVert \approx \delta^d Vol(\Lambda)^\frac{1}{d}$$<p> for an d-dimensional lattice.</p>
+<p>The closer $\delta$ gets to 1, the better the reduction quality will be. This is of direct impact in our context, since we need to balance a trade-off between the quality of the output basis and the cost of running our lattice reduction algorithm. In fact, with the BKZ algorithm which has become the standard, a bigger block-size leads to a better quality of output basis but also a greater computational cost.</p>
+<h3 id="geometric-series-assumption">
+  Geometric Series Assumption
+  <a class="anchor" href="#geometric-series-assumption">#</a>
+</h3>
+<p>The geometric series assumption conceptually tells us that the Gram-Schmidt vectors log-length outputed by a lattice reducion algorithm will follow a line (see the graphs in the LLL subsection). We can formulate it as:</p>
+$$\lVert \bold{b_i}^*\rVert \approx \alpha^{i-1}\lVert \bold{b_1}\rVert$$<p>and in fact by combining it with the root hermite factor definition we can get a relation between the quality of the reduction and the slope of the GSA assumption as $\alpha \approx \delta^{-2}$ leading to</p>
+$$ \lVert \bold{b_i}^*\rVert \approx \alpha^{i-1} \delta^d Vol(\Lambda)^\frac{1}{d} = \delta^{-1(i+1) + d} Vol(\Lambda)^\frac{1}{d}$$<h2 id="lll-algorithm">
   LLL algorithm
   <a class="anchor" href="#lll-algorithm">#</a>
 </h2>
 <p>The Lenstra-Lenstra-Lovász (LLL) algorithm is an efficient polynomial-time algorithm in lattice theory that finds a &ldquo;nearly orthogonal&rdquo; basis for a given lattice. It aims to transform any arbitrary basis of a lattice into a reduced basis where the basis vectors are short and close to orthogonal following two conditions:</p>
 <ol>
 <li>Size reduction:
-$$1 \leq j < i \leq n\colon \left|\mu_{i,j}\right|\leq 0.5 \text{ for } \mu_{i,j} =\frac{\langle\mathbf{b}_i,\mathbf{b}^*_j\rangle}{\langle\mathbf{b}^*_j,\mathbf{b}^*_j\rangle}$$</li>
+$$1 \leq j < i \leq d\colon \left|\mu_{i,j}\right|\leq 0.5 \text{ for } \mu_{i,j} =\frac{\langle\mathbf{b}_i,\mathbf{b}^*_j\rangle}{\langle\mathbf{b}^*_j,\mathbf{b}^*_j\rangle}$$</li>
 <li>Lovász condition:
-For $k=2,&hellip;,n$ $$\delta \Vert \mathbf{b}^*_{k-1}\Vert^2  \leq \Vert \mathbf{b}^*_k\Vert^2+ \mu_{k,k-1}^2\Vert\mathbf{b}^*_{k-1}\Vert^2$$</li>
+For $k=2,&hellip;,d$ $$\omega \Vert \mathbf{b}^*_{k-1}\Vert^2  \leq \Vert \mathbf{b}^*_k\Vert^2+ \mu_{k,k-1}^2\Vert\mathbf{b}^*_{k-1}\Vert^2$$</li>
 </ol>
-<p>We say the basis is LLL-reduced if there exists a parameter $\delta \in (0.25, 1)$.</p>
-<p>While there exists some theorems bounding the worst cases of lattice reduction algorithms, they tend to perform better in practices. Reasoning about the behaviors of such algorithms has therefore become a game of heuristics and approximations. Typically, the vectors that are outputed by the LLL algorithm are said to follow the geometrie series assumption in their length. This assumption tells us that the shape after lattice reduction is a line with a flatter slope as lattice reduction gets stronger. The goal of lattice reduction algorithm can therefore be interpreted seen by watching a graph of the log-length of vectors after reductions. The overall goal being to flatten the line, leading to a small basis.</p>
+<p>We say the basis is LLL-reduced if there exists a parameter $\omega \in (0.25, 1)$.</p>
+<p>While there exists some theorems bounding the worst cases of lattice reduction algorithms, they tend to perform better in practice. Reasoning about the behaviors of such algorithms has therefore become a game of heuristics and approximations. Typically, the vectors that are outputed by the LLL algorithm are said to follow the geometric series assumption in their length. Again, this assumption tells us that the shape after lattice reduction is a line with a flatter slope as lattice reduction gets stronger. The goal of lattice reduction algorithm can therefore be interpreted seen by watching a graph of the log-length of vectors after reductions. The overall goal being to flatten the line, leading to a small basis.</p>
 <p><img src="before_LLL.png" alt="alt text" /></p>
 <p><img src="after_LLL.png" alt="alt text" /></p>
+<h3 id="cost-of-lll">
+  Cost of LLL
+  <a class="anchor" href="#cost-of-lll">#</a>
+</h3>
+<p>The theoretic bound on the quality of the LLL is $\delta^d = (\frac{4}{3})^\frac{d-1}{4}$ leading to approximately $\delta \approx 1.075$. In practice, we get much better results on average, empirically about $\delta \approx 1.021$.</p>
+<p>In terms of runtime, we will consider a heuristic bound (which better approximates empirical results) of $O(d^3 \log^2(B))$.</p>
 <h2 id="bkz-algorithm">
   BKZ algorithm
   <a class="anchor" href="#bkz-algorithm">#</a>
 </h2>
 <p>The Block Korkine-Zolotarev (BKZ) algorithm is a lattice reduction algorithm that generalizes the LLL algorithm to achieve stronger reduction properties. The BKZ algorithm is defined as a blockwise reduction algorithm that iteratively applies a form of lattice basis reduction to overlapping blocks of vectors within the basis. Assuming we have an SVP oracle, the BKZ algorithm is defined as follows:</p>
 <pre><code>Data: LLL-reduced basis B (pre-processed) and block size beta
-repeat until np changes
+repeat until no changes
     for k in 0 to d-1
         LLL on local projected block [k, ..., k+beta-1]
         v &lt;-- SVP-Oracle(local projected block[k, ..., k+beta-1])
@@ -310,18 +335,31 @@ repeat until np changes
 </code></pre>
 <p>A BKZ-$\beta$ reduced basis satisfies, for $\epsilon &gt; 0$:</p>
 $$\lVert \bold{b_0} \rVert \leq \sqrt{(1 + \epsilon) \gamma_{\beta}}^\frac{d-1}{\beta - 1} Vol(\Lambda(\bold{B}))$$<p>, where </p>
-$$\gamma_\beta =  \sup \{ \lambda_1(\Lambda) | \Lambda \in \mathbb{R}^\beta, Vol(\Lambda) = 1 \}$$<p>is the hermite constant</p>
-<h3 id="gsa-assumption-and-root-hermite-factor">
-  GSA assumption and root hermite factor
-  <a class="anchor" href="#gsa-assumption-and-root-hermite-factor">#</a>
-</h3>
-<p>By combining the gaussian heuristic and the definition of a BKZ-$\beta$ reduced basis, we arrive at the well-known <em>geometric series assumption</em> (GSA), which states that in a lattice of dimension $d&raquo;\beta$, the length of reduced vectors follow a geometric series (which we can plot as a line as we did for LLL).</p>
+$$\gamma_\beta =  \sup \{ \lambda_1(\Lambda) | \Lambda \in \mathbb{R}^\beta, Vol(\Lambda) = 1 \}$$<p>is the hermite constant.</p>
+<p>By combining the gaussian heuristic and the definition of a BKZ-$\beta$ reduced basis, we arrive again at the geometric assumption, which states that the length of reduced vectors follow a geometric series (which we can plot as a line as we did for LLL). This time however, it depends on the block-size chosen to run BKZ.</p>
 <p>We can write</p>
 $$\log(\lVert \bold{b_i}^*\rVert) = \frac{d - 1 - 2i}{2}\log(\alpha_\beta) + \frac{1}{d}\log(Vol(\Lambda))$$<p>where $\alpha_\beta$ is the slope under the geometric assumption that can be calculated from the gaussian assumption as</p>
-$$\alpha_\beta = \sqrt{\frac{d}{2\pi e}}^\frac{2}{\beta - 1}$$<p>We will next want to introduce a value called the <em>root hermite factor</em>. It is a measure used in lattice reduction theory to evaluate the quality of a reduced lattice basis. It is commonly used to assess the effectiveness of lattice reduction algorithms. It quantifies how much longer the shortest vector in a reduced lattice basis is, compared to the length of an ideal shortest vector, scaled by the lattice dimension. Formally we define it as</p>
-$$\lVert \bold{b_0} \rVert = \delta Vol(\Lambda)^\frac{1}{n}$$<p> for an n-dimensional matrix.</p>
-<p>The closer $\delta$ gets to 1, the better the reduction will be. This is of direct impact in our context, since the quality of the reduction will depend on the block-size decided for BKZ. Specifically, we can write for SIS:</p>
-$$\delta_\beta = \frac{1}{\sqrt{\alpha_\beta}}$$$$\lVert \bold{b_0} \rVert \approx \delta_\beta^{d-1} Vol(\Lambda)^{\frac{1}{d}}$$<h3 id="further-improvements">
+$$\alpha_\beta = \sqrt{\frac{d}{2\pi e}}^\frac{2}{\beta - 1}$$<p>This estimate is reasonably accurate only if $d\gg\beta$ and $\beta &gt; 50$, which is why we will use fixed estimates for small dimensions.</p>
+<h3 id="cost-bkz">
+  Cost BKZ
+  <a class="anchor" href="#cost-bkz">#</a>
+</h3>
+<ul>
+<li>Costing BKZ means having a good idea of the impact of the block-size on the quality of our reduced basis. For this, we could either make the approximation $\delta_\beta \approx \sqrt \alpha_\beta$ or use the following limit defined in
+$$\lim_{\beta\rightarrow\infty}\delta_\beta = (\frac{\beta}{2\pi e}(\pi\beta)^\frac{1}{\beta})^\frac{1}{2(\beta - 1)}$$</li>
+</ul>
+<p>and write for SIS</p>
+$$\lVert \bold{b_1} \rVert \approx \delta_\beta^{d-1} Vol(\Lambda)^{\frac{1}{d}}$$<ul>
+<li>Costing BKZ as a whole is complicated because we do not know how many tours we will have to run, which means we don&rsquo;t really know in advance the number of SVP-Oracle calls we will have to make. Furthermore, many improvements on plain BKZ have been made when some techniques are used as a subroutine for the oracle (for example extreme pruning in the context of enumeration), which makes security estimates done via lattice reduction very sensitive to many factors. Also, local preprocessing techniques in a variant of BKZ known as progressive BKZ. To make our tool comparable to the lattice estimator by &hellip;[insert], we will follow the same simplifying assumption and consider a consistent 8 tours of BKZ. This makes sense following experimental results that showed that most progress is made in the 7-9 first tours. We will then use:</li>
+</ul>
+$$cost = \tau \cdot d \cdot T_{SVP}$$<p>where</p>
+<pre><code>1. The number of tours we do $\tau$ (we will consider 8)
+
+2. The number of times the SVP oracle is called per tour, which is dimension of the lattice d
+
+3. The cost of the SVP oracle
+</code></pre>
+<h3 id="further-improvements">
   Further improvements
   <a class="anchor" href="#further-improvements">#</a>
 </h3>
@@ -330,7 +368,9 @@ $$\delta_\beta = \frac{1}{\sqrt{\alpha_\beta}}$$$$\lVert \bold{b_0} \rVert \appr
   Costing the overall BKZ behavior
   <a class="anchor" href="#costing-the-overall-bkz-behavior">#</a>
 </h2>
-<p>We</p>
+<p>Finally, how we can cost the overall behaviour of BKZ comes down to:</p>
+<p>Leading to the final formula:</p>
+<p>This cost can be reduced because we can skip some blocks, because tail blocks get smaller and also because we could apply progressive BKZ techniques. A conservative estimate would be for example to assume that at least one call to the SVP oracle only.</p>
 </article>
  
       
@@ -376,12 +416,18 @@ $$\delta_\beta = \frac{1}{\sqrt{\alpha_\beta}}$$$$\lVert \bold{b_0} \rVert \appr
       <ul>
         <li><a href="#volume">Volume</a></li>
         <li><a href="#gaussian-heuristic">Gaussian heuristic</a></li>
+        <li><a href="#root-hermite-factor">Root Hermite Factor</a></li>
+        <li><a href="#geometric-series-assumption">Geometric Series Assumption</a></li>
       </ul>
     </li>
-    <li><a href="#lll-algorithm">LLL algorithm</a></li>
+    <li><a href="#lll-algorithm">LLL algorithm</a>
+      <ul>
+        <li><a href="#cost-of-lll">Cost of LLL</a></li>
+      </ul>
+    </li>
     <li><a href="#bkz-algorithm">BKZ algorithm</a>
       <ul>
-        <li><a href="#gsa-assumption-and-root-hermite-factor">GSA assumption and root hermite factor</a></li>
+        <li><a href="#cost-bkz">Cost BKZ</a></li>
         <li><a href="#further-improvements">Further improvements</a></li>
       </ul>
     </li>
