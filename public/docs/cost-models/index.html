@@ -6,13 +6,20 @@
 <meta name="description" content="
   Cost Models
   #
-">
+
+Given the simplified cost for BKZ behaviour that we consider $cost = \tau \cdot d \cdot T_{SVP}$, we still need to define the cost of the SVP solver. Sieving and enumeration are the two common strategies to find the shortest non-zero vector in a lattice.
+
+  Sieving
+  #
+
+Sieving algorithms for SVP work by iteratively refining a large set of lattice vectors to obtain progressively shorter vectors until the shortest one is found. In its basic form, the sieving process starts by generating a large set of random lattice vectors, often called a &ldquo;cloud.&rdquo; Pairs of vectors are then combined (usually by adding or subtracting them) to produce shorter vectors, which are then added back to the cloud if they meet certain criteria. This process continues until the vectors in the cloud converge towards the shortest lattice vector. Modern sieving methods, like the GaussSieve or ListSieve, have been optimized to handle higher-dimensional lattices by limiting pairwise vector interactions, which reduces computational complexity. Sieving requires storing a large number of lattice vectors and, therefore, can be memory-intensive, especially as the lattice dimension grows.">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
 <meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/docs/cost-models/">
   <meta property="og:site_name" content="Lattirust estimator 0.1">
   <meta property="og:title" content="Cost Models">
-  <meta property="og:description" content="Cost Models #">
+  <meta property="og:description" content="Cost Models # Given the simplified cost for BKZ behaviour that we consider $cost = \tau \cdot d \cdot T_{SVP}$, we still need to define the cost of the SVP solver. Sieving and enumeration are the two common strategies to find the shortest non-zero vector in a lattice.
+Sieving # Sieving algorithms for SVP work by iteratively refining a large set of lattice vectors to obtain progressively shorter vectors until the shortest one is found. In its basic form, the sieving process starts by generating a large set of random lattice vectors, often called a “cloud.” Pairs of vectors are then combined (usually by adding or subtracting them) to produce shorter vectors, which are then added back to the cloud if they meet certain criteria. This process continues until the vectors in the cloud converge towards the shortest lattice vector. Modern sieving methods, like the GaussSieve or ListSieve, have been optimized to handle higher-dimensional lattices by limiting pairwise vector interactions, which reduces computational complexity. Sieving requires storing a large number of lattice vectors and, therefore, can be memory-intensive, especially as the lattice dimension grows.">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="website">
 <title>Cost Models | Lattirust estimator 0.1</title>
@@ -21,13 +28,28 @@
 <link rel="canonical" href="http://localhost:1313/docs/cost-models/">
 <link rel="stylesheet" href="/book.min.434035e7885c7f5d12818bd9f111cf1a0925c6fb78382667381c3d5eda3fb4f1.css" integrity="sha256-Q0A154hcf10SgYvZ8RHPGgklxvt4OCZnOBw9Xto/tPE=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.93a27f72c29d9b9146eb5841b211bc1e3345144b6d2904f397e5e0087df48f58.js" integrity="sha256-k6J/csKdm5FG61hBshG8HjNFFEttKQTzl&#43;XgCH30j1g=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.b581f3874b468b96919870d81a89b0fbe247c9ba708dfadbe93039ff9b51259c.js" integrity="sha256-tYHzh0tGi5aRmHDYGomw&#43;&#43;JHybpwjfrb6TA5/5tRJZw=" crossorigin="anonymous"></script>
 <link rel="alternate" type="application/rss+xml" href="http://localhost:1313/docs/cost-models/index.xml" title="Lattirust estimator 0.1" />
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
 -->
-  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body);"></script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body, {
+            delimiters: [
+                {left: "$$", right: "$$", display: true},
+                {left: "$", right: "$", display: false}
+            ]
+        });
+    });
+</script>
+
 </head>
 <body dir="ltr">
   <input type="checkbox" class="hidden toggle" id="menu-control" />
@@ -134,6 +156,24 @@ https://github.com/alex-shpak/hugo-book
           
   <ul>
     
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <span>SIS variants</span>
+  
+
+          
+  <ul>
+    
       
         <li>
           
@@ -141,7 +181,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/sis/module-sis/" class="">Module Sis</a>
+    <a href="/docs/sis-variants/module-sis/" class="">Module Sis</a>
   
 
         </li>
@@ -154,11 +194,29 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/sis/ring-sis/" class="">Ring Sis</a>
+    <a href="/docs/sis-variants/ring-sis/" class="">Ring Sis</a>
   
 
         </li>
       
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/docs/plan/" class="">Plan</a>
+  
+
+          
+  <ul>
     
   </ul>
 
@@ -214,7 +272,16 @@ https://github.com/alex-shpak/hugo-book
   <aside class="hidden clearfix">
     
   
-<nav id="TableOfContents"></nav>
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#sieving">Sieving</a></li>
+    <li><a href="#enumeration">Enumeration</a>
+      <ul>
+        <li><a href="#method-comparison">Method comparison</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
 
 
 
@@ -229,6 +296,115 @@ https://github.com/alex-shpak/hugo-book
   Cost Models
   <a class="anchor" href="#cost-models">#</a>
 </h1>
+<p>Given the simplified cost for BKZ behaviour that we consider $cost = \tau \cdot d \cdot T_{SVP}$, we still need to define the cost of the SVP solver. Sieving and enumeration are the two common strategies to find the shortest non-zero vector in a lattice.</p>
+<h2 id="sieving">
+  Sieving
+  <a class="anchor" href="#sieving">#</a>
+</h2>
+<p>Sieving algorithms for SVP work by iteratively refining a large set of lattice vectors to obtain progressively shorter vectors until the shortest one is found. In its basic form, the sieving process starts by generating a large set of random lattice vectors, often called a &ldquo;cloud.&rdquo; Pairs of vectors are then combined (usually by adding or subtracting them) to produce shorter vectors, which are then added back to the cloud if they meet certain criteria. This process continues until the vectors in the cloud converge towards the shortest lattice vector. Modern sieving methods, like the GaussSieve or ListSieve, have been optimized to handle higher-dimensional lattices by limiting pairwise vector interactions, which reduces computational complexity. Sieving requires storing a large number of lattice vectors and, therefore, can be memory-intensive, especially as the lattice dimension grows.</p>
+<p>In terms of cost, sieving algorithm can solve the SVP in a lattice of dimension d in $2^{O(k)}$ time but at the cost og a much higher memory usage. At the risk of being overly conservative, our estimator will disregard memory usage.</p>
+<p>The following sieving estimates are available:</p>
+<table>
+  <thead>
+      <tr>
+          <th>Name</th>
+          <th>Reference</th>
+          <th>Cost</th>
+          <th>Regime</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>BDGL-sieve</td>
+          <td>todo</td>
+          <td>$2^{0.292\beta + 16.4}$ big $\beta$ $2^{0.387\beta + 16.4}$ small $\beta$</td>
+          <td>classical</td>
+      </tr>
+      <tr>
+          <td>Q-sieve</td>
+          <td>todo</td>
+          <td>$2^{0.265\beta}$</td>
+          <td>quantum</td>
+      </tr>
+      <tr>
+          <td>ADPS-sieve</td>
+          <td>tedo</td>
+          <td>$2^{0.292\beta}$</td>
+          <td>classical</td>
+      </tr>
+      <tr>
+          <td>BJG-sieve</td>
+          <td>todo</td>
+          <td>$2^{0.311\beta}$</td>
+          <td>classical</td>
+      </tr>
+      <tr>
+          <td>ChaLoy-sieve</td>
+          <td>todo</td>
+          <td>$2^{0.257\beta}$</td>
+          <td>quantum</td>
+      </tr>
+  </tbody>
+</table>
+<p>Here are some plots to better visualize sieving costs.</p>
+<p><img src="sieving.png" alt="alt text" /></p>
+<h2 id="enumeration">
+  Enumeration
+  <a class="anchor" href="#enumeration">#</a>
+</h2>
+<p>Enumeration algorithms systematically search through lattice points in a controlled way, typically by traversing lattice vectors within a fixed radius from the origin. They rely on a recursive process to explore potential candidate vectors within a &ldquo;search region,&rdquo; using techniques to prune paths that are unlikely to lead to the shortest vector. Enumeration is typically carried out with the help of a basis that has been reduced (made close to orthogonal), as this greatly improves efficiency by minimizing the number of candidate paths. Unlike sieving, enumeration methods are deterministic and guarantee finding the shortest vector by systematically exploring all feasible paths. The efficiency of enumeration depends strongly on the quality of the lattice basis. Preprocessing steps like BKZ (Block Korkine-Zolotarev) reduction can make enumeration significantly faster by transforming the basis to be more suitable for search. Enumeration is often practical for lower-dimensional lattices or when a high degree of accuracy is needed, but it tends to be less efficient than sieving in high dimensions due to its exponential complexity.</p>
+<p>In terms of cost, enumeration can solve SVP in a lattice of dimension d in $2^{O(k \log k)}$ time and space.</p>
+<p>The following enumeration estimates are available:</p>
+<table>
+  <thead>
+      <tr>
+          <th>Name</th>
+          <th>Reference</th>
+          <th>Cost</th>
+          <th>Regime</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Lotus</td>
+          <td>todo</td>
+          <td>$2^{0.125\beta\log\beta -0.755\beta + 22.74}$</td>
+          <td>classical</td>
+      </tr>
+      <tr>
+          <td>CheNgue-enum</td>
+          <td>todo</td>
+          <td>$2^{0.27\beta\log\beta -1.019\beta + 2.254}$</td>
+          <td>classical</td>
+      </tr>
+      <tr>
+          <td>ABF-enum</td>
+          <td>todo</td>
+          <td>$2^{0.184\beta\log\beta - 0.995\beta + 22.25}$ small $\beta$ $2^{0.125\beta\log\beta-0.547\beta+16.4}$ big $\beta$</td>
+          <td>classical</td>
+      </tr>
+      <tr>
+          <td>ABF-Q-enum</td>
+          <td>todo</td>
+          <td>$2^{0.0625\beta\log\beta}$</td>
+          <td>quantum</td>
+      </tr>
+      <tr>
+          <td>ABLR-enum</td>
+          <td>todo</td>
+          <td>$2^{0.184\beta\log\beta - 1.077\beta + 35.12}$ small $\beta$ $2^{0.125\beta\log\beta-0.655\beta+31.84}$ big $\beta$</td>
+          <td>classical</td>
+      </tr>
+  </tbody>
+</table>
+<p>Here are some plots to better visualize enumeration costs.</p>
+<p><img src="enumeration.png" alt="alt text" /></p>
+<h3 id="method-comparison">
+  Method comparison
+  <a class="anchor" href="#method-comparison">#</a>
+</h3>
+<p><img src="comp.png" alt="alt text" /></p>
+<p>We can see that sieving performs better overall when the dimension of the SVP problem get big, which is the expected behavior. For this reason, we encourage making security estimates with sieving as an underlying SVP solver.</p>
 </article>
  
       
@@ -268,7 +444,16 @@ https://github.com/alex-shpak/hugo-book
       <div class="book-toc-content">
         
   
-<nav id="TableOfContents"></nav>
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#sieving">Sieving</a></li>
+    <li><a href="#enumeration">Enumeration</a>
+      <ul>
+        <li><a href="#method-comparison">Method comparison</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
 
 
  

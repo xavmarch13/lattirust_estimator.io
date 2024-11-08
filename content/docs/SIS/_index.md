@@ -21,17 +21,19 @@ We define \\(SIS(h, q, w, \beta)\\) as follows:
 
 Given \\(\bold{A} \in \mathbb{Z}_q^{h\times w}\\) find the short vector \\(\bold{s} \in \mathbb{Z}^w\\)   where \\(0 < \lVert s \rVert_p \leq \beta\\).
 
-We can note that the problem becomes trivial as soon as \\(\beta \geq q\\), no matter the norm used. 
+We can note that the problem becomes trivial as soon as \\(\beta \geq q\\), no matter the norm used. In the following analysis, we will separate the use of the euclidean norm and the infinity norm. The two sections will describe the concrete ways of defining the security parameters, using the theory we built in the previous sections (lattice reduction and cost models).
 
-## Estimating SIS hardness
+## L2 norm strategy
 
-Estimating the hardness of an SIS instance is done via estimating the number of operations required to run lattice reductions attacks on the related SVP problem. This concretely means that we need to know:
+*TODO check the notation between A and A^T*
+### Finding the optimal lattice shape for reduction
 
-1. How small we expect the shortest vector to be in our SVP problem.
-2. How small we expect vectors to be after lattice reduction.
-3. How to cost lattice reduction (see the lattice reduction section).
+Given a q-ary lattice \\(\bold{A} \in \mathbb{Z}_q^{h\times w}\\) and assuming q is prime (which will be the case in most applications), we can then say with high probability that the rows of $\bold{A}$ are independent over $\mathbb{Z}_q$ (we also assume w is bigger than n and not too close). As a result of this, the lattice $\Lambda^T_q(\bold{A})$ has $q^h$ points in $\mathbb{Z}^w_q$. This leads to the volume or determinant of the matrix to be $Vol(\Lambda^T_q(\bold{A})) = q^{h}$. Using the gaussian heuristic from the lattice reduction section, we can express
 
-We will mostly focus on BKZ 2.0 as a reduction algorithm and we will present how we estimate all parts of the attack.
+$$\lambda_1(\Lambda^T_q(\bold{A})) \approx q^\frac{h}{w}\sqrt{\frac{w}{2\pi e}}$$
 
-### L2-Norm strategy
+as an estimate of the lenght of the smallest vector.
 
+The question we want to answer is what is the shortest vector we can hope to find in a reasonable time. It has been experimentally observed that the length of the vector obtained by the best known lattice reduction algorithms on a random w-dimensional q-ary lattic is close to $\min(q, q^\frac{n}{m}\delta^m)$. We can also observe that increasing the $w$ parameter does not make the problem any hard. In fact, we can fix this parameter by completely letting go a certain number of columns. It has shown that the minimum can be obtained at 
+$$w = \sqrt{\frac{h\log q}{\delta}}$$
+Indeed, for smaller m the lattice becomes too sparse and does not contain enough vectors to have small ones, and bigger m actually prevents lattice reduction to perform optimally.

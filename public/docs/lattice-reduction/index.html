@@ -22,7 +22,7 @@ Lattice reduction algorithms such as LLL and BKZ make iterative local improvemen
 <link rel="canonical" href="http://localhost:1313/docs/lattice-reduction/">
 <link rel="stylesheet" href="/book.min.434035e7885c7f5d12818bd9f111cf1a0925c6fb78382667381c3d5eda3fb4f1.css" integrity="sha256-Q0A154hcf10SgYvZ8RHPGgklxvt4OCZnOBw9Xto/tPE=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.93a27f72c29d9b9146eb5841b211bc1e3345144b6d2904f397e5e0087df48f58.js" integrity="sha256-k6J/csKdm5FG61hBshG8HjNFFEttKQTzl&#43;XgCH30j1g=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.b581f3874b468b96919870d81a89b0fbe247c9ba708dfadbe93039ff9b51259c.js" integrity="sha256-tYHzh0tGi5aRmHDYGomw&#43;&#43;JHybpwjfrb6TA5/5tRJZw=" crossorigin="anonymous"></script>
 <link rel="alternate" type="application/rss+xml" href="http://localhost:1313/docs/lattice-reduction/index.xml" title="Lattirust estimator 0.1" />
 <!--
 Made with Book Theme
@@ -150,6 +150,24 @@ https://github.com/alex-shpak/hugo-book
           
   <ul>
     
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <span>SIS variants</span>
+  
+
+          
+  <ul>
+    
       
         <li>
           
@@ -157,7 +175,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/sis/module-sis/" class="">Module Sis</a>
+    <a href="/docs/sis-variants/module-sis/" class="">Module Sis</a>
   
 
         </li>
@@ -170,11 +188,29 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/sis/ring-sis/" class="">Ring Sis</a>
+    <a href="/docs/sis-variants/ring-sis/" class="">Ring Sis</a>
   
 
         </li>
       
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/docs/plan/" class="">Plan</a>
+  
+
+          
+  <ul>
     
   </ul>
 
@@ -247,11 +283,10 @@ https://github.com/alex-shpak/hugo-book
     </li>
     <li><a href="#bkz-algorithm">BKZ algorithm</a>
       <ul>
-        <li><a href="#cost-bkz">Cost BKZ</a></li>
-        <li><a href="#further-improvements">Further improvements</a></li>
+        <li><a href="#cost-of-bkz">Cost of BKZ</a></li>
       </ul>
     </li>
-    <li><a href="#costing-the-overall-bkz-behavior">Costing the overall BKZ behavior</a></li>
+    <li><a href="#further-improvements">Further improvements</a></li>
   </ul>
 </nav>
 
@@ -340,9 +375,9 @@ $$\gamma_\beta =  \sup \{ \lambda_1(\Lambda) | \Lambda \in \mathbb{R}^\beta, Vol
 <p>We can write</p>
 $$\log(\lVert \bold{b_i}^*\rVert) = \frac{d - 1 - 2i}{2}\log(\alpha_\beta) + \frac{1}{d}\log(Vol(\Lambda))$$<p>where $\alpha_\beta$ is the slope under the geometric assumption that can be calculated from the gaussian assumption as</p>
 $$\alpha_\beta = \sqrt{\frac{d}{2\pi e}}^\frac{2}{\beta - 1}$$<p>This estimate is reasonably accurate only if $d\gg\beta$ and $\beta &gt; 50$, which is why we will use fixed estimates for small dimensions.</p>
-<h3 id="cost-bkz">
-  Cost BKZ
-  <a class="anchor" href="#cost-bkz">#</a>
+<h3 id="cost-of-bkz">
+  Cost of BKZ
+  <a class="anchor" href="#cost-of-bkz">#</a>
 </h3>
 <ul>
 <li>Costing BKZ means having a good idea of the impact of the block-size on the quality of our reduced basis. For this, we could either make the approximation $\delta_\beta \approx \sqrt \alpha_\beta$ or use the following limit defined in
@@ -350,27 +385,36 @@ $$\lim_{\beta\rightarrow\infty}\delta_\beta = (\frac{\beta}{2\pi e}(\pi\beta)^\f
 </ul>
 <p>and write for SIS</p>
 $$\lVert \bold{b_1} \rVert \approx \delta_\beta^{d-1} Vol(\Lambda)^{\frac{1}{d}}$$<ul>
-<li>Costing BKZ as a whole is complicated because we do not know how many tours we will have to run, which means we don&rsquo;t really know in advance the number of SVP-Oracle calls we will have to make. Furthermore, many improvements on plain BKZ have been made when some techniques are used as a subroutine for the oracle (for example extreme pruning in the context of enumeration), which makes security estimates done via lattice reduction very sensitive to many factors. Also, local preprocessing techniques in a variant of BKZ known as progressive BKZ. To make our tool comparable to the lattice estimator by &hellip;[insert], we will follow the same simplifying assumption and consider a consistent 8 tours of BKZ. This makes sense following experimental results that showed that most progress is made in the 7-9 first tours. We will then use:</li>
+<li>Costing BKZ as a whole is complicated because we do not know how many tours we will have to run, which means we don&rsquo;t really know in advance the number of SVP-Oracle calls we will have to make. Furthermore, many improvements on plain BKZ have been made when some techniques are used as a subroutine for the oracle (for example extreme pruning in the context of enumeration), which makes security estimates done via lattice reduction very sensitive to many factors. Also, local preprocessing techniques in a variant of BKZ known as progressive BKZ. To make our tool comparable to the lattice estimator by &hellip;[insert], we will follow the same simplifying assumption and consider a consistent 8 tours of BKZ. This makes sense following experimental results that showed that most progress is made in the 7-9 first tours. We will then use:
+$$cost = \tau \cdot d \cdot T_{SVP}$$
+where</li>
 </ul>
-$$cost = \tau \cdot d \cdot T_{SVP}$$<p>where</p>
-<pre><code>1. The number of tours we do $\tau$ (we will consider 8)
-
-2. The number of times the SVP oracle is called per tour, which is dimension of the lattice d
-
-3. The cost of the SVP oracle
-</code></pre>
-<h3 id="further-improvements">
+<ol>
+<li>the number of tours we do $\tau$ is considered to be 8.</li>
+<li>The number of times the SVP oracle is called per tour, which is dimension of the lattice, is d</li>
+<li>The cost of the SVP oracle is $T_{SVP}$</li>
+</ol>
+<h2 id="further-improvements">
   Further improvements
   <a class="anchor" href="#further-improvements">#</a>
-</h3>
-<p>However, it has been showed in practice that the GSA assumption is a lie. In reality it behaves differently at its tail and this behaviour can be simulated. Also, a lot of tweaks, additions and speed up have been introduced into plain BKZ leading to BKZ 2.0, which provides a stronger reduction.</p>
-<h2 id="costing-the-overall-bkz-behavior">
-  Costing the overall BKZ behavior
-  <a class="anchor" href="#costing-the-overall-bkz-behavior">#</a>
 </h2>
-<p>Finally, how we can cost the overall behaviour of BKZ comes down to:</p>
-<p>Leading to the final formula:</p>
-<p>This cost can be reduced because we can skip some blocks, because tail blocks get smaller and also because we could apply progressive BKZ techniques. A conservative estimate would be for example to assume that at least one call to the SVP oracle only.</p>
+<ul>
+<li>
+<p>It has been showed in practice that the GSA assumption is a lie. In reality it behaves differently at its tail and this behaviour can be simulated.</p>
+</li>
+<li>
+<p>The dimension for free</p>
+</li>
+<li>
+<p>Also, a lot of tweaks, additions and speed up have been introduced into plain BKZ leading to BKZ 2.0, which provides a stronger reduction. See CN11 Simulator.</p>
+</li>
+<li>
+<p>Behaviour in q-ary lattices (ZGSA)</p>
+</li>
+<li>
+<p>Matzov Improvement</p>
+</li>
+</ul>
 </article>
  
       
@@ -427,11 +471,10 @@ $$cost = \tau \cdot d \cdot T_{SVP}$$<p>where</p>
     </li>
     <li><a href="#bkz-algorithm">BKZ algorithm</a>
       <ul>
-        <li><a href="#cost-bkz">Cost BKZ</a></li>
-        <li><a href="#further-improvements">Further improvements</a></li>
+        <li><a href="#cost-of-bkz">Cost of BKZ</a></li>
       </ul>
     </li>
-    <li><a href="#costing-the-overall-bkz-behavior">Costing the overall BKZ behavior</a></li>
+    <li><a href="#further-improvements">Further improvements</a></li>
   </ul>
 </nav>
 

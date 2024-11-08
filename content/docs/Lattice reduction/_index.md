@@ -104,7 +104,7 @@ $$\alpha_\beta = \sqrt{\frac{d}{2\pi e}}^\frac{2}{\beta - 1}$$
 
 This estimate is reasonably accurate only if $d\gg\beta$ and $\beta > 50$, which is why we will use fixed estimates for small dimensions. 
 
-### Cost BKZ
+### Cost of BKZ
 
 * Costing BKZ means having a good idea of the impact of the block-size on the quality of our reduced basis. For this, we could either make the approximation $\delta_\beta \approx \sqrt \alpha_\beta$ or use the following limit defined in 
 $$\lim_{\beta\rightarrow\infty}\delta_\beta = (\frac{\beta}{2\pi e}(\pi\beta)^\frac{1}{\beta})^\frac{1}{2(\beta - 1)}$$
@@ -115,31 +115,22 @@ $$\lVert \bold{b_1} \rVert \approx \delta_\beta^{d-1} Vol(\Lambda)^{\frac{1}{d}}
 
 
 * Costing BKZ as a whole is complicated because we do not know how many tours we will have to run, which means we don't really know in advance the number of SVP-Oracle calls we will have to make. Furthermore, many improvements on plain BKZ have been made when some techniques are used as a subroutine for the oracle (for example extreme pruning in the context of enumeration), which makes security estimates done via lattice reduction very sensitive to many factors. Also, local preprocessing techniques in a variant of BKZ known as progressive BKZ. To make our tool comparable to the lattice estimator by ...[insert], we will follow the same simplifying assumption and consider a consistent 8 tours of BKZ. This makes sense following experimental results that showed that most progress is made in the 7-9 first tours. We will then use:
-
 $$cost = \tau \cdot d \cdot T_{SVP}$$
-
-where
-
-    1. The number of tours we do $\tau$ (we will consider 8)
-    
-    2. The number of times the SVP oracle is called per tour, which is dimension of the lattice d
-    
-    3. The cost of the SVP oracle
+where 
+1. the number of tours we do $\tau$ is considered to be 8. 
+2. The number of times the SVP oracle is called per tour, which is dimension of the lattice, is d
+3. The cost of the SVP oracle is $T_{SVP}$
 
 
+## Further improvements
+
+- It has been showed in practice that the GSA assumption is a lie. In reality it behaves differently at its tail and this behaviour can be simulated.
 
 
-### Further improvements
+- The dimension for free
+ 
+- Also, a lot of tweaks, additions and speed up have been introduced into plain BKZ leading to BKZ 2.0, which provides a stronger reduction. See CN11 Simulator.
 
-However, it has been showed in practice that the GSA assumption is a lie. In reality it behaves differently at its tail and this behaviour can be simulated. Also, a lot of tweaks, additions and speed up have been introduced into plain BKZ leading to BKZ 2.0, which provides a stronger reduction.
+- Behaviour in q-ary lattices (ZGSA)
 
-
-## Costing the overall BKZ behavior
-
-Finally, how we can cost the overall behaviour of BKZ comes down to:
-
-
-Leading to the final formula:
-
-
-This cost can be reduced because we can skip some blocks, because tail blocks get smaller and also because we could apply progressive BKZ techniques. A conservative estimate would be for example to assume that at least one call to the SVP oracle only.
+- Matzov Improvement

@@ -24,7 +24,7 @@ $$\Lambda_q(\bold{A^T}) = \{\bold{y} \in \mathbb{Z}^w : \bold{y} = \bold{A}^T\bo
 <link rel="canonical" href="http://localhost:1313/docs/sis/">
 <link rel="stylesheet" href="/book.min.434035e7885c7f5d12818bd9f111cf1a0925c6fb78382667381c3d5eda3fb4f1.css" integrity="sha256-Q0A154hcf10SgYvZ8RHPGgklxvt4OCZnOBw9Xto/tPE=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.93a27f72c29d9b9146eb5841b211bc1e3345144b6d2904f397e5e0087df48f58.js" integrity="sha256-k6J/csKdm5FG61hBshG8HjNFFEttKQTzl&#43;XgCH30j1g=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.b581f3874b468b96919870d81a89b0fbe247c9ba708dfadbe93039ff9b51259c.js" integrity="sha256-tYHzh0tGi5aRmHDYGomw&#43;&#43;JHybpwjfrb6TA5/5tRJZw=" crossorigin="anonymous"></script>
 <link rel="alternate" type="application/rss+xml" href="http://localhost:1313/docs/sis/index.xml" title="Lattirust estimator 0.1" />
 <!--
 Made with Book Theme
@@ -152,6 +152,24 @@ https://github.com/alex-shpak/hugo-book
           
   <ul>
     
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <span>SIS variants</span>
+  
+
+          
+  <ul>
+    
       
         <li>
           
@@ -159,7 +177,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/sis/module-sis/" class="">Module Sis</a>
+    <a href="/docs/sis-variants/module-sis/" class="">Module Sis</a>
   
 
         </li>
@@ -172,11 +190,29 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/sis/ring-sis/" class="">Ring Sis</a>
+    <a href="/docs/sis-variants/ring-sis/" class="">Ring Sis</a>
   
 
         </li>
       
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/docs/plan/" class="">Plan</a>
+  
+
+          
+  <ul>
     
   </ul>
 
@@ -235,9 +271,9 @@ https://github.com/alex-shpak/hugo-book
 <nav id="TableOfContents">
   <ul>
     <li><a href="#formal-definition">Formal definition</a></li>
-    <li><a href="#estimating-sis-hardness">Estimating SIS hardness</a>
+    <li><a href="#l2-norm-strategy">L2 norm strategy</a>
       <ul>
-        <li><a href="#l2-norm-strategy">L2-Norm strategy</a></li>
+        <li><a href="#finding-the-optimal-lattice-shape-for-reduction">Finding the optimal lattice shape for reduction</a></li>
       </ul>
     </li>
   </ul>
@@ -264,22 +300,22 @@ $$\Lambda_q(\bold{A^T}) = \{\bold{y} \in \mathbb{Z}^w : \bold{y} = \bold{A}^T\bo
 </h2>
 <p>We define \(SIS(h, q, w, \beta)\) as follows:</p>
 <p>Given \(\bold{A} \in \mathbb{Z}_q^{h\times w}\) find the short vector \(\bold{s} \in \mathbb{Z}^w\)   where \(0 &lt; \lVert s \rVert_p \leq \beta\).</p>
-<p>We can note that the problem becomes trivial as soon as \(\beta \geq q\), no matter the norm used.</p>
-<h2 id="estimating-sis-hardness">
-  Estimating SIS hardness
-  <a class="anchor" href="#estimating-sis-hardness">#</a>
-</h2>
-<p>Estimating the hardness of an SIS instance is done via estimating the number of operations required to run lattice reductions attacks on the related SVP problem. This concretely means that we need to know:</p>
-<ol>
-<li>How small we expect the shortest vector to be in our SVP problem.</li>
-<li>How small we expect vectors to be after lattice reduction.</li>
-<li>How to cost lattice reduction (see the lattice reduction section).</li>
-</ol>
-<p>We will mostly focus on BKZ 2.0 as a reduction algorithm and we will present how we estimate all parts of the attack.</p>
-<h3 id="l2-norm-strategy">
-  L2-Norm strategy
+<p>We can note that the problem becomes trivial as soon as \(\beta \geq q\), no matter the norm used. In the following analysis, we will separate the use of the euclidean norm and the infinity norm. The two sections will describe the concrete ways of defining the security parameters, using the theory we built in the previous sections (lattice reduction and cost models).</p>
+<h2 id="l2-norm-strategy">
+  L2 norm strategy
   <a class="anchor" href="#l2-norm-strategy">#</a>
+</h2>
+<p><em>TODO check the notation between A and A^T</em></p>
+<h3 id="finding-the-optimal-lattice-shape-for-reduction">
+  Finding the optimal lattice shape for reduction
+  <a class="anchor" href="#finding-the-optimal-lattice-shape-for-reduction">#</a>
 </h3>
+<p>Given a q-ary lattice \(\bold{A} \in \mathbb{Z}_q^{h\times w}\) and assuming q is prime (which will be the case in most applications), we can then say with high probability that the rows of $\bold{A}$ are independent over $\mathbb{Z}_q$ (we also assume w is bigger than n and not too close). As a result of this, the lattice $\Lambda^T_q(\bold{A})$ has $q^h$ points in $\mathbb{Z}^w_q$. This leads to the volume or determinant of the matrix to be $Vol(\Lambda^T_q(\bold{A})) = q^{h}$. Using the gaussian heuristic from the lattice reduction section, we can express</p>
+$$\lambda_1(\Lambda^T_q(\bold{A})) \approx q^\frac{h}{w}\sqrt{\frac{w}{2\pi e}}$$<p>as an estimate of the lenght of the smallest vector.</p>
+<p>The question we want to answer is what is the shortest vector we can hope to find in a reasonable time. It has been experimentally observed that the length of the vector obtained by the best known lattice reduction algorithms on a random w-dimensional q-ary lattic is close to $\min(q, q^\frac{n}{m}\delta^m)$. We can also observe that increasing the $w$ parameter does not make the problem any hard. In fact, we can fix this parameter by completely letting go a certain number of columns. It has shown that the minimum can be obtained at
+</p>
+$$w = \sqrt{\frac{h\log q}{\delta}}$$<p>
+Indeed, for smaller m the lattice becomes too sparse and does not contain enough vectors to have small ones, and bigger m actually prevents lattice reduction to perform optimally.</p>
 </article>
  
       
@@ -322,9 +358,9 @@ $$\Lambda_q(\bold{A^T}) = \{\bold{y} \in \mathbb{Z}^w : \bold{y} = \bold{A}^T\bo
 <nav id="TableOfContents">
   <ul>
     <li><a href="#formal-definition">Formal definition</a></li>
-    <li><a href="#estimating-sis-hardness">Estimating SIS hardness</a>
+    <li><a href="#l2-norm-strategy">L2 norm strategy</a>
       <ul>
-        <li><a href="#l2-norm-strategy">L2-Norm strategy</a></li>
+        <li><a href="#finding-the-optimal-lattice-shape-for-reduction">Finding the optimal lattice shape for reduction</a></li>
       </ul>
     </li>
   </ul>
