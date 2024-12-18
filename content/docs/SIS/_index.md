@@ -23,6 +23,11 @@ Given \\(\bold{A} \in \mathbb{Z}_q^{h\times w}\\) find the short vector \\(\bold
 
 We can note that the problem becomes trivial as soon as \\(\beta \geq q\\), no matter the norm used. In the following analysis, we will separate the use of the euclidean norm and the infinity norm. The two sections will describe the concrete ways of defining the security parameters, using the theory we built in the previous sections (lattice reduction and cost models).
 
+
+## SIS and ISIS
+
+## SIS and LWE
+
 ## L2 norm strategy
 
 *TODO check the notation between A and A^T*
@@ -37,3 +42,17 @@ as an estimate of the lenght of the smallest vector.
 The question we want to answer is what is the shortest vector we can hope to find in a reasonable time. It has been experimentally observed that the length of the vector obtained by the best known lattice reduction algorithms on a random w-dimensional q-ary lattic is close to $\min(q, q^\frac{n}{m}\delta^m)$. We can also observe that increasing the $w$ parameter does not make the problem any hard. In fact, we can fix this parameter by completely letting go a certain number of columns. It has shown that the minimum can be obtained at 
 $$w = \sqrt{\frac{h\log q}{\delta}}$$
 Indeed, for smaller m the lattice becomes too sparse and does not contain enough vectors to have small ones, and bigger m actually prevents lattice reduction to perform optimally.
+
+## L-inf norm strategy
+
+### The tradeoffs
+
+### The search function
+
+### Matzov improvements on the dual attacks
+
+### Kyber improvements
+
+
+
+

@@ -1,4 +1,4 @@
-# Module-SIS
+# krISIS
 
 ## Scheme 
 

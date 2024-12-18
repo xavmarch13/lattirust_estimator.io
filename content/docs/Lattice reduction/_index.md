@@ -122,15 +122,52 @@ where
 3. The cost of the SVP oracle is $T_{SVP}$
 
 
-## Further improvements
+### BKZ 2.0 Tweaks
 
-- It has been showed in practice that the GSA assumption is a lie. In reality it behaves differently at its tail and this behaviour can be simulated.
+The BKZ 2.0 algorithm introduces several key optimizations to improve the efficiency and effectiveness of the lattice reduction process. These enhancements address both the quality of the reduced basis and the computational overhead:
+
+1. **Extreme Pruning**: 
+   - Extreme pruning focuses the SVP oracle's efforts on the most promising branches of the search space, reducing unnecessary computations. This technique significantly accelerates the oracle’s performance without compromising the output quality.
+   
+2. **Adaptive Block Sizes**:
+   - BKZ 2.0 dynamically adjusts the block size ($\beta$) during execution. By using smaller block sizes initially and increasing them later, the algorithm finds a better trade-off between runtime and reduction quality.
+
+3. **Improved Local Search**:
+   - Advanced local search algorithms enhance the process of finding short vectors within each block. These improvements reduce the time spent on individual blocks while maintaining or improving the overall basis quality.
+
+4. **Experimental Impact**:
+   - Empirical studies show that BKZ 2.0 achieves better reduction quality than the original BKZ, especially for large dimensions. It also demonstrates improved scalability and efficiency in practice.
+
+### The Lie of the GSA Assumption and Better Simulators (ZGSA)
+
+The Geometric Series Assumption (GSA), while widely used, does not perfectly capture the behavior of lattice reduction algorithms. This section highlights its limitations and introduces a more accurate model, ZGSA:
+
+1. **Why GSA Falls Short**:
+   - The GSA assumes that the Gram-Schmidt vector lengths decay geometrically. However, this assumption breaks down for smaller lattices or when dealing with structured lattices that deviate significantly from randomness.
+
+2. **Introduction to ZGSA**:
+   - The Zero-Forced Geometric Series Assumption (ZGSA) refines the GSA by accounting for boundary effects and deviations observed in practical reductions. ZGSA provides a more precise representation of the reduced basis.
+
+3. **Comparison with GSA**:
+   - Empirical results indicate that ZGSA predictions align more closely with observed reductions compared to GSA. A comparison of plots or metrics can demonstrate this improved accuracy.
+
+4. **Applications of ZGSA**:
+   - ZGSA has been instrumental in refining security estimates for lattice-based cryptography, particularly in the context of parameter selection and attack simulations.
+
+### The Dimension for Free (Ducas)
+
+The "dimension for free" concept introduced by Ducas reduces the cost of lattice reduction in high-dimensional lattices without sacrificing output quality. This approach is particularly relevant in practical implementations of lattice reduction algorithms.
+
+1. **Concept Overview**:
+   - The "dimension for free" principle exploits structural redundancies in high-dimensional lattices, enabling efficient reductions with fewer computational resources.
+
+2. **Impact on BKZ**:
+   - By incorporating the "dimension for free," BKZ and BKZ 2.0 achieve improved runtime performance. This is especially beneficial in cryptographic applications requiring reductions in very high dimensions.
+
+3. **Trade-offs and Limitations**:
+   - While highly effective in many cases, the "dimension for free" may not yield significant improvements for small lattices or those lacking sufficient dimensionality for optimization.
+
+4. **Practical Implications**:
+   - The "dimension for free" approach has become a cornerstone of efficient lattice reduction techniques. Its adoption in lattice-based cryptography has further solidified its role in modern security parameter design.
 
 
-- The dimension for free
- 
-- Also, a lot of tweaks, additions and speed up have been introduced into plain BKZ leading to BKZ 2.0, which provides a stronger reduction. See CN11 Simulator.
-
-- Behaviour in q-ary lattices (ZGSA)
-
-- Matzov Improvement

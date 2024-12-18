@@ -11,16 +11,21 @@
   Lattices
   #
 
-A lattice is defined as a set of points in n-dimensional space with a periodic structure. A lattice can be represented by a set of linearly independent vectors commonly named the basis of the lattice. If \(\bold{b_1}, &hellip;, \bold{b_n}\) denote basis vectors we can describe a lattice by: 
 $$\Lambda(\bold{b_1}, ..., \bold{b_n}) = \{\sum_{i=1}^{n}x_i\bold{b_i}: x_i \in \mathbb{Z}\}$$
-In the rest of this work, we will especially consider q-ary lattices described by a basis \(\bold{B} \in \mathbb{Z}^{h\times w}_q\), in which coefficients are taken modulo q.">
+In the rest of this work, we will especially consider q-ary lattices described by a basis \(\bold{B} \in \mathbb{Z}^{h\times w}_q\), in which coefficients are taken modulo q.
+
+  The Short Vector Problem
+  #
+
+The security of lattice based constructions rely on the fact that finding the shortest non-zero vector in a lattice is a hard problem. One usually considers an approximation version of the SVP problem. Given a basis \(\bold{B}\) of a lattice, the approximate SVP problem is the problem of finding a short lattice vector \(\bold{v}\) such that \(0 &lt; \lVert \bold{v} \rVert \leq \gamma\lambda_1(\Lambda(\bold{B}))\) where \(\lambda_1\) denotes the shortest nonzero vector length and \(\gamma\) is the approximation factor.">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
 <meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/docs/preliminaries/">
   <meta property="og:site_name" content="Lattirust estimator 0.1">
   <meta property="og:title" content="Preliminaries">
-  <meta property="og:description" content="Preliminaries # Lattices # A lattice is defined as a set of points in n-dimensional space with a periodic structure. A lattice can be represented by a set of linearly independent vectors commonly named the basis of the lattice. If \(\bold{b_1}, …, \bold{b_n}\) denote basis vectors we can describe a lattice by: $$\Lambda(\bold{b_1}, ..., \bold{b_n}) = \{\sum_{i=1}^{n}x_i\bold{b_i}: x_i \in \mathbb{Z}\}$$
-In the rest of this work, we will especially consider q-ary lattices described by a basis \(\bold{B} \in \mathbb{Z}^{h\times w}_q\), in which coefficients are taken modulo q.">
+  <meta property="og:description" content="Preliminaries # Lattices # $$\Lambda(\bold{b_1}, ..., \bold{b_n}) = \{\sum_{i=1}^{n}x_i\bold{b_i}: x_i \in \mathbb{Z}\}$$
+In the rest of this work, we will especially consider q-ary lattices described by a basis \(\bold{B} \in \mathbb{Z}^{h\times w}_q\), in which coefficients are taken modulo q.
+The Short Vector Problem # The security of lattice based constructions rely on the fact that finding the shortest non-zero vector in a lattice is a hard problem. One usually considers an approximation version of the SVP problem. Given a basis \(\bold{B}\) of a lattice, the approximate SVP problem is the problem of finding a short lattice vector \(\bold{v}\) such that \(0 &lt; \lVert \bold{v} \rVert \leq \gamma\lambda_1(\Lambda(\bold{B}))\) where \(\lambda_1\) denotes the shortest nonzero vector length and \(\gamma\) is the approximation factor.">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="website">
 <title>Preliminaries | Lattirust estimator 0.1</title>
@@ -29,7 +34,7 @@ In the rest of this work, we will especially consider q-ary lattices described b
 <link rel="canonical" href="http://localhost:1313/docs/preliminaries/">
 <link rel="stylesheet" href="/book.min.434035e7885c7f5d12818bd9f111cf1a0925c6fb78382667381c3d5eda3fb4f1.css" integrity="sha256-Q0A154hcf10SgYvZ8RHPGgklxvt4OCZnOBw9Xto/tPE=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.b581f3874b468b96919870d81a89b0fbe247c9ba708dfadbe93039ff9b51259c.js" integrity="sha256-tYHzh0tGi5aRmHDYGomw&#43;&#43;JHybpwjfrb6TA5/5tRJZw=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.3281e87b85b2476c1b9b78979fa798f048106b9f209f9d567adaf1261c80c768.js" integrity="sha256-MoHoe4WyR2wbm3iXn6eY8EgQa58gn51WetrxJhyAx2g=" crossorigin="anonymous"></script>
 <link rel="alternate" type="application/rss+xml" href="http://localhost:1313/docs/preliminaries/index.xml" title="Lattirust estimator 0.1" />
 <!--
 Made with Book Theme
@@ -182,7 +187,87 @@ https://github.com/alex-shpak/hugo-book
   
 
   
+    <a href="/docs/sis-variants/basis/" class="">Basis</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/sis-variants/isisf/" class="">Isisf</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/sis-variants/kmsis/" class="">Kmsis</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/sis-variants/krisis/" class="">Krisis</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/sis-variants/ksis/" class="">Ksis</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
     <a href="/docs/sis-variants/module-sis/" class="">Module Sis</a>
+  
+
+        </li>
+      
+    
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/sis-variants/prisis/" class="">Prisis</a>
   
 
         </li>
@@ -201,6 +286,8 @@ https://github.com/alex-shpak/hugo-book
         </li>
       
     
+      
+    
   </ul>
 
         </li>
@@ -213,7 +300,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/plan/" class="">Plan</a>
+    <a href="/docs/searching/" class="">Searching for the right parameters</a>
   
 
           
@@ -302,7 +389,6 @@ https://github.com/alex-shpak/hugo-book
   Lattices
   <a class="anchor" href="#lattices">#</a>
 </h2>
-<p>A <em>lattice</em> is defined as a set of points in n-dimensional space with a periodic structure. A lattice can be represented by a set of linearly independent vectors commonly named the basis of the lattice. If \(\bold{b_1}, &hellip;, \bold{b_n}\) denote basis vectors we can describe a lattice by: </p>
 $$\Lambda(\bold{b_1}, ..., \bold{b_n}) = \{\sum_{i=1}^{n}x_i\bold{b_i}: x_i \in \mathbb{Z}\}$$<p><img src="lattices-1.png" alt="alt text" /></p>
 <p>In the rest of this work, we will especially consider q-ary lattices described by a basis \(\bold{B} \in \mathbb{Z}^{h\times w}_q\), in which coefficients are taken modulo q.</p>
 <h3 id="the-short-vector-problem">

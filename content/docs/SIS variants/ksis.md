@@ -1,4 +1,4 @@
-# Module-SIS
+# k-SIS
 
 ## Scheme 
 
