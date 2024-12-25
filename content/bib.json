@@ -1,0 +1,220 @@
+[
+  {
+    "author": [
+      {
+        "family": "Micciancio",
+        "given": "Daniele"
+      },
+      {
+        "family": "Regev",
+        "given": "Oded"
+      }
+    ],
+    "container-title": "Post-quantum cryptography",
+    "id": "micciancio2009lattice",
+    "issued": {
+      "date-parts": [
+        [
+          2009
+        ]
+      ]
+    },
+    "page": "147-191",
+    "publisher": "Springer",
+    "title": "Lattice-based cryptography",
+    "type": "chapter"
+  },
+  {
+    "author": [
+      {
+        "family": "Kitaev",
+        "given": "Alexei Yu"
+      },
+      {
+        "family": "Shen",
+        "given": "Alexander"
+      },
+      {
+        "family": "Vyalyi",
+        "given": "Mikhail N"
+      }
+    ],
+    "collection-number": "47",
+    "id": "kitaev2002classical",
+    "issued": {
+      "date-parts": [
+        [
+          2002
+        ]
+      ]
+    },
+    "publisher": "American Mathematical Soc.",
+    "title": "Classical and quantum computation",
+    "type": "book"
+  },
+  {
+    "author": [
+      {
+        "family": "Bhatia",
+        "given": "Vaishali"
+      },
+      {
+        "family": "Ramkumar",
+        "given": "KR"
+      }
+    ],
+    "container-title": "2020 IEEE 5th international conference on computing communication and automation (ICCCA)",
+    "id": "bhatia2020efficient",
+    "issued": {
+      "date-parts": [
+        [
+          2020
+        ]
+      ]
+    },
+    "page": "89-94",
+    "publisher": "IEEE",
+    "title": "An efficient quantum computing technique for cracking RSA using shor’s algorithm",
+    "type": "paper-conference"
+  },
+  {
+    "author": [
+      {
+        "family": "Bernstein",
+        "given": "Daniel J"
+      },
+      {
+        "family": "Lange",
+        "given": "Tanja"
+      }
+    ],
+    "container-title": "Nature",
+    "id": "bernstein2017post",
+    "issue": "7671",
+    "issued": {
+      "date-parts": [
+        [
+          2017
+        ]
+      ]
+    },
+    "page": "188-194",
+    "publisher": "Nature Publishing Group UK London",
+    "title": "Post-quantum cryptography",
+    "type": "article-journal",
+    "volume": "549"
+  },
+  {
+    "author": [
+      {
+        "family": "Regev",
+        "given": "Oded"
+      }
+    ],
+    "container-title": "Journal of the ACM (JACM)",
+    "id": "regev2009lattices",
+    "issue": "6",
+    "issued": {
+      "date-parts": [
+        [
+          2009
+        ]
+      ]
+    },
+    "page": "1-40",
+    "publisher": "ACM New York, NY, USA",
+    "title": "On lattices, learning with errors, random linear codes, and cryptography",
+    "type": "article-journal",
+    "volume": "56"
+  },
+  {
+    "author": [
+      {
+        "family": "Ajtai",
+        "given": "Miklós"
+      }
+    ],
+    "container-title": "Proceedings of the twenty-eighth annual ACM symposium on theory of computing",
+    "id": "ajtai1996generating",
+    "issued": {
+      "date-parts": [
+        [
+          1996
+        ]
+      ]
+    },
+    "page": "99-108",
+    "title": "Generating hard instances of lattice problems",
+    "type": "paper-conference"
+  },
+  {
+    "author": [
+      {
+        "family": "Player",
+        "given": "Rachel"
+      }
+    ],
+    "genre": "PhD thesis",
+    "id": "player2018parameter",
+    "issued": {
+      "date-parts": [
+        [
+          2018
+        ]
+      ]
+    },
+    "publisher": "Royal Holloway, University of London",
+    "title": "Parameter selection in lattice-based cryptography",
+    "type": "thesis"
+  },
+  {
+    "author": [
+      {
+        "family": "Nguyen",
+        "given": "Phong Q"
+      }
+    ],
+    "container-title": "Annual international conference on the theory and applications of cryptographic techniques",
+    "id": "nguyen2011lattice",
+    "issued": {
+      "date-parts": [
+        [
+          2011
+        ]
+      ]
+    },
+    "page": "2-6",
+    "publisher": "Springer",
+    "title": "Lattice reduction algorithms: Theory and practice",
+    "title-short": "Lattice reduction algorithms",
+    "type": "paper-conference"
+  },
+  {
+    "URL": "https://eprint.iacr.org/2015/046",
+    "author": [
+      {
+        "family": "Albrecht",
+        "given": "Martin R."
+      },
+      {
+        "family": "Player",
+        "given": "Rachel"
+      },
+      {
+        "family": "Scott",
+        "given": "Sam"
+      }
+    ],
+    "id": "cryptoeprint:2015/046",
+    "issued": {
+      "date-parts": [
+        [
+          2015
+        ]
+      ]
+    },
+    "publisher": "Cryptology ePrint Archive, Paper 2015/046",
+    "title": "On the concrete hardness of learning with errors",
+    "type": ""
+  }
+]

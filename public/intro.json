@@ -1,0 +1,27 @@
+[
+  {
+    "author": [
+      {
+        "family": "Micciancio",
+        "given": "Daniele"
+      },
+      {
+        "family": "Regev",
+        "given": "Oded"
+      }
+    ],
+    "container-title": "Post-quantum cryptography",
+    "id": "micciancio2009lattice",
+    "issued": {
+      "date-parts": [
+        [
+          2009
+        ]
+      ]
+    },
+    "page": "147-191",
+    "publisher": "Springer",
+    "title": "Lattice-based cryptography",
+    "type": "chapter"
+  }
+]

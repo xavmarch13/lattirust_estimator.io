@@ -1,1 +1,3 @@
 {{ if .Params.math }}{{ partial "helpers/katex.html" . }}{{ end }}
+{{ $simpleciteStyle := resources.Get "scss/hugo-simplecite.scss" | css.Sass | minify | fingerprint }}
+<link rel="stylesheet" type="text/css" href="{{ $simpleciteStyle.Permalink }}">

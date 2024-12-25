@@ -18,17 +18,17 @@ Sieving algorithms for SVP work by iteratively refining a large set of lattice v
 <meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/docs/cost-models/">
   <meta property="og:site_name" content="Lattirust estimator 0.1">
   <meta property="og:title" content="Cost Models">
-  <meta property="og:description" content="Cost Models # Given the simplified cost for BKZ behaviour that we consider $cost = \tau \cdot d \cdot T_{SVP}$, we still need to define the cost of the SVP solver. Sieving and enumeration are the two common strategies to find the shortest non-zero vector in a lattice.
-Sieving # Sieving algorithms for SVP work by iteratively refining a large set of lattice vectors to obtain progressively shorter vectors until the shortest one is found. In its basic form, the sieving process starts by generating a large set of random lattice vectors, often called a “cloud.” Pairs of vectors are then combined (usually by adding or subtracting them) to produce shorter vectors, which are then added back to the cloud if they meet certain criteria. This process continues until the vectors in the cloud converge towards the shortest lattice vector. Modern sieving methods, like the GaussSieve or ListSieve, have been optimized to handle higher-dimensional lattices by limiting pairwise vector interactions, which reduces computational complexity. Sieving requires storing a large number of lattice vectors and, therefore, can be memory-intensive, especially as the lattice dimension grows.">
+  <meta property="og:description" content="Cost Models#Given the simplified cost for BKZ behaviour that we consider $cost = \tau \cdot d \cdot T_{SVP}$, we still need to define the cost of the SVP solver. Sieving and enumeration are the two common strategies to find the shortest non-zero vector in a lattice.
+Sieving#Sieving algorithms for SVP work by iteratively refining a large set of lattice vectors to obtain progressively shorter vectors until the shortest one is found. In its basic form, the sieving process starts by generating a large set of random lattice vectors, often called a “cloud.” Pairs of vectors are then combined (usually by adding or subtracting them) to produce shorter vectors, which are then added back to the cloud if they meet certain criteria. This process continues until the vectors in the cloud converge towards the shortest lattice vector. Modern sieving methods, like the GaussSieve or ListSieve, have been optimized to handle higher-dimensional lattices by limiting pairwise vector interactions, which reduces computational complexity. Sieving requires storing a large number of lattice vectors and, therefore, can be memory-intensive, especially as the lattice dimension grows.">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="website">
 <title>Cost Models | Lattirust estimator 0.1</title>
 <link rel="icon" href="/favicon.png" >
 <link rel="manifest" href="/manifest.json">
 <link rel="canonical" href="http://localhost:1313/docs/cost-models/">
-<link rel="stylesheet" href="/book.min.434035e7885c7f5d12818bd9f111cf1a0925c6fb78382667381c3d5eda3fb4f1.css" integrity="sha256-Q0A154hcf10SgYvZ8RHPGgklxvt4OCZnOBw9Xto/tPE=" crossorigin="anonymous">
+<link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.3281e87b85b2476c1b9b78979fa798f048106b9f209f9d567adaf1261c80c768.js" integrity="sha256-MoHoe4WyR2wbm3iXn6eY8EgQa58gn51WetrxJhyAx2g=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.95ba0023c63c0960b8b4f53e911d9e59cbf863fd6127a49489e0e10b31c9d4c4.js" integrity="sha256-lboAI8Y8CWC4tPU&#43;kR2eWcv4Y/1hJ6SUieDhCzHJ1MQ=" crossorigin="anonymous"></script>
 <link rel="alternate" type="application/rss+xml" href="http://localhost:1313/docs/cost-models/index.xml" title="Lattirust estimator 0.1" />
 <!--
 Made with Book Theme
@@ -50,6 +50,8 @@ https://github.com/alex-shpak/hugo-book
     });
 </script>
 
+
+<link rel="stylesheet" type="text/css" href="http://localhost:1313/scss/hugo-simplecite.min.138dd14c6aaf1b1a9b55c4fe22f82166812ce8081413d67a3b464e411d2b63ef.css">
 </head>
 <body dir="ltr">
   <input type="checkbox" class="hidden toggle" id="menu-control" />

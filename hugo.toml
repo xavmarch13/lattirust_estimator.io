@@ -1,10 +1,10 @@
 baseURL = 'https://example.org/'
 languageCode = 'en-us'
 title = 'Lattirust estimator 0.1'
-theme = 'hugo-book'
+theme = ["hugo-book", "hugo-simplecite"]
 
 [params]
-    bookTheme = 'auto'
+    bookTheme = 'light'
     math = true
 
 
