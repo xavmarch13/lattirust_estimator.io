@@ -1,0 +1,16 @@
+<figure style="text-align: center; margin: 1em auto; max-width: 100%;">
+    <img src="{{ .Get "src" }}" alt="{{ .Get "alt" }}" style="max-width: 100%; height: auto; border: 1px solid #ddd; padding: 4px;">
+    {{ if .IsNamedParams }}
+        {{ if .Get "caption" }}
+            <figcaption style="font-size: 0.9em; margin-top: 0.5em; font-style: italic; text-align: center; color: #555;">
+                {{ .Get "caption" }}
+            </figcaption>
+        {{ end }}
+    {{ else }}
+        {{ with .Get 1 }}
+            <figcaption style="font-size: 0.9em; margin-top: 0.5em; font-style: italic; text-align: center; color: #555;">
+                {{ . }}
+            </figcaption>
+        {{ end }}
+    {{ end }}
+</figure>

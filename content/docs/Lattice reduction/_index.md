@@ -9,34 +9,6 @@ math: true
 
 Lattice reduction algorithms such as LLL and BKZ make iterative local improvements to a basis. This means that the global cost can be seen as two-folds: how costly is it to make the local improvements, which corresponds to solving an exact SVP problem and how costly is the global behavior of the algorithm. This section focuses on the global behavior of lattice reduction algorithms, while the next section (Cost models) will focus about solving local improvements. Lattice reduction is the essential tool that allows to transform an inappropriate basis to solve the SIS problem into an appropriate one and thus its complexity is the bulk of the security estimate.
 
-## Useful quantities in lattices 
-
-### Volume
-
-In each lattice, we can define the volume of the lattice as the volume of its fundamental parallellepiped (the area delimited by the basis vectors). This quantity is an invariant of the lattice and does not depend on the basis chosen. This means that by applying Gram-Schmidt orthogonalization to any basis will give us an orthogonal basis from which we can approximate the volume of the lattice as 
-
-$$ Vol(\Lambda) =  \prod_{i=0}^{d-1} \lVert \bold{b_i}^*\rVert $$
-
-where $\bold{b_i}*$ are the orthogonal Gram-Schmidt vectors. It is also important to remember that $Vol(\Lambda) = |Det(\bold{B})|$, where $\bold{B}$ is the basis matrix.
-
-![alt text](volume.png)
-
-This invariant is conceptually important because it tells us that not all basis vectors can be small at the same time.
-
-### Gaussian heuristic
-
-The gaussian heuristics predicts the number of lattice points inside any measurable body $\mathcal{B} \subset \mathbb{R}^d$ is approximately $\frac{Vol(\mathcal{B})}{Vol(\Lambda)}$. Applied to an euclidean d-ball, this would give that the length of the first vector is approximately 
-
-$$\lambda_1(\Lambda) \approx (\frac{Vol(\mathcal{B})}{Vol(\Lambda)})^{\frac{1}{d}} \approx \sqrt{\frac{d}{2\pi e}} Vol(\Lambda)^{\frac{1}{d}}$$
-
-### Root Hermite Factor
-
-We will next want to introduce a value called the *root hermite factor*. It is a measure used in lattice reduction theory to evaluate the quality of a reduced lattice basis. It is commonly used to assess the effectiveness of lattice reduction algorithms. It quantifies how much longer the shortest vector in a reduced lattice basis is, compared to the length of an ideal shortest vector, scaled by the lattice dimension. Formally we define it as
-
-$$\lVert \bold{b_1} \rVert \approx \delta^d Vol(\Lambda)^\frac{1}{d}$$ for an d-dimensional lattice.
-
-The closer $\delta$ gets to 1, the better the reduction quality will be. This is of direct impact in our context, since we need to balance a trade-off between the quality of the output basis and the cost of running our lattice reduction algorithm. In fact, with the BKZ algorithm which has become the standard, a bigger block-size leads to a better quality of output basis but also a greater computational cost.
-
 ### Geometric Series Assumption
 
 The geometric series assumption conceptually tells us that the Gram-Schmidt vectors log-length outputed by a lattice reducion algorithm will follow a line (see the graphs in the LLL subsection). We can formulate it as:
@@ -47,6 +19,13 @@ and in fact by combining it with the root hermite factor definition we can get a
 
 $$ \lVert \bold{b_i}^*\rVert \approx \alpha^{i-1} \delta^d Vol(\Lambda)^\frac{1}{d} = \delta^{-1(i+1) + d} Vol(\Lambda)^\frac{1}{d}$$
 
+### Root hermite factor
+
+We will next want to introduce a value called the *root hermite factor*. It is a measure used in lattice reduction theory to evaluate the quality of a reduced lattice basis. It is commonly used to assess the effectiveness of lattice reduction algorithms. It quantifies how much longer the shortest vector in a reduced lattice basis is, compared to the length of an ideal shortest vector, scaled by the lattice dimension. Formally we define it as
+
+$$\lVert \bold{b_1} \rVert \approx \delta^d Vol(\Lambda)^\frac{1}{d}$$ for an d-dimensional lattice.
+
+The closer $\delta$ gets to 1, the better the reduction quality will be. This is of direct impact in our context, since we need to balance a trade-off between the quality of the output basis and the cost of running our lattice reduction algorithm. In fact, with the BKZ algorithm which has become the standard, a bigger block-size leads to a better quality of output basis but also a greater computational cost.
 
 ## LLL algorithm
 

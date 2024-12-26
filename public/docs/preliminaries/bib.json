@@ -1,0 +1,199 @@
+[
+  {
+    "author": [
+      {
+        "family": "Cohn",
+        "given": "Henry"
+      },
+      {
+        "family": "Elkies",
+        "given": "Noam"
+      }
+    ],
+    "container-title": "Annals of mathematics",
+    "id": "cohn2003new",
+    "issued": {
+      "date-parts": [
+        [
+          2003
+        ]
+      ]
+    },
+    "page": "689-714",
+    "publisher": "JSTOR",
+    "title": "New upper bounds on sphere packings i",
+    "type": "article-journal"
+  },
+  {
+    "author": [
+      {
+        "family": "Gama",
+        "given": "Nicolas"
+      },
+      {
+        "family": "Nguyen",
+        "given": "Phong Q"
+      }
+    ],
+    "container-title": "Advances in cryptology–EUROCRYPT 2008: 27th annual international conference on the theory and applications of cryptographic techniques, istanbul, turkey, april 13-17, 2008. Proceedings 27",
+    "id": "gama2008predicting",
+    "issued": {
+      "date-parts": [
+        [
+          2008
+        ]
+      ]
+    },
+    "page": "31-51",
+    "publisher": "Springer",
+    "title": "Predicting lattice reduction",
+    "type": "paper-conference"
+  },
+  {
+    "author": [
+      {
+        "family": "Micciancio",
+        "given": "Daniele"
+      },
+      {
+        "family": "Goldwasser",
+        "given": "Shafi"
+      }
+    ],
+    "id": "micciancio2002complexity",
+    "issued": {
+      "date-parts": [
+        [
+          2002
+        ]
+      ]
+    },
+    "publisher": "Springer Science & Business Media",
+    "title": "Complexity of lattice problems: A cryptographic perspective",
+    "title-short": "Complexity of lattice problems",
+    "type": "book",
+    "volume": "671"
+  },
+  {
+    "author": [
+      {
+        "family": "Micciancio",
+        "given": "Daniele"
+      },
+      {
+        "family": "Regev",
+        "given": "Oded"
+      }
+    ],
+    "container-title": "Post-quantum cryptography",
+    "id": "micciancio2009lattice",
+    "issued": {
+      "date-parts": [
+        [
+          2009
+        ]
+      ]
+    },
+    "page": "147-191",
+    "publisher": "Springer",
+    "title": "Lattice-based cryptography",
+    "type": "chapter"
+  },
+  {
+    "author": [
+      {
+        "family": "Nguyen",
+        "given": "Phong Q"
+      }
+    ],
+    "container-title": "The LLL algorithm: Survey and applications",
+    "id": "nguyen2009hermite",
+    "issued": {
+      "date-parts": [
+        [
+          2009
+        ]
+      ]
+    },
+    "page": "19-69",
+    "publisher": "Springer",
+    "title": "Hermite’s constant and lattice algorithms",
+    "type": "chapter"
+  },
+  {
+    "author": [
+      {
+        "family": "Lovász",
+        "given": "László"
+      }
+    ],
+    "id": "lovasz1986algorithmic",
+    "issued": {
+      "date-parts": [
+        [
+          1986
+        ]
+      ]
+    },
+    "publisher": "SIAM",
+    "title": "An algorithmic theory of numbers, graphs and convexity",
+    "type": "book"
+  },
+  {
+    "author": [
+      {
+        "family": "Ajtai",
+        "given": "Miklós"
+      }
+    ],
+    "container-title": "Proceedings of the twenty-eighth annual ACM symposium on theory of computing",
+    "id": "ajtai1996generating",
+    "issued": {
+      "date-parts": [
+        [
+          1996
+        ]
+      ]
+    },
+    "page": "99-108",
+    "title": "Generating hard instances of lattice problems",
+    "type": "paper-conference"
+  },
+  {
+    "author": [
+      {
+        "family": "Baum",
+        "given": "Carsten"
+      },
+      {
+        "family": "Damgård",
+        "given": "Ivan"
+      },
+      {
+        "family": "Lyubashevsky",
+        "given": "Vadim"
+      },
+      {
+        "family": "Oechsner",
+        "given": "Sabine"
+      },
+      {
+        "family": "Peikert",
+        "given": "Chris"
+      }
+    ],
+    "container-title": "International conference on security and cryptography for networks",
+    "id": "baum2018more",
+    "issued": {
+      "date-parts": [
+        [
+          2018
+        ]
+      ]
+    },
+    "page": "368-385",
+    "publisher": "Springer",
+    "title": "More efficient commitments from structured lattice assumptions",
+    "type": "paper-conference"
+  }
+]

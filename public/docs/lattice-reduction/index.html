@@ -22,7 +22,7 @@ Lattice reduction algorithms such as LLL and BKZ make iterative local improvemen
 <link rel="canonical" href="http://localhost:1313/docs/lattice-reduction/">
 <link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.95ba0023c63c0960b8b4f53e911d9e59cbf863fd6127a49489e0e10b31c9d4c4.js" integrity="sha256-lboAI8Y8CWC4tPU&#43;kR2eWcv4Y/1hJ6SUieDhCzHJ1MQ=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.a3731c9aff17eed187b0dafda42df8ceb070b47313bc5c5a4532712d42f23d59.js" integrity="sha256-o3Mcmv8X7tGHsNr9pC34zrBwtHMTvFxaRTJxLULyPVk=" crossorigin="anonymous"></script>
 <link rel="alternate" type="application/rss+xml" href="http://localhost:1313/docs/lattice-reduction/index.xml" title="Lattirust estimator 0.1" />
 <!--
 Made with Book Theme
@@ -352,12 +352,10 @@ https://github.com/alex-shpak/hugo-book
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#useful-quantities-in-lattices">Useful quantities in lattices</a>
+    <li>
       <ul>
-        <li><a href="#volume">Volume</a></li>
-        <li><a href="#gaussian-heuristic">Gaussian heuristic</a></li>
-        <li><a href="#root-hermite-factor">Root Hermite Factor</a></li>
         <li><a href="#geometric-series-assumption">Geometric Series Assumption</a></li>
+        <li><a href="#root-hermite-factor">Root hermite factor</a></li>
       </ul>
     </li>
     <li><a href="#lll-algorithm">LLL algorithm</a>
@@ -390,37 +388,20 @@ https://github.com/alex-shpak/hugo-book
   <a class="anchor" href="#lattice-reduction">#</a>
 </h1>
 <p>Lattice reduction algorithms such as LLL and BKZ make iterative local improvements to a basis. This means that the global cost can be seen as two-folds: how costly is it to make the local improvements, which corresponds to solving an exact SVP problem and how costly is the global behavior of the algorithm. This section focuses on the global behavior of lattice reduction algorithms, while the next section (Cost models) will focus about solving local improvements. Lattice reduction is the essential tool that allows to transform an inappropriate basis to solve the SIS problem into an appropriate one and thus its complexity is the bulk of the security estimate.</p>
-<h2 id="useful-quantities-in-lattices">
-  Useful quantities in lattices
-  <a class="anchor" href="#useful-quantities-in-lattices">#</a>
-</h2>
-<h3 id="volume">
-  Volume
-  <a class="anchor" href="#volume">#</a>
-</h3>
-<p>In each lattice, we can define the volume of the lattice as the volume of its fundamental parallellepiped (the area delimited by the basis vectors). This quantity is an invariant of the lattice and does not depend on the basis chosen. This means that by applying Gram-Schmidt orthogonalization to any basis will give us an orthogonal basis from which we can approximate the volume of the lattice as</p>
-$$ Vol(\Lambda) =  \prod_{i=0}^{d-1} \lVert \bold{b_i}^*\rVert $$<p>where $\bold{b_i}*$ are the orthogonal Gram-Schmidt vectors. It is also important to remember that $Vol(\Lambda) = |Det(\bold{B})|$, where $\bold{B}$ is the basis matrix.</p>
-<p><img src="volume.png" alt="alt text" /></p>
-<p>This invariant is conceptually important because it tells us that not all basis vectors can be small at the same time.</p>
-<h3 id="gaussian-heuristic">
-  Gaussian heuristic
-  <a class="anchor" href="#gaussian-heuristic">#</a>
-</h3>
-<p>The gaussian heuristics predicts the number of lattice points inside any measurable body $\mathcal{B} \subset \mathbb{R}^d$ is approximately $\frac{Vol(\mathcal{B})}{Vol(\Lambda)}$. Applied to an euclidean d-ball, this would give that the length of the first vector is approximately</p>
-$$\lambda_1(\Lambda) \approx (\frac{Vol(\mathcal{B})}{Vol(\Lambda)})^{\frac{1}{d}} \approx \sqrt{\frac{d}{2\pi e}} Vol(\Lambda)^{\frac{1}{d}}$$<h3 id="root-hermite-factor">
-  Root Hermite Factor
-  <a class="anchor" href="#root-hermite-factor">#</a>
-</h3>
-<p>We will next want to introduce a value called the <em>root hermite factor</em>. It is a measure used in lattice reduction theory to evaluate the quality of a reduced lattice basis. It is commonly used to assess the effectiveness of lattice reduction algorithms. It quantifies how much longer the shortest vector in a reduced lattice basis is, compared to the length of an ideal shortest vector, scaled by the lattice dimension. Formally we define it as</p>
-$$\lVert \bold{b_1} \rVert \approx \delta^d Vol(\Lambda)^\frac{1}{d}$$<p> for an d-dimensional lattice.</p>
-<p>The closer $\delta$ gets to 1, the better the reduction quality will be. This is of direct impact in our context, since we need to balance a trade-off between the quality of the output basis and the cost of running our lattice reduction algorithm. In fact, with the BKZ algorithm which has become the standard, a bigger block-size leads to a better quality of output basis but also a greater computational cost.</p>
 <h3 id="geometric-series-assumption">
   Geometric Series Assumption
   <a class="anchor" href="#geometric-series-assumption">#</a>
 </h3>
 <p>The geometric series assumption conceptually tells us that the Gram-Schmidt vectors log-length outputed by a lattice reducion algorithm will follow a line (see the graphs in the LLL subsection). We can formulate it as:</p>
 $$\lVert \bold{b_i}^*\rVert \approx \alpha^{i-1}\lVert \bold{b_1}\rVert$$<p>and in fact by combining it with the root hermite factor definition we can get a relation between the quality of the reduction and the slope of the GSA assumption as $\alpha \approx \delta^{-2}$ leading to</p>
-$$ \lVert \bold{b_i}^*\rVert \approx \alpha^{i-1} \delta^d Vol(\Lambda)^\frac{1}{d} = \delta^{-1(i+1) + d} Vol(\Lambda)^\frac{1}{d}$$<h2 id="lll-algorithm">
+$$ \lVert \bold{b_i}^*\rVert \approx \alpha^{i-1} \delta^d Vol(\Lambda)^\frac{1}{d} = \delta^{-1(i+1) + d} Vol(\Lambda)^\frac{1}{d}$$<h3 id="root-hermite-factor">
+  Root hermite factor
+  <a class="anchor" href="#root-hermite-factor">#</a>
+</h3>
+<p>We will next want to introduce a value called the <em>root hermite factor</em>. It is a measure used in lattice reduction theory to evaluate the quality of a reduced lattice basis. It is commonly used to assess the effectiveness of lattice reduction algorithms. It quantifies how much longer the shortest vector in a reduced lattice basis is, compared to the length of an ideal shortest vector, scaled by the lattice dimension. Formally we define it as</p>
+$$\lVert \bold{b_1} \rVert \approx \delta^d Vol(\Lambda)^\frac{1}{d}$$<p> for an d-dimensional lattice.</p>
+<p>The closer $\delta$ gets to 1, the better the reduction quality will be. This is of direct impact in our context, since we need to balance a trade-off between the quality of the output basis and the cost of running our lattice reduction algorithm. In fact, with the BKZ algorithm which has become the standard, a bigger block-size leads to a better quality of output basis but also a greater computational cost.</p>
+<h2 id="lll-algorithm">
   LLL algorithm
   <a class="anchor" href="#lll-algorithm">#</a>
 </h2>
@@ -613,12 +594,10 @@ where</li>
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#useful-quantities-in-lattices">Useful quantities in lattices</a>
+    <li>
       <ul>
-        <li><a href="#volume">Volume</a></li>
-        <li><a href="#gaussian-heuristic">Gaussian heuristic</a></li>
-        <li><a href="#root-hermite-factor">Root Hermite Factor</a></li>
         <li><a href="#geometric-series-assumption">Geometric Series Assumption</a></li>
+        <li><a href="#root-hermite-factor">Root hermite factor</a></li>
       </ul>
     </li>
     <li><a href="#lll-algorithm">LLL algorithm</a>
