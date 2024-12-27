@@ -535,6 +535,7 @@ For $k=2,&hellip;,d$ $$\omega \Vert \mathbf{b}^*_{k-1}\Vert^2  \leq \Vert \mathb
     </figcaption>
     
 </figure>
+
 <p>While there exists some theorems bounding the worst cases of lattice reduction algorithms, they tend to perform better in practice. Reasoning about the behaviors of such algorithms has therefore become a game of heuristics and approximations. Typically, the vectors that are outputed by the LLL algorithm are said to follow the geometric series assumption in their length. Again, this assumption tells us that the shape after lattice reduction is a line with a flatter slope as lattice reduction gets stronger. The goal of lattice reduction algorithm can therefore be interpreted seen by watching a graph of the log-length of vectors after reductions. The overall goal being to flatten the line, leading to a small basis.</p>
 <h3 id="cost-of-lll">
   Cost of LLL
@@ -585,6 +586,7 @@ repeat until no changes
     </figcaption>
     
 </figure>
+
 <p>Theoretically, a BKZ-$\beta$ reduced basis satisfies, for $\epsilon &gt; 0$:</p>
 $$\lVert \bold{b_0} \rVert \leq \sqrt{(1 + \epsilon) \gamma_{\beta}}^{(\frac{d-1}{\beta - 1} + 1)} Vol(\Lambda(\bold{B}))$$$$\gamma_\beta =  \sup \{ \lambda_1(\Lambda) | \Lambda \in \mathbb{R}^\beta, Vol(\Lambda) = 1 \}$$<p>Several variants of BKZ exist, the one giving asymptotically the best worst-case guarantees is the Slide reduction described in [<a class="hugo-simplecite-cite-hyperlink" href="#bibreference-8" title="N. Gama and P. Nguyen, Finding short lattice vectors within mordell’s inequality, In Proc. Proceedings of the fortieth annual ACM symposium on theory of computing, 2008, pp. 207–216. ">8</a>] and it achieves</p>
 $$\lVert \bold{b_0} \rVert \leq \sqrt{(1 + \epsilon) \gamma_{\beta}}^\frac{d-1}{\beta - 1} Vol(\Lambda(\bold{B}))$$<p>By combining the gaussian heuristic and the definition of a BKZ-$\beta$ reduced basis, we arrive again at the geometric assumption, which states that the log-lengths of reduced vectors follow a geometric series (which we can plot as a line as we did for LLL). This time however, it depends on the block-size chosen to run BKZ.</p>
