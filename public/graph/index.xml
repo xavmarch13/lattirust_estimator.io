@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Graphs on Lattirust estimator 0.1</title>
+    <link>http://localhost:1313/graph/</link>
+    <description>Recent content in Graphs on Lattirust estimator 0.1</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="http://localhost:1313/graph/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title></title>
+      <link>http://localhost:1313/graph/bkz/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/graph/bkz/</guid>
+      <description>&lt;!-- raw HTML omitted --&gt;</description>
+    </item>
+    <item>
+      <title></title>
+      <link>http://localhost:1313/graph/lll/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/graph/lll/</guid>
+      <description>&lt;!-- raw HTML omitted --&gt;</description>
+    </item>
+  </channel>
+</rss>

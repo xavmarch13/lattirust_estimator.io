@@ -1,0 +1,14 @@
+<figure style="text-align: center;">
+    <iframe 
+        src="{{ .Get "src" }}" 
+        width="{{ .Get "width" | default "100%" }}" 
+        height="{{ .Get "height" | default "500" }}" 
+        title="{{ .Get "title" | default "Interactive Graph" }}" 
+        style="{{ .Get "style" | default "border:none;" }}">
+    </iframe>
+    {{ if .Get "caption" }}
+    <figcaption style="font-style: italic; margin-top: 8px;">
+        {{ .Get "caption" }}
+    </figcaption>
+    {{ end }}
+</figure>

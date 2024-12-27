@@ -1,0 +1,208 @@
+[
+  {
+    "author": [
+      {
+        "family": "Nguyen",
+        "given": "Phong Q"
+      }
+    ],
+    "container-title": "The LLL algorithm: Survey and applications",
+    "id": "nguyen2009hermite",
+    "issued": {
+      "date-parts": [
+        [
+          2009
+        ]
+      ]
+    },
+    "page": "19-69",
+    "publisher": "Springer",
+    "title": "Hermite’s constant and lattice algorithms",
+    "type": "chapter"
+  },
+  {
+    "author": [
+      {
+        "family": "Nguyen",
+        "given": "Phong Q"
+      },
+      {
+        "family": "Vallée",
+        "given": "Brigitte"
+      }
+    ],
+    "id": "nguyen2010lll",
+    "issued": {
+      "date-parts": [
+        [
+          2010
+        ]
+      ]
+    },
+    "publisher": "Springer",
+    "title": "The LLL algorithm",
+    "type": "book"
+  },
+  {
+    "author": [
+      {
+        "family": "Chen",
+        "given": "Yuanmi"
+      },
+      {
+        "family": "Nguyen",
+        "given": "Phong Q"
+      }
+    ],
+    "container-title": "International conference on the theory and application of cryptology and information security",
+    "id": "chen2011bkz",
+    "issued": {
+      "date-parts": [
+        [
+          2011
+        ]
+      ]
+    },
+    "page": "1-20",
+    "publisher": "Springer",
+    "title": "BKZ 2.0: Better lattice security estimates",
+    "title-short": "BKZ 2.0",
+    "type": "paper-conference"
+  },
+  {
+    "author": [
+      {
+        "family": "Gama",
+        "given": "Nicolas"
+      },
+      {
+        "family": "Howgrave-Graham",
+        "given": "Nick"
+      },
+      {
+        "family": "Koy",
+        "given": "Henrik"
+      },
+      {
+        "family": "Nguyen",
+        "given": "Phong Q"
+      }
+    ],
+    "container-title": "Advances in cryptology-CRYPTO 2006: 26th annual international cryptology conference, santa barbara, california, USA, august 20-24, 2006. Proceedings 26",
+    "id": "gama2006rankin",
+    "issued": {
+      "date-parts": [
+        [
+          2006
+        ]
+      ]
+    },
+    "page": "112-130",
+    "publisher": "Springer",
+    "title": "Rankin’s constant and blockwise lattice reduction",
+    "type": "paper-conference"
+  },
+  {
+    "author": [
+      {
+        "family": "Lenstra",
+        "given": "Arjen K"
+      },
+      {
+        "family": "Lenstra",
+        "given": "Hendrik Willem"
+      },
+      {
+        "family": "Lovász",
+        "given": "László"
+      }
+    ],
+    "container-title": "Mathematische annalen",
+    "id": "lenstra1982factoring",
+    "issued": {
+      "date-parts": [
+        [
+          1982
+        ]
+      ]
+    },
+    "page": "515-534",
+    "publisher": "Springer Verlag",
+    "title": "Factoring polynomials with rational coefficients",
+    "type": "article-journal",
+    "volume": "261"
+  },
+  {
+    "author": [
+      {
+        "family": "Albrecht",
+        "given": "Martin"
+      },
+      {
+        "family": "Ducas",
+        "given": "Léo"
+      }
+    ],
+    "container-title": "Cryptology ePrint Archive",
+    "id": "albrecht2021lattice",
+    "issued": {
+      "date-parts": [
+        [
+          2021
+        ]
+      ]
+    },
+    "title": "Lattice attacks on NTRU and LWE: A history of refinements",
+    "title-short": "Lattice attacks on NTRU and LWE",
+    "type": "article-journal"
+  },
+  {
+    "author": [
+      {
+        "family": "Gama",
+        "given": "Nicolas"
+      },
+      {
+        "family": "Nguyen",
+        "given": "Phong Q"
+      }
+    ],
+    "container-title": "Advances in cryptology–EUROCRYPT 2008: 27th annual international conference on the theory and applications of cryptographic techniques, istanbul, turkey, april 13-17, 2008. Proceedings 27",
+    "id": "gama2008predicting",
+    "issued": {
+      "date-parts": [
+        [
+          2008
+        ]
+      ]
+    },
+    "page": "31-51",
+    "publisher": "Springer",
+    "title": "Predicting lattice reduction",
+    "type": "paper-conference"
+  },
+  {
+    "author": [
+      {
+        "family": "Gama",
+        "given": "Nicolas"
+      },
+      {
+        "family": "Nguyen",
+        "given": "Phong Q"
+      }
+    ],
+    "container-title": "Proceedings of the fortieth annual ACM symposium on theory of computing",
+    "id": "gama2008finding",
+    "issued": {
+      "date-parts": [
+        [
+          2008
+        ]
+      ]
+    },
+    "page": "207-216",
+    "title": "Finding short lattice vectors within mordell’s inequality",
+    "type": "paper-conference"
+  }
+]
