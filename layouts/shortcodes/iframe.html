@@ -1,6 +1,6 @@
 <figure style="text-align: center;">
     <iframe 
-        src="{{ .Get "src" }}" 
+        src="{{ .Get "src" | absURL }}" 
         width="{{ .Get "width" | default "100%" }}" 
         height="{{ .Get "height" | default "500" }}" 
         title="{{ .Get "title" | default "Interactive Graph" }}" 
