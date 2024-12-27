@@ -1,14 +1,14 @@
 {
   "name": "Lattirust estimator 0.1",
   "short_name": "Lattirust estimator 0.1",
-  "start_url": "/lattice_estimator.io/",
-  "scope": "/lattice_estimator.io/",
+  "start_url": "/lattirust_estimator.io/",
+  "scope": "/lattirust_estimator.io/",
   "display": "standalone",
   "background_color": "#000000",
   "theme_color": "#000000",
   "icons": [
     {
-      "src": "/lattice_estimator.io/favicon.svg",
+      "src": "/lattirust_estimator.io/favicon.svg",
       "sizes": "512x512"
     }
   ]

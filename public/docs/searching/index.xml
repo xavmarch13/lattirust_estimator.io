@@ -2,10 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Searching for the right parameters on Lattirust estimator 0.1</title>
-    <link>http://localhost:1313/lattice_estimator.io/docs/searching/</link>
+    <link>http://localhost:1313/lattirust_estimator.io/docs/searching/</link>
     <description>Recent content in Searching for the right parameters on Lattirust estimator 0.1</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <atom:link href="http://localhost:1313/lattice_estimator.io/docs/searching/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/lattirust_estimator.io/docs/searching/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

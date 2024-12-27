@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
-<head><script src="/lattice_estimator.io/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=lattice_estimator.io/livereload" data-no-instant defer></script>
+<head><script src="/lattirust_estimator.io/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=lattirust_estimator.io/livereload" data-no-instant defer></script>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="
@@ -10,20 +10,20 @@
 The way we solve the Shortest Vector Problem (SVP) and similar problems depends a lot on the lattice dimension. In lower dimensions, exact solvers are practical, and there are two main approaches: enumeration and sieving. Both methods perform some exhaustive search over all short lattice vectors—enumeration does this deterministically, while sieving is typically randomized. However, as the lattice dimension grows, the number of possible solutions increases exponentially, making these methods infeasible for high dimensions (think 100 and more).">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
-<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/lattice_estimator.io/docs/lattice-reduction/">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/lattirust_estimator.io/docs/lattice-reduction/">
   <meta property="og:site_name" content="Lattirust estimator 0.1">
   <meta property="og:title" content="Lattice reduction">
   <meta property="og:description" content="How to solve SVP ?#The way we solve the Shortest Vector Problem (SVP) and similar problems depends a lot on the lattice dimension. In lower dimensions, exact solvers are practical, and there are two main approaches: enumeration and sieving. Both methods perform some exhaustive search over all short lattice vectors—enumeration does this deterministically, while sieving is typically randomized. However, as the lattice dimension grows, the number of possible solutions increases exponentially, making these methods infeasible for high dimensions (think 100 and more).">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="website">
 <title>Lattice reduction | Lattirust estimator 0.1</title>
-<link rel="icon" href="/lattice_estimator.io/favicon.png" >
-<link rel="manifest" href="/lattice_estimator.io/manifest.json">
-<link rel="canonical" href="http://localhost:1313/lattice_estimator.io/docs/lattice-reduction/">
-<link rel="stylesheet" href="/lattice_estimator.io/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
-  <script defer src="/lattice_estimator.io/fuse.min.js"></script>
-  <script defer src="/lattice_estimator.io/en.search.min.46717581e07395649c9d55543662c18201d54c935739cf2f66f0a2f21c4be30a.js" integrity="sha256-RnF1geBzlWScnVVUNmLBggHVTJNXOc8vZvCi8hxL4wo=" crossorigin="anonymous"></script>
-<link rel="alternate" type="application/rss+xml" href="http://localhost:1313/lattice_estimator.io/docs/lattice-reduction/index.xml" title="Lattirust estimator 0.1" />
+<link rel="icon" href="/lattirust_estimator.io/favicon.png" >
+<link rel="manifest" href="/lattirust_estimator.io/manifest.json">
+<link rel="canonical" href="http://localhost:1313/lattirust_estimator.io/docs/lattice-reduction/">
+<link rel="stylesheet" href="/lattirust_estimator.io/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
+  <script defer src="/lattirust_estimator.io/fuse.min.js"></script>
+  <script defer src="/lattirust_estimator.io/en.search.min.81a82027bd672697e9c5552f22ad2be28b52a2e824abe88f3e36d1c2fbd18c38.js" integrity="sha256-gaggJ71nJpfpxVUvIq0r4otSougkq&#43;iPPjbRwvvRjDg=" crossorigin="anonymous"></script>
+<link rel="alternate" type="application/rss+xml" href="http://localhost:1313/lattirust_estimator.io/docs/lattice-reduction/index.xml" title="Lattirust estimator 0.1" />
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -45,7 +45,7 @@ https://github.com/alex-shpak/hugo-book
 </script>
 
 
-<link rel="stylesheet" type="text/css" href="http://localhost:1313/lattice_estimator.io/scss/hugo-simplecite.min.138dd14c6aaf1b1a9b55c4fe22f82166812ce8081413d67a3b464e411d2b63ef.css">
+<link rel="stylesheet" type="text/css" href="http://localhost:1313/lattirust_estimator.io/scss/hugo-simplecite.min.138dd14c6aaf1b1a9b55c4fe22f82166812ce8081413d67a3b464e411d2b63ef.css">
 </head>
 <body dir="ltr">
   <input type="checkbox" class="hidden toggle" id="menu-control" />
@@ -56,7 +56,7 @@ https://github.com/alex-shpak/hugo-book
         
   <nav>
 <h2 class="book-brand">
-  <a class="flex align-center" href="/lattice_estimator.io/"><span>Lattirust estimator 0.1</span>
+  <a class="flex align-center" href="/lattirust_estimator.io/"><span>Lattirust estimator 0.1</span>
   </a>
 </h2>
 
@@ -92,7 +92,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/lattice_estimator.io/docs/preliminaries/" class="">Preliminaries</a>
+    <a href="/lattirust_estimator.io/docs/preliminaries/" class="">Preliminaries</a>
   
 
           
@@ -110,7 +110,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/lattice_estimator.io/docs/lattice-reduction/" class="active">Lattice reduction</a>
+    <a href="/lattirust_estimator.io/docs/lattice-reduction/" class="active">Lattice reduction</a>
   
 
           
@@ -128,7 +128,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/lattice_estimator.io/docs/cost-models/" class="">Cost Models</a>
+    <a href="/lattirust_estimator.io/docs/cost-models/" class="">Cost Models</a>
   
 
           
@@ -146,7 +146,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/lattice_estimator.io/docs/sis/" class="">SIS</a>
+    <a href="/lattirust_estimator.io/docs/sis/" class="">SIS</a>
   
 
           
@@ -177,7 +177,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/lattice_estimator.io/docs/sis-variants/basis/" class="">Basis</a>
+    <a href="/lattirust_estimator.io/docs/sis-variants/basis/" class="">Basis</a>
   
 
         </li>
@@ -190,7 +190,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/lattice_estimator.io/docs/sis-variants/isisf/" class="">Isisf</a>
+    <a href="/lattirust_estimator.io/docs/sis-variants/isisf/" class="">Isisf</a>
   
 
         </li>
@@ -203,7 +203,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/lattice_estimator.io/docs/sis-variants/kmsis/" class="">Kmsis</a>
+    <a href="/lattirust_estimator.io/docs/sis-variants/kmsis/" class="">Kmsis</a>
   
 
         </li>
@@ -216,7 +216,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/lattice_estimator.io/docs/sis-variants/krisis/" class="">Krisis</a>
+    <a href="/lattirust_estimator.io/docs/sis-variants/krisis/" class="">Krisis</a>
   
 
         </li>
@@ -229,7 +229,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/lattice_estimator.io/docs/sis-variants/ksis/" class="">Ksis</a>
+    <a href="/lattirust_estimator.io/docs/sis-variants/ksis/" class="">Ksis</a>
   
 
         </li>
@@ -242,7 +242,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/lattice_estimator.io/docs/sis-variants/module-sis/" class="">Module Sis</a>
+    <a href="/lattirust_estimator.io/docs/sis-variants/module-sis/" class="">Module Sis</a>
   
 
         </li>
@@ -257,7 +257,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/lattice_estimator.io/docs/sis-variants/prisis/" class="">Prisis</a>
+    <a href="/lattirust_estimator.io/docs/sis-variants/prisis/" class="">Prisis</a>
   
 
         </li>
@@ -270,7 +270,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/lattice_estimator.io/docs/sis-variants/ring-sis/" class="">Ring Sis</a>
+    <a href="/lattirust_estimator.io/docs/sis-variants/ring-sis/" class="">Ring Sis</a>
   
 
         </li>
@@ -290,7 +290,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/lattice_estimator.io/docs/searching/" class="">Searching for the right parameters</a>
+    <a href="/lattirust_estimator.io/docs/searching/" class="">Searching for the right parameters</a>
   
 
           
@@ -333,14 +333,14 @@ https://github.com/alex-shpak/hugo-book
         
   <div class="flex align-center justify-between">
   <label for="menu-control">
-    <img src="/lattice_estimator.io/svg/menu.svg" class="book-icon" alt="Menu" />
+    <img src="/lattirust_estimator.io/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
 
   <h3>Lattice reduction</h3>
 
   <label for="toc-control">
     
-    <img src="/lattice_estimator.io/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    <img src="/lattirust_estimator.io/svg/toc.svg" class="book-icon" alt="Table of Contents" />
     
   </label>
 </div>
