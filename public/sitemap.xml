@@ -34,17 +34,11 @@
   </url><url>
     <loc>http://localhost:1313/docs/sis-variants/vsis/</loc>
   </url><url>
-    <loc>http://localhost:1313/graph/bkz/</loc>
-  </url><url>
-    <loc>http://localhost:1313/graph/lll/</loc>
-  </url><url>
     <loc>http://localhost:1313/</loc>
   </url><url>
     <loc>http://localhost:1313/categories/</loc>
   </url><url>
     <loc>http://localhost:1313/docs/</loc>
-  </url><url>
-    <loc>http://localhost:1313/graph/</loc>
   </url><url>
     <loc>http://localhost:1313/tags/</loc>
   </url>

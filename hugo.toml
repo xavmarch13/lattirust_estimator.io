@@ -1,4 +1,4 @@
-baseURL = 'https://example.org/'
+baseURL = 'https://xavmarch13.github.io/'
 languageCode = 'en-us'
 title = 'Lattirust estimator 0.1'
 theme = ["hugo-book", "hugo-simplecite"]
@@ -7,7 +7,8 @@ theme = ["hugo-book", "hugo-simplecite"]
     bookTheme = 'light'
     math = true
 
-
+relativeURLs = true
+canonifyURLs = true
 
 [markup]
   [markup.goldmark]
@@ -17,4 +18,3 @@ theme = ["hugo-book", "hugo-simplecite"]
         [markup.goldmark.extensions.passthrough.delimiters]
           block = [['\[', '\]'], ['$$', '$$']]
           inline = [['\(', '\)']]
-

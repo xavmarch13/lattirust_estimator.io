@@ -128,8 +128,7 @@ We say the basis is LLL-reduced if there exists a parameter $\omega \in (0.25, 1
 
       end
 
-
-{{< iframe src="/graph/lll/" width="100%" height="500" title="Interactive Graph" caption="Example of the LLL algorithm running." >}}
+{{< iframe src="/graphs/lll.html" width="100%" height="600" title="My Graph" caption="Example of the LLL algorithm running." >}}
 
 While there exists some theorems bounding the worst cases of lattice reduction algorithms, they tend to perform better in practice. Reasoning about the behaviors of such algorithms has therefore become a game of heuristics and approximations. Typically, the vectors that are outputed by the LLL algorithm are said to follow the geometric series assumption in their length. Again, this assumption tells us that the shape after lattice reduction is a line with a flatter slope as lattice reduction gets stronger. The goal of lattice reduction algorithm can therefore be interpreted seen by watching a graph of the log-length of vectors after reductions. The overall goal being to flatten the line, leading to a small basis.
 
@@ -166,7 +165,7 @@ Assuming we have an SVP oracle, the BKZ algorithm is defined as follows:
 
 Hereafter is a simple representation of a block moving through a matrix for one tour of BKZ, in practice we often do several tours.
 
-{{< iframe src="/graph/bkz/" width="100%" height="500" title="Interactive Graph" caption="Example of the BKZ algorithm block sliding." >}}
+{{< iframe src="/graphs/bkz.html" width="100%" height="500" title="Interactive Graph" caption="Example of the BKZ algorithm block sliding." >}}
 
 
 Theoretically, a BKZ-$\beta$ reduced basis satisfies, for $\epsilon > 0$:
