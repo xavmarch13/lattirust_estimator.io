@@ -7,9 +7,6 @@ theme = ["hugo-book", "hugo-simplecite"]
     bookTheme = 'light'
     math = true
 
-relativeURLs = true
-canonifyURLs = true
-
 [markup]
   [markup.goldmark]
     [markup.goldmark.extensions]
