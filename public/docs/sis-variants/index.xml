@@ -2,79 +2,79 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>SIS variants on Lattirust estimator 0.1</title>
-    <link>http://localhost:1313/docs/sis-variants/</link>
+    <link>http://localhost:1313/lattice_estimator.io/docs/sis-variants/</link>
     <description>Recent content in SIS variants on Lattirust estimator 0.1</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <atom:link href="http://localhost:1313/docs/sis-variants/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/lattice_estimator.io/docs/sis-variants/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title></title>
-      <link>http://localhost:1313/docs/sis-variants/basis/</link>
+      <link>http://localhost:1313/lattice_estimator.io/docs/sis-variants/basis/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/docs/sis-variants/basis/</guid>
+      <guid>http://localhost:1313/lattice_estimator.io/docs/sis-variants/basis/</guid>
       <description>&lt;h1 id=&#34;basis&#34;&gt;&#xD;&#xA;  BASIS&#xD;&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#basis&#34;&gt;#&lt;/a&gt;&#xD;&#xA;&lt;/h1&gt;&#xD;&#xA;&lt;h2 id=&#34;basis-rand&#34;&gt;&#xD;&#xA;  Basis rand&#xD;&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#basis-rand&#34;&gt;#&lt;/a&gt;&#xD;&#xA;&lt;/h2&gt;&#xD;&#xA;&lt;h3 id=&#34;scheme&#34;&gt;&#xD;&#xA;  Scheme&#xD;&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#scheme&#34;&gt;#&lt;/a&gt;&#xD;&#xA;&lt;/h3&gt;&#xD;&#xA;&lt;h3 id=&#34;reduction&#34;&gt;&#xD;&#xA;  Reduction&#xD;&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#reduction&#34;&gt;#&lt;/a&gt;&#xD;&#xA;&lt;/h3&gt;&#xD;&#xA;&lt;h3 id=&#34;usage&#34;&gt;&#xD;&#xA;  Usage&#xD;&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#usage&#34;&gt;#&lt;/a&gt;&#xD;&#xA;&lt;/h3&gt;&#xD;&#xA;&lt;h2 id=&#34;basis-struct&#34;&gt;&#xD;&#xA;  Basis struct&#xD;&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#basis-struct&#34;&gt;#&lt;/a&gt;&#xD;&#xA;&lt;/h2&gt;&#xD;&#xA;&lt;h3 id=&#34;scheme-1&#34;&gt;&#xD;&#xA;  Scheme&#xD;&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#scheme-1&#34;&gt;#&lt;/a&gt;&#xD;&#xA;&lt;/h3&gt;&#xD;&#xA;&lt;h3 id=&#34;reduction-1&#34;&gt;&#xD;&#xA;  Reduction&#xD;&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#reduction-1&#34;&gt;#&lt;/a&gt;&#xD;&#xA;&lt;/h3&gt;&#xD;&#xA;&lt;h3 id=&#34;usage-1&#34;&gt;&#xD;&#xA;  USage&#xD;&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#usage-1&#34;&gt;#&lt;/a&gt;&#xD;&#xA;&lt;/h3&gt;&#xD;&#xA;&lt;h2 id=&#34;power-basis-and-link-to-prisis&#34;&gt;&#xD;&#xA;  Power basis and link to Prisis&#xD;&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#power-basis-and-link-to-prisis&#34;&gt;#&lt;/a&gt;&#xD;&#xA;&lt;/h2&gt;</description>
     </item>
     <item>
       <title></title>
-      <link>http://localhost:1313/docs/sis-variants/isisf/</link>
+      <link>http://localhost:1313/lattice_estimator.io/docs/sis-variants/isisf/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/docs/sis-variants/isisf/</guid>
+      <guid>http://localhost:1313/lattice_estimator.io/docs/sis-variants/isisf/</guid>
       <description>&lt;h1 id=&#34;isisf&#34;&gt;&#xD;&#xA;  ISISf&#xD;&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#isisf&#34;&gt;#&lt;/a&gt;&#xD;&#xA;&lt;/h1&gt;&#xD;&#xA;&lt;h2 id=&#34;scheme&#34;&gt;&#xD;&#xA;  Scheme&#xD;&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#scheme&#34;&gt;#&lt;/a&gt;&#xD;&#xA;&lt;/h2&gt;&#xD;&#xA;&lt;h2 id=&#34;reduction&#34;&gt;&#xD;&#xA;  Reduction&#xD;&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#reduction&#34;&gt;#&lt;/a&gt;&#xD;&#xA;&lt;/h2&gt;&#xD;&#xA;&lt;h2 id=&#34;usage&#34;&gt;&#xD;&#xA;  USage&#xD;&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#usage&#34;&gt;#&lt;/a&gt;&#xD;&#xA;&lt;/h2&gt;</description>
     </item>
     <item>
       <title></title>
-      <link>http://localhost:1313/docs/sis-variants/kmsis/</link>
+      <link>http://localhost:1313/lattice_estimator.io/docs/sis-variants/kmsis/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/docs/sis-variants/kmsis/</guid>
+      <guid>http://localhost:1313/lattice_estimator.io/docs/sis-variants/kmsis/</guid>
       <description>&lt;h1 id=&#34;k-m-sis&#34;&gt;&#xD;&#xA;  k-M-SIS&#xD;&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#k-m-sis&#34;&gt;#&lt;/a&gt;&#xD;&#xA;&lt;/h1&gt;&#xD;&#xA;&lt;h2 id=&#34;scheme&#34;&gt;&#xD;&#xA;  Scheme&#xD;&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#scheme&#34;&gt;#&lt;/a&gt;&#xD;&#xA;&lt;/h2&gt;&#xD;&#xA;&lt;h2 id=&#34;reduction&#34;&gt;&#xD;&#xA;  Reduction&#xD;&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#reduction&#34;&gt;#&lt;/a&gt;&#xD;&#xA;&lt;/h2&gt;&#xD;&#xA;&lt;h2 id=&#34;usage&#34;&gt;&#xD;&#xA;  USage&#xD;&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#usage&#34;&gt;#&lt;/a&gt;&#xD;&#xA;&lt;/h2&gt;&#xD;&#xA;&lt;h1 id=&#34;k-r-sis&#34;&gt;&#xD;&#xA;  k-R-SIS&#xD;&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#k-r-sis&#34;&gt;#&lt;/a&gt;&#xD;&#xA;&lt;/h1&gt;&#xD;&#xA;&lt;h2 id=&#34;scheme-1&#34;&gt;&#xD;&#xA;  Scheme&#xD;&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#scheme-1&#34;&gt;#&lt;/a&gt;&#xD;&#xA;&lt;/h2&gt;&#xD;&#xA;&lt;h2 id=&#34;reduction-1&#34;&gt;&#xD;&#xA;  Reduction&#xD;&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#reduction-1&#34;&gt;#&lt;/a&gt;&#xD;&#xA;&lt;/h2&gt;&#xD;&#xA;&lt;h2 id=&#34;usage-1&#34;&gt;&#xD;&#xA;  USage&#xD;&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#usage-1&#34;&gt;#&lt;/a&gt;&#xD;&#xA;&lt;/h2&gt;</description>
     </item>
     <item>
       <title></title>
-      <link>http://localhost:1313/docs/sis-variants/krisis/</link>
+      <link>http://localhost:1313/lattice_estimator.io/docs/sis-variants/krisis/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/docs/sis-variants/krisis/</guid>
+      <guid>http://localhost:1313/lattice_estimator.io/docs/sis-variants/krisis/</guid>
       <description>&lt;h1 id=&#34;krisis&#34;&gt;&#xD;&#xA;  krISIS&#xD;&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#krisis&#34;&gt;#&lt;/a&gt;&#xD;&#xA;&lt;/h1&gt;&#xD;&#xA;&lt;h2 id=&#34;scheme&#34;&gt;&#xD;&#xA;  Scheme&#xD;&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#scheme&#34;&gt;#&lt;/a&gt;&#xD;&#xA;&lt;/h2&gt;&#xD;&#xA;&lt;h2 id=&#34;reduction&#34;&gt;&#xD;&#xA;  Reduction&#xD;&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#reduction&#34;&gt;#&lt;/a&gt;&#xD;&#xA;&lt;/h2&gt;&#xD;&#xA;&lt;h2 id=&#34;usage&#34;&gt;&#xD;&#xA;  USage&#xD;&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#usage&#34;&gt;#&lt;/a&gt;&#xD;&#xA;&lt;/h2&gt;</description>
     </item>
     <item>
       <title></title>
-      <link>http://localhost:1313/docs/sis-variants/ksis/</link>
+      <link>http://localhost:1313/lattice_estimator.io/docs/sis-variants/ksis/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/docs/sis-variants/ksis/</guid>
+      <guid>http://localhost:1313/lattice_estimator.io/docs/sis-variants/ksis/</guid>
       <description>&lt;h1 id=&#34;k-sis&#34;&gt;&#xD;&#xA;  k-SIS&#xD;&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#k-sis&#34;&gt;#&lt;/a&gt;&#xD;&#xA;&lt;/h1&gt;&#xD;&#xA;&lt;h2 id=&#34;scheme&#34;&gt;&#xD;&#xA;  Scheme&#xD;&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#scheme&#34;&gt;#&lt;/a&gt;&#xD;&#xA;&lt;/h2&gt;&#xD;&#xA;&lt;h2 id=&#34;reduction&#34;&gt;&#xD;&#xA;  Reduction&#xD;&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#reduction&#34;&gt;#&lt;/a&gt;&#xD;&#xA;&lt;/h2&gt;&#xD;&#xA;&lt;h2 id=&#34;usage&#34;&gt;&#xD;&#xA;  USage&#xD;&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#usage&#34;&gt;#&lt;/a&gt;&#xD;&#xA;&lt;/h2&gt;</description>
     </item>
     <item>
       <title></title>
-      <link>http://localhost:1313/docs/sis-variants/module-sis/</link>
+      <link>http://localhost:1313/lattice_estimator.io/docs/sis-variants/module-sis/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/docs/sis-variants/module-sis/</guid>
+      <guid>http://localhost:1313/lattice_estimator.io/docs/sis-variants/module-sis/</guid>
       <description>&lt;h1 id=&#34;module-sis&#34;&gt;&#xD;&#xA;  Module-SIS&#xD;&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#module-sis&#34;&gt;#&lt;/a&gt;&#xD;&#xA;&lt;/h1&gt;&#xD;&#xA;&lt;h2 id=&#34;scheme&#34;&gt;&#xD;&#xA;  Scheme&#xD;&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#scheme&#34;&gt;#&lt;/a&gt;&#xD;&#xA;&lt;/h2&gt;&#xD;&#xA;&lt;h2 id=&#34;reduction&#34;&gt;&#xD;&#xA;  Reduction&#xD;&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#reduction&#34;&gt;#&lt;/a&gt;&#xD;&#xA;&lt;/h2&gt;&#xD;&#xA;&lt;h2 id=&#34;usage&#34;&gt;&#xD;&#xA;  USage&#xD;&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#usage&#34;&gt;#&lt;/a&gt;&#xD;&#xA;&lt;/h2&gt;</description>
     </item>
     <item>
       <title></title>
-      <link>http://localhost:1313/docs/sis-variants/one-more-isis/</link>
+      <link>http://localhost:1313/lattice_estimator.io/docs/sis-variants/one-more-isis/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/docs/sis-variants/one-more-isis/</guid>
+      <guid>http://localhost:1313/lattice_estimator.io/docs/sis-variants/one-more-isis/</guid>
       <description></description>
     </item>
     <item>
       <title></title>
-      <link>http://localhost:1313/docs/sis-variants/prisis/</link>
+      <link>http://localhost:1313/lattice_estimator.io/docs/sis-variants/prisis/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/docs/sis-variants/prisis/</guid>
+      <guid>http://localhost:1313/lattice_estimator.io/docs/sis-variants/prisis/</guid>
       <description>&lt;h1 id=&#34;prisis&#34;&gt;&#xD;&#xA;  PRISIS&#xD;&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#prisis&#34;&gt;#&lt;/a&gt;&#xD;&#xA;&lt;/h1&gt;&#xD;&#xA;&lt;h2 id=&#34;scheme&#34;&gt;&#xD;&#xA;  Scheme&#xD;&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#scheme&#34;&gt;#&lt;/a&gt;&#xD;&#xA;&lt;/h2&gt;&#xD;&#xA;&lt;h2 id=&#34;reduction&#34;&gt;&#xD;&#xA;  Reduction&#xD;&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#reduction&#34;&gt;#&lt;/a&gt;&#xD;&#xA;&lt;/h2&gt;&#xD;&#xA;&lt;h2 id=&#34;usage&#34;&gt;&#xD;&#xA;  USage&#xD;&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#usage&#34;&gt;#&lt;/a&gt;&#xD;&#xA;&lt;/h2&gt;</description>
     </item>
     <item>
       <title></title>
-      <link>http://localhost:1313/docs/sis-variants/ring-sis/</link>
+      <link>http://localhost:1313/lattice_estimator.io/docs/sis-variants/ring-sis/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/docs/sis-variants/ring-sis/</guid>
+      <guid>http://localhost:1313/lattice_estimator.io/docs/sis-variants/ring-sis/</guid>
       <description>&lt;h1 id=&#34;ring-sis&#34;&gt;&#xD;&#xA;  Ring-SIS&#xD;&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#ring-sis&#34;&gt;#&lt;/a&gt;&#xD;&#xA;&lt;/h1&gt;&#xD;&#xA;&lt;h2 id=&#34;scheme&#34;&gt;&#xD;&#xA;  Scheme&#xD;&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#scheme&#34;&gt;#&lt;/a&gt;&#xD;&#xA;&lt;/h2&gt;&#xD;&#xA;&lt;h2 id=&#34;reduction&#34;&gt;&#xD;&#xA;  Reduction&#xD;&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#reduction&#34;&gt;#&lt;/a&gt;&#xD;&#xA;&lt;/h2&gt;&#xD;&#xA;&lt;h2 id=&#34;usage&#34;&gt;&#xD;&#xA;  USage&#xD;&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#usage&#34;&gt;#&lt;/a&gt;&#xD;&#xA;&lt;/h2&gt;</description>
     </item>
     <item>
       <title></title>
-      <link>http://localhost:1313/docs/sis-variants/vsis/</link>
+      <link>http://localhost:1313/lattice_estimator.io/docs/sis-variants/vsis/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/docs/sis-variants/vsis/</guid>
+      <guid>http://localhost:1313/lattice_estimator.io/docs/sis-variants/vsis/</guid>
       <description></description>
     </item>
   </channel>

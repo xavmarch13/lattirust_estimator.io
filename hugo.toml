@@ -1,4 +1,4 @@
-baseURL = 'https://xavmarch13.github.io/'
+baseURL = 'https://xavmarch13.github.io/lattice_estimator.io/'
 languageCode = 'en-us'
 title = 'Lattirust estimator 0.1'
 theme = ["hugo-book", "hugo-simplecite"]
