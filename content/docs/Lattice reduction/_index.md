@@ -142,7 +142,7 @@ In terms of runtime, we will consider a heuristic bound (which better approximat
 
 ## BKZ algorithm
 
-The Block Korkine-Zolotarev (BKZ) algorithm is a lattice reduction algorithm that generalizes the LLL algorithm to achieve stronger reduction properties. The BKZ algorithm is defined as a blockwise reduction algorithm that iteratively applies a form of lattice basis reduction to overlapping blocks of vectors within the basis. It is in fact a relaxation of the Hermite-Korkine-Zolotarev (HKZ). The HKZ reduction is a stronger form of lattice reduction that ensures each vector in the basis is the shortest vector in the lattice projected orthogonally onto the space spanned by the preceding basis vectors.
+The Block Korkine-Zolotarev (BKZ) algorithm is a lattice reduction algorithm that generalizes the LLL algorithm to achieve stronger reduction properties. The BKZ algorithm is defined as a blockwise reduction algorithm that iteratively applies a form of lattice basis reduction to overlapping blocks of vectors within the basis. The assumption made in its analysis is that iterative blocks taken behaves like a random lattice. It is in fact a relaxation of the Hermite-Korkine-Zolotarev (HKZ). The HKZ reduction is a stronger form of lattice reduction that ensures each vector in the basis is the shortest vector in the lattice projected orthogonally onto the space spanned by the preceding basis vectors.
 
 ### HKZ reduction
 
@@ -155,15 +155,15 @@ The basis is said to be HKZ-reduced if:
 
 Assuming we have an SVP oracle, the BKZ algorithm is defined as follows: 
 
-    Data: LLL-reduced basis B (pre-processed) and block size beta
+    Data: LLL-reduced basis B (preprocessed) and block size beta
     repeat until no changes
-        for k in 0 to d-1
-            LLL on local projected block [k, ..., k+beta-1]
-            v <-- SVP-Oracle(local projected block[k, ..., k+beta-1])
-            insert v into B
+        for k in 0 to d-2
+            LLL on local projected block B[k, ..., min(k+beta, d)]
+            v <-- SVP-Oracle(local projected block B[k, ..., min(k+beta, d)])
+            insert v into B at index k and handle linear dependencies with LLL
         end
 
-Hereafter is a simple representation of a block moving through a matrix for one tour of BKZ, in practice we often do several tours.
+In practice, stronger preprocessing than LLL is often performed before the BKZ block loop. Hereafter is a simple representation of a block moving through a matrix for one tour of BKZ, in practice we often do several tours because we are supposed to stop when no more significant changes occur.
 
 {{< iframe src="/graphs/bkz.html" width="100%" height="500" title="Interactive Graph" caption="Example of the BKZ algorithm block sliding." >}}
 
@@ -181,6 +181,8 @@ $$\lVert \bold{b_0} \rVert \leq \sqrt{(1 + \epsilon) \gamma_{\beta}}^\frac{d-1}{
 
 By combining the gaussian heuristic and the definition of a BKZ-$\beta$ reduced basis, we arrive again at the geometric assumption, which states that the log-lengths of reduced vectors follow a geometric series (which we can plot as a line as we did for LLL). This time however, it depends on the block-size chosen to run BKZ.
 
+*Note: maybe here explain between the Hermite regime and the approximation regime*
+
 We can write
 
 $$\log(\lVert \bold{b_i}^*\rVert) = \frac{d - 1 - 2i}{2}\log(\alpha_\beta) + \frac{1}{d}\log(Vol(\Lambda))$$
@@ -189,11 +191,12 @@ where $\alpha_\beta$ is the slope under the geometric assumption that can be cal
 
 $$\alpha_\beta = \sqrt{\frac{d}{2\pi e}}^\frac{2}{\beta - 1}$$
 
-This estimate {{< cite "albrecht2021lattice" >}} is reasonably accurate only if $d\gg\beta$ and $\beta > 50$, which is why we will use fixed estimates for small dimensions (also, small dimension can be directly solved by an exact solver). 
+This result from {{< cite "albrecht2021lattice" >}} is reasonably accurate only if $d\gg\beta$ and $\beta > 50$, which is why we will use fixed estimates for small dimensions (also, small dimension can be directly solved by an exact solver). 
 
 ### Cost of BKZ
 
-* Costing BKZ means having a good idea of the impact of the block-size on the quality of our reduced basis. For this, we could either make the approximation $\delta_\beta \approx \sqrt \alpha_\beta$ or use the following limit defined in 
+* Costing BKZ means having a good idea of the impact of the block-size on the quality of our reduced basis. For this, we could either make the approximation $\delta_\beta \approx \sqrt \alpha_\beta$ or use the following limit defined in {{< cite "chen2013reduction" >}} that works well for $\beta > 50$ and typical $d$ used in cryptography {{< cite "albrecht2021lattice" >}}.
+
 $$\lim_{\beta\rightarrow\infty}\delta_\beta = (\frac{\beta}{2\pi e}(\pi\beta)^\frac{1}{\beta})^\frac{1}{2(\beta - 1)}$$
 
 and write for SIS
@@ -201,61 +204,72 @@ and write for SIS
 $$\lVert \bold{b_1} \rVert \approx \delta_\beta^{d-1} Vol(\Lambda)^{\frac{1}{d}}$$
 
 
-* Costing BKZ as a whole is complicated because we do not know how many tours we will have to run, which means we don't really know in advance the number of SVP-Oracle calls we will have to make. Furthermore, many improvements on plain BKZ have been made when some techniques are used as a subroutine for the oracle (for example extreme pruning in the context of enumeration), which makes security estimates done via lattice reduction very sensitive to many factors. Also, local preprocessing techniques in a variant of BKZ known as progressive BKZ. To make our tool comparable to the lattice estimator by ...[insert], we will follow the same simplifying assumption and consider a consistent 8 tours of BKZ. This makes sense following experimental results that showed that most progress is made in the 7-9 first tours. We will then use:
+* Costing BKZ as a whole is complicated because we do not know how many tours we will have to run, which means we don't really know in advance the number of SVP-Oracle calls we will have to make. Furthermore, many improvements on plain BKZ have been made when some techniques are used as a subroutine for the oracle (for example extreme pruning in the context of enumeration), which makes security estimates done via lattice reduction very sensitive to many factors. Also, local preprocessing techniques have been introduced as part of the algorithm in a variant of BKZ known as progressive BKZ. To make our tool comparable to the lattice estimator by {{< cite "cryptoeprint:2015/046" >}}, we will follow the same simplifying assumption and consider a consistent 8 tours of BKZ. This makes sense following experimental results that showed that most progress is made in the 7-9 first tours. We will then use:
 $$cost = \tau \cdot d \cdot T_{SVP}$$
 where 
 1. the number of tours we do $\tau$ is considered to be 8. 
-2. The number of times the SVP oracle is called per tour, which is dimension of the lattice, is d
+2. The number of times the SVP oracle is called per tour, which is about the dimension of the lattice d
 3. The cost of the SVP oracle is $T_{SVP}$
 
 
-### BKZ 2.0 Tweaks
+## Refinements
 
-The BKZ 2.0 algorithm introduces several key optimizations to improve the efficiency and effectiveness of the lattice reduction process. These enhancements address both the quality of the reduced basis and the computational overhead:
+### The first GSA lie
 
-1. **Extreme Pruning**: 
-   - Extreme pruning focuses the SVP oracle's efforts on the most promising branches of the search space, reducing unnecessary computations. This technique significantly accelerates the oracle’s performance without compromising the output quality.
-   
-2. **Adaptive Block Sizes**:
-   - BKZ 2.0 dynamically adjusts the block size ($\beta$) during execution. By using smaller block sizes initially and increasing them later, the algorithm finds a better trade-off between runtime and reduction quality.
+If we think more about the way we slide the block through the matrix during lattice reduction, we can easily come to the conclusion that something different must happen at the end. Indeed, the GSA assumptions ignores what happens for the last $d-\beta$ coordinates. This last block is in fact HKZ reduced and we can therefore adapt the tail of our assumption leading to Tail-adapted GSA (TGSA). 
 
-3. **Improved Local Search**:
-   - Advanced local search algorithms enhance the process of finding short vectors within each block. These improvements reduce the time spent on individual blocks while maintaining or improving the overall basis quality.
+Let us use the following definition for the HKZ-shape in dimension d. For $i=0, \ldots , d-1:$
 
-4. **Experimental Impact**:
-   - Empirical studies show that BKZ 2.0 achieves better reduction quality than the original BKZ, especially for large dimensions. It also demonstrates improved scalability and efficiency in practice.
+$$
+h_i = \log\left(\sqrt{\frac{d - i}{2\pi e}}\right) - \frac{1}{d-1} \sum_{j < i} h_j,
+$$
 
-### The Lie of the GSA Assumption and Better Simulators (ZGSA)
+Now using this in modifying our BKZ GSA assumed shape we can get the following two parts equation:
 
-The Geometric Series Assumption (GSA), while widely used, does not perfectly capture the behavior of lattice reduction algorithms. This section highlights its limitations and introduces a more accurate model, ZGSA:
+$$
+\log\left(\|b_i^*\|\right) =
+\begin{cases} 
+\frac{d - 1 - 2i}{2} \log(\alpha \beta) + s, & \text{for } 0 \leq i \leq d - \beta, \\
+h_{i-(d-\beta)} + \log\left(\|b_{d-\beta}^*\|\right) - h_0, & \text{for } d-\beta \leq i < d.
+\end{cases}
+$$
 
-1. **Why GSA Falls Short**:
-   - The GSA assumes that the Gram-Schmidt vector lengths decay geometrically. However, this assumption breaks down for smaller lattices or when dealing with structured lattices that deviate significantly from randomness.
+### The second GSA lie and Z(T)GSA
 
-2. **Introduction to ZGSA**:
-   - The Zero-Forced Geometric Series Assumption (ZGSA) refines the GSA by accounting for boundary effects and deviations observed in practical reductions. ZGSA provides a more precise representation of the reduced basis.
+Geometric series assumptions (tail-adapted or not) have been shown to be a bad choice for small dimensions (think 50 and below) and when $d$ is a multiple of $\beta$. Furthermore, these assumptions only give an estimate about the size after the algorithm is finished and not the evolution of vectors through it. We will here just mention that an estimator has been introduced in {{< cite "chen2011bkz" >}} to take these observations into accounts. Thanks to its implementation in FPyLLL, we will make use of it to calculate the cost of BKZ for small values (by simply hardcoding the needed values).
 
-3. **Comparison with GSA**:
-   - Empirical results indicate that ZGSA predictions align more closely with observed reductions compared to GSA. A comparison of plots or metrics can demonstrate this improved accuracy.
+Because we will work with q-ary lattices,  they will always contain vector $(q, 0, \ldots, 0)$ and its permutation. These vectors can be considered short in certain circonstances and shorter that what GSA would predict. A ZGSA assumption adapted to such lattices is possible, but it remains unsure what such an assumption would look like on block reduction algorithms.
+ 
+### BKZ 2.0 improvements
 
-4. **Applications of ZGSA**:
-   - ZGSA has been instrumental in refining security estimates for lattice-based cryptography, particularly in the context of parameter selection and attack simulations.
+BKZ 2.0 {{< cite "chen2011bkz" >}}  introduces several enhancements to the traditional BKZ algorithm, improving its efficiency and the quality of lattice reduction. Here, we summarize the key improvements:
 
-### The Dimension for Free (Ducas)
+- **Introduction of Pruning**:
+  - BKZ 2.0 incorporates **sound pruning** and **extreme pruning**, techniques introduced by Gama, Nguyen, and Regev.
+  - These pruning methods reduce the size of the enumeration tree by removing branches with negligible probability of success.
 
-The "dimension for free" concept introduced by Ducas reduces the cost of lattice reduction in high-dimensional lattices without sacrificing output quality. This approach is particularly relevant in practical implementations of lattice reduction algorithms.
+- **Preprocessing of Local Blocks**:
+  - BKZ 2.0 ensures local bases are better reduced than standard LLL-reduction before enumeration.
+  - This preprocessing step reduces the cost of enumeration by improving the quality of the local basis.
+  - For a local projected lattice \( L[j,k] \), preprocessing increases the volumes of projected lattices \( L[k-d+1,k] \), reducing the size of the enumeration tree.
 
-1. **Concept Overview**:
-   - The "dimension for free" principle exploits structural redundancies in high-dimensional lattices, enabling efficient reductions with fewer computational resources.
+- **Optimizing the Enumeration Radius**:
+  - BKZ 2.0 optimizes the initial radius \( R \) for enumeration to avoid unnecessary computation.
+  - The optimized radius is calculated as:
+    $$
+    R = \min\left(\sqrt{\gamma} \cdot \text{GH}(L[j,k]), \|b_j^*\|\right),
+    $$
+    where \( \text{GH}(L[j,k]) \) is the Gaussian heuristic for the local block and \( \gamma \approx 1.1 \).
 
-2. **Impact on BKZ**:
-   - By incorporating the "dimension for free," BKZ and BKZ 2.0 achieve improved runtime performance. This is especially beneficial in cryptographic applications requiring reductions in very high dimensions.
+- **Simulation for High Block Sizes**:
+  - BKZ 2.0 predicts output quality and running time for high block sizes (\( \beta \geq 50 \)) through a simulation algorithm.
+  - This includes:
+    1. Predicting the Gram-Schmidt sequence \( \|b_i^*\| \) during BKZ 2.0 reduction.
+    2. Estimating the block sizes required to achieve a target Hermite factor.
 
-3. **Trade-offs and Limitations**:
-   - While highly effective in many cases, the "dimension for free" may not yield significant improvements for small lattices or those lacking sufficient dimensionality for optimization.
+### The Dimension for free
 
-4. **Practical Implications**:
-   - The "dimension for free" approach has become a cornerstone of efficient lattice reduction techniques. Its adoption in lattice-based cryptography has further solidified its role in modern security parameter design.
+In recent advancements, Ducas introduces a significant improvement in lattice sieving algorithms through the "dimension for free" technique {{< cite "ducas2018shortest" >}}. This approach leverages the observation that short lattice vectors generated during sieving in lower dimensions can be reused to accelerate sieving in higher dimensions. By projecting and reusing these vectors across multiple dimensions, the algorithm effectively reduces the computational overhead without compromising accuracy. This method achieves a practical speedup of up to 10x in mid-range dimensions (e.g., 70–80), making sieving competitive with enumeration-based methods. Additionally, it bridges the gap between theoretical efficiency and practical applicability, providing a robust framework for solving the Shortest Vector Problem (SVP) in dimensions previously deemed infeasible. These insights suggest a potential paradigm shift where sieving, historically slower, could surpass enumeration in both speed and scalability for cryptographic security estimates.
 
 
 {{< references >}}

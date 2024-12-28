@@ -28,7 +28,7 @@ Sieving#Sieving algorithms for SVP work by iteratively refining a large set of
 <link rel="canonical" href="http://localhost:1313/lattirust_estimator.io/docs/cost-models/">
 <link rel="stylesheet" href="/lattirust_estimator.io/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
   <script defer src="/lattirust_estimator.io/fuse.min.js"></script>
-  <script defer src="/lattirust_estimator.io/en.search.min.81a82027bd672697e9c5552f22ad2be28b52a2e824abe88f3e36d1c2fbd18c38.js" integrity="sha256-gaggJ71nJpfpxVUvIq0r4otSougkq&#43;iPPjbRwvvRjDg=" crossorigin="anonymous"></script>
+  <script defer src="/lattirust_estimator.io/en.search.min.7964f04ed5cae5670782a6e10a93651d29253093a5b986295ebe299bf12365af.js" integrity="sha256-eWTwTtXK5WcHgqbhCpNlHSklMJOluYYpXr4pm/EjZa8=" crossorigin="anonymous"></script>
 <link rel="alternate" type="application/rss+xml" href="http://localhost:1313/lattirust_estimator.io/docs/cost-models/index.xml" title="Lattirust estimator 0.1" />
 <!--
 Made with Book Theme
@@ -386,6 +386,20 @@ https://github.com/alex-shpak/hugo-book
   <a class="anchor" href="#sieving">#</a>
 </h2>
 <p>Sieving algorithms for SVP work by iteratively refining a large set of lattice vectors to obtain progressively shorter vectors until the shortest one is found. In its basic form, the sieving process starts by generating a large set of random lattice vectors, often called a &ldquo;cloud.&rdquo; Pairs of vectors are then combined (usually by adding or subtracting them) to produce shorter vectors, which are then added back to the cloud if they meet certain criteria. This process continues until the vectors in the cloud converge towards the shortest lattice vector. Modern sieving methods, like the GaussSieve or ListSieve, have been optimized to handle higher-dimensional lattices by limiting pairwise vector interactions, which reduces computational complexity. Sieving requires storing a large number of lattice vectors and, therefore, can be memory-intensive, especially as the lattice dimension grows.</p>
+<figure style="text-align: center;">
+    <iframe 
+        src="https://xavmarch13.github.io/lattirust_estimator.io/graphs/sieving.html" 
+        width="100%" 
+        height="500" 
+        title="Interactive Graph" 
+        style="ZgotmplZ">
+    </iframe>
+    
+    <figcaption style="font-style: italic; margin-top: 8px;">
+        Trivial example of the sieving logic.
+    </figcaption>
+    
+</figure>
 <p>In terms of cost, sieving algorithm can solve the SVP in a lattice of dimension d in $2^{O(k)}$ time but at the cost og a much higher memory usage. At the risk of being overly conservative, our estimator will disregard memory usage.</p>
 <p>The following sieving estimates are available:</p>
 <table>
@@ -437,6 +451,20 @@ https://github.com/alex-shpak/hugo-book
   <a class="anchor" href="#enumeration">#</a>
 </h2>
 <p>Enumeration algorithms systematically search through lattice points in a controlled way, typically by traversing lattice vectors within a fixed radius from the origin. They rely on a recursive process to explore potential candidate vectors within a &ldquo;search region,&rdquo; using techniques to prune paths that are unlikely to lead to the shortest vector. Enumeration is typically carried out with the help of a basis that has been reduced (made close to orthogonal), as this greatly improves efficiency by minimizing the number of candidate paths. Unlike sieving, enumeration methods are deterministic and guarantee finding the shortest vector by systematically exploring all feasible paths. The efficiency of enumeration depends strongly on the quality of the lattice basis. Preprocessing steps like BKZ (Block Korkine-Zolotarev) reduction can make enumeration significantly faster by transforming the basis to be more suitable for search. Enumeration is often practical for lower-dimensional lattices or when a high degree of accuracy is needed, but it tends to be less efficient than sieving in high dimensions due to its exponential complexity.</p>
+<figure style="text-align: center;">
+    <iframe 
+        src="https://xavmarch13.github.io/lattirust_estimator.io/graphs/enumeration.html" 
+        width="100%" 
+        height="500" 
+        title="Interactive Graph" 
+        style="ZgotmplZ">
+    </iframe>
+    
+    <figcaption style="font-style: italic; margin-top: 8px;">
+        Trivial example of the enumeration logic.
+    </figcaption>
+    
+</figure>
 <p>In terms of cost, enumeration can solve SVP in a lattice of dimension d in $2^{O(k \log k)}$ time and space.</p>
 <p>The following enumeration estimates are available:</p>
 <table>

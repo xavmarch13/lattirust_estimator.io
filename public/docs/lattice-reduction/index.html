@@ -22,7 +22,7 @@ The way we solve the Shortest Vector Problem (SVP) and similar problems depends 
 <link rel="canonical" href="http://localhost:1313/lattirust_estimator.io/docs/lattice-reduction/">
 <link rel="stylesheet" href="/lattirust_estimator.io/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
   <script defer src="/lattirust_estimator.io/fuse.min.js"></script>
-  <script defer src="/lattirust_estimator.io/en.search.min.81a82027bd672697e9c5552f22ad2be28b52a2e824abe88f3e36d1c2fbd18c38.js" integrity="sha256-gaggJ71nJpfpxVUvIq0r4otSougkq&#43;iPPjbRwvvRjDg=" crossorigin="anonymous"></script>
+  <script defer src="/lattirust_estimator.io/en.search.min.7964f04ed5cae5670782a6e10a93651d29253093a5b986295ebe299bf12365af.js" integrity="sha256-eWTwTtXK5WcHgqbhCpNlHSklMJOluYYpXr4pm/EjZa8=" crossorigin="anonymous"></script>
 <link rel="alternate" type="application/rss+xml" href="http://localhost:1313/lattirust_estimator.io/docs/lattice-reduction/index.xml" title="Lattirust estimator 0.1" />
 <!--
 Made with Book Theme
@@ -369,9 +369,14 @@ https://github.com/alex-shpak/hugo-book
         <li><a href="#hkz-reduction">HKZ reduction</a></li>
         <li><a href="#bkz">BKZ</a></li>
         <li><a href="#cost-of-bkz">Cost of BKZ</a></li>
-        <li><a href="#bkz-20-tweaks">BKZ 2.0 Tweaks</a></li>
-        <li><a href="#the-lie-of-the-gsa-assumption-and-better-simulators-zgsa">The Lie of the GSA Assumption and Better Simulators (ZGSA)</a></li>
-        <li><a href="#the-dimension-for-free-ducas">The Dimension for Free (Ducas)</a></li>
+      </ul>
+    </li>
+    <li><a href="#refinements">Refinements</a>
+      <ul>
+        <li><a href="#the-first-gsa-lie">The first GSA lie</a></li>
+        <li><a href="#the-second-gsa-lie-and-ztgsa">The second GSA lie and Z(T)GSA</a></li>
+        <li><a href="#bkz-20-improvements">BKZ 2.0 improvements</a></li>
+        <li><a href="#the-dimension-for-free">The Dimension for free</a></li>
       </ul>
     </li>
   </ul>
@@ -405,7 +410,7 @@ https://github.com/alex-shpak/hugo-book
   Lattice reduction
   <a class="anchor" href="#lattice-reduction">#</a>
 </h2>
-<p><em>Lattice reduction algorithms</em> aim to transform a given basis of a lattice into a &ldquo;reduced&rdquo; basis, where the vectors are shorter and closer to being orthogonal. Indeed, while a lattice may not have an orthogonal basis in contrary from Euclidean space, the goal of lattice reduction is to get closer to a basis that is not far from orthogonal. This section is mostly based on the following works [<a class="hugo-simplecite-cite-hyperlink" href="#bibreference-1" title="P. Nguyen, Hermite’s constant and lattice algorithms, in The LLL algorithm: Survey and applications, Springer, 2009, pp. 19–69.">1</a>][<a class="hugo-simplecite-cite-hyperlink" href="#bibreference-2" title="P. Nguyen and B. Vallée, The LLL algorithm. Springer, 2010. ">2</a>][<a class="hugo-simplecite-cite-hyperlink" href="#bibreference-3" title="Y. Chen and P. Nguyen, BKZ 2.0: Better lattice security estimates, In Proc. International conference on the theory and application of cryptology and information security, 2011, pp. 1–20. ">3</a>][<a class="hugo-simplecite-cite-hyperlink" href="#bibreference-4" title="N. Gama, N. Howgrave-Graham, H. Koy, and P. Nguyen, Rankin’s constant and blockwise lattice reduction, In Proc. Advances in cryptology-CRYPTO 2006: 26th annual international cryptology conference, santa barbara, california, USA, august 20-24, 2006. Proceedings 26, 2006, pp. 112–130. ">4</a>][<a class="hugo-simplecite-cite-hyperlink" href="#bibreference-5" title="A. Lenstra, H. Lenstra, and L. Lovász, Factoring polynomials with rational coefficients, Mathematische annalen, vol. 261, pp. 515–534, 1982. ">5</a>][<a class="hugo-simplecite-cite-hyperlink" href="#bibreference-6" title="M. Albrecht and L. Ducas, Lattice attacks on NTRU and LWE: A history of refinements, Cryptology ePrint Archive, 2021. ">6</a>][<a class="hugo-simplecite-cite-hyperlink" href="#bibreference-7" title="N. Gama and P. Nguyen, Predicting lattice reduction, In Proc. Advances in cryptology–EUROCRYPT 2008: 27th annual international conference on the theory and applications of cryptographic techniques, istanbul, turkey, april 13-17, 2008. Proceedings 27, 2008, pp. 31–51. ">7</a>].</p>
+<p><em>Lattice reduction algorithms</em> aim to transform a given basis of a lattice into a &ldquo;reduced&rdquo; basis, where the vectors are shorter and closer to being orthogonal. Indeed, while a lattice may not have an orthogonal basis in contrary from Euclidean space, the goal of lattice reduction is to get closer to a basis that is not far from orthogonal. This section is mostly based on the following works [<a class="hugo-simplecite-cite-hyperlink" href="#bibreference-1" title="P. Nguyen, Hermite’s constant and lattice algorithms, in The LLL algorithm: Survey and applications, Springer, 2009, pp. 19–69.">1</a>][<a class="hugo-simplecite-cite-hyperlink" href="#bibreference-2" title="P. Nguyen and B. Vallee, The LLL algorithm. Springer, 2010. ">2</a>][<a class="hugo-simplecite-cite-hyperlink" href="#bibreference-3" title="Y. Chen and P. Nguyen, BKZ 2.0: Better lattice security estimates, In Proc. International conference on the theory and application of cryptology and information security, 2011, pp. 1–20. ">3</a>][<a class="hugo-simplecite-cite-hyperlink" href="#bibreference-4" title="N. Gama, N. Howgrave-Graham, H. Koy, and P. Nguyen, Rankin’s constant and blockwise lattice reduction, In Proc. Advances in cryptology-CRYPTO 2006: 26th annual international cryptology conference, santa barbara, california, USA, august 20-24, 2006. Proceedings 26, 2006, pp. 112–130. ">4</a>][<a class="hugo-simplecite-cite-hyperlink" href="#bibreference-5" title="A. Lenstra, H. Lenstra, and L. Lovász, Factoring polynomials with rational coefficients, Mathematische annalen, vol. 261, pp. 515–534, 1982. ">5</a>][<a class="hugo-simplecite-cite-hyperlink" href="#bibreference-6" title="M. Albrecht and L. Ducas, Lattice attacks on NTRU and LWE: A history of refinements, Cryptology ePrint Archive, 2021. ">6</a>][<a class="hugo-simplecite-cite-hyperlink" href="#bibreference-7" title="N. Gama and P. Nguyen, Predicting lattice reduction, In Proc. Advances in cryptology–EUROCRYPT 2008: 27th annual international conference on the theory and applications of cryptographic techniques, istanbul, turkey, april 13-17, 2008. Proceedings 27, 2008, pp. 31–51. ">7</a>].</p>
 <figure style="text-align: center; margin: 1em auto; max-width: 100%;">
     <img src="lattice_orthogonal.png" alt="Depiction of a closer to orthogonal basis" style="max-width: 100%; height: auto; border: 1px solid #ddd; padding: 4px;">
     
@@ -546,7 +551,7 @@ For $k=2,&hellip;,d$ $$\omega \Vert \mathbf{b}^*_{k-1}\Vert^2  \leq \Vert \mathb
   BKZ algorithm
   <a class="anchor" href="#bkz-algorithm">#</a>
 </h2>
-<p>The Block Korkine-Zolotarev (BKZ) algorithm is a lattice reduction algorithm that generalizes the LLL algorithm to achieve stronger reduction properties. The BKZ algorithm is defined as a blockwise reduction algorithm that iteratively applies a form of lattice basis reduction to overlapping blocks of vectors within the basis. It is in fact a relaxation of the Hermite-Korkine-Zolotarev (HKZ). The HKZ reduction is a stronger form of lattice reduction that ensures each vector in the basis is the shortest vector in the lattice projected orthogonally onto the space spanned by the preceding basis vectors.</p>
+<p>The Block Korkine-Zolotarev (BKZ) algorithm is a lattice reduction algorithm that generalizes the LLL algorithm to achieve stronger reduction properties. The BKZ algorithm is defined as a blockwise reduction algorithm that iteratively applies a form of lattice basis reduction to overlapping blocks of vectors within the basis. The assumption made in its analysis is that iterative blocks taken behaves like a random lattice. It is in fact a relaxation of the Hermite-Korkine-Zolotarev (HKZ). The HKZ reduction is a stronger form of lattice reduction that ensures each vector in the basis is the shortest vector in the lattice projected orthogonally onto the space spanned by the preceding basis vectors.</p>
 <h3 id="hkz-reduction">
   HKZ reduction
   <a class="anchor" href="#hkz-reduction">#</a>
@@ -562,15 +567,15 @@ The basis is said to be HKZ-reduced if:</p>
   <a class="anchor" href="#bkz">#</a>
 </h3>
 <p>Assuming we have an SVP oracle, the BKZ algorithm is defined as follows:</p>
-<pre><code>Data: LLL-reduced basis B (pre-processed) and block size beta
+<pre><code>Data: LLL-reduced basis B (preprocessed) and block size beta
 repeat until no changes
-    for k in 0 to d-1
-        LLL on local projected block [k, ..., k+beta-1]
-        v &lt;-- SVP-Oracle(local projected block[k, ..., k+beta-1])
-        insert v into B
+    for k in 0 to d-2
+        LLL on local projected block B[k, ..., min(k+beta, d)]
+        v &lt;-- SVP-Oracle(local projected block B[k, ..., min(k+beta, d)])
+        insert v into B at index k and handle linear dependencies with LLL
     end
 </code></pre>
-<p>Hereafter is a simple representation of a block moving through a matrix for one tour of BKZ, in practice we often do several tours.</p>
+<p>In practice, stronger preprocessing than LLL is often performed before the BKZ block loop. Hereafter is a simple representation of a block moving through a matrix for one tour of BKZ, in practice we often do several tours because we are supposed to stop when no more significant changes occur.</p>
 <figure style="text-align: center;">
     <iframe 
         src="https://xavmarch13.github.io/lattirust_estimator.io/graphs/bkz.html" 
@@ -588,122 +593,105 @@ repeat until no changes
 <p>Theoretically, a BKZ-$\beta$ reduced basis satisfies, for $\epsilon &gt; 0$:</p>
 $$\lVert \bold{b_0} \rVert \leq \sqrt{(1 + \epsilon) \gamma_{\beta}}^{(\frac{d-1}{\beta - 1} + 1)} Vol(\Lambda(\bold{B}))$$$$\gamma_\beta =  \sup \{ \lambda_1(\Lambda) | \Lambda \in \mathbb{R}^\beta, Vol(\Lambda) = 1 \}$$<p>Several variants of BKZ exist, the one giving asymptotically the best worst-case guarantees is the Slide reduction described in [<a class="hugo-simplecite-cite-hyperlink" href="#bibreference-8" title="N. Gama and P. Nguyen, Finding short lattice vectors within mordell’s inequality, In Proc. Proceedings of the fortieth annual ACM symposium on theory of computing, 2008, pp. 207–216. ">8</a>] and it achieves</p>
 $$\lVert \bold{b_0} \rVert \leq \sqrt{(1 + \epsilon) \gamma_{\beta}}^\frac{d-1}{\beta - 1} Vol(\Lambda(\bold{B}))$$<p>By combining the gaussian heuristic and the definition of a BKZ-$\beta$ reduced basis, we arrive again at the geometric assumption, which states that the log-lengths of reduced vectors follow a geometric series (which we can plot as a line as we did for LLL). This time however, it depends on the block-size chosen to run BKZ.</p>
+<p><em>Note: maybe here explain between the Hermite regime and the approximation regime</em></p>
 <p>We can write</p>
 $$\log(\lVert \bold{b_i}^*\rVert) = \frac{d - 1 - 2i}{2}\log(\alpha_\beta) + \frac{1}{d}\log(Vol(\Lambda))$$<p>where $\alpha_\beta$ is the slope under the geometric assumption that can be calculated from the gaussian assumption as</p>
-$$\alpha_\beta = \sqrt{\frac{d}{2\pi e}}^\frac{2}{\beta - 1}$$<p>This estimate [<a class="hugo-simplecite-cite-hyperlink" href="#bibreference-6" title="M. Albrecht and L. Ducas, Lattice attacks on NTRU and LWE: A history of refinements, Cryptology ePrint Archive, 2021. ">6</a>] is reasonably accurate only if $d\gg\beta$ and $\beta &gt; 50$, which is why we will use fixed estimates for small dimensions (also, small dimension can be directly solved by an exact solver).</p>
+$$\alpha_\beta = \sqrt{\frac{d}{2\pi e}}^\frac{2}{\beta - 1}$$<p>This result from [<a class="hugo-simplecite-cite-hyperlink" href="#bibreference-6" title="M. Albrecht and L. Ducas, Lattice attacks on NTRU and LWE: A history of refinements, Cryptology ePrint Archive, 2021. ">6</a>] is reasonably accurate only if $d\gg\beta$ and $\beta &gt; 50$, which is why we will use fixed estimates for small dimensions (also, small dimension can be directly solved by an exact solver).</p>
 <h3 id="cost-of-bkz">
   Cost of BKZ
   <a class="anchor" href="#cost-of-bkz">#</a>
 </h3>
 <ul>
-<li>Costing BKZ means having a good idea of the impact of the block-size on the quality of our reduced basis. For this, we could either make the approximation $\delta_\beta \approx \sqrt \alpha_\beta$ or use the following limit defined in
-$$\lim_{\beta\rightarrow\infty}\delta_\beta = (\frac{\beta}{2\pi e}(\pi\beta)^\frac{1}{\beta})^\frac{1}{2(\beta - 1)}$$</li>
+<li>Costing BKZ means having a good idea of the impact of the block-size on the quality of our reduced basis. For this, we could either make the approximation $\delta_\beta \approx \sqrt \alpha_\beta$ or use the following limit defined in [<a class="hugo-simplecite-cite-hyperlink" href="#bibreference-9" title="Y. Chen, Reduction de reseau et securite concrete du chiffrement completement homomorphe. Paris 7, 2013. ">9</a>] that works well for $\beta &gt; 50$ and typical $d$ used in cryptography [<a class="hugo-simplecite-cite-hyperlink" href="#bibreference-6" title="M. Albrecht and L. Ducas, Lattice attacks on NTRU and LWE: A history of refinements, Cryptology ePrint Archive, 2021. ">6</a>].</li>
 </ul>
-<p>and write for SIS</p>
+$$\lim_{\beta\rightarrow\infty}\delta_\beta = (\frac{\beta}{2\pi e}(\pi\beta)^\frac{1}{\beta})^\frac{1}{2(\beta - 1)}$$<p>and write for SIS</p>
 $$\lVert \bold{b_1} \rVert \approx \delta_\beta^{d-1} Vol(\Lambda)^{\frac{1}{d}}$$<ul>
-<li>Costing BKZ as a whole is complicated because we do not know how many tours we will have to run, which means we don&rsquo;t really know in advance the number of SVP-Oracle calls we will have to make. Furthermore, many improvements on plain BKZ have been made when some techniques are used as a subroutine for the oracle (for example extreme pruning in the context of enumeration), which makes security estimates done via lattice reduction very sensitive to many factors. Also, local preprocessing techniques in a variant of BKZ known as progressive BKZ. To make our tool comparable to the lattice estimator by &hellip;[insert], we will follow the same simplifying assumption and consider a consistent 8 tours of BKZ. This makes sense following experimental results that showed that most progress is made in the 7-9 first tours. We will then use:
+<li>Costing BKZ as a whole is complicated because we do not know how many tours we will have to run, which means we don&rsquo;t really know in advance the number of SVP-Oracle calls we will have to make. Furthermore, many improvements on plain BKZ have been made when some techniques are used as a subroutine for the oracle (for example extreme pruning in the context of enumeration), which makes security estimates done via lattice reduction very sensitive to many factors. Also, local preprocessing techniques have been introduced as part of the algorithm in a variant of BKZ known as progressive BKZ. To make our tool comparable to the lattice estimator by [<a class="hugo-simplecite-cite-hyperlink" href="#bibreference-10" title="M. Albrecht, R. Player, and S. Scott, On the concrete hardness of learning with errors. Cryptology ePrint Archive, Paper 2015/046, 2015. [Online]. Available: https://eprint.iacr.org/2015/046 ">10</a>], we will follow the same simplifying assumption and consider a consistent 8 tours of BKZ. This makes sense following experimental results that showed that most progress is made in the 7-9 first tours. We will then use:
 $$cost = \tau \cdot d \cdot T_{SVP}$$
 where</li>
 </ul>
 <ol>
 <li>the number of tours we do $\tau$ is considered to be 8.</li>
-<li>The number of times the SVP oracle is called per tour, which is dimension of the lattice, is d</li>
+<li>The number of times the SVP oracle is called per tour, which is about the dimension of the lattice d</li>
 <li>The cost of the SVP oracle is $T_{SVP}$</li>
 </ol>
-<h3 id="bkz-20-tweaks">
-  BKZ 2.0 Tweaks
-  <a class="anchor" href="#bkz-20-tweaks">#</a>
+<h2 id="refinements">
+  Refinements
+  <a class="anchor" href="#refinements">#</a>
+</h2>
+<h3 id="the-first-gsa-lie">
+  The first GSA lie
+  <a class="anchor" href="#the-first-gsa-lie">#</a>
 </h3>
-<p>The BKZ 2.0 algorithm introduces several key optimizations to improve the efficiency and effectiveness of the lattice reduction process. These enhancements address both the quality of the reduced basis and the computational overhead:</p>
-<ol>
-<li>
-<p><strong>Extreme Pruning</strong>:</p>
-<ul>
-<li>Extreme pruning focuses the SVP oracle&rsquo;s efforts on the most promising branches of the search space, reducing unnecessary computations. This technique significantly accelerates the oracle’s performance without compromising the output quality.</li>
-</ul>
-</li>
-<li>
-<p><strong>Adaptive Block Sizes</strong>:</p>
-<ul>
-<li>BKZ 2.0 dynamically adjusts the block size ($\beta$) during execution. By using smaller block sizes initially and increasing them later, the algorithm finds a better trade-off between runtime and reduction quality.</li>
-</ul>
-</li>
-<li>
-<p><strong>Improved Local Search</strong>:</p>
-<ul>
-<li>Advanced local search algorithms enhance the process of finding short vectors within each block. These improvements reduce the time spent on individual blocks while maintaining or improving the overall basis quality.</li>
-</ul>
-</li>
-<li>
-<p><strong>Experimental Impact</strong>:</p>
-<ul>
-<li>Empirical studies show that BKZ 2.0 achieves better reduction quality than the original BKZ, especially for large dimensions. It also demonstrates improved scalability and efficiency in practice.</li>
-</ul>
-</li>
-</ol>
-<h3 id="the-lie-of-the-gsa-assumption-and-better-simulators-zgsa">
-  The Lie of the GSA Assumption and Better Simulators (ZGSA)
-  <a class="anchor" href="#the-lie-of-the-gsa-assumption-and-better-simulators-zgsa">#</a>
+<p>If we think more about the way we slide the block through the matrix during lattice reduction, we can easily come to the conclusion that something different must happen at the end. Indeed, the GSA assumptions ignores what happens for the last $d-\beta$ coordinates. This last block is in fact HKZ reduced and we can therefore adapt the tail of our assumption leading to Tail-adapted GSA (TGSA).</p>
+<p>Let us use the following definition for the HKZ-shape in dimension d. For $i=0, \ldots , d-1:$</p>
+$$
+h_i = \log\left(\sqrt{\frac{d - i}{2\pi e}}\right) - \frac{1}{d-1} \sum_{j < i} h_j,
+$$<p>Now using this in modifying our BKZ GSA assumed shape we can get the following two parts equation:</p>
+$$
+\log\left(\|b_i^*\|\right) =
+\begin{cases} 
+\frac{d - 1 - 2i}{2} \log(\alpha \beta) + s, & \text{for } 0 \leq i \leq d - \beta, \\
+h_{i-(d-\beta)} + \log\left(\|b_{d-\beta}^*\|\right) - h_0, & \text{for } d-\beta \leq i < d.
+\end{cases}
+$$<h3 id="the-second-gsa-lie-and-ztgsa">
+  The second GSA lie and Z(T)GSA
+  <a class="anchor" href="#the-second-gsa-lie-and-ztgsa">#</a>
 </h3>
-<p>The Geometric Series Assumption (GSA), while widely used, does not perfectly capture the behavior of lattice reduction algorithms. This section highlights its limitations and introduces a more accurate model, ZGSA:</p>
-<ol>
-<li>
-<p><strong>Why GSA Falls Short</strong>:</p>
-<ul>
-<li>The GSA assumes that the Gram-Schmidt vector lengths decay geometrically. However, this assumption breaks down for smaller lattices or when dealing with structured lattices that deviate significantly from randomness.</li>
-</ul>
-</li>
-<li>
-<p><strong>Introduction to ZGSA</strong>:</p>
-<ul>
-<li>The Zero-Forced Geometric Series Assumption (ZGSA) refines the GSA by accounting for boundary effects and deviations observed in practical reductions. ZGSA provides a more precise representation of the reduced basis.</li>
-</ul>
-</li>
-<li>
-<p><strong>Comparison with GSA</strong>:</p>
-<ul>
-<li>Empirical results indicate that ZGSA predictions align more closely with observed reductions compared to GSA. A comparison of plots or metrics can demonstrate this improved accuracy.</li>
-</ul>
-</li>
-<li>
-<p><strong>Applications of ZGSA</strong>:</p>
-<ul>
-<li>ZGSA has been instrumental in refining security estimates for lattice-based cryptography, particularly in the context of parameter selection and attack simulations.</li>
-</ul>
-</li>
-</ol>
-<h3 id="the-dimension-for-free-ducas">
-  The Dimension for Free (Ducas)
-  <a class="anchor" href="#the-dimension-for-free-ducas">#</a>
+<p>Geometric series assumptions (tail-adapted or not) have been shown to be a bad choice for small dimensions (think 50 and below) and when $d$ is a multiple of $\beta$. Furthermore, these assumptions only give an estimate about the size after the algorithm is finished and not the evolution of vectors through it. We will here just mention that an estimator has been introduced in [<a class="hugo-simplecite-cite-hyperlink" href="#bibreference-3" title="Y. Chen and P. Nguyen, BKZ 2.0: Better lattice security estimates, In Proc. International conference on the theory and application of cryptology and information security, 2011, pp. 1–20. ">3</a>] to take these observations into accounts. Thanks to its implementation in FPyLLL, we will make use of it to calculate the cost of BKZ for small values (by simply hardcoding the needed values).</p>
+<p>Because we will work with q-ary lattices,  they will always contain vector $(q, 0, \ldots, 0)$ and its permutation. These vectors can be considered short in certain circonstances and shorter that what GSA would predict. A ZGSA assumption adapted to such lattices is possible, but it remains unsure what such an assumption would look like on block reduction algorithms.</p>
+<h3 id="bkz-20-improvements">
+  BKZ 2.0 improvements
+  <a class="anchor" href="#bkz-20-improvements">#</a>
 </h3>
-<p>The &ldquo;dimension for free&rdquo; concept introduced by Ducas reduces the cost of lattice reduction in high-dimensional lattices without sacrificing output quality. This approach is particularly relevant in practical implementations of lattice reduction algorithms.</p>
+<p>BKZ 2.0 [<a class="hugo-simplecite-cite-hyperlink" href="#bibreference-3" title="Y. Chen and P. Nguyen, BKZ 2.0: Better lattice security estimates, In Proc. International conference on the theory and application of cryptology and information security, 2011, pp. 1–20. ">3</a>]  introduces several enhancements to the traditional BKZ algorithm, improving its efficiency and the quality of lattice reduction. Here, we summarize the key improvements:</p>
+<ul>
+<li>
+<p><strong>Introduction of Pruning</strong>:</p>
+<ul>
+<li>BKZ 2.0 incorporates <strong>sound pruning</strong> and <strong>extreme pruning</strong>, techniques introduced by Gama, Nguyen, and Regev.</li>
+<li>These pruning methods reduce the size of the enumeration tree by removing branches with negligible probability of success.</li>
+</ul>
+</li>
+<li>
+<p><strong>Preprocessing of Local Blocks</strong>:</p>
+<ul>
+<li>BKZ 2.0 ensures local bases are better reduced than standard LLL-reduction before enumeration.</li>
+<li>This preprocessing step reduces the cost of enumeration by improving the quality of the local basis.</li>
+<li>For a local projected lattice \( L[j,k] \), preprocessing increases the volumes of projected lattices \( L[k-d+1,k] \), reducing the size of the enumeration tree.</li>
+</ul>
+</li>
+<li>
+<p><strong>Optimizing the Enumeration Radius</strong>:</p>
+<ul>
+<li>BKZ 2.0 optimizes the initial radius \( R \) for enumeration to avoid unnecessary computation.</li>
+<li>The optimized radius is calculated as:
+$$
+    R = \min\left(\sqrt{\gamma} \cdot \text{GH}(L[j,k]), \|b_j^*\|\right),
+    $$
+where \( \text{GH}(L[j,k]) \) is the Gaussian heuristic for the local block and \( \gamma \approx 1.1 \).</li>
+</ul>
+</li>
+<li>
+<p><strong>Simulation for High Block Sizes</strong>:</p>
+<ul>
+<li>BKZ 2.0 predicts output quality and running time for high block sizes (\( \beta \geq 50 \)) through a simulation algorithm.</li>
+<li>This includes:
 <ol>
-<li>
-<p><strong>Concept Overview</strong>:</p>
-<ul>
-<li>The &ldquo;dimension for free&rdquo; principle exploits structural redundancies in high-dimensional lattices, enabling efficient reductions with fewer computational resources.</li>
-</ul>
-</li>
-<li>
-<p><strong>Impact on BKZ</strong>:</p>
-<ul>
-<li>By incorporating the &ldquo;dimension for free,&rdquo; BKZ and BKZ 2.0 achieve improved runtime performance. This is especially beneficial in cryptographic applications requiring reductions in very high dimensions.</li>
-</ul>
-</li>
-<li>
-<p><strong>Trade-offs and Limitations</strong>:</p>
-<ul>
-<li>While highly effective in many cases, the &ldquo;dimension for free&rdquo; may not yield significant improvements for small lattices or those lacking sufficient dimensionality for optimization.</li>
-</ul>
-</li>
-<li>
-<p><strong>Practical Implications</strong>:</p>
-<ul>
-<li>The &ldquo;dimension for free&rdquo; approach has become a cornerstone of efficient lattice reduction techniques. Its adoption in lattice-based cryptography has further solidified its role in modern security parameter design.</li>
-</ul>
-</li>
+<li>Predicting the Gram-Schmidt sequence \( \|b_i^*\| \) during BKZ 2.0 reduction.</li>
+<li>Estimating the block sizes required to achieve a target Hermite factor.</li>
 </ol>
-<ol class="hugo-simplecite-reference-list"><li class="hugo-simplecite-reference-list-item" id="bibreference-1">P. Nguyen,&#32;<q>Hermite’s constant and lattice algorithms,</q>&#32;in <em>The LLL algorithm: Survey and applications</em>,&#32;Springer, 2009, pp. 19–69.</li><li class="hugo-simplecite-reference-list-item" id="bibreference-2">P. Nguyen and&#32;B. Vallée,&#32;<em>The LLL algorithm</em>.&#32;Springer, 2010.&#32;</li><li class="hugo-simplecite-reference-list-item" id="bibreference-3">Y. Chen and&#32;P. Nguyen,&#32;<q>BKZ 2.0: Better lattice security estimates,</q>&#32;In Proc. International conference on the theory and application of cryptology and information security,&#32;2011, pp. 1–20.&#32;</li><li class="hugo-simplecite-reference-list-item" id="bibreference-4">N. Gama,&#32;N. Howgrave-Graham,&#32;H. Koy, and&#32;P. Nguyen,&#32;<q>Rankin’s constant and blockwise lattice reduction,</q>&#32;In Proc. Advances in cryptology-CRYPTO 2006: 26th annual international cryptology conference, santa barbara, california, USA, august 20-24, 2006. Proceedings 26,&#32;2006, pp. 112–130.&#32;</li><li class="hugo-simplecite-reference-list-item" id="bibreference-5">A. Lenstra,&#32;H. Lenstra, and&#32;L. Lovász,&#32;<q>Factoring polynomials with rational coefficients,</q>&#32;<em>Mathematische annalen</em>,&#32;vol. 261,&#32;pp. 515–534,&#32;1982.&#32;</li><li class="hugo-simplecite-reference-list-item" id="bibreference-6">M. Albrecht and&#32;L. Ducas,&#32;<q>Lattice attacks on NTRU and LWE: A history of refinements,</q>&#32;<em>Cryptology ePrint Archive</em>,&#32;2021.&#32;</li><li class="hugo-simplecite-reference-list-item" id="bibreference-7">N. Gama and&#32;P. Nguyen,&#32;<q>Predicting lattice reduction,</q>&#32;In Proc. Advances in cryptology–EUROCRYPT 2008: 27th annual international conference on the theory and applications of cryptographic techniques, istanbul, turkey, april 13-17, 2008. Proceedings 27,&#32;2008, pp. 31–51.&#32;</li><li class="hugo-simplecite-reference-list-item" id="bibreference-8">N. Gama and&#32;P. Nguyen,&#32;<q>Finding short lattice vectors within mordell’s inequality,</q>&#32;In Proc. Proceedings of the fortieth annual ACM symposium on theory of computing,&#32;2008, pp. 207–216.&#32;</li></ol>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="the-dimension-for-free">
+  The Dimension for free
+  <a class="anchor" href="#the-dimension-for-free">#</a>
+</h3>
+<p>In recent advancements, Ducas introduces a significant improvement in lattice sieving algorithms through the &ldquo;dimension for free&rdquo; technique [<a class="hugo-simplecite-cite-hyperlink" href="#bibreference-11" title="L. Ducas, Shortest vector from lattice sieving: A few dimensions for free, In Proc. Annual international conference on the theory and applications of cryptographic techniques, 2018, pp. 125–145. ">11</a>]. This approach leverages the observation that short lattice vectors generated during sieving in lower dimensions can be reused to accelerate sieving in higher dimensions. By projecting and reusing these vectors across multiple dimensions, the algorithm effectively reduces the computational overhead without compromising accuracy. This method achieves a practical speedup of up to 10x in mid-range dimensions (e.g., 70–80), making sieving competitive with enumeration-based methods. Additionally, it bridges the gap between theoretical efficiency and practical applicability, providing a robust framework for solving the Shortest Vector Problem (SVP) in dimensions previously deemed infeasible. These insights suggest a potential paradigm shift where sieving, historically slower, could surpass enumeration in both speed and scalability for cryptographic security estimates.</p>
+<ol class="hugo-simplecite-reference-list"><li class="hugo-simplecite-reference-list-item" id="bibreference-1">P. Nguyen,&#32;<q>Hermite’s constant and lattice algorithms,</q>&#32;in <em>The LLL algorithm: Survey and applications</em>,&#32;Springer, 2009, pp. 19–69.</li><li class="hugo-simplecite-reference-list-item" id="bibreference-2">P. Nguyen and&#32;B. Vallee,&#32;<em>The LLL algorithm</em>.&#32;Springer, 2010.&#32;</li><li class="hugo-simplecite-reference-list-item" id="bibreference-3">Y. Chen and&#32;P. Nguyen,&#32;<q>BKZ 2.0: Better lattice security estimates,</q>&#32;In Proc. International conference on the theory and application of cryptology and information security,&#32;2011, pp. 1–20.&#32;</li><li class="hugo-simplecite-reference-list-item" id="bibreference-4">N. Gama,&#32;N. Howgrave-Graham,&#32;H. Koy, and&#32;P. Nguyen,&#32;<q>Rankin’s constant and blockwise lattice reduction,</q>&#32;In Proc. Advances in cryptology-CRYPTO 2006: 26th annual international cryptology conference, santa barbara, california, USA, august 20-24, 2006. Proceedings 26,&#32;2006, pp. 112–130.&#32;</li><li class="hugo-simplecite-reference-list-item" id="bibreference-5">A. Lenstra,&#32;H. Lenstra, and&#32;L. Lovász,&#32;<q>Factoring polynomials with rational coefficients,</q>&#32;<em>Mathematische annalen</em>,&#32;vol. 261,&#32;pp. 515–534,&#32;1982.&#32;</li><li class="hugo-simplecite-reference-list-item" id="bibreference-6">M. Albrecht and&#32;L. Ducas,&#32;<q>Lattice attacks on NTRU and LWE: A history of refinements,</q>&#32;<em>Cryptology ePrint Archive</em>,&#32;2021.&#32;</li><li class="hugo-simplecite-reference-list-item" id="bibreference-7">N. Gama and&#32;P. Nguyen,&#32;<q>Predicting lattice reduction,</q>&#32;In Proc. Advances in cryptology–EUROCRYPT 2008: 27th annual international conference on the theory and applications of cryptographic techniques, istanbul, turkey, april 13-17, 2008. Proceedings 27,&#32;2008, pp. 31–51.&#32;</li><li class="hugo-simplecite-reference-list-item" id="bibreference-8">N. Gama and&#32;P. Nguyen,&#32;<q>Finding short lattice vectors within mordell’s inequality,</q>&#32;In Proc. Proceedings of the fortieth annual ACM symposium on theory of computing,&#32;2008, pp. 207–216.&#32;</li><li class="hugo-simplecite-reference-list-item" id="bibreference-9">Y. Chen,&#32;<em>Reduction de reseau et securite concrete du chiffrement completement homomorphe</em>.&#32;Paris 7, 2013.&#32;</li><li class="hugo-simplecite-reference-list-item" id="bibreference-10">M. Albrecht,&#32;R. Player, and&#32;S. Scott,&#32;<em>On the concrete hardness of learning with errors</em>.&#32;Cryptology ePrint Archive, Paper 2015/046, 2015.&#32;[Online]. Available: <a class="hugo-simplecite-url-hyperlink" rel="noopener" target="_blank" href="https://eprint.iacr.org/2015/046">https://eprint.iacr.org/2015/046</a>&#32;
+</li><li class="hugo-simplecite-reference-list-item" id="bibreference-11">L. Ducas,&#32;<q>Shortest vector from lattice sieving: A few dimensions for free,</q>&#32;In Proc. Annual international conference on the theory and applications of cryptographic techniques,&#32;2018, pp. 125–145.&#32;</li></ol>
 </article>
  
       
@@ -762,9 +750,14 @@ where</li>
         <li><a href="#hkz-reduction">HKZ reduction</a></li>
         <li><a href="#bkz">BKZ</a></li>
         <li><a href="#cost-of-bkz">Cost of BKZ</a></li>
-        <li><a href="#bkz-20-tweaks">BKZ 2.0 Tweaks</a></li>
-        <li><a href="#the-lie-of-the-gsa-assumption-and-better-simulators-zgsa">The Lie of the GSA Assumption and Better Simulators (ZGSA)</a></li>
-        <li><a href="#the-dimension-for-free-ducas">The Dimension for Free (Ducas)</a></li>
+      </ul>
+    </li>
+    <li><a href="#refinements">Refinements</a>
+      <ul>
+        <li><a href="#the-first-gsa-lie">The first GSA lie</a></li>
+        <li><a href="#the-second-gsa-lie-and-ztgsa">The second GSA lie and Z(T)GSA</a></li>
+        <li><a href="#bkz-20-improvements">BKZ 2.0 improvements</a></li>
+        <li><a href="#the-dimension-for-free">The Dimension for free</a></li>
       </ul>
     </li>
   </ul>

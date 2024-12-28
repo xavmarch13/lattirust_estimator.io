@@ -27,7 +27,7 @@
         "given": "Phong Q"
       },
       {
-        "family": "Vallée",
+        "family": "Vallee",
         "given": "Brigitte"
       }
     ],
@@ -140,7 +140,7 @@
       },
       {
         "family": "Ducas",
-        "given": "Léo"
+        "given": "Leo"
       }
     ],
     "container-title": "Cryptology ePrint Archive",
@@ -203,6 +203,76 @@
     },
     "page": "207-216",
     "title": "Finding short lattice vectors within mordell’s inequality",
+    "type": "paper-conference"
+  },
+  {
+    "author": [
+      {
+        "family": "Chen",
+        "given": "Yuanmi"
+      }
+    ],
+    "genre": "PhD thesis",
+    "id": "chen2013reduction",
+    "issued": {
+      "date-parts": [
+        [
+          2013
+        ]
+      ]
+    },
+    "publisher": "Paris 7",
+    "title": "Reduction de reseau et securite concrete du chiffrement completement homomorphe",
+    "type": "thesis"
+  },
+  {
+    "URL": "https://eprint.iacr.org/2015/046",
+    "author": [
+      {
+        "family": "Albrecht",
+        "given": "Martin R."
+      },
+      {
+        "family": "Player",
+        "given": "Rachel"
+      },
+      {
+        "family": "Scott",
+        "given": "Sam"
+      }
+    ],
+    "id": "cryptoeprint:2015/046",
+    "issued": {
+      "date-parts": [
+        [
+          2015
+        ]
+      ]
+    },
+    "publisher": "Cryptology ePrint Archive, Paper 2015/046",
+    "title": "On the concrete hardness of learning with errors",
+    "type": ""
+  },
+  {
+    "author": [
+      {
+        "family": "Ducas",
+        "given": "Léo"
+      }
+    ],
+    "container-title": "Annual international conference on the theory and applications of cryptographic techniques",
+    "id": "ducas2018shortest",
+    "issued": {
+      "date-parts": [
+        [
+          2018
+        ]
+      ]
+    },
+    "page": "125-145",
+    "publisher": "Springer",
+    "title": "Shortest vector from lattice sieving: A few dimensions for free",
+    "title-short": "Shortest vector from lattice sieving",
     "type": "paper-conference"
   }
 ]

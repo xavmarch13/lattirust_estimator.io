@@ -13,6 +13,10 @@ Given the simplified cost for BKZ behaviour that we consider $cost = \tau \cdot 
 
 Sieving algorithms for SVP work by iteratively refining a large set of lattice vectors to obtain progressively shorter vectors until the shortest one is found. In its basic form, the sieving process starts by generating a large set of random lattice vectors, often called a "cloud." Pairs of vectors are then combined (usually by adding or subtracting them) to produce shorter vectors, which are then added back to the cloud if they meet certain criteria. This process continues until the vectors in the cloud converge towards the shortest lattice vector. Modern sieving methods, like the GaussSieve or ListSieve, have been optimized to handle higher-dimensional lattices by limiting pairwise vector interactions, which reduces computational complexity. Sieving requires storing a large number of lattice vectors and, therefore, can be memory-intensive, especially as the lattice dimension grows.
 
+
+{{< iframe src="/graphs/sieving.html" width="100%" height="500" title="Interactive Graph" caption="Trivial example of the sieving logic." >}}
+
+
 In terms of cost, sieving algorithm can solve the SVP in a lattice of dimension d in $2^{O(k)}$ time but at the cost og a much higher memory usage. At the risk of being overly conservative, our estimator will disregard memory usage.
 
 The following sieving estimates are available:
@@ -33,6 +37,11 @@ Here are some plots to better visualize sieving costs.
 ## Enumeration 
 
 Enumeration algorithms systematically search through lattice points in a controlled way, typically by traversing lattice vectors within a fixed radius from the origin. They rely on a recursive process to explore potential candidate vectors within a "search region," using techniques to prune paths that are unlikely to lead to the shortest vector. Enumeration is typically carried out with the help of a basis that has been reduced (made close to orthogonal), as this greatly improves efficiency by minimizing the number of candidate paths. Unlike sieving, enumeration methods are deterministic and guarantee finding the shortest vector by systematically exploring all feasible paths. The efficiency of enumeration depends strongly on the quality of the lattice basis. Preprocessing steps like BKZ (Block Korkine-Zolotarev) reduction can make enumeration significantly faster by transforming the basis to be more suitable for search. Enumeration is often practical for lower-dimensional lattices or when a high degree of accuracy is needed, but it tends to be less efficient than sieving in high dimensions due to its exponential complexity.
+
+
+{{< iframe src="/graphs/enumeration.html" width="100%" height="500" title="Interactive Graph" caption="Trivial example of the enumeration logic." >}}
+
+
 
 In terms of cost, enumeration can solve SVP in a lattice of dimension d in $2^{O(k \log k)}$ time and space.
 
