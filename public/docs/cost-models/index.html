@@ -7,19 +7,19 @@
   Cost Models
   #
 
-Given the simplified cost for BKZ behaviour that we consider $cost = \tau \cdot d \cdot T_{SVP}$, we still need to define the cost of the SVP solver. Sieving and enumeration are the two common strategies to find the shortest non-zero vector in a lattice.
+Given the simplified cost for BKZ behaviour that we consider $cost = \tau \cdot d \cdot T_{SVP}$, we still need to define the cost of the SVP solver. Sieving and enumeration are the two common exact strategies to find the shortest non-zero vector in a lattice.
 
   Sieving
   #
 
-Sieving algorithms for SVP work by iteratively refining a large set of lattice vectors to obtain progressively shorter vectors until the shortest one is found. In its basic form, the sieving process starts by generating a large set of random lattice vectors, often called a &ldquo;cloud.&rdquo; Pairs of vectors are then combined (usually by adding or subtracting them) to produce shorter vectors, which are then added back to the cloud if they meet certain criteria. This process continues until the vectors in the cloud converge towards the shortest lattice vector. Modern sieving methods, like the GaussSieve or ListSieve, have been optimized to handle higher-dimensional lattices by limiting pairwise vector interactions, which reduces computational complexity. Sieving requires storing a large number of lattice vectors and, therefore, can be memory-intensive, especially as the lattice dimension grows.">
+Sieving algorithms for SVP work by iteratively refining a large set of lattice vectors to obtain progressively shorter vectors until the shortest one is found. In its basic form, the sieving process starts by generating a large set of random lattice vectors, often called a &ldquo;cloud.&rdquo; Pairs of vectors are then combined (usually by subtracting them) to produce shorter vectors, which are then added back to the cloud if they meet certain criteria. This process continues until the vectors in the cloud converge towards the shortest lattice vector. Modern sieving methods, like the GaussSieve or ListSieve, have been optimized to handle higher-dimensional lattices by limiting pairwise vector interactions, which reduces computational complexity. Sieving requires storing a large number of lattice vectors and, therefore, can be memory-intensive, especially as the lattice dimension grows. Here we present a simplified graphs of selecting a cloud, taking the difference between two vectors and looking what is the smaller between the three vectors.">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
 <meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/lattirust_estimator.io/docs/cost-models/">
   <meta property="og:site_name" content="Lattirust estimator 0.1">
   <meta property="og:title" content="Cost Models">
-  <meta property="og:description" content="Cost Models#Given the simplified cost for BKZ behaviour that we consider $cost = \tau \cdot d \cdot T_{SVP}$, we still need to define the cost of the SVP solver. Sieving and enumeration are the two common strategies to find the shortest non-zero vector in a lattice.
-Sieving#Sieving algorithms for SVP work by iteratively refining a large set of lattice vectors to obtain progressively shorter vectors until the shortest one is found. In its basic form, the sieving process starts by generating a large set of random lattice vectors, often called a “cloud.” Pairs of vectors are then combined (usually by adding or subtracting them) to produce shorter vectors, which are then added back to the cloud if they meet certain criteria. This process continues until the vectors in the cloud converge towards the shortest lattice vector. Modern sieving methods, like the GaussSieve or ListSieve, have been optimized to handle higher-dimensional lattices by limiting pairwise vector interactions, which reduces computational complexity. Sieving requires storing a large number of lattice vectors and, therefore, can be memory-intensive, especially as the lattice dimension grows.">
+  <meta property="og:description" content="Cost Models#Given the simplified cost for BKZ behaviour that we consider $cost = \tau \cdot d \cdot T_{SVP}$, we still need to define the cost of the SVP solver. Sieving and enumeration are the two common exact strategies to find the shortest non-zero vector in a lattice.
+Sieving#Sieving algorithms for SVP work by iteratively refining a large set of lattice vectors to obtain progressively shorter vectors until the shortest one is found. In its basic form, the sieving process starts by generating a large set of random lattice vectors, often called a “cloud.” Pairs of vectors are then combined (usually by subtracting them) to produce shorter vectors, which are then added back to the cloud if they meet certain criteria. This process continues until the vectors in the cloud converge towards the shortest lattice vector. Modern sieving methods, like the GaussSieve or ListSieve, have been optimized to handle higher-dimensional lattices by limiting pairwise vector interactions, which reduces computational complexity. Sieving requires storing a large number of lattice vectors and, therefore, can be memory-intensive, especially as the lattice dimension grows. Here we present a simplified graphs of selecting a cloud, taking the difference between two vectors and looking what is the smaller between the three vectors.">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="website">
 <title>Cost Models | Lattirust estimator 0.1</title>
@@ -28,7 +28,7 @@ Sieving#Sieving algorithms for SVP work by iteratively refining a large set of
 <link rel="canonical" href="http://localhost:1313/lattirust_estimator.io/docs/cost-models/">
 <link rel="stylesheet" href="/lattirust_estimator.io/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
   <script defer src="/lattirust_estimator.io/fuse.min.js"></script>
-  <script defer src="/lattirust_estimator.io/en.search.min.7964f04ed5cae5670782a6e10a93651d29253093a5b986295ebe299bf12365af.js" integrity="sha256-eWTwTtXK5WcHgqbhCpNlHSklMJOluYYpXr4pm/EjZa8=" crossorigin="anonymous"></script>
+  <script defer src="/lattirust_estimator.io/en.search.min.23a635eeb80fd7990bd03326a3fa8d71c3261e28ba17e0123a7ad481cc607ba1.js" integrity="sha256-I6Y17rgP15kL0DMmo/qNccMmHii6F&#43;ASOnrUgcxge6E=" crossorigin="anonymous"></script>
 <link rel="alternate" type="application/rss+xml" href="http://localhost:1313/lattirust_estimator.io/docs/cost-models/index.xml" title="Lattirust estimator 0.1" />
 <!--
 Made with Book Theme
@@ -358,7 +358,11 @@ https://github.com/alex-shpak/hugo-book
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#sieving">Sieving</a></li>
+    <li><a href="#sieving">Sieving</a>
+      <ul>
+        <li><a href="#the-dimension-for-free">The Dimension for free</a></li>
+      </ul>
+    </li>
     <li><a href="#enumeration">Enumeration</a>
       <ul>
         <li><a href="#method-comparison">Method comparison</a></li>
@@ -380,28 +384,28 @@ https://github.com/alex-shpak/hugo-book
   Cost Models
   <a class="anchor" href="#cost-models">#</a>
 </h1>
-<p>Given the simplified cost for BKZ behaviour that we consider $cost = \tau \cdot d \cdot T_{SVP}$, we still need to define the cost of the SVP solver. Sieving and enumeration are the two common strategies to find the shortest non-zero vector in a lattice.</p>
+<p>Given the simplified cost for BKZ behaviour that we consider $cost = \tau \cdot d \cdot T_{SVP}$, we still need to define the cost of the SVP solver. Sieving and enumeration are the two common exact strategies to find the shortest non-zero vector in a lattice.</p>
 <h2 id="sieving">
   Sieving
   <a class="anchor" href="#sieving">#</a>
 </h2>
-<p>Sieving algorithms for SVP work by iteratively refining a large set of lattice vectors to obtain progressively shorter vectors until the shortest one is found. In its basic form, the sieving process starts by generating a large set of random lattice vectors, often called a &ldquo;cloud.&rdquo; Pairs of vectors are then combined (usually by adding or subtracting them) to produce shorter vectors, which are then added back to the cloud if they meet certain criteria. This process continues until the vectors in the cloud converge towards the shortest lattice vector. Modern sieving methods, like the GaussSieve or ListSieve, have been optimized to handle higher-dimensional lattices by limiting pairwise vector interactions, which reduces computational complexity. Sieving requires storing a large number of lattice vectors and, therefore, can be memory-intensive, especially as the lattice dimension grows.</p>
+<p>Sieving algorithms for SVP work by iteratively refining a large set of lattice vectors to obtain progressively shorter vectors until the shortest one is found. In its basic form, the sieving process starts by generating a large set of random lattice vectors, often called a &ldquo;cloud.&rdquo; Pairs of vectors are then combined (usually by subtracting them) to produce shorter vectors, which are then added back to the cloud if they meet certain criteria. This process continues until the vectors in the cloud converge towards the shortest lattice vector. Modern sieving methods, like the GaussSieve or ListSieve, have been optimized to handle higher-dimensional lattices by limiting pairwise vector interactions, which reduces computational complexity. Sieving requires storing a large number of lattice vectors and, therefore, can be memory-intensive, especially as the lattice dimension grows. Here we present a simplified graphs of selecting a cloud, taking the difference between two vectors and looking what is the smaller between the three vectors.</p>
 <figure style="text-align: center;">
     <iframe 
         src="https://xavmarch13.github.io/lattirust_estimator.io/graphs/sieving.html" 
-        width="100%" 
+        width="800" 
         height="500" 
         title="Interactive Graph" 
         style="ZgotmplZ">
     </iframe>
     
     <figcaption style="font-style: italic; margin-top: 8px;">
-        Trivial example of the sieving logic.
+        Small example of the sieving logic.
     </figcaption>
     
 </figure>
-<p>In terms of cost, sieving algorithm can solve the SVP in a lattice of dimension d in $2^{O(k)}$ time but at the cost og a much higher memory usage. At the risk of being overly conservative, our estimator will disregard memory usage.</p>
-<p>The following sieving estimates are available:</p>
+<p>In terms of cost, sieving algorithm can solve the SVP in a lattice of dimension d in $2^{O(\beta)}$ time but at the cost of a much higher memory usage $2^{O(\beta)}$ than enumeration. Our estimator will disregard memory usage to focus on time cost.</p>
+<p>The following sieving estimates are available in the estimator:</p>
 <table>
   <thead>
       <tr>
@@ -414,58 +418,86 @@ https://github.com/alex-shpak/hugo-book
   <tbody>
       <tr>
           <td>BDGL-sieve</td>
-          <td>todo</td>
+          <td>[<a class="hugo-simplecite-cite-hyperlink" href="#bibreference-1" title="A. Becker, L. Ducas, N. Gama, and T. Laarhoven, New directions in nearest neighbor searching with applications to lattice sieving, In Proc. Proceedings of the twenty-seventh annual ACM-SIAM symposium on discrete algorithms, 2016, pp. 10–24. ">1</a>]</td>
           <td>$2^{0.292\beta + 16.4}$ big $\beta$ $2^{0.387\beta + 16.4}$ small $\beta$</td>
           <td>classical</td>
       </tr>
       <tr>
           <td>Q-sieve</td>
-          <td>todo</td>
+          <td>[<a class="hugo-simplecite-cite-hyperlink" href="#bibreference-2" title="E. Alkim, L. Ducas, T. Pöppelmann, and P. Schwabe, Post-quantum key Exchange—A new hope, In Proc. 25th USENIX security symposium (USENIX security 16), 2016, pp. 327–343. ">2</a>]   [<a class="hugo-simplecite-cite-hyperlink" href="#bibreference-3" title="T. Laarhoven, M. Mosca, and J. Van De Pol, Finding shortest lattice vectors faster using quantum search, Designs, Codes and Cryptography, vol. 77, pp. 375–400, 2015. ">3</a>]</td>
           <td>$2^{0.265\beta}$</td>
           <td>quantum</td>
       </tr>
       <tr>
           <td>ADPS-sieve</td>
-          <td>tedo</td>
+          <td>[<a class="hugo-simplecite-cite-hyperlink" href="#bibreference-2" title="E. Alkim, L. Ducas, T. Pöppelmann, and P. Schwabe, Post-quantum key Exchange—A new hope, In Proc. 25th USENIX security symposium (USENIX security 16), 2016, pp. 327–343. ">2</a>]</td>
           <td>$2^{0.292\beta}$</td>
           <td>classical</td>
       </tr>
       <tr>
-          <td>BJG-sieve</td>
-          <td>todo</td>
+          <td>BGJ-sieve</td>
+          <td>[<a class="hugo-simplecite-cite-hyperlink" href="#bibreference-4" title="M. Albrecht, B. Curtis, A. Deo, A. Davidson, R. Player, E. Postlethwaite, F. Virdia, and T. Wunderer, Estimate all the ${$LWE, NTRU$}$ schemes!, In Proc. Security and cryptography for networks: 11th international conference, SCN 2018, amalfi, italy, september 5–7, 2018, proceedings 11, 2018, pp. 351–367. ">4</a>]</td>
           <td>$2^{0.311\beta}$</td>
           <td>classical</td>
       </tr>
       <tr>
           <td>ChaLoy-sieve</td>
-          <td>todo</td>
+          <td>[<a class="hugo-simplecite-cite-hyperlink" href="#bibreference-5" title="A. Chailloux and J. Loyer, Lattice sieving via quantum random walks, In Proc. Advances in cryptology–ASIACRYPT 2021: 27th international conference on the theory and application of cryptology and information security, singapore, december 6–10, 2021, proceedings, part IV 27, 2021, pp. 63–91. ">5</a>]</td>
           <td>$2^{0.257\beta}$</td>
           <td>quantum</td>
       </tr>
   </tbody>
 </table>
-<p>Here are some plots to better visualize sieving costs.</p>
-<p><img src="sieving.png" alt="alt text" /></p>
+<figure style="text-align: center; margin: 1em auto; max-width: 100%;">
+    <img src="sieving.png" alt="cost plot" style="max-width: 100%; height: auto; border: 1px solid #ddd; padding: 4px;">
+    
+        
+            <figcaption style="font-size: 0.9em; margin-top: 0.5em; font-style: italic; text-align: center; color: #555;">
+                Cost of sieving SVP solvers
+            </figcaption>
+        
+    
+</figure>
+<p>As a very high overview, we give a list of amelioration brought by each kind of sieving solver considered :</p>
+<ul>
+<li>
+<p>BDGL-sieve introduces a novel approach to improving lattice sieving efficiency through <strong>locality-sensitive filtering (LSF)</strong>, which significantly reduces the time complexity of solving the shortest vector problem (SVP) on high-dimensional lattices. By utilizing spherical caps as filters and leveraging structured random product codes for efficient decoding, the method achieves an asymptotic time complexity of \(2^{0.292n + o(n)}\), outperforming previous approaches like spherical locality-sensitive hashing (LSH).</p>
+</li>
+<li>
+<p>ADPS-sieve presents sintroduces <strong>quantum speedups through Grover’s algorithm</strong>, reducing the classical sieving complexity from \(2^{0.415b}\) to \(2^{0.292b}\). Additionally, it leverages structured lattice representations to optimize memory usage and sieve iterations. This method focuses on balancing theoretical improvements with practical implementations, providing a framework for faster and more scalable sieving for lattice-based cryptographic challenges.</p>
+</li>
+<li>
+<p>BGJ-sieve significantly reduces the time complexity to \(2^{0.292d + o(d)}\) through algorithmic optimizations. Key contributions include the introduction of hypersphere partitioning to reduce vector comparison costs, the use of nearby vector replacement to iteratively refine the list of vectors towards shorter ones, and a probabilistic framework that efficiently handles high-dimensional spaces.</p>
+</li>
+<li>
+<p>ChaLoy-sieve introduces a quantum algorithm based on quantum random walks that improves the asymptotic complexity of solving the Shortest Vector Problem (SVP). The key innovation is replacing Grover&rsquo;s algorithm with a quantum random walk, enabling faster resolution of reducible vector pairs. This enhancement reduces the heuristic running time from \(2^{0.2653d + o(d)}\) to \(2^{0.2570d + o(d)}\), while optimizing resource usage. Notably, it decreases quantum memory requirements to \(2^{0.0495d}\) and quantum RAM to \(2^{0.0767d}\).</p>
+</li>
+</ul>
+<h3 id="the-dimension-for-free">
+  The Dimension for free
+  <a class="anchor" href="#the-dimension-for-free">#</a>
+</h3>
+<p>In recent advancements, Ducas introduces a significant improvement in lattice sieving algorithms through the &ldquo;dimension for free&rdquo; technique [<a class="hugo-simplecite-cite-hyperlink" href="#bibreference-6" title="L. Ducas, Shortest vector from lattice sieving: A few dimensions for free, In Proc. Annual international conference on the theory and applications of cryptographic techniques, 2018, pp. 125–145. ">6</a>]. This approach leverages the observation that short lattice vectors generated during sieving in lower dimensions can be reused to accelerate sieving in higher dimensions. By projecting and reusing these vectors across multiple dimensions, the algorithm effectively reduces the computational overhead without compromising accuracy. This method achieves a practical speedup of up to 10x in mid-range dimensions (e.g., 70–80). Our estimators will automatically provide this improvement by adapting the size of the needed lattice reduction computation.</p>
 <h2 id="enumeration">
   Enumeration
   <a class="anchor" href="#enumeration">#</a>
 </h2>
-<p>Enumeration algorithms systematically search through lattice points in a controlled way, typically by traversing lattice vectors within a fixed radius from the origin. They rely on a recursive process to explore potential candidate vectors within a &ldquo;search region,&rdquo; using techniques to prune paths that are unlikely to lead to the shortest vector. Enumeration is typically carried out with the help of a basis that has been reduced (made close to orthogonal), as this greatly improves efficiency by minimizing the number of candidate paths. Unlike sieving, enumeration methods are deterministic and guarantee finding the shortest vector by systematically exploring all feasible paths. The efficiency of enumeration depends strongly on the quality of the lattice basis. Preprocessing steps like BKZ (Block Korkine-Zolotarev) reduction can make enumeration significantly faster by transforming the basis to be more suitable for search. Enumeration is often practical for lower-dimensional lattices or when a high degree of accuracy is needed, but it tends to be less efficient than sieving in high dimensions due to its exponential complexity.</p>
+<p>Enumeration algorithms systematically search through lattice points in a controlled way, typically by traversing lattice vectors within a fixed radius from the origin. They rely on a recursive process to explore potential candidate vectors within a &ldquo;search region,&rdquo; using techniques to prune paths that are unlikely to lead to the shortest vector. Enumeration is typically carried out with the help of a basis that has been reduced (made close to orthogonal), as this greatly improves efficiency by minimizing the number of candidate paths. Unlike sieving, enumeration methods are deterministic and guarantee finding the shortest vector by systematically exploring all feasible paths. The efficiency of enumeration depends strongly on the quality of the lattice basis. Preprocessing steps like BKZ (Block Korkine-Zolotarev) reduction can make enumeration significantly faster by transforming the basis to be more suitable for search. Enumeration is often practical for lower-dimensional lattices or when a high degree of accuracy is needed, but it tends to be less efficient than sieving in high dimensions due to its exponential complexity. Hereafter we present a simplified version of how enumeration could progress. Given a basis b1 and b2, we project one of the two and use it to make a grid spaced by the length of the projection. Using this 1-dim problem we can lift back up to the 2-d problem by selecting all points in the Radius that are on the grid.</p>
 <figure style="text-align: center;">
     <iframe 
-        src="https://xavmarch13.github.io/lattirust_estimator.io/graphs/enumeration.html" 
-        width="100%" 
+        src="https://xavmarch13.github.io/lattirust_estimator.io/graphs/sieving.html" 
+        width="800" 
         height="500" 
         title="Interactive Graph" 
         style="ZgotmplZ">
     </iframe>
     
     <figcaption style="font-style: italic; margin-top: 8px;">
-        Trivial example of the enumeration logic.
+        Small example of the enumeration logic.
     </figcaption>
     
 </figure>
-<p>In terms of cost, enumeration can solve SVP in a lattice of dimension d in $2^{O(k \log k)}$ time and space.</p>
+<p>In terms of cost, enumeration can solve SVP in a lattice of dimension d in $2^{O(\beta \log \beta)}$ time and space poly($\beta$).</p>
 <p>The following enumeration estimates are available:</p>
 <table>
   <thead>
@@ -479,44 +511,82 @@ https://github.com/alex-shpak/hugo-book
   <tbody>
       <tr>
           <td>Lotus</td>
-          <td>todo</td>
+          <td>[<a class="hugo-simplecite-cite-hyperlink" href="#bibreference-4" title="M. Albrecht, B. Curtis, A. Deo, A. Davidson, R. Player, E. Postlethwaite, F. Virdia, and T. Wunderer, Estimate all the ${$LWE, NTRU$}$ schemes!, In Proc. Security and cryptography for networks: 11th international conference, SCN 2018, amalfi, italy, september 5–7, 2018, proceedings 11, 2018, pp. 351–367. ">4</a>] [<a class="hugo-simplecite-cite-hyperlink" href="#bibreference-7" title="T. Le Trieu Phong, Y. Aono, and S. Moriai, Lotus. Technical report, National Institute of Standards; Technology, 2017 …, 2017. ">7</a>]</td>
           <td>$2^{0.125\beta\log\beta -0.755\beta + 22.74}$</td>
           <td>classical</td>
       </tr>
       <tr>
-          <td>CheNgue-enum</td>
-          <td>todo</td>
+          <td>CheNgue-enum (BKZ 2.0)</td>
+          <td>[<a class="hugo-simplecite-cite-hyperlink" href="#bibreference-8" title="Y. Chen and P. Nguyen, BKZ 2.0: Better lattice security estimates, In Proc. International conference on the theory and application of cryptology and information security, 2011, pp. 1–20. ">8</a>]</td>
           <td>$2^{0.27\beta\log\beta -1.019\beta + 2.254}$</td>
           <td>classical</td>
       </tr>
       <tr>
           <td>ABF-enum</td>
-          <td>todo</td>
+          <td>[<a class="hugo-simplecite-cite-hyperlink" href="#bibreference-9" title="M. Albrecht, S. Bai, P. Fouque, P. Kirchner, D. Stehlé, and W. Wen, Faster enumeration-based lattice reduction: Root hermite factor time, In Proc. Annual international cryptology conference, 2020, pp. 186–212. ">9</a>]</td>
           <td>$2^{0.184\beta\log\beta - 0.995\beta + 22.25}$ small $\beta$ $2^{0.125\beta\log\beta-0.547\beta+16.4}$ big $\beta$</td>
           <td>classical</td>
       </tr>
       <tr>
           <td>ABF-Q-enum</td>
-          <td>todo</td>
+          <td>[<a class="hugo-simplecite-cite-hyperlink" href="#bibreference-9" title="M. Albrecht, S. Bai, P. Fouque, P. Kirchner, D. Stehlé, and W. Wen, Faster enumeration-based lattice reduction: Root hermite factor time, In Proc. Annual international cryptology conference, 2020, pp. 186–212. ">9</a>]</td>
           <td>$2^{0.0625\beta\log\beta}$</td>
           <td>quantum</td>
       </tr>
       <tr>
           <td>ABLR-enum</td>
-          <td>todo</td>
+          <td>[<a class="hugo-simplecite-cite-hyperlink" href="#bibreference-10" title="M. Albrecht, S. Bai, J. Li, and J. Rowell, Lattice reduction with approximate enumeration oracles: Practical algorithms and concrete performance, In Proc. Annual international cryptology conference, 2021, pp. 732–759. ">10</a>]</td>
           <td>$2^{0.184\beta\log\beta - 1.077\beta + 35.12}$ small $\beta$ $2^{0.125\beta\log\beta-0.655\beta+31.84}$ big $\beta$</td>
           <td>classical</td>
       </tr>
   </tbody>
 </table>
 <p>Here are some plots to better visualize enumeration costs.</p>
-<p><img src="enumeration.png" alt="alt text" /></p>
+<figure style="text-align: center; margin: 1em auto; max-width: 100%;">
+    <img src="enumeration.png" alt="cost plot" style="max-width: 100%; height: auto; border: 1px solid #ddd; padding: 4px;">
+    
+        
+            <figcaption style="font-size: 0.9em; margin-top: 0.5em; font-style: italic; text-align: center; color: #555;">
+                Cost of enumeration SVP solvers
+            </figcaption>
+        
+    
+</figure>
+<p>As a very high overview, we give a list of amelioration brought by each kind of enumeration solver considered :</p>
+<ul>
+<li>
+<p>ABF-Enum brings introduces the concept of <strong>extended preprocessing</strong>. This approach decouples the preprocessing and enumeration contexts, enabling the use of higher-dimensional sublattices for preprocessing while optimizing the enumeration cost. By leveraging the enhanced geometric properties of SDBKZ-reduced bases, ABF-Enum achieves faster enumeration with reduced computational complexity, pushing the boundaries of lattice reduction efficiency. This innovation forms the foundation for achieving improved trade-offs between time complexity and quality of solutions in enumeration-based solvers.</p>
+</li>
+<li>
+<p>BKZ 2.0 (ChNgue) optimizes the Blockwise Korkine-Zolotarev (BKZ) algorithm. Key enhancements include the incorporation of <strong>sound pruning</strong>, a sophisticated technique to reduce enumeration cost while maintaining quality, and <strong>preprocessing of local blocks</strong> to improve the efficiency of enumeration subroutines. Additionally, <strong>optimized enumeration radii</strong> enable faster convergence by leveraging improved heuristics. These innovations collectively improve both the speed and output quality of lattice reduction, making BKZ 2.0 a new benchmark for practical lattice algorithms.</p>
+</li>
+<li>
+<p>ABLR-Enum innovates by combining <strong>relaxed pruning</strong> with <strong>extended preprocessing</strong> strategies. These enhancements allow enumeration algorithms to achieve exponential speed-ups while maintaining high-quality reductions. By relaxing the search radius and optimizing enumeration parameters, the approach efficiently balances time and output quality. The extended preprocessing step leverages higher-dimensional sublattices to improve enumeration performance, marking a significant step forward in practical and scalable lattice reduction.</p>
+</li>
+<li>
+<p>The LOTUS cryptosystem enhances lattice enumeration techniques through optimized pruning strategies, which reduce the computational effort required for solving lattice problems like bounded distance decoding (BDD). By refining cost estimation methods for lattice reduction and enumeration.</p>
+</li>
+</ul>
 <h3 id="method-comparison">
   Method comparison
   <a class="anchor" href="#method-comparison">#</a>
 </h3>
-<p><img src="comp.png" alt="alt text" /></p>
+<figure style="text-align: center; margin: 1em auto; max-width: 100%;">
+    <img src="comp.png" alt="cost plot" style="max-width: 100%; height: auto; border: 1px solid #ddd; padding: 4px;">
+    
+        
+            <figcaption style="font-size: 0.9em; margin-top: 0.5em; font-style: italic; text-align: center; color: #555;">
+                Cost of all solvers
+            </figcaption>
+        
+    
+</figure>
 <p>We can see that sieving performs better overall when the dimension of the SVP problem get big, which is the expected behavior. For this reason, we encourage making security estimates with sieving as an underlying SVP solver.</p>
+<h1 id="references">
+  References
+  <a class="anchor" href="#references">#</a>
+</h1>
+<ol class="hugo-simplecite-reference-list"><li class="hugo-simplecite-reference-list-item" id="bibreference-1">A. Becker,&#32;L. Ducas,&#32;N. Gama, and&#32;T. Laarhoven,&#32;<q>New directions in nearest neighbor searching with applications to lattice sieving,</q>&#32;In Proc. Proceedings of the twenty-seventh annual ACM-SIAM symposium on discrete algorithms,&#32;2016, pp. 10–24.&#32;</li><li class="hugo-simplecite-reference-list-item" id="bibreference-2">E. Alkim,&#32;L. Ducas,&#32;T. Pöppelmann, and&#32;P. Schwabe,&#32;<q>Post-quantum key Exchange—A new hope,</q>&#32;In Proc. 25th USENIX security symposium (USENIX security 16),&#32;2016, pp. 327–343.&#32;</li><li class="hugo-simplecite-reference-list-item" id="bibreference-3">T. Laarhoven,&#32;M. Mosca, and&#32;J. Van De Pol,&#32;<q>Finding shortest lattice vectors faster using quantum search,</q>&#32;<em>Designs, Codes and Cryptography</em>,&#32;vol. 77,&#32;pp. 375–400,&#32;2015.&#32;</li><li class="hugo-simplecite-reference-list-item" id="bibreference-4">M. Albrecht,&#32;B. Curtis,&#32;A. Deo,&#32;A. Davidson,&#32;R. Player,&#32;E. Postlethwaite,&#32;F. Virdia, and&#32;T. Wunderer,&#32;<q>Estimate all the ${$LWE, NTRU$}$ schemes!,</q>&#32;In Proc. Security and cryptography for networks: 11th international conference, SCN 2018, amalfi, italy, september 5–7, 2018, proceedings 11,&#32;2018, pp. 351–367.&#32;</li><li class="hugo-simplecite-reference-list-item" id="bibreference-5">A. Chailloux and&#32;J. Loyer,&#32;<q>Lattice sieving via quantum random walks,</q>&#32;In Proc. Advances in cryptology–ASIACRYPT 2021: 27th international conference on the theory and application of cryptology and information security, singapore, december 6–10, 2021, proceedings, part IV 27,&#32;2021, pp. 63–91.&#32;</li><li class="hugo-simplecite-reference-list-item" id="bibreference-6">L. Ducas,&#32;<q>Shortest vector from lattice sieving: A few dimensions for free,</q>&#32;In Proc. Annual international conference on the theory and applications of cryptographic techniques,&#32;2018, pp. 125–145.&#32;</li><li class="hugo-simplecite-reference-list-item" id="bibreference-7">T. Le Trieu Phong,&#32;Y. Aono, and&#32;S. Moriai,&#32;<em>Lotus</em>.&#32;Technical report, National Institute of Standards; Technology, 2017 …, 2017.&#32;</li><li class="hugo-simplecite-reference-list-item" id="bibreference-8">Y. Chen and&#32;P. Nguyen,&#32;<q>BKZ 2.0: Better lattice security estimates,</q>&#32;In Proc. International conference on the theory and application of cryptology and information security,&#32;2011, pp. 1–20.&#32;</li><li class="hugo-simplecite-reference-list-item" id="bibreference-9">M. Albrecht,&#32;S. Bai,&#32;P. Fouque,&#32;P. Kirchner,&#32;D. Stehlé, and&#32;W. Wen,&#32;<q>Faster enumeration-based lattice reduction: Root hermite factor time,</q>&#32;In Proc. Annual international cryptology conference,&#32;2020, pp. 186–212.&#32;</li><li class="hugo-simplecite-reference-list-item" id="bibreference-10">M. Albrecht,&#32;S. Bai,&#32;J. Li, and&#32;J. Rowell,&#32;<q>Lattice reduction with approximate enumeration oracles: Practical algorithms and concrete performance,</q>&#32;In Proc. Annual international cryptology conference,&#32;2021, pp. 732–759.&#32;</li></ol>
 </article>
  
       
@@ -558,7 +628,11 @@ https://github.com/alex-shpak/hugo-book
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#sieving">Sieving</a></li>
+    <li><a href="#sieving">Sieving</a>
+      <ul>
+        <li><a href="#the-dimension-for-free">The Dimension for free</a></li>
+      </ul>
+    </li>
     <li><a href="#enumeration">Enumeration</a>
       <ul>
         <li><a href="#method-comparison">Method comparison</a></li>

@@ -1,0 +1,349 @@
+[
+  {
+    "author": [
+      {
+        "family": "Albrecht",
+        "given": "Martin R"
+      },
+      {
+        "family": "Bai",
+        "given": "Shi"
+      },
+      {
+        "family": "Fouque",
+        "given": "Pierre-Alain"
+      },
+      {
+        "family": "Kirchner",
+        "given": "Paul"
+      },
+      {
+        "family": "Stehlé",
+        "given": "Damien"
+      },
+      {
+        "family": "Wen",
+        "given": "Weiqiang"
+      }
+    ],
+    "container-title": "Annual international cryptology conference",
+    "id": "albrecht2020faster",
+    "issued": {
+      "date-parts": [
+        [
+          2020
+        ]
+      ]
+    },
+    "page": "186-212",
+    "publisher": "Springer",
+    "title": "Faster enumeration-based lattice reduction: Root hermite factor time",
+    "title-short": "Faster enumeration-based lattice reduction",
+    "type": "paper-conference"
+  },
+  {
+    "author": [
+      {
+        "family": "Albrecht",
+        "given": "Martin R"
+      },
+      {
+        "family": "Curtis",
+        "given": "Benjamin R"
+      },
+      {
+        "family": "Deo",
+        "given": "Amit"
+      },
+      {
+        "family": "Davidson",
+        "given": "Alex"
+      },
+      {
+        "family": "Player",
+        "given": "Rachel"
+      },
+      {
+        "family": "Postlethwaite",
+        "given": "Eamonn W"
+      },
+      {
+        "family": "Virdia",
+        "given": "Fernando"
+      },
+      {
+        "family": "Wunderer",
+        "given": "Thomas"
+      }
+    ],
+    "container-title": "Security and cryptography for networks: 11th international conference, SCN 2018, amalfi, italy, september 5–7, 2018, proceedings 11",
+    "id": "albrecht2018estimate",
+    "issued": {
+      "date-parts": [
+        [
+          2018
+        ]
+      ]
+    },
+    "page": "351-367",
+    "publisher": "Springer",
+    "title": "Estimate all the $\\{$LWE, NTRU$\\}$ schemes!",
+    "type": "paper-conference"
+  },
+  {
+    "author": [
+      {
+        "family": "Le Trieu Phong",
+        "given": "Takuya Hayashi"
+      },
+      {
+        "family": "Aono",
+        "given": "Yoshinori"
+      },
+      {
+        "family": "Moriai",
+        "given": "Shiho"
+      }
+    ],
+    "id": "le2017lotus",
+    "issued": {
+      "date-parts": [
+        [
+          2017
+        ]
+      ]
+    },
+    "publisher": "Technical report, National Institute of Standards; Technology, 2017 …",
+    "title": "Lotus",
+    "type": "report"
+  },
+  {
+    "author": [
+      {
+        "family": "Albrecht",
+        "given": "Martin R"
+      },
+      {
+        "family": "Bai",
+        "given": "Shi"
+      },
+      {
+        "family": "Li",
+        "given": "Jianwei"
+      },
+      {
+        "family": "Rowell",
+        "given": "Joe"
+      }
+    ],
+    "container-title": "Annual international cryptology conference",
+    "id": "albrecht2021lattice",
+    "issued": {
+      "date-parts": [
+        [
+          2021
+        ]
+      ]
+    },
+    "page": "732-759",
+    "publisher": "Springer",
+    "title": "Lattice reduction with approximate enumeration oracles: Practical algorithms and concrete performance",
+    "title-short": "Lattice reduction with approximate enumeration oracles",
+    "type": "paper-conference"
+  },
+  {
+    "author": [
+      {
+        "family": "Chen",
+        "given": "Yuanmi"
+      },
+      {
+        "family": "Nguyen",
+        "given": "Phong Q"
+      }
+    ],
+    "container-title": "International conference on the theory and application of cryptology and information security",
+    "id": "chen2011bkz",
+    "issued": {
+      "date-parts": [
+        [
+          2011
+        ]
+      ]
+    },
+    "page": "1-20",
+    "publisher": "Springer",
+    "title": "BKZ 2.0: Better lattice security estimates",
+    "title-short": "BKZ 2.0",
+    "type": "paper-conference"
+  },
+  {
+    "author": [
+      {
+        "family": "Becker",
+        "given": "Anja"
+      },
+      {
+        "family": "Ducas",
+        "given": "Léo"
+      },
+      {
+        "family": "Gama",
+        "given": "Nicolas"
+      },
+      {
+        "family": "Laarhoven",
+        "given": "Thijs"
+      }
+    ],
+    "container-title": "Proceedings of the twenty-seventh annual ACM-SIAM symposium on discrete algorithms",
+    "id": "becker2016new",
+    "issued": {
+      "date-parts": [
+        [
+          2016
+        ]
+      ]
+    },
+    "page": "10-24",
+    "publisher": "SIAM",
+    "title": "New directions in nearest neighbor searching with applications to lattice sieving",
+    "type": "paper-conference"
+  },
+  {
+    "author": [
+      {
+        "family": "Alkim",
+        "given": "Erdem"
+      },
+      {
+        "family": "Ducas",
+        "given": "Léo"
+      },
+      {
+        "family": "Pöppelmann",
+        "given": "Thomas"
+      },
+      {
+        "family": "Schwabe",
+        "given": "Peter"
+      }
+    ],
+    "container-title": "25th USENIX security symposium (USENIX security 16)",
+    "id": "alkim2016post",
+    "issued": {
+      "date-parts": [
+        [
+          2016
+        ]
+      ]
+    },
+    "page": "327-343",
+    "title": "Post-quantum key Exchange—A new hope",
+    "type": "paper-conference"
+  },
+  {
+    "author": [
+      {
+        "family": "Laarhoven",
+        "given": "Thijs"
+      },
+      {
+        "family": "Mosca",
+        "given": "Michele"
+      },
+      {
+        "family": "Van De Pol",
+        "given": "Joop"
+      }
+    ],
+    "container-title": "Designs, Codes and Cryptography",
+    "id": "laarhoven2015finding",
+    "issued": {
+      "date-parts": [
+        [
+          2015
+        ]
+      ]
+    },
+    "page": "375-400",
+    "publisher": "Springer",
+    "title": "Finding shortest lattice vectors faster using quantum search",
+    "type": "article-journal",
+    "volume": "77"
+  },
+  {
+    "author": [
+      {
+        "family": "Chailloux",
+        "given": "André"
+      },
+      {
+        "family": "Loyer",
+        "given": "Johanna"
+      }
+    ],
+    "container-title": "Advances in cryptology–ASIACRYPT 2021: 27th international conference on the theory and application of cryptology and information security, singapore, december 6–10, 2021, proceedings, part IV 27",
+    "id": "chailloux2021lattice",
+    "issued": {
+      "date-parts": [
+        [
+          2021
+        ]
+      ]
+    },
+    "page": "63-91",
+    "publisher": "Springer",
+    "title": "Lattice sieving via quantum random walks",
+    "type": "paper-conference"
+  },
+  {
+    "author": [
+      {
+        "family": "Becker",
+        "given": "Anja"
+      },
+      {
+        "family": "Gama",
+        "given": "Nicolas"
+      },
+      {
+        "family": "Joux",
+        "given": "Antoine"
+      }
+    ],
+    "container-title": "Cryptology ePrint Archive",
+    "id": "becker2015speeding",
+    "issued": {
+      "date-parts": [
+        [
+          2015
+        ]
+      ]
+    },
+    "title": "Speeding-up lattice sieving without increasing the memory, using sub-quadratic nearest neighbor search",
+    "type": "article-journal"
+  },
+  {
+    "author": [
+      {
+        "family": "Ducas",
+        "given": "Léo"
+      }
+    ],
+    "container-title": "Annual international conference on the theory and applications of cryptographic techniques",
+    "id": "ducas2018shortest",
+    "issued": {
+      "date-parts": [
+        [
+          2018
+        ]
+      ]
+    },
+    "page": "125-145",
+    "publisher": "Springer",
+    "title": "Shortest vector from lattice sieving: A few dimensions for free",
+    "title-short": "Shortest vector from lattice sieving",
+    "type": "paper-conference"
+  }
+]
