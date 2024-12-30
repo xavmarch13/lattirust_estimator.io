@@ -1,0 +1,49 @@
+[
+  {
+    "author": [
+      {
+        "family": "Lambek",
+        "given": "Joachim"
+      }
+    ],
+    "id": "lambek2009lectures",
+    "issued": {
+      "date-parts": [
+        [
+          2009
+        ]
+      ]
+    },
+    "publisher": "American Mathematical Soc.",
+    "title": "Lectures on rings and modules",
+    "type": "book",
+    "volume": "283"
+  },
+  {
+    "author": [
+      {
+        "family": "Langlois",
+        "given": "Adeline"
+      },
+      {
+        "family": "Stehlé",
+        "given": "Damien"
+      }
+    ],
+    "container-title": "Designs, Codes and Cryptography",
+    "id": "langlois2015worst",
+    "issue": "3",
+    "issued": {
+      "date-parts": [
+        [
+          2015
+        ]
+      ]
+    },
+    "page": "565-599",
+    "publisher": "Springer",
+    "title": "Worst-case to average-case reductions for module lattices",
+    "type": "article-journal",
+    "volume": "75"
+  }
+]

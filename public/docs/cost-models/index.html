@@ -18,8 +18,8 @@ Sieving algorithms for SVP work by iteratively refining a large set of lattice v
 <meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/lattirust_estimator.io/docs/cost-models/">
   <meta property="og:site_name" content="Lattirust estimator 0.1">
   <meta property="og:title" content="Cost Models">
-  <meta property="og:description" content="Cost Models#Given the simplified cost for BKZ behaviour that we consider $cost = \tau \cdot d \cdot T_{SVP}$, we still need to define the cost of the SVP solver. Sieving and enumeration are the two common exact strategies to find the shortest non-zero vector in a lattice.
-Sieving#Sieving algorithms for SVP work by iteratively refining a large set of lattice vectors to obtain progressively shorter vectors until the shortest one is found. In its basic form, the sieving process starts by generating a large set of random lattice vectors, often called a “cloud.” Pairs of vectors are then combined (usually by subtracting them) to produce shorter vectors, which are then added back to the cloud if they meet certain criteria. This process continues until the vectors in the cloud converge towards the shortest lattice vector. Modern sieving methods, like the GaussSieve or ListSieve, have been optimized to handle higher-dimensional lattices by limiting pairwise vector interactions, which reduces computational complexity. Sieving requires storing a large number of lattice vectors and, therefore, can be memoryintensive, especially as the lattice dimension grows. Here we present a simplified graphs of selecting two vectors out of a cloud, taking the difference between two vectors and looking what is the smaller between the three vectors.">
+  <meta property="og:description" content="Cost Models # Given the simplified cost for BKZ behaviour that we consider $cost = \tau \cdot d \cdot T_{SVP}$, we still need to define the cost of the SVP solver. Sieving and enumeration are the two common exact strategies to find the shortest non-zero vector in a lattice.
+Sieving # Sieving algorithms for SVP work by iteratively refining a large set of lattice vectors to obtain progressively shorter vectors until the shortest one is found. In its basic form, the sieving process starts by generating a large set of random lattice vectors, often called a “cloud.” Pairs of vectors are then combined (usually by subtracting them) to produce shorter vectors, which are then added back to the cloud if they meet certain criteria. This process continues until the vectors in the cloud converge towards the shortest lattice vector. Modern sieving methods, like the GaussSieve or ListSieve, have been optimized to handle higher-dimensional lattices by limiting pairwise vector interactions, which reduces computational complexity. Sieving requires storing a large number of lattice vectors and, therefore, can be memoryintensive, especially as the lattice dimension grows. Here we present a simplified graphs of selecting two vectors out of a cloud, taking the difference between two vectors and looking what is the smaller between the three vectors.">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="website">
 <title>Cost Models | Lattirust estimator 0.1</title>
@@ -28,7 +28,7 @@ Sieving#Sieving algorithms for SVP work by iteratively refining a large set of
 <link rel="canonical" href="http://localhost:1313/lattirust_estimator.io/docs/cost-models/">
 <link rel="stylesheet" href="/lattirust_estimator.io/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
   <script defer src="/lattirust_estimator.io/fuse.min.js"></script>
-  <script defer src="/lattirust_estimator.io/en.search.min.3c204270b12ebaf65876fa0a92b672baf5cc323a485ceedd205f0875dcfdbc8e.js" integrity="sha256-PCBCcLEuuvZYdvoKkrZyuvXMMjpIXO7dIF8Iddz9vI4=" crossorigin="anonymous"></script>
+  <script defer src="/lattirust_estimator.io/en.search.min.83fc8d945169090f79a411863a3d51977e65ff2cf35fce761823a5575e7be388.js" integrity="sha256-g/yNlFFpCQ95pBGGOj1Rl35l/yzzX852GCOlV15744g=" crossorigin="anonymous"></script>
 <link rel="alternate" type="application/rss+xml" href="http://localhost:1313/lattirust_estimator.io/docs/cost-models/index.xml" title="Lattirust estimator 0.1" />
 <!--
 Made with Book Theme
@@ -170,119 +170,11 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <span>SIS variants</span>
+    <a href="/lattirust_estimator.io/docs/rsis-msis/" class="">Module SIS and Ring SIS</a>
   
 
           
   <ul>
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/lattirust_estimator.io/docs/sis-variants/basis/" class="">Basis</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/lattirust_estimator.io/docs/sis-variants/isisf/" class="">Isisf</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/lattirust_estimator.io/docs/sis-variants/kmsis/" class="">Kmsis</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/lattirust_estimator.io/docs/sis-variants/krisis/" class="">Krisis</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/lattirust_estimator.io/docs/sis-variants/ksis/" class="">Ksis</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/lattirust_estimator.io/docs/sis-variants/module-sis/" class="">Module Sis</a>
-  
-
-        </li>
-      
-    
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/lattirust_estimator.io/docs/sis-variants/prisis/" class="">Prisis</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/lattirust_estimator.io/docs/sis-variants/ring-sis/" class="">Ring Sis</a>
-  
-
-        </li>
-      
-    
-      
     
   </ul>
 
@@ -296,7 +188,25 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/lattirust_estimator.io/docs/searching/" class="">Searching for the right parameters</a>
+    <a href="/lattirust_estimator.io/docs/sis-variants/" class="">SIS variants</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/lattirust_estimator.io/docs/estimator-options/" class="">Estimator options and API</a>
   
 
           

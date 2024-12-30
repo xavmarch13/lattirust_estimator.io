@@ -50,7 +50,7 @@ We often assume that the entries of \( \boldsymbol{A} \) are uniformly distribut
 
 Firstly, let us assume that q is always prime and that $w>h$. We can state the following definitions.
 
-**Definition 1 :** We define \\(SIS(h, q, w, \beta, p)\\) as follows. Given \\(\bold{A} \in \mathbb{Z}_q^{h\times w}\\) find the short vector \\(\bold{s} \in \mathbb{Z}^w\\)   where \\(0 < \lVert s \rVert_p \leq \beta\\) and $q=\text{poly}(h)$, $m=\text{poly}(h)$, $\beta=\text{poly}(h)$.
+**Definition 1 :** We define \\(SIS(h, w, q, \beta, p)\\) as follows. Given \\(\bold{A} \in \mathbb{Z}_q^{h\times w}\\) find the short vector \\(\bold{s} \in \mathbb{Z}^w\\)   where \\(0 < \lVert s \rVert_p \leq \beta\\) and $q=\text{poly}(h)$, $m=\text{poly}(h)$, $\beta=\text{poly}(h)$.
 
 We can note that the problem becomes trivial as soon as \\(\beta \geq q\\), no matter the norm used. Also, for the problem not to be vacuous (no possible solutions), we need the select $\beta$ big enough. An often used bound is $\beta > \sqrt{h\log(q)}$
 

@@ -13,7 +13,7 @@ The way we solve the Shortest Vector Problem (SVP) and similar problems depends 
 <meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/lattirust_estimator.io/docs/lattice-reduction/">
   <meta property="og:site_name" content="Lattirust estimator 0.1">
   <meta property="og:title" content="Lattice reduction">
-  <meta property="og:description" content="How to solve SVP ?#The way we solve the Shortest Vector Problem (SVP) and similar problems depends a lot on the lattice dimension. In lower dimensions, exact solvers are practical, and there are two main approaches: enumeration and sieving. Both methods perform some exhaustive search over all short lattice vectors—enumeration does this deterministically, while sieving is typically randomized. However, as the lattice dimension grows, the number of possible solutions increases exponentially, making these methods infeasible for high dimensions (think 100 and more).">
+  <meta property="og:description" content="How to solve SVP ? # The way we solve the Shortest Vector Problem (SVP) and similar problems depends a lot on the lattice dimension. In lower dimensions, exact solvers are practical, and there are two main approaches: enumeration and sieving. Both methods perform some exhaustive search over all short lattice vectors—enumeration does this deterministically, while sieving is typically randomized. However, as the lattice dimension grows, the number of possible solutions increases exponentially, making these methods infeasible for high dimensions (think 100 and more).">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="website">
 <title>Lattice reduction | Lattirust estimator 0.1</title>
@@ -22,7 +22,7 @@ The way we solve the Shortest Vector Problem (SVP) and similar problems depends 
 <link rel="canonical" href="http://localhost:1313/lattirust_estimator.io/docs/lattice-reduction/">
 <link rel="stylesheet" href="/lattirust_estimator.io/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
   <script defer src="/lattirust_estimator.io/fuse.min.js"></script>
-  <script defer src="/lattirust_estimator.io/en.search.min.3c204270b12ebaf65876fa0a92b672baf5cc323a485ceedd205f0875dcfdbc8e.js" integrity="sha256-PCBCcLEuuvZYdvoKkrZyuvXMMjpIXO7dIF8Iddz9vI4=" crossorigin="anonymous"></script>
+  <script defer src="/lattirust_estimator.io/en.search.min.83fc8d945169090f79a411863a3d51977e65ff2cf35fce761823a5575e7be388.js" integrity="sha256-g/yNlFFpCQ95pBGGOj1Rl35l/yzzX852GCOlV15744g=" crossorigin="anonymous"></script>
 <link rel="alternate" type="application/rss+xml" href="http://localhost:1313/lattirust_estimator.io/docs/lattice-reduction/index.xml" title="Lattirust estimator 0.1" />
 <!--
 Made with Book Theme
@@ -164,119 +164,11 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <span>SIS variants</span>
+    <a href="/lattirust_estimator.io/docs/rsis-msis/" class="">Module SIS and Ring SIS</a>
   
 
           
   <ul>
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/lattirust_estimator.io/docs/sis-variants/basis/" class="">Basis</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/lattirust_estimator.io/docs/sis-variants/isisf/" class="">Isisf</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/lattirust_estimator.io/docs/sis-variants/kmsis/" class="">Kmsis</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/lattirust_estimator.io/docs/sis-variants/krisis/" class="">Krisis</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/lattirust_estimator.io/docs/sis-variants/ksis/" class="">Ksis</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/lattirust_estimator.io/docs/sis-variants/module-sis/" class="">Module Sis</a>
-  
-
-        </li>
-      
-    
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/lattirust_estimator.io/docs/sis-variants/prisis/" class="">Prisis</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/lattirust_estimator.io/docs/sis-variants/ring-sis/" class="">Ring Sis</a>
-  
-
-        </li>
-      
-    
-      
     
   </ul>
 
@@ -290,7 +182,25 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/lattirust_estimator.io/docs/searching/" class="">Searching for the right parameters</a>
+    <a href="/lattirust_estimator.io/docs/sis-variants/" class="">SIS variants</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/lattirust_estimator.io/docs/estimator-options/" class="">Estimator options and API</a>
   
 
           
@@ -605,7 +515,7 @@ $$\alpha_\beta = \sqrt{\frac{d}{2\pi e}}^\frac{2}{\beta - 1}$$<p>This result fro
 </ul>
 $$\lim_{\beta\rightarrow\infty}\delta_\beta = (\frac{\beta}{2\pi e}(\pi\beta)^\frac{1}{\beta})^\frac{1}{2(\beta - 1)}$$<p>and write for SIS</p>
 $$\lVert \bold{b_1} \rVert \approx \delta_\beta^{d-1} Vol(\Lambda)^{\frac{1}{d}}$$<ul>
-<li>Costing BKZ as a whole is complicated because we do not know how many tours we will have to run, which means we don&rsquo;t really know in advance the number of SVP-Oracle calls we will have to make. Furthermore, many improvements on plain BKZ have been made when some techniques are used as a subroutine for the oracle (for example extreme pruning in the context of enumeration), which makes security estimates done via lattice reduction very sensitive to many factors. Also, local preprocessing techniques have been introduced as part of the algorithm in a variant of BKZ known as progressive BKZ. To make our tool comparable to the lattice estimator by [<a class="hugo-simplecite-cite-hyperlink" href="#bibreference-10" title="M. Albrecht, R. Player, and S. Scott, On the concrete hardness of learning with errors. Cryptology ePrint Archive, Paper 2015/046, 2015. [Online]. Available: https://eprint.iacr.org/2015/046 ">10</a>], we will follow the same simplifying assumption and consider a consistent 8 tours of BKZ. This makes sense following experimental results that showed that most progress is made in the 7-9 first tours. We will then use:
+<li>Costing BKZ as a whole is complicated because we do not know how many tours we will have to run, which means we don&rsquo;t really know in advance the number of SVP-Oracle calls we will have to make. Furthermore, many improvements on plain BKZ have been made when some techniques are used as a subroutine for the oracle (for example extreme pruning in the context of enumeration), which makes security estimates done via lattice reduction very sensitive to many factors. Also, local preprocessing techniques have been introduced as part of the algorithm in a variant of BKZ known as progressive BKZ. To make our tool comparable to the lattice estimator by [<a class="hugo-simplecite-cite-hyperlink" href="#bibreference-10" title="M. Albrecht, R. Player, and S. Scott, On the concrete hardness of learning with errors. Cryptology ePrint Archive, Paper 2015/046, 2015. [Online]. Available: https://eprint.iacr.org/2015/046  ">10</a>], we will follow the same simplifying assumption and consider a consistent 8 tours of BKZ. This makes sense following experimental results that showed that most progress is made in the 7-9 first tours. We will then use:
 $$cost = \tau \cdot d \cdot T_{SVP}$$
 where</li>
 </ul>

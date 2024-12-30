@@ -4,42 +4,54 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="
-  One-more-ISIS
+  Our tool
   #
 
 
-  Scheme
+  Searching for the best parameters on single SIS instances
   #
 
 
-  Reduction
+  Searching for the best parameters on multiple SIS instances
   #
 
-
-  USage
-  #
-">
+TODO">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
-<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/lattirust_estimator.io/docs/sis-variants/one-more-isis/">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/lattirust_estimator.io/docs/estimator-options/">
   <meta property="og:site_name" content="Lattirust estimator 0.1">
-  <meta property="og:title" content="Lattirust estimator 0.1">
-  <meta property="og:description" content="One-more-ISIS # Scheme # Reduction # USage #">
+  <meta property="og:title" content="Estimator options and API">
+  <meta property="og:description" content="Our tool # Searching for the best parameters on single SIS instances # Searching for the best parameters on multiple SIS instances # TODO">
   <meta property="og:locale" content="en_us">
-  <meta property="og:type" content="article">
-    <meta property="article:section" content="docs">
-<title>One More Isis | Lattirust estimator 0.1</title>
+  <meta property="og:type" content="website">
+<title>Estimator options and API | Lattirust estimator 0.1</title>
 <link rel="icon" href="/lattirust_estimator.io/favicon.png" >
 <link rel="manifest" href="/lattirust_estimator.io/manifest.json">
-<link rel="canonical" href="http://localhost:1313/lattirust_estimator.io/docs/sis-variants/one-more-isis/">
+<link rel="canonical" href="http://localhost:1313/lattirust_estimator.io/docs/estimator-options/">
 <link rel="stylesheet" href="/lattirust_estimator.io/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
   <script defer src="/lattirust_estimator.io/fuse.min.js"></script>
   <script defer src="/lattirust_estimator.io/en.search.min.83fc8d945169090f79a411863a3d51977e65ff2cf35fce761823a5575e7be388.js" integrity="sha256-g/yNlFFpCQ95pBGGOj1Rl35l/yzzX852GCOlV15744g=" crossorigin="anonymous"></script>
+<link rel="alternate" type="application/rss+xml" href="http://localhost:1313/lattirust_estimator.io/docs/estimator-options/index.xml" title="Lattirust estimator 0.1" />
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
 -->
-  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body);"></script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body, {
+            delimiters: [
+                {left: "$$", right: "$$", display: true},
+                {left: "$", right: "$", display: false}
+            ]
+        });
+    });
+</script>
+
 
 <link rel="stylesheet" type="text/css" href="http://localhost:1313/lattirust_estimator.io/scss/hugo-simplecite.min.138dd14c6aaf1b1a9b55c4fe22f82166812ce8081413d67a3b464e411d2b63ef.css">
 </head>
@@ -184,71 +196,6 @@ https://github.com/alex-shpak/hugo-book
           
   <ul>
     
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/lattirust_estimator.io/docs/sis-variants/basis/" class="">Basis</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/lattirust_estimator.io/docs/sis-variants/isisf/" class="">Isisf</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/lattirust_estimator.io/docs/sis-variants/kmsis/" class="">Kmsis</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/lattirust_estimator.io/docs/sis-variants/krisis/" class="">Krisis</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/lattirust_estimator.io/docs/sis-variants/one-more-isis/" class="active">One More Isis</a>
-  
-
-        </li>
-      
-    
   </ul>
 
         </li>
@@ -261,7 +208,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/lattirust_estimator.io/docs/searching/" class="">Searching for the right parameters</a>
+    <a href="/lattirust_estimator.io/docs/estimator-options/" class="active">Estimator options and API</a>
   
 
           
@@ -307,7 +254,7 @@ https://github.com/alex-shpak/hugo-book
     <img src="/lattirust_estimator.io/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
 
-  <h3>One More Isis</h3>
+  <h3>Estimator options and API</h3>
 
   <label for="toc-control">
     
@@ -323,9 +270,8 @@ https://github.com/alex-shpak/hugo-book
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#scheme">Scheme</a></li>
-    <li><a href="#reduction">Reduction</a></li>
-    <li><a href="#usage">USage</a></li>
+    <li><a href="#searching-for-the-best-parameters-on-single-sis-instances">Searching for the best parameters on single SIS instances</a></li>
+    <li><a href="#searching-for-the-best-parameters-on-multiple-sis-instances">Searching for the best parameters on multiple SIS instances</a></li>
   </ul>
 </nav>
 
@@ -338,22 +284,19 @@ https://github.com/alex-shpak/hugo-book
 
       
       
-  <article class="markdown book-article"><h1 id="one-more-isis">
-  One-more-ISIS
-  <a class="anchor" href="#one-more-isis">#</a>
+  <article class="markdown book-article"><h1 id="our-tool">
+  Our tool
+  <a class="anchor" href="#our-tool">#</a>
 </h1>
-<h2 id="scheme">
-  Scheme
-  <a class="anchor" href="#scheme">#</a>
+<h2 id="searching-for-the-best-parameters-on-single-sis-instances">
+  Searching for the best parameters on single SIS instances
+  <a class="anchor" href="#searching-for-the-best-parameters-on-single-sis-instances">#</a>
 </h2>
-<h2 id="reduction">
-  Reduction
-  <a class="anchor" href="#reduction">#</a>
+<h2 id="searching-for-the-best-parameters-on-multiple-sis-instances">
+  Searching for the best parameters on multiple SIS instances
+  <a class="anchor" href="#searching-for-the-best-parameters-on-multiple-sis-instances">#</a>
 </h2>
-<h2 id="usage">
-  USage
-  <a class="anchor" href="#usage">#</a>
-</h2>
+<p>TODO</p>
 </article>
  
       
@@ -395,9 +338,8 @@ https://github.com/alex-shpak/hugo-book
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#scheme">Scheme</a></li>
-    <li><a href="#reduction">Reduction</a></li>
-    <li><a href="#usage">USage</a></li>
+    <li><a href="#searching-for-the-best-parameters-on-single-sis-instances">Searching for the best parameters on single SIS instances</a></li>
+    <li><a href="#searching-for-the-best-parameters-on-multiple-sis-instances">Searching for the best parameters on multiple SIS instances</a></li>
   </ul>
 </nav>
 

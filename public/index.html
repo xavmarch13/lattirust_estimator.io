@@ -14,7 +14,7 @@ As quantum computing advances, many of the cryptographic techniques that underpi
 <meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/lattirust_estimator.io/">
   <meta property="og:site_name" content="Lattirust estimator 0.1">
   <meta property="og:title" content="A Library for Lattice Parameter Selection">
-  <meta property="og:description" content="Introduction#As quantum computing advances, many of the cryptographic techniques that underpin our current digital security may soon become vulnerable [1]. Quantum computers, leveraging algorithms like Shor’s [2], have the potential to break widely-used public key cryptosystems such as RSA and ECC, posing a serious threat to data confidentiality and integrity. In response, researchers are developing post-quantum cryptography (PQC)—new cryptographic algorithms designed to withstand quantum attacks [3].">
+  <meta property="og:description" content="Introduction # As quantum computing advances, many of the cryptographic techniques that underpin our current digital security may soon become vulnerable [1]. Quantum computers, leveraging algorithms like Shor’s [2], have the potential to break widely-used public key cryptosystems such as RSA and ECC, posing a serious threat to data confidentiality and integrity. In response, researchers are developing post-quantum cryptography (PQC)—new cryptographic algorithms designed to withstand quantum attacks [3].">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="website">
 <title>A Library for Lattice Parameter Selection | Lattirust estimator 0.1</title>
@@ -23,7 +23,7 @@ As quantum computing advances, many of the cryptographic techniques that underpi
 <link rel="canonical" href="http://localhost:1313/lattirust_estimator.io/">
 <link rel="stylesheet" href="/lattirust_estimator.io/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
   <script defer src="/lattirust_estimator.io/fuse.min.js"></script>
-  <script defer src="/lattirust_estimator.io/en.search.min.3c204270b12ebaf65876fa0a92b672baf5cc323a485ceedd205f0875dcfdbc8e.js" integrity="sha256-PCBCcLEuuvZYdvoKkrZyuvXMMjpIXO7dIF8Iddz9vI4=" crossorigin="anonymous"></script>
+  <script defer src="/lattirust_estimator.io/en.search.min.83fc8d945169090f79a411863a3d51977e65ff2cf35fce761823a5575e7be388.js" integrity="sha256-g/yNlFFpCQ95pBGGOj1Rl35l/yzzX852GCOlV15744g=" crossorigin="anonymous"></script>
 <link rel="alternate" type="application/rss+xml" href="http://localhost:1313/lattirust_estimator.io/index.xml" title="Lattirust estimator 0.1" />
 <!--
 Made with Book Theme
@@ -150,6 +150,24 @@ https://github.com/alex-shpak/hugo-book
   
 
   
+    <a href="/lattirust_estimator.io/docs/rsis-msis/" class="">Module SIS and Ring SIS</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
     <span>SIS variants</span>
   
 
@@ -235,6 +253,17 @@ https://github.com/alex-shpak/hugo-book
       
     
       
+        <li>
+          
+  
+  
+
+  
+    <a href="/lattirust_estimator.io/docs/sis-variants/one-more-isis/" class="">One More Isis</a>
+  
+
+        </li>
+      
     
       
         <li>
@@ -262,6 +291,17 @@ https://github.com/alex-shpak/hugo-book
         </li>
       
     
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/lattirust_estimator.io/docs/sis-variants/vsis/" class="">Vsis</a>
+  
+
+        </li>
       
     
   </ul>
@@ -363,7 +403,7 @@ analysis would suggest.</p>
 </ul>
 <p>This library is to be integrated into lattirust, our library for lattice-based proofs.  This work was conducted as part of a research project at the Computational Security Laboratory (COMPSEC) at EPFL.</p>
 <p>The blog will be structured into several sections. First, we will explore the theoretical foundations of lattice and lattice reduction. Then, we will discuss the cost models that relate different methods of solving these problems to actual security estimates. After that we will explain the SIS problem and its variants and how we model their security for the L2 and Linfinity norms. Finally, we will provide a detailed walkthrough of how to use the Rust tool, including how to use it for security parameter estimation in practical applications.</p>
-<p>Note that our tool will be based on the state-of-the-art estimator developed by Martin Albrecht et al. [<a class="hugo-simplecite-cite-hyperlink" href="#bibreference-9" title="M. Albrecht, R. Player, and S. Scott, On the concrete hardness of learning with errors. Cryptology ePrint Archive, Paper 2015/046, 2015. [Online]. Available: https://eprint.iacr.org/2015/046 ">9</a>]. Most of our design decisions will align with their work, as it is, to the best of our knowledge, the most precise and up-to-date estimator available for lattice-based problem security estimations. However, we will differ by centering our estimator on the SIS problem and its variants to specifically target zkSNARKs (zero knowledge succinct non-interactive arguments). Additionally, we will port the estimator logic from python and sage into Rust, offering a modern and efficient implementation.</p>
+<p>Note that our tool will be based on the state-of-the-art estimator developed by Martin Albrecht et al. [<a class="hugo-simplecite-cite-hyperlink" href="#bibreference-9" title="M. Albrecht, R. Player, and S. Scott, On the concrete hardness of learning with errors. Cryptology ePrint Archive, Paper 2015/046, 2015. [Online]. Available: https://eprint.iacr.org/2015/046  ">9</a>]. Most of our design decisions will align with their work, as it is, to the best of our knowledge, the most precise and up-to-date estimator available for lattice-based problem security estimations. However, we will differ by centering our estimator on the SIS problem and its variants to specifically target zkSNARKs (zero knowledge succinct non-interactive arguments). Additionally, we will port the estimator logic from python and sage into Rust, offering a modern and efficient implementation.</p>
 <h1 id="references">
   References
   <a class="anchor" href="#references">#</a>

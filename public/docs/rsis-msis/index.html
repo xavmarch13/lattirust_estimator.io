@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head><script src="/lattirust_estimator.io/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=lattirust_estimator.io/livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+  Compact versions of SIS
+  #
+
+In practice, basic SIS leads to large key sizes and large parameters overall. Thinking about $\bold{A} \in \mathbb{Z}_q^{h\times w}$ with $m &gt; n$ leads to at least quadratic complexity. This is why more compact version have been introduced like Ring-SIS and Module-SIS. By using such underlying structures, we are able to obtain much smaller key sizes in the schemes that use an SIS instance as the basis for their security. As a refresher on the module and ring structure the reader can consult [1]. Consider that we choose some $h = 2^k$ and that we choose the columns of $\bold{A}$ to be elements of the ring $\mathbb{Z}_q / \langle x^h &#43; 1 \rangle$, if $h$ is a power of two it is irreducible over the rationals, then we need to precise less elements to describe the same SIS instance. Using a module, we can get an even compacter structure.">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/lattirust_estimator.io/docs/rsis-msis/">
+  <meta property="og:site_name" content="Lattirust estimator 0.1">
+  <meta property="og:title" content="Module SIS and Ring SIS">
+  <meta property="og:description" content="Compact versions of SIS # In practice, basic SIS leads to large key sizes and large parameters overall. Thinking about $\bold{A} \in \mathbb{Z}_q^{h\times w}$ with $m &gt; n$ leads to at least quadratic complexity. This is why more compact version have been introduced like Ring-SIS and Module-SIS. By using such underlying structures, we are able to obtain much smaller key sizes in the schemes that use an SIS instance as the basis for their security. As a refresher on the module and ring structure the reader can consult [1]. Consider that we choose some $h = 2^k$ and that we choose the columns of $\bold{A}$ to be elements of the ring $\mathbb{Z}_q / \langle x^h &#43; 1 \rangle$, if $h$ is a power of two it is irreducible over the rationals, then we need to precise less elements to describe the same SIS instance. Using a module, we can get an even compacter structure.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="website">
+<title>Module SIS and Ring SIS | Lattirust estimator 0.1</title>
+<link rel="icon" href="/lattirust_estimator.io/favicon.png" >
+<link rel="manifest" href="/lattirust_estimator.io/manifest.json">
+<link rel="canonical" href="http://localhost:1313/lattirust_estimator.io/docs/rsis-msis/">
+<link rel="stylesheet" href="/lattirust_estimator.io/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
+  <script defer src="/lattirust_estimator.io/fuse.min.js"></script>
+  <script defer src="/lattirust_estimator.io/en.search.min.83fc8d945169090f79a411863a3d51977e65ff2cf35fce761823a5575e7be388.js" integrity="sha256-g/yNlFFpCQ95pBGGOj1Rl35l/yzzX852GCOlV15744g=" crossorigin="anonymous"></script>
+<link rel="alternate" type="application/rss+xml" href="http://localhost:1313/lattirust_estimator.io/docs/rsis-msis/index.xml" title="Lattirust estimator 0.1" />
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body);"></script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body, {
+            delimiters: [
+                {left: "$$", right: "$$", display: true},
+                {left: "$", right: "$", display: false}
+            ]
+        });
+    });
+</script>
+
+
+<link rel="stylesheet" type="text/css" href="http://localhost:1313/lattirust_estimator.io/scss/hugo-simplecite.min.138dd14c6aaf1b1a9b55c4fe22f82166812ce8081413d67a3b464e411d2b63ef.css">
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/lattirust_estimator.io/"><span>Lattirust estimator 0.1</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/lattirust_estimator.io/docs/preliminaries/" class="">Preliminaries</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/lattirust_estimator.io/docs/lattice-reduction/" class="">Lattice reduction</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/lattirust_estimator.io/docs/cost-models/" class="">Cost Models</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/lattirust_estimator.io/docs/sis/" class="">SIS</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/lattirust_estimator.io/docs/rsis-msis/" class="active">Module SIS and Ring SIS</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/lattirust_estimator.io/docs/sis-variants/" class="">SIS variants</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/lattirust_estimator.io/docs/estimator-options/" class="">Estimator options and API</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/lattirust_estimator.io/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Module SIS and Ring SIS</h3>
+
+  <label for="toc-control">
+    
+    <img src="/lattirust_estimator.io/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#ring-sis">Ring SIS</a>
+      <ul>
+        <li><a href="#reduction-to-sis">Reduction to SIS</a></li>
+      </ul>
+    </li>
+    <li><a href="#module-sis">Module SIS</a>
+      <ul>
+        <li><a href="#reduction-to-sis-1">Reduction to SIS</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="compact-versions-of-sis">
+  Compact versions of SIS
+  <a class="anchor" href="#compact-versions-of-sis">#</a>
+</h1>
+<p>In practice, basic SIS leads to large key sizes and large parameters overall. Thinking about $\bold{A} \in \mathbb{Z}_q^{h\times w}$ with $m &gt; n$ leads to at least quadratic complexity. This is why more compact version have been introduced like Ring-SIS and Module-SIS. By using such underlying structures, we are able to obtain much smaller key sizes in the schemes that use an SIS instance as the basis for their security. As a refresher on the module and ring structure the reader can consult [<a class="hugo-simplecite-cite-hyperlink" href="#bibreference-1" title="J. Lambek, Lectures on rings and modules. American Mathematical Soc., 2009. ">1</a>]. Consider that we choose some $h = 2^k$ and that we choose the columns of $\bold{A}$ to be elements of the ring $\mathbb{Z}_q / \langle x^h + 1 \rangle$, if $h$ is a power of two it is irreducible over the rationals, then we need to precise less elements to describe the same SIS instance. Using a module, we can get an even compacter structure.</p>
+<h2 id="ring-sis">
+  Ring SIS
+  <a class="anchor" href="#ring-sis">#</a>
+</h2>
+<p><strong>Definition:[<a class="hugo-simplecite-cite-hyperlink" href="#bibreference-2" title="A. Langlois and D. Stehlé, Worst-case to average-case reductions for module lattices, Designs, Codes and Cryptography, vol. 75, no. 3, pp. 565–599, 2015. ">2</a>]</strong><br>
+We define the <strong>Ring Short Integer Solution (Ring-SIS)</strong> problem as follows $RSIS(h, w, q, \beta, p)$. Let:</p>
+<ul>
+<li>\( R_q = \mathbb{Z}_q / \langle x^h + 1 \rangle \), where \( h \) is a power of two (ensuring \( x^h + 1 \) is irreducible over \( \mathbb{Q} \)),</li>
+</ul>
+<p>Given $a_1, \ldots, a_w$ in R_q, chosen independently from the uniform distribution, find $s_1, \ldots, s_w \in R$ such that:</p>
+$$
+\sum_{i=1}^{w}a_i s_i = 0 \pmod{q} \text{ and } 0 < \|\mathbf{s}\|_p \leq \beta
+$$<p>where $\bold{s} = (s_1, \ldots, s_w)^T \in R^m$.</p>
+<p>Each ring element $r\in R$ can be interpreted as an $h$-dimensional vector with coefficients $r_i$ such that $r = \sum_{i=0}^{n-1}r_ix^i$. Now if we compare RSIS to SIS, each matrix element $a_i$ in RSIS actually actually corresponds to the $h\times h$ nega-circulant matrix. In this setup, R-SIS is just a variant of SIS where $\bold{A}$ is restricted to being block negacirculant $\bold{A}= [Rot(a_1)|\ldots|Rot(a_n)]$ where Rot(b) is defined as</p>
+$$
+\text{Rot}(b) =
+\begin{bmatrix}
+b_0 & -b_{h-1} & -b_{h-2} & \cdots & -b_1 \\
+b_1 & b_0 & -b_{h-1} & \cdots & -b_2 \\
+b_2 & b_1 & b_0 & \cdots & -b_3 \\
+\vdots & \vdots & \vdots & \ddots & \vdots \\
+b_{h-1} & b_{h-2} & b_{h-3} & \cdots & b_0
+\end{bmatrix}
+$$<h3 id="reduction-to-sis">
+  Reduction to SIS
+  <a class="anchor" href="#reduction-to-sis">#</a>
+</h3>
+<p>To estimate the security of a ring SIS instance, we then effectively transform an RSIS instance $RSIS(h, w, q, \beta, p)$ to an SIS instance $SIS(h, h \cdot w, q, \beta, p)$</p>
+<hr>
+<h2 id="module-sis">
+  Module SIS
+  <a class="anchor" href="#module-sis">#</a>
+</h2>
+<p><strong>Definition:[<a class="hugo-simplecite-cite-hyperlink" href="#bibreference-2" title="A. Langlois and D. Stehlé, Worst-case to average-case reductions for module lattices, Designs, Codes and Cryptography, vol. 75, no. 3, pp. 565–599, 2015. ">2</a>]</strong><br>
+We define the <strong>Module Short Integer Solution (Module-SIS)</strong> problem as follows $MSIS(h, w, d, q, \beta, p)$. Let:</p>
+<ul>
+<li>\( R = \mathbb{Z}_q / \langle x^h + 1 \rangle \), where \( h \) is a power of two,</li>
+<li>\( \mathcal{M} = R^d \), a rank-\( d \) module over \( R \),</li>
+</ul>
+<p>Given $\bold{a_1}, \ldots, \bold{a_w} \in R_q^d$ chosen independently from the uniform distribution, find $s_1, \ldots, s_w \in R$ such that:</p>
+$$
+\sum_{i=1}^{w}\bold{a_i} s_i = 0 \pmod{q} \text{ and } 0 < \|\mathbf{s}\|_p \leq \beta
+$$<p>where $\bold{s} = (s_1, \ldots, s_w)^T \in R^m$.</p>
+<p>Each element $\bold{a_i}$ can be seen as d coefficients in the ring and as such can be seen as an $h\cdot d \times h$ matrix. This leads a module SIS problem to be visualized as such in a standard SIS problem:</p>
+\[
+\mathbf{A} =
+\begin{bmatrix}
+\text{Rot}(a_{1,1}) & \text{Rot}(a_{1,2}) & \cdots & \text{Rot}(a_{1,w}) \\
+\text{Rot}(a_{2,1}) & \text{Rot}(a_{2,2}) & \cdots & \text{Rot}(a_{2,w}) \\
+\vdots & \vdots & \ddots & \vdots \\
+\text{Rot}(a_{d,1}) & \text{Rot}(a_{d,2}) & \cdots & \text{Rot}(a_{d,w})
+\end{bmatrix},
+\]<p>where each block \(\text{Rot}(a_{i,j})\) is a negacyclic matrix defined as:</p>
+\[
+\text{Rot}(b) =
+\begin{bmatrix}
+b_0 & -b_{n-1} & -b_{n-2} & \cdots & -b_1 \\
+b_1 & b_0 & -b_{n-1} & \cdots & -b_2 \\
+b_2 & b_1 & b_0 & \cdots & -b_3 \\
+\vdots & \vdots & \vdots & \ddots & \vdots \\
+b_{n-1} & b_{n-2} & b_{n-3} & \cdots & b_0
+\end{bmatrix}.
+\]<h3 id="reduction-to-sis-1">
+  Reduction to SIS
+  <a class="anchor" href="#reduction-to-sis-1">#</a>
+</h3>
+<p>To estimate the security of a module SIS instance, we then effectively transform an MSIS instance $MSIS(h, w, d, q, \beta, p)$ to an SIS instance $SIS(h \cdot d, h \cdot w, q, \beta, p)$. Also, note that by using $d=1$, we effectively come back to RSIS. Indeed, modules are a generalization of rings.</p>
+<h1 id="references">
+  References
+  <a class="anchor" href="#references">#</a>
+</h1>
+<ol class="hugo-simplecite-reference-list"><li class="hugo-simplecite-reference-list-item" id="bibreference-1">J. Lambek,&#32;<em>Lectures on rings and modules</em>.&#32;American Mathematical Soc., 2009.&#32;</li><li class="hugo-simplecite-reference-list-item" id="bibreference-2">A. Langlois and&#32;D. Stehlé,&#32;<q>Worst-case to average-case reductions for module lattices,</q>&#32;<em>Designs, Codes and Cryptography</em>,&#32;vol. 75,&#32;no. 3,&#32;pp. 565–599,&#32;2015.&#32;</li></ol>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#ring-sis">Ring SIS</a>
+      <ul>
+        <li><a href="#reduction-to-sis">Reduction to SIS</a></li>
+      </ul>
+    </li>
+    <li><a href="#module-sis">Module SIS</a>
+      <ul>
+        <li><a href="#reduction-to-sis-1">Reduction to SIS</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
