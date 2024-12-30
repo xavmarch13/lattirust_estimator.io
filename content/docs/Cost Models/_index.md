@@ -80,7 +80,7 @@ As a very high overview, we give a list of amelioration brought by each kind of 
 - The LOTUS cryptosystem enhances lattice enumeration techniques through optimized pruning strategies, which reduce the computational effort required for solving lattice problems like bounded distance decoding (BDD). By refining cost estimation methods for lattice reduction and enumeration.
 
 
-### Method comparison
+## Method comparison
 
 
 {{< figure src="comp.png" alt="cost plot" caption="Cost of all solvers" >}}

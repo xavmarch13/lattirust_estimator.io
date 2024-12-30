@@ -7,15 +7,15 @@
   Short Integer Solution problem (SIS)
   #
 
-Let us look at two different ways to define q-ary lattices. From \(\bold{A} \in \mathbb{Z}_q^{h\times w}\)
-$$\Lambda_q(\bold{A^T}) = \{\bold{y} \in \mathbb{Z}^w : \bold{y} = \bold{A}^T\bold{s} \text{ mod q }\text{ for some } \bold{s} \in \mathbb{Z}^h\}$$$$\Lambda^T_q(\bold{A}) = \{\bold{y} \in \mathbb{Z}^w : \bold{A}\bold{y} = \bold{0} \text{ mod q }\}$$The first lattice is generally called the primal problem and relates to the LWE problem since finding a short vector in \(\Lambda_q(\bold{A^T})\) corresponds to solving the LWE problem. The second lattice is generally called the dual problem and relates to the SIS problem since finding a short vector in \(\Lambda^T_q(\bold{A})\) corresponds to solving the SIS problem.">
+Let us look at two different ways to define m-dimensional q-ary lattices from a matrix \(\bold{A} \in \mathbb{Z}_q^{h\times w}\). We cran write:
+$$\Lambda_q(\bold{A}) = \{\bold{y} \in \mathbb{Z}^w : \bold{y} = \bold{A}^T\bold{s} \text{ mod q }\text{ for some } \bold{s} \in \mathbb{Z}^h\}$$$$\Lambda^T_q(\bold{A}) = \{\bold{y} \in \mathbb{Z}^w : \bold{A}\bold{y} = \bold{0} \text{ mod q }\}$$The first lattice, \( \Lambda_q(\boldsymbol{A}) \), is generally referred to as the primal problem and is closely related to the Learning With Errors (LWE) problem. Solving the LWE problem involves finding a short vector in \( \Lambda_q(\boldsymbol{A}) \).">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
 <meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/lattirust_estimator.io/docs/sis/">
   <meta property="og:site_name" content="Lattirust estimator 0.1">
   <meta property="og:title" content="SIS">
-  <meta property="og:description" content="Short Integer Solution problem (SIS)#Let us look at two different ways to define q-ary lattices. From \(\bold{A} \in \mathbb{Z}_q^{h\times w}\)
-$$\Lambda_q(\bold{A^T}) = \{\bold{y} \in \mathbb{Z}^w : \bold{y} = \bold{A}^T\bold{s} \text{ mod q }\text{ for some } \bold{s} \in \mathbb{Z}^h\}$$$$\Lambda^T_q(\bold{A}) = \{\bold{y} \in \mathbb{Z}^w : \bold{A}\bold{y} = \bold{0} \text{ mod q }\}$$The first lattice is generally called the primal problem and relates to the LWE problem since finding a short vector in \(\Lambda_q(\bold{A^T})\) corresponds to solving the LWE problem. The second lattice is generally called the dual problem and relates to the SIS problem since finding a short vector in \(\Lambda^T_q(\bold{A})\) corresponds to solving the SIS problem.">
+  <meta property="og:description" content="Short Integer Solution problem (SIS)#Let us look at two different ways to define m-dimensional q-ary lattices from a matrix \(\bold{A} \in \mathbb{Z}_q^{h\times w}\). We cran write:
+$$\Lambda_q(\bold{A}) = \{\bold{y} \in \mathbb{Z}^w : \bold{y} = \bold{A}^T\bold{s} \text{ mod q }\text{ for some } \bold{s} \in \mathbb{Z}^h\}$$$$\Lambda^T_q(\bold{A}) = \{\bold{y} \in \mathbb{Z}^w : \bold{A}\bold{y} = \bold{0} \text{ mod q }\}$$The first lattice, \( \Lambda_q(\boldsymbol{A}) \), is generally referred to as the primal problem and is closely related to the Learning With Errors (LWE) problem. Solving the LWE problem involves finding a short vector in \( \Lambda_q(\boldsymbol{A}) \).">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="website">
 <title>SIS | Lattirust estimator 0.1</title>
@@ -24,7 +24,7 @@ $$\Lambda_q(\bold{A^T}) = \{\bold{y} \in \mathbb{Z}^w : \bold{y} = \bold{A}^T\bo
 <link rel="canonical" href="http://localhost:1313/lattirust_estimator.io/docs/sis/">
 <link rel="stylesheet" href="/lattirust_estimator.io/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
   <script defer src="/lattirust_estimator.io/fuse.min.js"></script>
-  <script defer src="/lattirust_estimator.io/en.search.min.b01ecda6c277d757658c33b3004bfd358179f64558eac8e8e836b8efbff8d6c8.js" integrity="sha256-sB7NpsJ311dljDOzAEv9NYF59kVY6sjo6Da477/41sg=" crossorigin="anonymous"></script>
+  <script defer src="/lattirust_estimator.io/en.search.min.3c204270b12ebaf65876fa0a92b672baf5cc323a485ceedd205f0875dcfdbc8e.js" integrity="sha256-PCBCcLEuuvZYdvoKkrZyuvXMMjpIXO7dIF8Iddz9vI4=" crossorigin="anonymous"></script>
 <link rel="alternate" type="application/rss+xml" href="http://localhost:1313/lattirust_estimator.io/docs/sis/index.xml" title="Lattirust estimator 0.1" />
 <!--
 Made with Book Theme
@@ -354,20 +354,33 @@ https://github.com/alex-shpak/hugo-book
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#formal-definition">Formal definition</a></li>
-    <li><a href="#sis-and-isis">SIS and ISIS</a></li>
-    <li><a href="#sis-and-lwe">SIS and LWE</a></li>
+    <li>
+      <ul>
+        <li><a href="#lwe-problem-statement">LWE Problem Statement</a></li>
+        <li><a href="#sis-problem-statement">SIS Problem Statement</a></li>
+      </ul>
+    </li>
+    <li><a href="#formal-definitions">Formal definitions</a></li>
+    <li><a href="#attacks-on-sis">Attacks on SIS</a>
+      <ul>
+        <li><a href="#lattice-reduction-based-attacks">Lattice reduction based attacks</a></li>
+        <li><a href="#combinatorial-attacks">Combinatorial attacks</a></li>
+        <li><a href="#via-lwe">Via LWE</a></li>
+      </ul>
+    </li>
     <li><a href="#l2-norm-strategy">L2 norm strategy</a>
       <ul>
         <li><a href="#finding-the-optimal-lattice-shape-for-reduction">Finding the optimal lattice shape for reduction</a></li>
+        <li><a href="#solve-for-the-required-hermite-factor">Solve for the required hermite factor</a></li>
+        <li><a href="#estimating-the-security-by-estimating-the-bkz-cost">Estimating the security by estimating the BKZ cost</a></li>
       </ul>
     </li>
     <li><a href="#l-inf-norm-strategy">L-inf norm strategy</a>
       <ul>
+        <li><a href="#matzov-analysis">Matzov analysis</a></li>
+        <li><a href="#kyber-analysis">Kyber analysis</a></li>
         <li><a href="#the-tradeoffs">The tradeoffs</a></li>
         <li><a href="#the-search-function">The search function</a></li>
-        <li><a href="#matzov-improvements-on-the-dual-attacks">Matzov improvements on the dual attacks</a></li>
-        <li><a href="#kyber-improvements">Kyber improvements</a></li>
       </ul>
     </li>
   </ul>
@@ -386,40 +399,149 @@ https://github.com/alex-shpak/hugo-book
   Short Integer Solution problem (SIS)
   <a class="anchor" href="#short-integer-solution-problem-sis">#</a>
 </h1>
-<p>Let us look at two different ways to define q-ary lattices. From \(\bold{A} \in \mathbb{Z}_q^{h\times w}\)</p>
-$$\Lambda_q(\bold{A^T}) = \{\bold{y} \in \mathbb{Z}^w : \bold{y} = \bold{A}^T\bold{s} \text{ mod q }\text{ for some } \bold{s} \in \mathbb{Z}^h\}$$$$\Lambda^T_q(\bold{A}) = \{\bold{y} \in \mathbb{Z}^w : \bold{A}\bold{y} = \bold{0} \text{ mod q }\}$$<p>The first lattice is generally called the primal problem and relates to the LWE problem since finding a short vector in \(\Lambda_q(\bold{A^T})\) corresponds to solving the LWE problem. The second lattice is generally called the dual problem and relates to the SIS problem since finding a short vector in \(\Lambda^T_q(\bold{A})\) corresponds to solving the SIS problem.</p>
-<h2 id="formal-definition">
-  Formal definition
-  <a class="anchor" href="#formal-definition">#</a>
+<p>Let us look at two different ways to define m-dimensional q-ary lattices from a matrix \(\bold{A} \in \mathbb{Z}_q^{h\times w}\). We cran write:</p>
+$$\Lambda_q(\bold{A}) = \{\bold{y} \in \mathbb{Z}^w : \bold{y} = \bold{A}^T\bold{s} \text{ mod q }\text{ for some } \bold{s} \in \mathbb{Z}^h\}$$$$\Lambda^T_q(\bold{A}) = \{\bold{y} \in \mathbb{Z}^w : \bold{A}\bold{y} = \bold{0} \text{ mod q }\}$$<p>The first lattice, \( \Lambda_q(\boldsymbol{A}) \), is generally referred to as the <strong>primal problem</strong> and is closely related to the <strong>Learning With Errors (LWE)</strong> problem. Solving the LWE problem involves finding a short vector in \( \Lambda_q(\boldsymbol{A}) \).</p>
+<h3 id="lwe-problem-statement">
+  LWE Problem Statement
+  <a class="anchor" href="#lwe-problem-statement">#</a>
+</h3>
+<p>Given:</p>
+<ul>
+<li>A matrix \( \mathbf{A} \in \mathbb{Z}_q^{h \times w} \), where entries are chosen uniformly at random,</li>
+<li>A secret vector \( \mathbf{s} \in \mathbb{Z}_q^w \), chosen uniformly at random,</li>
+<li>An error vector \( \mathbf{e} \in \mathbb{Z}_q^h \), where each entry is drawn from an error distribution \( \chi \) (e.g., a discrete Gaussian distribution),</li>
+<li>A vector \( \mathbf{b} = \mathbf{A} \mathbf{s} + \mathbf{e} \mod q \).</li>
+</ul>
+<p>To find:</p>
+<ul>
+<li>In the <strong>search version</strong>: The secret vector \( \mathbf{s} \in \mathbb{Z}_q^w \),</li>
+<li>In the <strong>decision version</strong>: Distinguish between:
+<ol>
+<li>Vectors \( (\mathbf{A}, \mathbf{b}) \) generated as described above, and</li>
+<li>Vectors \( (\mathbf{A}, \mathbf{b}) \) where \( \mathbf{b} \) is chosen uniformly at random from \( \mathbb{Z}_q^h \).</li>
+</ol>
+</li>
+</ul>
+<p>We often assume that the error distribution \( \chi \) has small standard deviation compared to \( q \).</p>
+<p>The second lattice, \( \Lambda_q^T(\boldsymbol{A}) \), is generally referred to as the <strong>dual problem</strong> and is closely related to the <strong>Short Integer Solution (SIS)</strong> problem. Solving the SIS problem involves finding a short vector in \( \Lambda_q^T(\boldsymbol{A}) \).</p>
+<h3 id="sis-problem-statement">
+  SIS Problem Statement
+  <a class="anchor" href="#sis-problem-statement">#</a>
+</h3>
+<p>Given:</p>
+<ul>
+<li>A matrix \( \boldsymbol{A} \in \mathbb{Z}_q^{h \times w} \), where entries are uniformly sampled from \( \mathbb{Z}_q \),</li>
+<li>An integer bound \( \beta > 0 \).</li>
+</ul>
+<p>To find:</p>
+<ul>
+<li>A nonzero vector \( \boldsymbol{y} \in \mathbb{Z}^w \) such that:
+$$
+  \boldsymbol{A} \boldsymbol{y} = \boldsymbol{0} \mod q \quad \text{and} \quad \|\boldsymbol{y}\| \leq \beta
+  $$</li>
+</ul>
+<p>We often assume that the entries of \( \boldsymbol{A} \) are uniformly distributed over \( \mathbb{Z}_q \).</p>
+<h2 id="formal-definitions">
+  Formal definitions
+  <a class="anchor" href="#formal-definitions">#</a>
 </h2>
-<p>We define \(SIS(h, q, w, \beta)\) as follows:</p>
-<p>Given \(\bold{A} \in \mathbb{Z}_q^{h\times w}\) find the short vector \(\bold{s} \in \mathbb{Z}^w\)   where \(0 &lt; \lVert s \rVert_p \leq \beta\).</p>
-<p>We can note that the problem becomes trivial as soon as \(\beta \geq q\), no matter the norm used. In the following analysis, we will separate the use of the euclidean norm and the infinity norm. The two sections will describe the concrete ways of defining the security parameters, using the theory we built in the previous sections (lattice reduction and cost models).</p>
-<h2 id="sis-and-isis">
-  SIS and ISIS
-  <a class="anchor" href="#sis-and-isis">#</a>
+<p>Firstly, let us assume that q is always prime and that $w&gt;h$. We can state the following definitions.</p>
+<p><strong>Definition 1 :</strong> We define \(SIS(h, q, w, \beta, p)\) as follows. Given \(\bold{A} \in \mathbb{Z}_q^{h\times w}\) find the short vector \(\bold{s} \in \mathbb{Z}^w\)   where \(0 &lt; \lVert s \rVert_p \leq \beta\) and $q=\text{poly}(h)$, $m=\text{poly}(h)$, $\beta=\text{poly}(h)$.</p>
+<p>We can note that the problem becomes trivial as soon as \(\beta \geq q\), no matter the norm used. Also, for the problem not to be vacuous (no possible solutions), we need the select $\beta$ big enough. An often used bound is $\beta &gt; \sqrt{h\log(q)}$</p>
+<p><strong>Definition 2:</strong> The inhomogeneous SIS problem is called \(ISIS(h, q, w, \beta, p, t)\) and is defined as follows. Given \(\bold{A} \in \mathbb{Z}_q^{h \times w}\) and a target vector \(\bold{t} \in \mathbb{Z}_q^h\), find a short vector \(\bold{s} \in \mathbb{Z}^w\) such that \(\bold{A} \bold{s} = \bold{t} \mod q\) and \(0 &lt; \lVert \bold{s} \rVert_p \leq \beta\). Also here $q=\text{poly}(h)$, $m=\text{poly}(h)$, $\beta=\text{poly}(h)$.</p>
+<p><em>Lemma 1:</em> SIS and ISIS are considered asymptotically equivalent problem (a reduction exists from one to the other) [<a class="hugo-simplecite-cite-hyperlink" href="#bibreference-1" title="V. Lyubashevsky, Lattice signatures without trapdoors, In Proc. Annual international conference on the theory and applications of cryptographic techniques, 2012, pp. 738–755. ">1</a>].</p>
+<p><em>Lemma 2:</em> Solving SIS on $A^T$ directly allows to solve LWE on $A$. They are also considered asymptotically equivalent problems. A reduction exists from SIS to LWE. In the other direction, a quantum reduction exists.</p>
+<p>The following theorems are the fundamental theorems that allows us to relate an SIS instance to a known very hard problem (SVP-like).</p>
+<p><strong>Theorem 1:</strong> For any polynomially bounded $w$, $\beta = \text{poly}(h)$, and any prime $q \geq \beta \cdot \omega(\sqrt{h \log h})$, the average-case problems $SIS(h, q, w, \beta)\text{ and } ISIS(h, q, w, \beta)$ are at least as hard as approximating the $SIVP$ problem (among others) in the worst case within a factor of $\gamma = \beta \cdot \tilde{O}(\sqrt{n})$ [<a class="hugo-simplecite-cite-hyperlink" href="#bibreference-2" title="C. Gentry, C. Peikert, and V. Vaikuntanathan, Trapdoors for hard lattices and new cryptographic constructions, In Proc. Proceedings of the fortieth annual ACM symposium on theory of computing, 2008, pp. 197–206. ">2</a>].</p>
+<p>This result has been improved for smaller value of the q parameters (nearly equal to the length bound $\beta$).</p>
+<p><strong>Theorem 2:</strong> For any polynomially bounded $w$, $\beta = \text{poly}(h)$, and any prime $q \geq \beta \cdot h^\delta$, $\delta&gt;0$ some constant, the average-case problems $SIS(h, q, w, \beta)\text{ and } ISIS(h, q, w, \beta)$ are at least as hard as approximating the $SIVP$ problem (among others) in the worst case within a factor of $\gamma = \beta \cdot \tilde{O}(\sqrt{n})$ [<a class="hugo-simplecite-cite-hyperlink" href="#bibreference-3" title="D. Micciancio and C. Peikert, Hardness of SIS and LWE with small parameters, In Proc. Annual cryptology conference, 2013, pp. 21–39. ">3</a>].</p>
+<p>This means that to estimate the security given by an SIS instance on which a cryptographic primitive relies, we can estimate the security of solving(or attacking) an SVP-instance. In the following we will present an high overview of possible attacks, and the one we choose to base our security estimates on.</p>
+<h2 id="attacks-on-sis">
+  Attacks on SIS
+  <a class="anchor" href="#attacks-on-sis">#</a>
 </h2>
-<h2 id="sis-and-lwe">
-  SIS and LWE
-  <a class="anchor" href="#sis-and-lwe">#</a>
-</h2>
+<h3 id="lattice-reduction-based-attacks">
+  Lattice reduction based attacks
+  <a class="anchor" href="#lattice-reduction-based-attacks">#</a>
+</h3>
+<p>Firstly, let&rsquo;s mention lattice reduction that we have already broadly covered, so we use lattice reduction to directly find short vectors. This is the approach we take when estimating the hardness of an SIS instance and we will provide further details on the exact steps for the L-2 and L-infinity norms later on.</p>
+<h3 id="combinatorial-attacks">
+  Combinatorial attacks
+  <a class="anchor" href="#combinatorial-attacks">#</a>
+</h3>
+<p>Combinatorial attacks to solve were proposed in [<a class="hugo-simplecite-cite-hyperlink" href="#bibreference-4" title="D. Micciancio and O. Regev, Lattice-based cryptography, in Post-quantum cryptography, Springer, 2009, pp. 147–191.">4</a>]. They work as follows, given matrix $\bold{A} \in \mathbb{Z}_q^{h \times w}$ and the length bound $b$:</p>
+<ol>
+<li><strong>Divide Columns into Groups</strong>: Split the columns of \( \boldsymbol{A} \) into \( 2^k \) groups, each containing \( \frac{w}{2^k} \) columns, where \( k \) is a parameter to be determined.</li>
+<li><strong>Generate Initial Lists</strong>: For each group, construct a list containing all linear combinations of the columns with coefficients in \( \{-b, \dots, b\} \). Each list contains \( L = (2b + 1)^{w / 2^k} \) vectors in \( \mathbb{Z}_q^h \).</li>
+<li><strong>Combine Lists in Pairs</strong>: Iteratively combine the lists in pairs. For two lists, compute all sums \( \boldsymbol{x} + \boldsymbol{y} \), retaining only those vectors whose first \( \log_q L \) coordinates are zero. This reduces the size of the resulting list to approximately \( L \).</li>
+<li><strong>Repeat Combination</strong>: Continue combining lists until a single list remains after \( k \) iterations. The final list contains vectors that are zero in their first \( k \cdot \log_q L \) coordinates.</li>
+<li><strong>Extract the Short Vector</strong>: The final list contains vectors that are zero in all but their last \( h - k \cdot \log_q L \approx \log_q L \) coordinates. With appropriate parameter choice k, the list is expected to include the all-zero vector, which is a combination of the columns of $\bold{A}$ bounded by $b$ so we can expect to find a short vector.</li>
+</ol>
+<p>Algorithms based on this combinatorial attacks but on LWE have also been proposed like BKW [<a class="hugo-simplecite-cite-hyperlink" href="#bibreference-5" title="A. Blum, A. Kalai, and H. Wasserman, Noise-tolerant learning, the parity problem, and the statistical query model, Journal of the ACM (JACM), vol. 50, no. 4, pp. 506–519, 2003. ">5</a>] and Coded-BKW [<a class="hugo-simplecite-cite-hyperlink" href="#bibreference-6" title="Q. Guo, T. Johansson, and P. Stankovski, Coded-BKW: Solving LWE using lattice codes, In Proc. Annual cryptology conference, 2015, pp. 23–42. ">6</a>]. Combinatorial attacks work well for small dimensions but become quickly unfeasible for larger dimensions. However, one good aspects of combinatorial methods is that they actually exploit the large number of columns \( w \) in \( \boldsymbol{A} \), which lattice reduction do not.</p>
+<h3 id="via-lwe">
+  Via LWE
+  <a class="anchor" href="#via-lwe">#</a>
+</h3>
+<p>In the case of solving SIS through LWE, several additional attacks can be considered, such as bounded distance decoding (BDD) [<a class="hugo-simplecite-cite-hyperlink" href="#bibreference-7" title="R. Lindner and C. Peikert, Better key sizes (and attacks) for LWE-based encryption, In Proc. Topics in cryptology–CT-RSA 2011: The cryptographers’ track at the RSA conference 2011, san francisco, CA, USA, february 14-18, 2011. proceedings, 2011, pp. 319–339. ">7</a>], Arora-Ge attacks [<a class="hugo-simplecite-cite-hyperlink" href="#bibreference-8" title="S. Arora and R. Ge, New algorithms for learning in presence of errors, In Proc. International colloquium on automata, languages, and programming, 2011, pp. 403–415. ">8</a>], and meet-in-the-middle (MITM) [<a class="hugo-simplecite-cite-hyperlink" href="#bibreference-9" title="S. Bai and S. Galbraith, Lattice decoding attacks on binary LWE, In Proc. Information security and privacy: 19th australasian conference, ACISP 2014, wollongong, NSW, australia, july 7-9, 2014. Proceedings 19, 2014, pp. 322–337. ">9</a>] approaches. BDD focuses on finding the closest lattice point to a given target, leveraging the fact that LWE can be reduced to a closest vector problem (CVP) in certain cases. Arora-Ge attacks use algebraic techniques to solve LWE by reducing it to a system of polynomial equations, though their practicality diminishes with high noise. MITM attacks exploit combinatorial techniques to reduce the effective complexity of solving LWE by balancing the time and memory trade-offs. As SIS is our focus, we will not delve deeply into these methods.</p>
+<p>In the following analysis, we will present the concrete method used to estimate the security of an SIS instance. We will separate the use of the euclidean norm and the infinity norm, using the theory we built in the previous sections (lattice reduction and cost models). What we actually reduce te security to is an H-SVP solver.</p>
 <h2 id="l2-norm-strategy">
   L2 norm strategy
   <a class="anchor" href="#l2-norm-strategy">#</a>
 </h2>
-<p><em>TODO check the notation between A and A^T</em></p>
+<p>For the L2 norm strategy, we follow the steps depicted in  [<a class="hugo-simplecite-cite-hyperlink" href="#bibreference-4" title="D. Micciancio and O. Regev, Lattice-based cryptography, in Post-quantum cryptography, Springer, 2009, pp. 147–191.">4</a>] and [<a class="hugo-simplecite-cite-hyperlink" href="#bibreference-10" title="M. Albrecht and L. Ducas, Lattice attacks on NTRU and LWE: A history of refinements, Cryptology ePrint Archive, 2021. ">10</a>]. In the following you can assume all log are base 2, except mentioned otherwise. As a first step, we ensure the parameters given don&rsquo;t solve trivially or actually accept solutions by checking that $\beta &lt; q$ and $\beta \geq w\log(q)$.</p>
 <h3 id="finding-the-optimal-lattice-shape-for-reduction">
   Finding the optimal lattice shape for reduction
   <a class="anchor" href="#finding-the-optimal-lattice-shape-for-reduction">#</a>
 </h3>
-<p>Given a q-ary lattice \(\bold{A} \in \mathbb{Z}_q^{h\times w}\) and assuming q is prime (which will be the case in most applications), we can then say with high probability that the rows of $\bold{A}$ are independent over $\mathbb{Z}_q$ (we also assume w is bigger than n and not too close). As a result of this, the lattice $\Lambda^T_q(\bold{A})$ has $q^h$ points in $\mathbb{Z}^w_q$. This leads to the volume or determinant of the matrix to be $Vol(\Lambda^T_q(\bold{A})) = q^{h}$. Using the gaussian heuristic from the lattice reduction section, we can express</p>
+<p>Given a q-ary lattice \(\bold{A} \in \mathbb{Z}_q^{h\times w}\), we can then say with high probability that the rows of $\bold{A}$ are independent over $\mathbb{Z}_q$. As a result of this, the lattice $\Lambda^T_q(\bold{A})$ has $q^{w-h}$ points in $\mathbb{Z}^w_q$. This leads to the volume or determinant of the matrix to be $Vol(\Lambda^T_q(\bold{A})) = q^{h}$. Using the gaussian heuristic from the lattice reduction section, we can express</p>
 $$\lambda_1(\Lambda^T_q(\bold{A})) \approx q^\frac{h}{w}\sqrt{\frac{w}{2\pi e}}$$<p>as an estimate of the lenght of the smallest vector.</p>
-$$w = \sqrt{\frac{h\log q}{\delta}}$$<p>
-Indeed, for smaller m the lattice becomes too sparse and does not contain enough vectors to have small ones, and bigger m actually prevents lattice reduction to perform optimally.</p>
+<p>It has been experimentally observed that the length of the vector obtained by the best known lattice reduction algorithms on a random w-dimensional q-ary lattice is close to $\min(q, q^\frac{h}{w}\delta^w)$. We can also observe that increasing the $w$ parameter does not make the problem any harder. In fact, we can fix the parameter $w$ by completely letting go a certain number of columns. By plotting $q^{\frac{h}{w}}\delta^w$ as a function of w, the minimum as been determined to be $2^{2\sqrt{h\log q \log \delta}}$ for $w = \sqrt{h\log q / \log \delta}$. So we will always do a lattice reduction over a matrix of size $h\times w&rsquo;$, where</p>
+$$w' = \sqrt{\frac{h\log q}{\delta}}$$<p>Indeed, for smaller w the lattice becomes too sparse and does not contain enough vectors to have small ones, and bigger w actually prevents lattice reduction to perform optimally. This leads us to a shortest vector found of length $\min(q, 2^{2\sqrt{h\log q \log \delta}})$. In the calculation for the optimal $w&rsquo;$, we use the theoretical value for $\delta$ and replace the bound of the smallest vector by $\beta$ because we want a vector that is smaller or equal to $\beta$.</p>
+$$\lambda_1(\Lambda^T_q(\bold{A})) = q^\frac{h}{w}\delta^w \Rightarrow \beta = q^\frac{h}{w}\delta^w $$$$\log \beta = w \log \delta + \frac{h}{w}\log q \Rightarrow \log \delta = \frac{\log \beta}{w} - \frac{h\log q}{w^2}$$<p>Replacing w by w&rsquo; we get the theoretical</p>
+$$ \log\delta = \frac{\log^2\beta}{4h\log q} $$<h3 id="solve-for-the-required-hermite-factor">
+  Solve for the required hermite factor
+  <a class="anchor" href="#solve-for-the-required-hermite-factor">#</a>
+</h3>
+<p>Now that we have the optimal dimension on which to apply our lattice reduction via BKZ, we need to define what the best block-size would be. We know from previously that BKZ achieves</p>
+$$\beta \approx \delta_\beta^{w'-1} Vol(\Lambda)^{\frac{1}{w'}}$$<p>and by playing around with the equation, we know that our target hermite factor will be</p>
+$$\beta^\frac{1}{w'-1} = \delta Vol(\Lambda)^{\frac{1}{w'(w' - 1)}} \Rightarrow \delta \approx \beta \frac{1}{Vol(\Lambda)^{1/w'}}^\frac{1}{w'-1}$$$$\log\delta = \frac{1}{w'-1}(\log\beta - \frac{h}{w'}\log q)$$<p>We check that this found $\delta$ makes sense by checking that it is bigger than one. Now that we know what we aim for in terms of hermite factor, the next question is what kind of block-size gives us such a guarantee. For this, we follow [<a class="hugo-simplecite-cite-hyperlink" href="#bibreference-11" title="M. Albrecht, R. Player, and S. Scott, On the concrete hardness of learning with errors. Cryptology ePrint Archive, Paper 2015/046, 2015. [Online]. Available: https://eprint.iacr.org/2015/046 ">11</a>] and retake their manually computed $\delta_\beta$ values for small $\beta$ under 40 (that were computed using fpyll) and for bigger block-sizes, we use</p>
+$$\lim_{\beta\rightarrow\infty}\delta_\beta = (\frac{\beta}{2\pi e}(\pi\beta)^\frac{1}{\beta})^\frac{1}{2(\beta - 1)}$$<p>Once we know the optimal $\beta$, we can check that it also makes sense by checking it is under our matrix size (so under $w&rsquo;$). If it is, we can go ahead and estimate the actual cost of running BKZ for block-size $\beta$ on a matrix of dimension $\bold{A}\in \mathbb{Z}_q^{h \times w&rsquo;}$.</p>
+<h3 id="estimating-the-security-by-estimating-the-bkz-cost">
+  Estimating the security by estimating the BKZ cost
+  <a class="anchor" href="#estimating-the-security-by-estimating-the-bkz-cost">#</a>
+</h3>
+$$cost = \tau \cdot d \cdot T_{SVP}$$<p>
+where</p>
+<ol>
+<li>the number of tours we do $\tau$ is considered to be 8.</li>
+<li>The number of times the SVP oracle is called per tour, which is about the dimension of the lattice</li>
+<li>The cost of the SVP oracle is $T_{SVP}$</li>
+</ol>
+<p>The cost of the SVP oracle is defined by the internal cost that the user will select.</p>
 <h2 id="l-inf-norm-strategy">
   L-inf norm strategy
   <a class="anchor" href="#l-inf-norm-strategy">#</a>
 </h2>
+<p>As in [<a class="hugo-simplecite-cite-hyperlink" href="#bibreference-11" title="M. Albrecht, R. Player, and S. Scott, On the concrete hardness of learning with errors. Cryptology ePrint Archive, Paper 2015/046, 2015. [Online]. Available: https://eprint.iacr.org/2015/046 ">11</a>], we separate between the Matzov and the Kyber analysis. Both however follow the same high-level strategy. First, we evaluate the security for the L2-bound as explained previously.This will act as a lower bound on the hardness of our infinity bound problem. The strategy is then to analyze the probability of obtaining a vector that respects the infinity bound constraints on all coordinates. When $\sqrt{w}\beta &lt; q$ we apply the analysis in [<a class="hugo-simplecite-cite-hyperlink" href="#bibreference-12" title="MATZOV, Report on the security of LWE: Improved dual lattice attack. Zenodo, 2022. doi:10.5281/zenodo.6493704">12</a>] and when  $\sqrt{w}\beta \geq q$, we apply the analysis in [<a class="hugo-simplecite-cite-hyperlink" href="#bibreference-13" title="V. Lyubashevsky, L. Ducas, E. Kiltz, T. Lepoint, P. Schwabe, G. Seiler, D. Stehlé, and S. Bai, Crystals-dilithium, Algorithm Specifications and Supporting Documentation, 2020. ">13</a>]. The attack is composed on 2 parts. First, we use lattice reduction to find many short vectors of the lattice. Let&rsquo;s imagine we receive a secret $\bold{y}$ such that $\bold{y} = \bold{A}\bold{x}$ where $\bold{x}$ is short. This is in fact an ISIS instance. Our goal in the second step is to determine with statistical tools if $\bold{y}$ was sampled from the uniform distribution or computed using the secret $\bold{x}$. Imagining for have a statistical distinguisher between the 2 distribution, the attacker can now for each coordinate of the secret $\bold{x}$ guess its value and use the distinguisher to determine if it is good.</p>
+<h3 id="matzov-analysis">
+  Matzov analysis
+  <a class="anchor" href="#matzov-analysis">#</a>
+</h3>
+<p>The improvements made is that first, the attacker can iterate over several coordinates of the secret at the same time. This lets us recover more coordinate and reduces the dimension of the lattice. The second improvement is the use of the Fast Fourier Transform (FFT) as a dstinghuishing algorithm, which allows to check all guesses simultaneously with a single FFT computation. The computation is actually done in a modulus p smaller than q, with the argument being that since the secret is short, we do not introduce bug errors by doing so. The steps can be summarized in:</p>
+<ol>
+<li>Generate many pairs of short vectors $(\bold{x}, \bold{y})$. This step is improved by using the dimension for free optimisation for all SVP calls excepts the last and using a different block-size for the last call.</li>
+<li>Enumerate over guesses of the secret.</li>
+<li>For each guesses, use the FFT dstinguisher.</li>
+</ol>
+<p>For a detailed overview of the attack, we encourage the reader to go to [<a class="hugo-simplecite-cite-hyperlink" href="#bibreference-12" title="MATZOV, Report on the security of LWE: Improved dual lattice attack. Zenodo, 2022. doi:10.5281/zenodo.6493704">12</a>] as we will only dig into the cost of the attack.</p>
+<h4 id="cost">
+  Cost
+  <a class="anchor" href="#cost">#</a>
+</h4>
+<h3 id="kyber-analysis">
+  Kyber analysis
+  <a class="anchor" href="#kyber-analysis">#</a>
+</h3>
 <h3 id="the-tradeoffs">
   The tradeoffs
   <a class="anchor" href="#the-tradeoffs">#</a>
@@ -427,14 +549,6 @@ Indeed, for smaller m the lattice becomes too sparse and does not contain enough
 <h3 id="the-search-function">
   The search function
   <a class="anchor" href="#the-search-function">#</a>
-</h3>
-<h3 id="matzov-improvements-on-the-dual-attacks">
-  Matzov improvements on the dual attacks
-  <a class="anchor" href="#matzov-improvements-on-the-dual-attacks">#</a>
-</h3>
-<h3 id="kyber-improvements">
-  Kyber improvements
-  <a class="anchor" href="#kyber-improvements">#</a>
 </h3>
 </article>
  
@@ -477,20 +591,33 @@ Indeed, for smaller m the lattice becomes too sparse and does not contain enough
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#formal-definition">Formal definition</a></li>
-    <li><a href="#sis-and-isis">SIS and ISIS</a></li>
-    <li><a href="#sis-and-lwe">SIS and LWE</a></li>
+    <li>
+      <ul>
+        <li><a href="#lwe-problem-statement">LWE Problem Statement</a></li>
+        <li><a href="#sis-problem-statement">SIS Problem Statement</a></li>
+      </ul>
+    </li>
+    <li><a href="#formal-definitions">Formal definitions</a></li>
+    <li><a href="#attacks-on-sis">Attacks on SIS</a>
+      <ul>
+        <li><a href="#lattice-reduction-based-attacks">Lattice reduction based attacks</a></li>
+        <li><a href="#combinatorial-attacks">Combinatorial attacks</a></li>
+        <li><a href="#via-lwe">Via LWE</a></li>
+      </ul>
+    </li>
     <li><a href="#l2-norm-strategy">L2 norm strategy</a>
       <ul>
         <li><a href="#finding-the-optimal-lattice-shape-for-reduction">Finding the optimal lattice shape for reduction</a></li>
+        <li><a href="#solve-for-the-required-hermite-factor">Solve for the required hermite factor</a></li>
+        <li><a href="#estimating-the-security-by-estimating-the-bkz-cost">Estimating the security by estimating the BKZ cost</a></li>
       </ul>
     </li>
     <li><a href="#l-inf-norm-strategy">L-inf norm strategy</a>
       <ul>
+        <li><a href="#matzov-analysis">Matzov analysis</a></li>
+        <li><a href="#kyber-analysis">Kyber analysis</a></li>
         <li><a href="#the-tradeoffs">The tradeoffs</a></li>
         <li><a href="#the-search-function">The search function</a></li>
-        <li><a href="#matzov-improvements-on-the-dual-attacks">Matzov improvements on the dual attacks</a></li>
-        <li><a href="#kyber-improvements">Kyber improvements</a></li>
       </ul>
     </li>
   </ul>

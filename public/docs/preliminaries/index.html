@@ -22,7 +22,7 @@ This section is based on the following resources [1][2][3][4].">
 <link rel="canonical" href="http://localhost:1313/lattirust_estimator.io/docs/preliminaries/">
 <link rel="stylesheet" href="/lattirust_estimator.io/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
   <script defer src="/lattirust_estimator.io/fuse.min.js"></script>
-  <script defer src="/lattirust_estimator.io/en.search.min.b01ecda6c277d757658c33b3004bfd358179f64558eac8e8e836b8efbff8d6c8.js" integrity="sha256-sB7NpsJ311dljDOzAEv9NYF59kVY6sjo6Da477/41sg=" crossorigin="anonymous"></script>
+  <script defer src="/lattirust_estimator.io/en.search.min.3c204270b12ebaf65876fa0a92b672baf5cc323a485ceedd205f0875dcfdbc8e.js" integrity="sha256-PCBCcLEuuvZYdvoKkrZyuvXMMjpIXO7dIF8Iddz9vI4=" crossorigin="anonymous"></script>
 <link rel="alternate" type="application/rss+xml" href="http://localhost:1313/lattirust_estimator.io/docs/preliminaries/index.xml" title="Lattirust estimator 0.1" />
 <!--
 Made with Book Theme
@@ -477,6 +477,14 @@ $$\lambda_2(\Lambda) \geq \beta \cdot \lambda_1(\Lambda)$$<p>where $\lambda_2(\L
 Given a lattice $\Lambda$ with basis $\bold{B}$ and a target vector$\bold{t} \in \mathbb{R}^n$, the <strong>Closest Vector Problem (CVP)</strong> is the problem of finding a vector $\bold{v} \in \Lambda$</p>
 $$\|\bold{t} - \bold{v}\| = \min_{\bold{w} \in \Lambda} \|\bold{t} - \bold{w}\|$$<p>CVP is generally harder than SVP and is also NP-hard in the worst case. Approximation versions of CVP, like $\gamma$-CVP (finding $\bold{v}$ within a $\gamma$-factor of the closest vector), are frequently studied in lattice cryptography.</p>
 </li>
+<li>
+<p>Shortest Independent Vector Problem (SIVP)</p>
+<p><strong>Definition</strong>:<br>
+The <strong>Shortest Independent Vector Problem (SIVP)</strong> involves finding \( n \) linearly independent vectors \( \{\bold{v}_1, \bold{v}_2, \dots, \bold{v}_n\} \) in a lattice \( \Lambda \) such that the maximum norm of the vectors is minimized:</p>
+$$
+    \max_{i=1}^n \|\bold{v}_i\| = \lambda_n(\Lambda)
+    $$<p>where \( \lambda_n(\Lambda) \) represents the length of the \( n \)-th successive minimum of the lattice. SIVP is closely related to the geometry of the lattice and remains computationally hard. It is used in cryptographic constructions and reduction proofs, often connecting the hardness of lattice problems to cryptographic assumptions.</p>
+</li>
 </ol>
 <h2 id="summary-table-of-lattice-problems">
   Summary Table of Lattice Problems
@@ -493,7 +501,7 @@ $$\|\bold{t} - \bold{v}\| = \min_{\bold{w} \in \Lambda} \|\bold{t} - \bold{w}\|$
   </thead>
   <tbody>
       <tr>
-          <td><strong>SVP</strong></td>
+          <td><strong>(I)SVP</strong></td>
           <td>Find the shortest vector</td>
           <td>\( \bold{v} \in \Lambda, \|\bold{v}\| = \lambda_1 \)</td>
           <td>NP-hard in the worst case</td>
@@ -505,13 +513,13 @@ $$\|\bold{t} - \bold{v}\| = \min_{\bold{w} \in \Lambda} \|\bold{t} - \bold{w}\|$
           <td>Easier than SVP, used in reduction</td>
       </tr>
       <tr>
-          <td><strong>Approx-SVP</strong></td>
+          <td><strong>Approx-(I)SVP</strong></td>
           <td>Approximate the shortest vector</td>
           <td>\( \bold{v} \in \Lambda, \|\bold{v}\| \leq \gamma \lambda_1 \)</td>
           <td>Hard for small \( \gamma \)</td>
       </tr>
       <tr>
-          <td><strong>Unique-SVP</strong></td>
+          <td><strong>Unique-(I)SVP</strong></td>
           <td>Find the unique shortest vector</td>
           <td>\( \bold{v} \in \Lambda, \lambda_2 \geq \beta \lambda_1 \)</td>
           <td>Easier than SVP (gap \( \beta \))</td>

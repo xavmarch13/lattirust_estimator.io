@@ -22,7 +22,7 @@ The way we solve the Shortest Vector Problem (SVP) and similar problems depends 
 <link rel="canonical" href="http://localhost:1313/lattirust_estimator.io/docs/lattice-reduction/">
 <link rel="stylesheet" href="/lattirust_estimator.io/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
   <script defer src="/lattirust_estimator.io/fuse.min.js"></script>
-  <script defer src="/lattirust_estimator.io/en.search.min.b01ecda6c277d757658c33b3004bfd358179f64558eac8e8e836b8efbff8d6c8.js" integrity="sha256-sB7NpsJ311dljDOzAEv9NYF59kVY6sjo6Da477/41sg=" crossorigin="anonymous"></script>
+  <script defer src="/lattirust_estimator.io/en.search.min.3c204270b12ebaf65876fa0a92b672baf5cc323a485ceedd205f0875dcfdbc8e.js" integrity="sha256-PCBCcLEuuvZYdvoKkrZyuvXMMjpIXO7dIF8Iddz9vI4=" crossorigin="anonymous"></script>
 <link rel="alternate" type="application/rss+xml" href="http://localhost:1313/lattirust_estimator.io/docs/lattice-reduction/index.xml" title="Lattirust estimator 0.1" />
 <!--
 Made with Book Theme
@@ -376,7 +376,6 @@ https://github.com/alex-shpak/hugo-book
         <li><a href="#the-first-gsa-lie">The first GSA lie</a></li>
         <li><a href="#the-second-gsa-lie-and-ztgsa">The second GSA lie and Z(T)GSA</a></li>
         <li><a href="#bkz-20-improvements">BKZ 2.0 improvements</a></li>
-        <li><a href="#the-dimension-for-free">The Dimension for free</a></li>
       </ul>
     </li>
   </ul>
@@ -685,13 +684,8 @@ where \( \text{GH}(L[j,k]) \) is the Gaussian heuristic for the local block and 
 </ul>
 </li>
 </ul>
-<h3 id="the-dimension-for-free">
-  The Dimension for free
-  <a class="anchor" href="#the-dimension-for-free">#</a>
-</h3>
-<p>In recent advancements, Ducas introduces a significant improvement in lattice sieving algorithms through the &ldquo;dimension for free&rdquo; technique [<a class="hugo-simplecite-cite-hyperlink" href="#bibreference-11" title="L. Ducas, Shortest vector from lattice sieving: A few dimensions for free, In Proc. Annual international conference on the theory and applications of cryptographic techniques, 2018, pp. 125–145. ">11</a>]. This approach leverages the observation that short lattice vectors generated during sieving in lower dimensions can be reused to accelerate sieving in higher dimensions. By projecting and reusing these vectors across multiple dimensions, the algorithm effectively reduces the computational overhead without compromising accuracy. This method achieves a practical speedup of up to 10x in mid-range dimensions (e.g., 70–80), making sieving competitive with enumeration-based methods. Additionally, it bridges the gap between theoretical efficiency and practical applicability, providing a robust framework for solving the Shortest Vector Problem (SVP) in dimensions previously deemed infeasible. These insights suggest a potential paradigm shift where sieving, historically slower, could surpass enumeration in both speed and scalability for cryptographic security estimates.</p>
 <ol class="hugo-simplecite-reference-list"><li class="hugo-simplecite-reference-list-item" id="bibreference-1">P. Nguyen,&#32;<q>Hermite’s constant and lattice algorithms,</q>&#32;in <em>The LLL algorithm: Survey and applications</em>,&#32;Springer, 2009, pp. 19–69.</li><li class="hugo-simplecite-reference-list-item" id="bibreference-2">P. Nguyen and&#32;B. Vallee,&#32;<em>The LLL algorithm</em>.&#32;Springer, 2010.&#32;</li><li class="hugo-simplecite-reference-list-item" id="bibreference-3">Y. Chen and&#32;P. Nguyen,&#32;<q>BKZ 2.0: Better lattice security estimates,</q>&#32;In Proc. International conference on the theory and application of cryptology and information security,&#32;2011, pp. 1–20.&#32;</li><li class="hugo-simplecite-reference-list-item" id="bibreference-4">N. Gama,&#32;N. Howgrave-Graham,&#32;H. Koy, and&#32;P. Nguyen,&#32;<q>Rankin’s constant and blockwise lattice reduction,</q>&#32;In Proc. Advances in cryptology-CRYPTO 2006: 26th annual international cryptology conference, santa barbara, california, USA, august 20-24, 2006. Proceedings 26,&#32;2006, pp. 112–130.&#32;</li><li class="hugo-simplecite-reference-list-item" id="bibreference-5">A. Lenstra,&#32;H. Lenstra, and&#32;L. Lovász,&#32;<q>Factoring polynomials with rational coefficients,</q>&#32;<em>Mathematische annalen</em>,&#32;vol. 261,&#32;pp. 515–534,&#32;1982.&#32;</li><li class="hugo-simplecite-reference-list-item" id="bibreference-6">M. Albrecht and&#32;L. Ducas,&#32;<q>Lattice attacks on NTRU and LWE: A history of refinements,</q>&#32;<em>Cryptology ePrint Archive</em>,&#32;2021.&#32;</li><li class="hugo-simplecite-reference-list-item" id="bibreference-7">N. Gama and&#32;P. Nguyen,&#32;<q>Predicting lattice reduction,</q>&#32;In Proc. Advances in cryptology–EUROCRYPT 2008: 27th annual international conference on the theory and applications of cryptographic techniques, istanbul, turkey, april 13-17, 2008. Proceedings 27,&#32;2008, pp. 31–51.&#32;</li><li class="hugo-simplecite-reference-list-item" id="bibreference-8">N. Gama and&#32;P. Nguyen,&#32;<q>Finding short lattice vectors within mordell’s inequality,</q>&#32;In Proc. Proceedings of the fortieth annual ACM symposium on theory of computing,&#32;2008, pp. 207–216.&#32;</li><li class="hugo-simplecite-reference-list-item" id="bibreference-9">Y. Chen,&#32;<em>Reduction de reseau et securite concrete du chiffrement completement homomorphe</em>.&#32;Paris 7, 2013.&#32;</li><li class="hugo-simplecite-reference-list-item" id="bibreference-10">M. Albrecht,&#32;R. Player, and&#32;S. Scott,&#32;<em>On the concrete hardness of learning with errors</em>.&#32;Cryptology ePrint Archive, Paper 2015/046, 2015.&#32;[Online]. Available: <a class="hugo-simplecite-url-hyperlink" rel="noopener" target="_blank" href="https://eprint.iacr.org/2015/046">https://eprint.iacr.org/2015/046</a>&#32;
-</li><li class="hugo-simplecite-reference-list-item" id="bibreference-11">L. Ducas,&#32;<q>Shortest vector from lattice sieving: A few dimensions for free,</q>&#32;In Proc. Annual international conference on the theory and applications of cryptographic techniques,&#32;2018, pp. 125–145.&#32;</li></ol>
+</li></ol>
 </article>
  
       
@@ -757,7 +751,6 @@ where \( \text{GH}(L[j,k]) \) is the Gaussian heuristic for the local block and 
         <li><a href="#the-first-gsa-lie">The first GSA lie</a></li>
         <li><a href="#the-second-gsa-lie-and-ztgsa">The second GSA lie and Z(T)GSA</a></li>
         <li><a href="#bkz-20-improvements">BKZ 2.0 improvements</a></li>
-        <li><a href="#the-dimension-for-free">The Dimension for free</a></li>
       </ul>
     </li>
   </ul>

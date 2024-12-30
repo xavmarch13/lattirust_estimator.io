@@ -1,0 +1,358 @@
+[
+  {
+    "author": [
+      {
+        "family": "Lyubashevsky",
+        "given": "Vadim"
+      }
+    ],
+    "container-title": "Annual international conference on the theory and applications of cryptographic techniques",
+    "id": "lyubashevsky2012lattice",
+    "issued": {
+      "date-parts": [
+        [
+          2012
+        ]
+      ]
+    },
+    "page": "738-755",
+    "publisher": "Springer",
+    "title": "Lattice signatures without trapdoors",
+    "type": "paper-conference"
+  },
+  {
+    "author": [
+      {
+        "family": "Gentry",
+        "given": "Craig"
+      },
+      {
+        "family": "Peikert",
+        "given": "Chris"
+      },
+      {
+        "family": "Vaikuntanathan",
+        "given": "Vinod"
+      }
+    ],
+    "container-title": "Proceedings of the fortieth annual ACM symposium on theory of computing",
+    "id": "gentry2008trapdoors",
+    "issued": {
+      "date-parts": [
+        [
+          2008
+        ]
+      ]
+    },
+    "page": "197-206",
+    "title": "Trapdoors for hard lattices and new cryptographic constructions",
+    "type": "paper-conference"
+  },
+  {
+    "author": [
+      {
+        "family": "Micciancio",
+        "given": "Daniele"
+      },
+      {
+        "family": "Peikert",
+        "given": "Chris"
+      }
+    ],
+    "container-title": "Annual cryptology conference",
+    "id": "micciancio2013hardness",
+    "issued": {
+      "date-parts": [
+        [
+          2013
+        ]
+      ]
+    },
+    "page": "21-39",
+    "publisher": "Springer",
+    "title": "Hardness of SIS and LWE with small parameters",
+    "type": "paper-conference"
+  },
+  {
+    "author": [
+      {
+        "family": "Micciancio",
+        "given": "Daniele"
+      },
+      {
+        "family": "Regev",
+        "given": "Oded"
+      }
+    ],
+    "container-title": "Post-quantum cryptography",
+    "id": "micciancio2009lattice",
+    "issued": {
+      "date-parts": [
+        [
+          2009
+        ]
+      ]
+    },
+    "page": "147-191",
+    "publisher": "Springer",
+    "title": "Lattice-based cryptography",
+    "type": "chapter"
+  },
+  {
+    "author": [
+      {
+        "family": "Guo",
+        "given": "Qian"
+      },
+      {
+        "family": "Johansson",
+        "given": "Thomas"
+      },
+      {
+        "family": "Stankovski",
+        "given": "Paul"
+      }
+    ],
+    "container-title": "Annual cryptology conference",
+    "id": "guo2015coded",
+    "issued": {
+      "date-parts": [
+        [
+          2015
+        ]
+      ]
+    },
+    "page": "23-42",
+    "publisher": "Springer",
+    "title": "Coded-BKW: Solving LWE using lattice codes",
+    "title-short": "Coded-BKW",
+    "type": "paper-conference"
+  },
+  {
+    "author": [
+      {
+        "family": "Blum",
+        "given": "Avrim"
+      },
+      {
+        "family": "Kalai",
+        "given": "Adam"
+      },
+      {
+        "family": "Wasserman",
+        "given": "Hal"
+      }
+    ],
+    "container-title": "Journal of the ACM (JACM)",
+    "id": "blum2003noise",
+    "issue": "4",
+    "issued": {
+      "date-parts": [
+        [
+          2003
+        ]
+      ]
+    },
+    "page": "506-519",
+    "publisher": "ACM New York, NY, USA",
+    "title": "Noise-tolerant learning, the parity problem, and the statistical query model",
+    "type": "article-journal",
+    "volume": "50"
+  },
+  {
+    "author": [
+      {
+        "family": "Arora",
+        "given": "Sanjeev"
+      },
+      {
+        "family": "Ge",
+        "given": "Rong"
+      }
+    ],
+    "container-title": "International colloquium on automata, languages, and programming",
+    "id": "arora2011new",
+    "issued": {
+      "date-parts": [
+        [
+          2011
+        ]
+      ]
+    },
+    "page": "403-415",
+    "publisher": "Springer",
+    "title": "New algorithms for learning in presence of errors",
+    "type": "paper-conference"
+  },
+  {
+    "author": [
+      {
+        "family": "Bai",
+        "given": "Shi"
+      },
+      {
+        "family": "Galbraith",
+        "given": "Steven D"
+      }
+    ],
+    "container-title": "Information security and privacy: 19th australasian conference, ACISP 2014, wollongong, NSW, australia, july 7-9, 2014. Proceedings 19",
+    "id": "bai2014lattice",
+    "issued": {
+      "date-parts": [
+        [
+          2014
+        ]
+      ]
+    },
+    "page": "322-337",
+    "publisher": "Springer",
+    "title": "Lattice decoding attacks on binary LWE",
+    "type": "paper-conference"
+  },
+  {
+    "author": [
+      {
+        "family": "Lindner",
+        "given": "Richard"
+      },
+      {
+        "family": "Peikert",
+        "given": "Chris"
+      }
+    ],
+    "container-title": "Topics in cryptology–CT-RSA 2011: The cryptographers’ track at the RSA conference 2011, san francisco, CA, USA, february 14-18, 2011. proceedings",
+    "id": "lindner2011better",
+    "issued": {
+      "date-parts": [
+        [
+          2011
+        ]
+      ]
+    },
+    "page": "319-339",
+    "publisher": "Springer",
+    "title": "Better key sizes (and attacks) for LWE-based encryption",
+    "type": "paper-conference"
+  },
+  {
+    "author": [
+      {
+        "family": "Albrecht",
+        "given": "Martin"
+      },
+      {
+        "family": "Ducas",
+        "given": "Léo"
+      }
+    ],
+    "container-title": "Cryptology ePrint Archive",
+    "id": "albrecht2021lattice",
+    "issued": {
+      "date-parts": [
+        [
+          2021
+        ]
+      ]
+    },
+    "title": "Lattice attacks on NTRU and LWE: A history of refinements",
+    "title-short": "Lattice attacks on NTRU and LWE",
+    "type": "article-journal"
+  },
+  {
+    "URL": "https://eprint.iacr.org/2015/046",
+    "author": [
+      {
+        "family": "Albrecht",
+        "given": "Martin R."
+      },
+      {
+        "family": "Player",
+        "given": "Rachel"
+      },
+      {
+        "family": "Scott",
+        "given": "Sam"
+      }
+    ],
+    "id": "cryptoeprint:2015/046",
+    "issued": {
+      "date-parts": [
+        [
+          2015
+        ]
+      ]
+    },
+    "publisher": "Cryptology ePrint Archive, Paper 2015/046",
+    "title": "On the concrete hardness of learning with errors",
+    "type": ""
+  },
+  {
+    "DOI": "10.5281/zenodo.6493704",
+    "URL": "https://doi.org/10.5281/zenodo.6493704",
+    "author": [
+      {
+        "family": "MATZOV"
+      }
+    ],
+    "id": "matzov_2022_6493704",
+    "issued": {
+      "date-parts": [
+        [
+          2022,
+          4
+        ]
+      ]
+    },
+    "publisher": "Zenodo",
+    "title": "Report on the security of LWE: Improved dual lattice attack",
+    "title-short": "Report on the security of LWE",
+    "type": ""
+  },
+  {
+    "author": [
+      {
+        "family": "Lyubashevsky",
+        "given": "Vadim"
+      },
+      {
+        "family": "Ducas",
+        "given": "Léo"
+      },
+      {
+        "family": "Kiltz",
+        "given": "Eike"
+      },
+      {
+        "family": "Lepoint",
+        "given": "Tancrède"
+      },
+      {
+        "family": "Schwabe",
+        "given": "Peter"
+      },
+      {
+        "family": "Seiler",
+        "given": "Gregor"
+      },
+      {
+        "family": "Stehlé",
+        "given": "Damien"
+      },
+      {
+        "family": "Bai",
+        "given": "Shi"
+      }
+    ],
+    "container-title": "Algorithm Specifications and Supporting Documentation",
+    "id": "lyubashevsky2020crystals",
+    "issued": {
+      "date-parts": [
+        [
+          2020
+        ]
+      ]
+    },
+    "title": "Crystals-dilithium",
+    "type": "article-journal"
+  }
+]

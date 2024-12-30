@@ -267,9 +267,4 @@ BKZ 2.0 {{< cite "chen2011bkz" >}}  introduces several enhancements to the tradi
     1. Predicting the Gram-Schmidt sequence \( \|b_i^*\| \) during BKZ 2.0 reduction.
     2. Estimating the block sizes required to achieve a target Hermite factor.
 
-### The Dimension for free
-
-In recent advancements, Ducas introduces a significant improvement in lattice sieving algorithms through the "dimension for free" technique {{< cite "ducas2018shortest" >}}. This approach leverages the observation that short lattice vectors generated during sieving in lower dimensions can be reused to accelerate sieving in higher dimensions. By projecting and reusing these vectors across multiple dimensions, the algorithm effectively reduces the computational overhead without compromising accuracy. This method achieves a practical speedup of up to 10x in mid-range dimensions (e.g., 70–80), making sieving competitive with enumeration-based methods. Additionally, it bridges the gap between theoretical efficiency and practical applicability, providing a robust framework for solving the Shortest Vector Problem (SVP) in dimensions previously deemed infeasible. These insights suggest a potential paradigm shift where sieving, historically slower, could surpass enumeration in both speed and scalability for cryptographic security estimates.
-
-
 {{< references >}}

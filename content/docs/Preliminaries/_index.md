@@ -118,15 +118,25 @@ The security of lattice-based constructions relies on several variants of the sa
 
     CVP is generally harder than SVP and is also NP-hard in the worst case. Approximation versions of CVP, like $\gamma$-CVP (finding $\bold{v}$ within a $\gamma$-factor of the closest vector), are frequently studied in lattice cryptography.
 
+6. Shortest Independent Vector Problem (SIVP)
+
+    **Definition**:  
+    The **Shortest Independent Vector Problem (SIVP)** involves finding \( n \) linearly independent vectors \( \{\bold{v}_1, \bold{v}_2, \dots, \bold{v}_n\} \) in a lattice \( \Lambda \) such that the maximum norm of the vectors is minimized:
+
+    $$
+    \max_{i=1}^n \|\bold{v}_i\| = \lambda_n(\Lambda)
+    $$
+
+    where \( \lambda_n(\Lambda) \) represents the length of the \( n \)-th successive minimum of the lattice. SIVP is closely related to the geometry of the lattice and remains computationally hard. It is used in cryptographic constructions and reduction proofs, often connecting the hardness of lattice problems to cryptographic assumptions.
 
 ## Summary Table of Lattice Problems
 
 | **Problem**      | **Goal**                                   | **Output**                            | **Difficulty**                  |
 |-------------------|-------------------------------------------|---------------------------------------|----------------------------------|
-| **SVP**          | Find the shortest vector                  | \( \bold{v} \in \Lambda, \|\bold{v}\| = \lambda_1 \) | NP-hard in the worst case       |
+| **(I)SVP**          | Find the shortest vector                  | \( \bold{v} \in \Lambda, \|\bold{v}\| = \lambda_1 \) | NP-hard in the worst case       |
 | **H-SVP**        | Find a short enough vector                | \( \bold{v} \in \Lambda, \|\bold{v}\| \leq \delta_n \cdot \text{Vol}(\Lambda)^{1/n} \) | Easier than SVP, used in reduction |
-| **Approx-SVP**   | Approximate the shortest vector           | \( \bold{v} \in \Lambda, \|\bold{v}\| \leq \gamma \lambda_1 \) | Hard for small \( \gamma \)     |
-| **Unique-SVP**   | Find the unique shortest vector           | \( \bold{v} \in \Lambda, \lambda_2 \geq \beta \lambda_1 \) | Easier than SVP (gap \( \beta \)) |
+| **Approx-(I)SVP**   | Approximate the shortest vector           | \( \bold{v} \in \Lambda, \|\bold{v}\| \leq \gamma \lambda_1 \) | Hard for small \( \gamma \)     |
+| **Unique-(I)SVP**   | Find the unique shortest vector           | \( \bold{v} \in \Lambda, \lambda_2 \geq \beta \lambda_1 \) | Easier than SVP (gap \( \beta \)) |
 | **CVP**          | Find the closest lattice vector to target | \( \bold{v} \in \Lambda, \|\bold{t} - \bold{v}\| \)      | NP-hard, harder than SVP        |
 
 
