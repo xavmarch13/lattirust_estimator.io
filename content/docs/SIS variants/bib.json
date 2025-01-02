@@ -1,0 +1,344 @@
+[
+  {
+    "author": [
+      {
+        "family": "Agrawal",
+        "given": "Shweta"
+      },
+      {
+        "family": "Kirshanova",
+        "given": "Elena"
+      },
+      {
+        "family": "Stehlé",
+        "given": "Damien"
+      },
+      {
+        "family": "Yadav",
+        "given": "Anshu"
+      }
+    ],
+    "container-title": "Proceedings of the 2022 acm sigsac conference on computer and communications security",
+    "id": "agrawal2022practical",
+    "issued": {
+      "date-parts": [
+        [
+          2022
+        ]
+      ]
+    },
+    "page": "39-53",
+    "title": "Practical, round-optimal lattice-based blind signatures",
+    "type": "paper-conference"
+  },
+  {
+    "author": [
+      {
+        "family": "Albrecht",
+        "given": "Martin R"
+      },
+      {
+        "family": "Cini",
+        "given": "Valerio"
+      },
+      {
+        "family": "Lai",
+        "given": "Russell WF"
+      },
+      {
+        "family": "Malavolta",
+        "given": "Giulio"
+      },
+      {
+        "family": "Thyagarajan",
+        "given": "Sri AravindaKrishnan"
+      }
+    ],
+    "container-title": "Annual international cryptology conference",
+    "id": "albrecht2022lattice",
+    "issued": {
+      "date-parts": [
+        [
+          2022
+        ]
+      ]
+    },
+    "page": "102-132",
+    "publisher": "Springer",
+    "title": "Lattice-based snarks: Publicly verifiable, preprocessing, and recursively composable",
+    "title-short": "Lattice-based snarks",
+    "type": "paper-conference"
+  },
+  {
+    "author": [
+      {
+        "family": "Albrecht",
+        "given": "Martin R"
+      },
+      {
+        "family": "Fenzi",
+        "given": "Giacomo"
+      },
+      {
+        "family": "Lapiha",
+        "given": "Oleksandra"
+      },
+      {
+        "family": "Nguyen",
+        "given": "Ngoc Khanh"
+      }
+    ],
+    "container-title": "Annual international conference on the theory and applications of cryptographic techniques",
+    "id": "albrecht2024slap",
+    "issued": {
+      "date-parts": [
+        [
+          2024
+        ]
+      ]
+    },
+    "page": "90-119",
+    "publisher": "Springer",
+    "title": "SLAP: Succinct lattice-based polynomial commitments from standard assumptions",
+    "title-short": "SLAP",
+    "type": "paper-conference"
+  },
+  {
+    "author": [
+      {
+        "family": "Balbás",
+        "given": "David"
+      },
+      {
+        "family": "Catalano",
+        "given": "Dario"
+      },
+      {
+        "family": "Fiore",
+        "given": "Dario"
+      },
+      {
+        "family": "Lai",
+        "given": "Russell WF"
+      }
+    ],
+    "container-title": "IACR Cryptol. ePrint Arch.",
+    "id": "balbas2022functional",
+    "issued": {
+      "date-parts": [
+        [
+          2022
+        ]
+      ]
+    },
+    "page": "1365",
+    "title": "Functional commitments for circuits from falsifiable assumptions.",
+    "type": "article-journal",
+    "volume": "2022"
+  },
+  {
+    "author": [
+      {
+        "family": "Boneh",
+        "given": "Dan"
+      },
+      {
+        "family": "Freeman",
+        "given": "David Mandell"
+      }
+    ],
+    "container-title": "International workshop on public key cryptography",
+    "id": "boneh2011linearly",
+    "issued": {
+      "date-parts": [
+        [
+          2011
+        ]
+      ]
+    },
+    "page": "1-16",
+    "publisher": "Springer",
+    "title": "Linearly homomorphic signatures over binary fields and new tools for lattice-based signatures",
+    "type": "paper-conference"
+  },
+  {
+    "author": [
+      {
+        "family": "Bootle",
+        "given": "Jonathan"
+      },
+      {
+        "family": "Lyubashevsky",
+        "given": "Vadim"
+      },
+      {
+        "family": "Nguyen",
+        "given": "Ngoc Khanh"
+      },
+      {
+        "family": "Sorniotti",
+        "given": "Alessandro"
+      }
+    ],
+    "container-title": "Annual international cryptology conference",
+    "id": "bootle2023framework",
+    "issued": {
+      "date-parts": [
+        [
+          2023
+        ]
+      ]
+    },
+    "page": "384-417",
+    "publisher": "Springer",
+    "title": "A framework for practical anonymous credentials from lattices",
+    "type": "paper-conference"
+  },
+  {
+    "author": [
+      {
+        "family": "Fenzi",
+        "given": "Giacomo"
+      },
+      {
+        "family": "Moghaddas",
+        "given": "Hossein"
+      },
+      {
+        "family": "Nguyen",
+        "given": "Ngoc Khanh"
+      }
+    ],
+    "container-title": "Journal of Cryptology",
+    "id": "fenzi2024lattice",
+    "issue": "3",
+    "issued": {
+      "date-parts": [
+        [
+          2024
+        ]
+      ]
+    },
+    "page": "31",
+    "publisher": "Springer",
+    "title": "Lattice-based polynomial commitments: Towards asymptotic and concrete efficiency",
+    "title-short": "Lattice-based polynomial commitments",
+    "type": "article-journal",
+    "volume": "37"
+  },
+  {
+    "author": [
+      {
+        "family": "Ling",
+        "given": "San"
+      },
+      {
+        "family": "Phan",
+        "given": "Duong Hieu"
+      },
+      {
+        "family": "Stehlé",
+        "given": "Damien"
+      },
+      {
+        "family": "Steinfeld",
+        "given": "Ron"
+      }
+    ],
+    "container-title": "Algorithmica",
+    "id": "ling2017hardness",
+    "issue": "4",
+    "issued": {
+      "date-parts": [
+        [
+          2017
+        ]
+      ]
+    },
+    "page": "1318-1352",
+    "publisher": "Springer",
+    "title": "Hardness of k-lwe and applications in traitor tracing",
+    "type": "article-journal",
+    "volume": "79"
+  },
+  {
+    "author": [
+      {
+        "family": "Wee",
+        "given": "Hoeteck"
+      },
+      {
+        "family": "Wu",
+        "given": "David J"
+      }
+    ],
+    "container-title": "International conference on the theory and application of cryptology and information security",
+    "id": "wee2023lattice",
+    "issued": {
+      "date-parts": [
+        [
+          2023
+        ]
+      ]
+    },
+    "page": "201-235",
+    "publisher": "Springer",
+    "title": "Lattice-based functional commitments: Fast verification and cryptanalysis",
+    "title-short": "Lattice-based functional commitments",
+    "type": "paper-conference"
+  },
+  {
+    "author": [
+      {
+        "family": "Wee",
+        "given": "Hoeteck"
+      },
+      {
+        "family": "Wu",
+        "given": "David J"
+      }
+    ],
+    "container-title": "Annual international conference on the theory and applications of cryptographic techniques",
+    "id": "wee2023succinct",
+    "issued": {
+      "date-parts": [
+        [
+          2023
+        ]
+      ]
+    },
+    "page": "385-416",
+    "publisher": "Springer",
+    "title": "Succinct vector, polynomial, and functional commitments from lattices",
+    "type": "paper-conference"
+  },
+  {
+    "author": [
+      {
+        "family": "Cini",
+        "given": "Valerio"
+      },
+      {
+        "family": "Lai",
+        "given": "Russell WF"
+      },
+      {
+        "family": "Malavolta",
+        "given": "Giulio"
+      }
+    ],
+    "container-title": "Annual international cryptology conference",
+    "id": "cini2023lattice",
+    "issued": {
+      "date-parts": [
+        [
+          2023
+        ]
+      ]
+    },
+    "page": "72-105",
+    "publisher": "Springer",
+    "title": "Lattice-based succinct arguments from vanishing polynomials",
+    "type": "paper-conference"
+  }
+]

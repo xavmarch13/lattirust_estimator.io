@@ -11,23 +11,74 @@ We will now present all SIS problem variants implemented in our tools. Most effe
 
 ## BASIS_rand
 
-## BASIS_struct
+**Definition {{< cite "wee2023succinct" >}}**
+
+### Calling an instance
+`code from estimator`
+
+## BASIS_struct 
+
+**Definition {{< cite "wee2023succinct" >}}**
 
 ## ISISf
 
-## k-SIS
+**Definition {{< cite "bootle2023framework" >}}**
+
+## k-SIS 
+
+**Definition {{< cite "boneh2011linearly" >}}**
+
 
 ## k-M-SIS
 
-## k-R-SIS
+**Definition {{< cite "albrecht2022lattice" >}}**
 
-## k-R-ISIS
+For any integer $k\geq 0$, an instance of the k-M-SIS problem is represented by a matrix $\bold{A}\in R_q^{h\times w}$ and a set of k vectors $\bold{v_0}, \ldots, \bold{v_{k-1}}$ such that:
 
-## vanishing-SIS
+$$\bold{A}\cdot\bold{v_i} = 0 \pmod q \text{ and } \lVert v_i \rVert \leq \beta$$
+
+and the goal is to find a non-vector $\bold{v^*} \in R^w$ such that:
+
+$$\lVert \bold{v^*} \rVert \leq \beta^*$$
+
+
+## k-R-SIS 
+
+**Definition {{< cite "albrecht2022lattice" >}}**
+
+
+## k-R-ISIS 
+
+**Definition {{< cite "albrecht2022lattice" >}}**
+
+Let $g(\bold{X})\in R(\bold{X})$ be a Laurent monomial (which is simply a monomial with possibly negative powers). We can write $g(\bold{X}) = \bold{X^e} = \prod_{i\in\mathbb{Z_l}}\bold{X}^{e_i}_i$ for some exponent vector $\bold{e}\in \mathbb{Z}^l$. Now let $\mathcal{G} \subset R(\bold{X})$ be a set of Laurent monomials and $|\mathcal{G}|=k$ and $g^*\in R(\bold{X})$ be a target Laurent monomial.
+
+We call a family $\mathcal{G}$ k-M-ISIS admissible if
+    1. All $g\in \mathcal{G}$ have a constant degree
+    2. All $g\in \mathcal{G}$ are distinct
+    3. $0\notin \mathcal{G}$
+
+
+## vanishing-SIS 
+
+**Definition {{< cite "cini2023lattice" >}}**
+
 
 ## PRISIS
 
-## one-more-ISIS
+**Definition {{< cite "fenzi2024lattice" >}}**
 
+## one-more-ISIS 
+
+**Definition {{< cite "agrawal2022practical" >}}**
+
+An instance of the one-more-ISIS problem is represented by a matrix $\bold{A}\in\mathbb{Z}_q^{h\times w}$. An adversary receives this matrix and is able to perform two times of queries:
+
+1. *Syndrome queries*: request a vector $\bold{t}\leftarrow_$ \mathbb{Z}_q^h$, the challenger keeps track of vectors sent by adding them to a set $\mathcal{T}$.
+2. *Preimage queries*:
+
+
+# References
+{{< references >}}
 
 

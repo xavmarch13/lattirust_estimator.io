@@ -22,7 +22,7 @@ We will now present all SIS problem variants implemented in our tools. Most effe
 <link rel="canonical" href="http://localhost:1313/lattirust_estimator.io/docs/sis-variants/">
 <link rel="stylesheet" href="/lattirust_estimator.io/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
   <script defer src="/lattirust_estimator.io/fuse.min.js"></script>
-  <script defer src="/lattirust_estimator.io/en.search.min.83fc8d945169090f79a411863a3d51977e65ff2cf35fce761823a5575e7be388.js" integrity="sha256-g/yNlFFpCQ95pBGGOj1Rl35l/yzzX852GCOlV15744g=" crossorigin="anonymous"></script>
+  <script defer src="/lattirust_estimator.io/en.search.min.712302162a02ce4cf87f3d9003b4dd77d0e2101f9568512071ed898f2744fdf6.js" integrity="sha256-cSMCFioCzkz4fz2QA7Tdd9DiEB&#43;VaFEgce2JjydE/fY=" crossorigin="anonymous"></script>
 <link rel="alternate" type="application/rss+xml" href="http://localhost:1313/lattirust_estimator.io/docs/sis-variants/index.xml" title="Lattirust estimator 0.1" />
 <!--
 Made with Book Theme
@@ -262,7 +262,11 @@ https://github.com/alex-shpak/hugo-book
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#basis_rand">BASIS_rand</a></li>
+    <li><a href="#basis_rand">BASIS_rand</a>
+      <ul>
+        <li><a href="#calling-an-instance">Calling an instance</a></li>
+      </ul>
+    </li>
     <li><a href="#basis_struct">BASIS_struct</a></li>
     <li><a href="#isisf">ISISf</a></li>
     <li><a href="#k-sis">k-SIS</a></li>
@@ -293,42 +297,74 @@ https://github.com/alex-shpak/hugo-book
   BASIS_rand
   <a class="anchor" href="#basis_rand">#</a>
 </h2>
+<p><strong>Definition [<a class="hugo-simplecite-cite-hyperlink" href="#bibreference-1" title="H. Wee and D. Wu, Succinct vector, polynomial, and functional commitments from lattices, In Proc. Annual international conference on the theory and applications of cryptographic techniques, 2023, pp. 385–416. ">1</a>]</strong></p>
+<h3 id="calling-an-instance">
+  Calling an instance
+  <a class="anchor" href="#calling-an-instance">#</a>
+</h3>
+<p><code>code from estimator</code></p>
 <h2 id="basis_struct">
   BASIS_struct
   <a class="anchor" href="#basis_struct">#</a>
 </h2>
+<p><strong>Definition [<a class="hugo-simplecite-cite-hyperlink" href="#bibreference-1" title="H. Wee and D. Wu, Succinct vector, polynomial, and functional commitments from lattices, In Proc. Annual international conference on the theory and applications of cryptographic techniques, 2023, pp. 385–416. ">1</a>]</strong></p>
 <h2 id="isisf">
   ISISf
   <a class="anchor" href="#isisf">#</a>
 </h2>
+<p><strong>Definition [<a class="hugo-simplecite-cite-hyperlink" href="#bibreference-2" title="J. Bootle, V. Lyubashevsky, N. Nguyen, and A. Sorniotti, A framework for practical anonymous credentials from lattices, In Proc. Annual international cryptology conference, 2023, pp. 384–417. ">2</a>]</strong></p>
 <h2 id="k-sis">
   k-SIS
   <a class="anchor" href="#k-sis">#</a>
 </h2>
+<p><strong>Definition [<a class="hugo-simplecite-cite-hyperlink" href="#bibreference-3" title="D. Boneh and D. Freeman, Linearly homomorphic signatures over binary fields and new tools for lattice-based signatures, In Proc. International workshop on public key cryptography, 2011, pp. 1–16. ">3</a>]</strong></p>
 <h2 id="k-m-sis">
   k-M-SIS
   <a class="anchor" href="#k-m-sis">#</a>
 </h2>
-<h2 id="k-r-sis">
+<p><strong>Definition [<a class="hugo-simplecite-cite-hyperlink" href="#bibreference-4" title="M. Albrecht, V. Cini, R. Lai, G. Malavolta, and S. Thyagarajan, Lattice-based snarks: Publicly verifiable, preprocessing, and recursively composable, In Proc. Annual international cryptology conference, 2022, pp. 102–132. ">4</a>]</strong></p>
+<p>For any integer $k\geq 0$, an instance of the k-M-SIS problem is represented by a matrix $\bold{A}\in R_q^{h\times w}$ and a set of k vectors $\bold{v_0}, \ldots, \bold{v_{k-1}}$ such that:</p>
+$$\bold{A}\cdot\bold{v_i} = 0 \pmod q \text{ and } \lVert v_i \rVert \leq \beta$$<p>and the goal is to find a non-vector $\bold{v^*} \in R^w$ such that:</p>
+$$\lVert \bold{v^*} \rVert \leq \beta^*$$<h2 id="k-r-sis">
   k-R-SIS
   <a class="anchor" href="#k-r-sis">#</a>
 </h2>
+<p><strong>Definition [<a class="hugo-simplecite-cite-hyperlink" href="#bibreference-4" title="M. Albrecht, V. Cini, R. Lai, G. Malavolta, and S. Thyagarajan, Lattice-based snarks: Publicly verifiable, preprocessing, and recursively composable, In Proc. Annual international cryptology conference, 2022, pp. 102–132. ">4</a>]</strong></p>
 <h2 id="k-r-isis">
   k-R-ISIS
   <a class="anchor" href="#k-r-isis">#</a>
 </h2>
+<p><strong>Definition [<a class="hugo-simplecite-cite-hyperlink" href="#bibreference-4" title="M. Albrecht, V. Cini, R. Lai, G. Malavolta, and S. Thyagarajan, Lattice-based snarks: Publicly verifiable, preprocessing, and recursively composable, In Proc. Annual international cryptology conference, 2022, pp. 102–132. ">4</a>]</strong></p>
+<p>Let $g(\bold{X})\in R(\bold{X})$ be a Laurent monomial (which is simply a monomial with possibly negative powers). We can write $g(\bold{X}) = \bold{X^e} = \prod_{i\in\mathbb{Z_l}}\bold{X}^{e_i}_i$ for some exponent vector $\bold{e}\in \mathbb{Z}^l$. Now let $\mathcal{G} \subset R(\bold{X})$ be a set of Laurent monomials and $|\mathcal{G}|=k$ and $g^*\in R(\bold{X})$ be a target Laurent monomial.</p>
+<p>We call a family $\mathcal{G}$ k-M-ISIS admissible if
+1. All $g\in \mathcal{G}$ have a constant degree
+2. All $g\in \mathcal{G}$ are distinct
+3. $0\notin \mathcal{G}$</p>
 <h2 id="vanishing-sis">
   vanishing-SIS
   <a class="anchor" href="#vanishing-sis">#</a>
 </h2>
+<p><strong>Definition [<a class="hugo-simplecite-cite-hyperlink" href="#bibreference-5" title="V. Cini, R. Lai, and G. Malavolta, Lattice-based succinct arguments from vanishing polynomials, In Proc. Annual international cryptology conference, 2023, pp. 72–105. ">5</a>]</strong></p>
 <h2 id="prisis">
   PRISIS
   <a class="anchor" href="#prisis">#</a>
 </h2>
+<p><strong>Definition [<a class="hugo-simplecite-cite-hyperlink" href="#bibreference-6" title="G. Fenzi, H. Moghaddas, and N. Nguyen, Lattice-based polynomial commitments: Towards asymptotic and concrete efficiency, Journal of Cryptology, vol. 37, no. 3, p. 31, 2024. ">6</a>]</strong></p>
 <h2 id="one-more-isis">
   one-more-ISIS
   <a class="anchor" href="#one-more-isis">#</a>
 </h2>
+<p><strong>Definition [<a class="hugo-simplecite-cite-hyperlink" href="#bibreference-7" title="S. Agrawal, E. Kirshanova, D. Stehlé, and A. Yadav, Practical, round-optimal lattice-based blind signatures, In Proc. Proceedings of the 2022 acm sigsac conference on computer and communications security, 2022, pp. 39–53. ">7</a>]</strong></p>
+<p>An instance of the one-more-ISIS problem is represented by a matrix $\bold{A}\in\mathbb{Z}_q^{h\times w}$. An adversary receives this matrix and is able to perform two times of queries:</p>
+<ol>
+<li><em>Syndrome queries</em>: request a vector $\bold{t}\leftarrow_$ \mathbb{Z}_q^h$, the challenger keeps track of vectors sent by adding them to a set $\mathcal{T}$.</li>
+<li><em>Preimage queries</em>:</li>
+</ol>
+<h1 id="references">
+  References
+  <a class="anchor" href="#references">#</a>
+</h1>
+<ol class="hugo-simplecite-reference-list"><li class="hugo-simplecite-reference-list-item" id="bibreference-1">H. Wee and&#32;D. Wu,&#32;<q>Succinct vector, polynomial, and functional commitments from lattices,</q>&#32;In Proc. Annual international conference on the theory and applications of cryptographic techniques,&#32;2023, pp. 385–416.&#32;</li><li class="hugo-simplecite-reference-list-item" id="bibreference-2">J. Bootle,&#32;V. Lyubashevsky,&#32;N. Nguyen, and&#32;A. Sorniotti,&#32;<q>A framework for practical anonymous credentials from lattices,</q>&#32;In Proc. Annual international cryptology conference,&#32;2023, pp. 384–417.&#32;</li><li class="hugo-simplecite-reference-list-item" id="bibreference-3">D. Boneh and&#32;D. Freeman,&#32;<q>Linearly homomorphic signatures over binary fields and new tools for lattice-based signatures,</q>&#32;In Proc. International workshop on public key cryptography,&#32;2011, pp. 1–16.&#32;</li><li class="hugo-simplecite-reference-list-item" id="bibreference-4">M. Albrecht,&#32;V. Cini,&#32;R. Lai,&#32;G. Malavolta, and&#32;S. Thyagarajan,&#32;<q>Lattice-based snarks: Publicly verifiable, preprocessing, and recursively composable,</q>&#32;In Proc. Annual international cryptology conference,&#32;2022, pp. 102–132.&#32;</li><li class="hugo-simplecite-reference-list-item" id="bibreference-5">V. Cini,&#32;R. Lai, and&#32;G. Malavolta,&#32;<q>Lattice-based succinct arguments from vanishing polynomials,</q>&#32;In Proc. Annual international cryptology conference,&#32;2023, pp. 72–105.&#32;</li><li class="hugo-simplecite-reference-list-item" id="bibreference-6">G. Fenzi,&#32;H. Moghaddas, and&#32;N. Nguyen,&#32;<q>Lattice-based polynomial commitments: Towards asymptotic and concrete efficiency,</q>&#32;<em>Journal of Cryptology</em>,&#32;vol. 37,&#32;no. 3,&#32;p. 31,&#32;2024.&#32;</li><li class="hugo-simplecite-reference-list-item" id="bibreference-7">S. Agrawal,&#32;E. Kirshanova,&#32;D. Stehlé, and&#32;A. Yadav,&#32;<q>Practical, round-optimal lattice-based blind signatures,</q>&#32;In Proc. Proceedings of the 2022 acm sigsac conference on computer and communications security,&#32;2022, pp. 39–53.&#32;</li></ol>
 </article>
  
       
@@ -370,7 +406,11 @@ https://github.com/alex-shpak/hugo-book
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#basis_rand">BASIS_rand</a></li>
+    <li><a href="#basis_rand">BASIS_rand</a>
+      <ul>
+        <li><a href="#calling-an-instance">Calling an instance</a></li>
+      </ul>
+    </li>
     <li><a href="#basis_struct">BASIS_struct</a></li>
     <li><a href="#isisf">ISISf</a></li>
     <li><a href="#k-sis">k-SIS</a></li>

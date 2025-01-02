@@ -173,5 +173,9 @@ For a detailed overview of the attack, we encourage the reader to go to {{< cite
 ### The search function
 
 
+# References
+{{< references >}}
+
+
 
 
