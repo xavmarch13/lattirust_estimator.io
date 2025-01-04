@@ -7,7 +7,10 @@ math: true
 
 # SIS variants
 
-We will now present all SIS problem variants implemented in our tools. Most effectively hand out additional hints to the adversary, while hoping that the problem remains hard. In all cases, we will try to define the SIS variants precisely, give the reduction to the basis SIS problem we use (SIS, RSIS, or MSIS) and also give a rough idea of what kind of scheme the problem variant allowed to construct. While we will try to be as close as possible from the original papers, this (and the entire webpage) could probably still contains mistakes. If you are involved in any of these schemes, feel free to reach out with any corrections. In all cases, we will also show an example of how the variants can be called via the estimator.
+We will now present all SIS problem variants implemented in our tools. Most effectively hand out additional hints to the adversary, while hoping that the problem remains hard. In all cases, we will try to define the SIS variants precisely, 
+give the reduction to the basic SIS problem we use (SIS, RSIS, or MSIS) and also give a rough idea of what kind of scheme the problem variant allowed to construct. 
+While we will try to be as close as possible from the original papers, this (and the entire webpage) could probably still contains mistakes. 
+If you are involved in any of these schemes, feel free to reach out with any corrections. In all cases, we will also show an example of how the variants can be called via the estimator.
 
 
 ## k-SIS 
@@ -17,6 +20,9 @@ k-SIS is the first variant of SIS that was introduced that handed out additional
 2. Removal of Random Oracles: The k-SIS assumption was used to eliminate reliance on the random oracle model for certain signature schemes. This provides a pathway to provably secure signature schemes in the standard model, albeit with constraints on the number of signatures.
 3. Efficient k-Time Signature Schemes: By using the k-SIS assumption, Boneh and Freeman created k-time signature schemes where the signing key is limited to signing at most k messages. This avoids the complexity of general existential unforgeability while still ensuring strong guarantees for a bounded number of operations.
 
+
+<div style="background-color: rgba(173, 216, 230, 0.3); padding: 10px; border-radius: 5px; margin: 10px 0;">
+
 **k-SIS definition {{< cite "boneh2011linearly" >}}:**
 
 An instance of the k-SIS problem is represented by a matrix $\bold{A}\in \mathbb{Z}_q^{h\times w}$ and a set of $k$ vectors $\bold{e_1},\cdots, \bold{e_k} \in \Lambda^T_q(\bold{A})\$ and the goal is to find another vector $\bold{v}$ such that:
@@ -24,6 +30,8 @@ An instance of the k-SIS problem is represented by a matrix $\bold{A}\in \mathbb
 $$
 \lVert \bold{v} \rVert \leq \beta \text{, } \bold{A}\cdot\bold{v} = \bold{0} \pmod q \text{ and } \bold{v} \notin \mathbb{Q}-span(\lbrace \bold{e_1},\cdots, \bold{e_k} \rbrace)
 $$
+
+</div>
 
 #### Security and estimator
 
@@ -38,6 +46,8 @@ You can call an SIS instance in the estimator as
 
 k-M-SIS and k-R-SIS are the k-SIS versions lifted up in the module and rings settings respectively.
 
+<div style="background-color: rgba(173, 216, 230, 0.3); padding: 10px; border-radius: 5px; margin: 10px 0;">
+
 **k-M-SIS definition {{< cite "albrecht2022lattice" >}}:**
 
 For any integer $k\geq 0$, an instance of the k-M-SIS problem is represented by a matrix $\bold{A}\in R_q^{h\times w}$ and a set of k vectors $\bold{v_0}, \ldots, \bold{v_{k-1}}$ such that:
@@ -47,6 +57,8 @@ $$\bold{A}\cdot\bold{v_i} = 0 \pmod q \text{ and } \lVert \bold{v_i} \rVert \leq
 and the goal is to find a non-vector $\bold{v^*} \in R^w$ such that:
 
 $$\lVert \bold{v^*} \rVert \leq \beta^* \text{ and }\bold{v}\notin \mathcal{K}-span(\lbrace \bold{v_0}, \ldots, \bold{v_{k-1}}\rbrace)$$
+
+</div>
 
 #### Security and estimator
 
@@ -74,7 +86,10 @@ Previous approaches, like those based on collision-resistant hash functions (e.g
 3. Enhancing Functional Openings: By incorporating structured randomness (as seen in BASISstruct), the framework supports opening commitments to computed values, such as the output of Boolean circuits or polynomial evaluations.
 
 ### BASIS$_{rand}$
-**BASISrand definition {{< cite "wee2023succinct" >}}:**
+
+<div style="background-color: rgba(173, 216, 230, 0.3); padding: 10px; border-radius: 5px; margin: 10px 0;">
+
+**BASIS definition {{< cite "wee2023succinct" >}}:**
 
 An instance of the BASIS problem can be represented with a matrix $\bold{A} \in \mathbb{Z}_q^{h\times w}$, $s$ a Gaussian width parameter and a security parameter $\lambda$. Let's imagine a sampling algorithm *Samp* that takes $\bold{A}$ as input and outputs a matrix $\bold{B} \in  \mathbb{Z}_q^{h'\times w'}$ and an auxiliary input *aux*. We say that basis augmented SIS BASIS holds with respect to the sampling algorithm *Samp* if for all efficient adversary $\mathcal{A}$, the following holds:
 
@@ -93,8 +108,12 @@ $$
 = \text{negl}(\lambda).
 $$
 
+</div>
+
 Essentially, this SIS problem should remain hard even given a Trapdoor matrix $\bold{B}$. This means that if $\bold{B}$ contains too much information about $\bold{A}$, the problem becomes feasible. $\text{BASIS}_{rand}$ is a concrete instanciation that is defined as follows.
 
+
+<div style="background-color: rgba(173, 216, 230, 0.3); padding: 10px; border-radius: 5px; margin: 10px 0;">
 
 >The sampling algorithm *$\text{Samp}(1^\lambda, A)$* is defined as follows:
 >1. Samples $i^* \leftarrow [\ell]$.
@@ -117,6 +136,8 @@ Essentially, this SIS problem should remain hard even given a Trapdoor matrix $\
    $$
    and $\text{aux} = i^*$.
 
+</div>
+
 This is referred to as "the BASIS assumption with random matrices."
 
 #### Security and estimator
@@ -133,6 +154,9 @@ where $k$ is $\ell$, length_bound is $\beta$, sigma is $s$ and Norm is either L2
 
 Another instanciation is presented in the same paper as follows.
 
+<div style="background-color: rgba(173, 216, 230, 0.3); padding: 10px; border-radius: 5px; margin: 10px 0;">
+
+
 >The sampling algorithm $\text{Samp}(1^\lambda, A)$ is defined as follows:
 >1. Samples $W_i \leftarrow \mathbb{Z}_q^{h \times h}$ for all $i \in [\ell]$.
 >2. Outputs
@@ -146,6 +170,7 @@ Another instanciation is presented in the same paper as follows.
    $$
 >   and $\text{aux} = (W_1, \ldots, W_\ell)$.
 
+</div>
 
 This is essentially $BASIS_{rand}$ with structured matrices $A_1, \cdots, A_{l}$. It is referred to as "the BASIS assumption with structured matrices."
 
@@ -166,6 +191,8 @@ PRISIS (Power-Ring Short Integer Solution) is a variant of the BASIS assumption 
 $R_q$. The primary motivation for introducing PRISIS is to simplify the structure of the sampling process in lattice-based schemes while maintaining robust binding and security guarantees. PRISIS allows for more efficient commitment constructions by reducing the complexity of operations and maintaining small proof sizes. Furthermore, it retains security under standard lattice assumptions, supporting succinct, zero-knowledge proofs of polynomial evaluations, even for large degrees. This makes it particularly useful for applications requiring succinct non-interactive arguments and zero-knowledge proofs with minimal verification overhead.
 
 Let us first define PowerBASIS as a first step. We denote GL($n, R$) to be the group of $n\times n$ invertible matrices over the ring R. 
+
+<div style="background-color: rgba(173, 216, 230, 0.3); padding: 10px; border-radius: 5px; margin: 10px 0;">
 
 >The sampling algorithm *$\text{Samp}(1^\lambda, A)$* is defined as follows:
 >1. Generates a row $a^T\leftarrow R^\ell_q$.
@@ -190,7 +217,11 @@ Let us first define PowerBASIS as a first step. We denote GL($n, R$) to be the g
    $$
    and $\text{aux} = \bold{W}$.
 
+</div>
+
 Let us now define the proper PRISIS assumption.
+
+<div style="background-color: rgba(173, 216, 230, 0.3); padding: 10px; border-radius: 5px; margin: 10px 0;">
 
 **PRISIS definition {{< cite "fenzi2024lattice" >}}:**
 
@@ -217,6 +248,8 @@ Let us now define the proper PRISIS assumption.
    $$
    and $\text{aux} = w$.
 
+</div>
+
 #### Security and estimator
 
 The security have only been analyzed for 2 hints, so $l=2$ but it has been shown that $BASIS_{struct}$ and $BASIS_{power}$ are equivalent in hardness for certain parameter choices. More directly for PRISIS we have that:
@@ -229,9 +262,13 @@ We therefore reduce a PRISIS instance to an M-SIS instance and therefore an M-SI
 
 ### h-PRISIS
 
+<div style="background-color: rgba(173, 216, 230, 0.3); padding: 10px; border-radius: 5px; margin: 10px 0;">
+
 **h-PRISIS definition {{< cite "fenzi2024lattice" >}}:**
 
 h-PRISIS is a multi-instance PRISIS problem. The problem can be summarized as given $(\lbrace \bold{A_i} \rBrace, \lbrace \bold{B_i} \rBrace, \lbrace w_i \rBrace, \lbrace \bold{T_i} \rBrace)_{i=0}^{h-1}$ defined as classical PRISIS problems, find short vectors $\bold{x_i}$ s.t. $\sum \bold{A_i}\cdot\bold{x_i} = \bold{0}$
+
+</div>
 
 ## ISISf
 
@@ -255,6 +292,8 @@ f ensures that the relationship between the signature and the blinded message re
 The structure of ISISf supports constructing non-interactive zero-knowledge proofs for lattice relations. This leads to smaller and faster proofs compared to prior constructions, particularly when
 f is chosen as a linear or random function.
 
+<div style="background-color: rgba(173, 216, 230, 0.3); padding: 10px; border-radius: 5px; margin: 10px 0;">
+
 **ISISf definition {{< cite "bootle2023framework" >}}:**
 An instance of the ISISf problem is defined as follows:
 
@@ -272,6 +311,8 @@ $$
 \boldsymbol{A} \cdot \boldsymbol{u}^* = f(x^*) \mod q \quad \text{and} \quad \lVert \boldsymbol{u}^* \rVert \leq \beta^*.
 $$
 
+</div>
+
 #### Security and estimator
 
 The hardness of the ISISf assumption effectively depends on the function f chosen. If we consider f to be in the ROM (Random Oracle Model), then ISISf is as hard as SIS.
@@ -286,6 +327,8 @@ The motivation for k-R-ISIS arises from the need to construct lattice-based succ
 
 1. Support recursive composition: recursive SNARKs require efficient verification of algebraic relations over bounded-norm vectors.
 2. Enable polynomial commitments beyond linear functions: many SNARK applications, especially in zero-knowledge systems, involve verifying polynomial maps with constant degrees greater than 1.
+
+<div style="background-color: rgba(173, 216, 230, 0.3); padding: 10px; border-radius: 5px; margin: 10px 0;">
 
 **Definitions {{< cite "albrecht2022lattice" >}}:**
 
@@ -320,6 +363,8 @@ it is hard to find a short $\mathbf{u}_{g^{\*}}$ and small $\mathbf{s}^{\*}$ suc
 
 When $h = 1$, i.e., when $\bold{A}$ is just a vector, we call the problem $k$-R-ISIS.
 
+</div>
+
 #### Security and estimator
 
 The authors explore different special cases with parameters that do not really fit any real applications but show that the problem seems to be at least as hard as R-SIS.
@@ -336,12 +381,17 @@ You can instanciate these SIS assumptions via
 
 The Vanishing Short Integer Solution (vSIS) assumption introduces a novel approach to constructing lattice-based cryptographic schemes using vanishing polynomials, enabling succinct and homomorphic commitment schemes that are logarithmic in size relative to the input and support bounded multiplicative homomorphism. These commitments can be “folded,” compressing proof sizes in a manner similar to Bulletproofs. The vSIS assumption allows for efficient construction of succinct non-interactive arguments of knowledge (SNARKs) with quasi-linear prover time and polylogarithmic verifier runtime for structured relations, making verifiable delay functions (VDFs) possible in a lattice-based setting. Additionally, vSIS supports recursive proof composition and enhances prover efficiency, overcoming previous bottlenecks in lattice-based protocols. Building on the hardness of finding short vanishing polynomials at specific points, the vSIS problem extends the classical SIS problem, is no weaker than the k-R-ISIS assumption, and relates to the NTRU problem under specific conditions, offering robust post-quantum security guarantees.
 
+
+<div style="background-color: rgba(173, 216, 230, 0.3); padding: 10px; border-radius: 5px; margin: 10px 0;">
+
 **Definition {{< cite "cini2023lattice" >}}:**
 
 Let $h, w, d, q, \beta \in \mathbb{N}$ and $\mathcal{G}$ be a set of w-variate monomials of degree at most d. The vanishing SIS problem is represented by a set $V=\lbrace \bold{v_i} \rbrace_{i=1}^n \in (R^{\times}_q)^w$ of $h$
 uniformely random points in $(R^{\times}_q)^w$. The goal is to find a non-zero polynomial $p\in R[X_1, \cdots, X_w]$ with monomial support over $\mathcal{G}$ such that
 
 $$\forall i \in [n], p(\bold{v_i}) = 0 \pmod{q} \text{ and } \lVert p \rVert \leq \beta$$
+
+</div>
 
 #### Security and estimator
 
@@ -370,6 +420,7 @@ The **one-more-ISIS** (Inhomogeneous Short Integer Solution) assumption is a lat
 
 The one-more-ISIS assumption allows for the construction of efficient, two-round, lattice-based blind signature schemes that are secure under post-quantum settings. It replaces the need for general-purpose zero-knowledge arguments with more efficient lattice-based non-interactive zero-knowledge proofs (NIZKs) for linear relations, significantly reducing signature sizes and computational costs. This development enables the creation of practical blind signature schemes with smaller signatures (around 45 KB) and low runtime for both the signer and the user, making them suitable for use in e-cash, e-voting, and other privacy-preserving applications.
 
+<div style="background-color: rgba(173, 216, 230, 0.3); padding: 10px; border-radius: 5px; margin: 10px 0;">
 
 **Definition {{< cite "agrawal2022practical" >}}**
 
@@ -386,6 +437,8 @@ We denote the number of preimage queries done with $k$.
 The adversary wins if he can output $k+1$ pairs $\lbrace (\bold{y_i}, \bold{t_i}) \rBrace_{0\leq i < k+1}$ satisfying 
 
 $$\bold{A} \cdot \bold{y_i} = \bold{t_i} \pmod q \text{, } \lVert \bold{y_i} \rVert\leq \beta  \text{ and } \bold{t_i}\in\mathcal{T}$$
+
+</div>
 
 #### Security and estimator
 

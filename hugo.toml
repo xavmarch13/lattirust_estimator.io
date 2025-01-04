@@ -9,6 +9,8 @@ theme = ["hugo-book", "hugo-simplecite"]
 
 [markup]
   [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true  # Allow inline HTML
     [markup.goldmark.extensions]
       [markup.goldmark.extensions.passthrough]
         enable = true

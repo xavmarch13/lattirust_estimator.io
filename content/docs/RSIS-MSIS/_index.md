@@ -11,6 +11,8 @@ In practice, basic SIS leads to large key sizes and large parameters overall. Th
 
 ## Ring SIS
 
+<div style="background-color: rgba(173, 216, 230, 0.3); padding: 10px; border-radius: 5px; margin: 10px 0;">
+
 **Definition:{{< cite "langlois2015worst" >}}**  
 We define the **Ring Short Integer Solution (Ring-SIS)** problem as follows $RSIS(h, w, q, \beta, p)$. Let:
 
@@ -23,6 +25,8 @@ $$
 $$
 
 where $\bold{s} = (s_1, \ldots, s_w)^T \in R^m$.
+
+</div>
 
 Each ring element $r\in R$ can be interpreted as an $h$-dimensional vector with coefficients $r_i$ such that $r = \sum_{i=0}^{n-1}r_ix^i$. Now if we compare RSIS to SIS, each matrix element $a_i$ in RSIS actually actually corresponds to the $h\times h$ nega-circulant matrix. In this setup, R-SIS is just a variant of SIS where $\bold{A}$ is restricted to being block negacirculant $\bold{A}= [Rot(a_1)|\ldots|Rot(a_n)]$ where Rot(b) is defined as
 
@@ -38,13 +42,16 @@ b_{h-1} & b_{h-2} & b_{h-3} & \cdots & b_0
 \end{bmatrix}
 $$
 
-### Reduction to SIS
+### Security and estimator
 
-To estimate the security of a ring SIS instance, we then effectively transform an RSIS instance $RSIS(h, w, q, \beta, p)$ to an SIS instance $SIS(h, h \cdot w, q, \beta, p)$ 
+To estimate the security of a ring SIS instance, we then effectively transform an RSIS instance $RSIS(h, w, q, \beta, p)$ to an SIS instance $SIS(h, h \cdot w, q, \beta, p)$. You can instanciate an instance of RSIS in the estimator via
+`RSIS.new(h, w, q, length_bound, Norm)`.
 
 ---
 
 ## Module SIS
+
+<div style="background-color: rgba(173, 216, 230, 0.3); padding: 10px; border-radius: 5px; margin: 10px 0;">
 
 **Definition:{{< cite "langlois2015worst" >}}**  
 We define the **Module Short Integer Solution (Module-SIS)** problem as follows $MSIS(h, w, d, q, \beta, p)$. Let:
@@ -60,6 +67,8 @@ $$
 $$
 
 where $\bold{s} = (s_1, \ldots, s_w)^T \in R^m$.
+
+</div>
 
 Each element $\bold{a_i}$ can be seen as d coefficients in the ring and as such can be seen as an $h\cdot d \times h$ matrix. This leads a module SIS problem to be visualized as such in a standard SIS problem:
 
@@ -86,9 +95,11 @@ b_{n-1} & b_{n-2} & b_{n-3} & \cdots & b_0
 \end{bmatrix}.
 \]
 
-### Reduction to SIS
+### Security and estimator
 
-To estimate the security of a module SIS instance, we then effectively transform an MSIS instance $MSIS(h, w, d, q, \beta, p)$ to an SIS instance $SIS(h \cdot d, h \cdot w, q, \beta, p)$. Also, note that by using $d=1$, we effectively come back to RSIS. Indeed, modules are a generalization of rings.
+To estimate the security of a module SIS instance, we then effectively transform an MSIS instance $MSIS(h, w, d, q, \beta, p)$ to an SIS instance $SIS(h \cdot d, h \cdot w, q, \beta, p)$. Also, note that by using $d=1$, we effectively come back to RSIS. Indeed, modules are a generalization of rings. You can instanciate an instance of MSIS in the estimator via
+`MSIS.new(h, w, d, q, length_bound, Norm)`.
+
 
 
 

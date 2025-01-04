@@ -7,13 +7,16 @@
   SIS variants
   #
 
-We will now present all SIS problem variants implemented in our tools. Most effectively hand out additional hints to the adversary, while hoping that the problem remains hard. In all cases, we will try to define the SIS variants precisely, give the reduction to the basis SIS problem we use (SIS, RSIS, or MSIS) and also give a rough idea of what kind of scheme the problem variant allowed to construct. While we will try to be as close as possible from the original papers, this (and the entire webpage) could probably still contains mistakes. If you are involved in any of these schemes, feel free to reach out with any corrections. In all cases, we will also show an example of how the variants can be called via the estimator.">
+We will now present all SIS problem variants implemented in our tools. Most effectively hand out additional hints to the adversary, while hoping that the problem remains hard. In all cases, we will try to define the SIS variants precisely,
+give the reduction to the basic SIS problem we use (SIS, RSIS, or MSIS) and also give a rough idea of what kind of scheme the problem variant allowed to construct.
+While we will try to be as close as possible from the original papers, this (and the entire webpage) could probably still contains mistakes.
+If you are involved in any of these schemes, feel free to reach out with any corrections. In all cases, we will also show an example of how the variants can be called via the estimator.">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
 <meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/lattirust_estimator.io/docs/sis-variants/">
   <meta property="og:site_name" content="Lattirust estimator 0.1">
   <meta property="og:title" content="SIS variants">
-  <meta property="og:description" content="SIS variants#We will now present all SIS problem variants implemented in our tools. Most effectively hand out additional hints to the adversary, while hoping that the problem remains hard. In all cases, we will try to define the SIS variants precisely, give the reduction to the basis SIS problem we use (SIS, RSIS, or MSIS) and also give a rough idea of what kind of scheme the problem variant allowed to construct. While we will try to be as close as possible from the original papers, this (and the entire webpage) could probably still contains mistakes. If you are involved in any of these schemes, feel free to reach out with any corrections. In all cases, we will also show an example of how the variants can be called via the estimator.">
+  <meta property="og:description" content="SIS variants#We will now present all SIS problem variants implemented in our tools. Most effectively hand out additional hints to the adversary, while hoping that the problem remains hard. In all cases, we will try to define the SIS variants precisely, give the reduction to the basic SIS problem we use (SIS, RSIS, or MSIS) and also give a rough idea of what kind of scheme the problem variant allowed to construct. While we will try to be as close as possible from the original papers, this (and the entire webpage) could probably still contains mistakes. If you are involved in any of these schemes, feel free to reach out with any corrections. In all cases, we will also show an example of how the variants can be called via the estimator.">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="website">
 <title>SIS variants | Lattirust estimator 0.1</title>
@@ -22,7 +25,7 @@ We will now present all SIS problem variants implemented in our tools. Most effe
 <link rel="canonical" href="http://localhost:1313/lattirust_estimator.io/docs/sis-variants/">
 <link rel="stylesheet" href="/lattirust_estimator.io/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
   <script defer src="/lattirust_estimator.io/fuse.min.js"></script>
-  <script defer src="/lattirust_estimator.io/en.search.min.42384e73fc6986c540df192cfc26360001eeca872bb6dfcf909a214be6c42c9d.js" integrity="sha256-QjhOc/xphsVA3xks/CY2AAHuyocrtt/PkJohS&#43;bELJ0=" crossorigin="anonymous"></script>
+  <script defer src="/lattirust_estimator.io/en.search.min.efd1d4bae57ca980afcfc78493ca6f6bafe8715ddfebf2fa10744a3aca38dc40.js" integrity="sha256-79HUuuV8qYCvz8eEk8pva6/ocV3f6/L6EHRKOso43EA=" crossorigin="anonymous"></script>
 <link rel="alternate" type="application/rss+xml" href="http://localhost:1313/lattirust_estimator.io/docs/sis-variants/index.xml" title="Lattirust estimator 0.1" />
 <!--
 Made with Book Theme
@@ -317,7 +320,10 @@ https://github.com/alex-shpak/hugo-book
   SIS variants
   <a class="anchor" href="#sis-variants">#</a>
 </h1>
-<p>We will now present all SIS problem variants implemented in our tools. Most effectively hand out additional hints to the adversary, while hoping that the problem remains hard. In all cases, we will try to define the SIS variants precisely, give the reduction to the basis SIS problem we use (SIS, RSIS, or MSIS) and also give a rough idea of what kind of scheme the problem variant allowed to construct. While we will try to be as close as possible from the original papers, this (and the entire webpage) could probably still contains mistakes. If you are involved in any of these schemes, feel free to reach out with any corrections. In all cases, we will also show an example of how the variants can be called via the estimator.</p>
+<p>We will now present all SIS problem variants implemented in our tools. Most effectively hand out additional hints to the adversary, while hoping that the problem remains hard. In all cases, we will try to define the SIS variants precisely,
+give the reduction to the basic SIS problem we use (SIS, RSIS, or MSIS) and also give a rough idea of what kind of scheme the problem variant allowed to construct.
+While we will try to be as close as possible from the original papers, this (and the entire webpage) could probably still contains mistakes.
+If you are involved in any of these schemes, feel free to reach out with any corrections. In all cases, we will also show an example of how the variants can be called via the estimator.</p>
 <h2 id="k-sis">
   k-SIS
   <a class="anchor" href="#k-sis">#</a>
@@ -328,11 +334,13 @@ https://github.com/alex-shpak/hugo-book
 <li>Removal of Random Oracles: The k-SIS assumption was used to eliminate reliance on the random oracle model for certain signature schemes. This provides a pathway to provably secure signature schemes in the standard model, albeit with constraints on the number of signatures.</li>
 <li>Efficient k-Time Signature Schemes: By using the k-SIS assumption, Boneh and Freeman created k-time signature schemes where the signing key is limited to signing at most k messages. This avoids the complexity of general existential unforgeability while still ensuring strong guarantees for a bounded number of operations.</li>
 </ol>
+<div style="background-color: rgba(173, 216, 230, 0.3); padding: 10px; border-radius: 5px; margin: 10px 0;">
 <p><strong>k-SIS definition [<a class="hugo-simplecite-cite-hyperlink" href="#bibreference-1" title="D. Boneh and D. Freeman, Linearly homomorphic signatures over binary fields and new tools for lattice-based signatures, In Proc. International workshop on public key cryptography, 2011, pp. 1–16. ">1</a>]:</strong></p>
 <p>An instance of the k-SIS problem is represented by a matrix $\bold{A}\in \mathbb{Z}_q^{h\times w}$ and a set of $k$ vectors $\bold{e_1},\cdots, \bold{e_k} \in \Lambda^T_q(\bold{A})$ and the goal is to find another vector $\bold{v}$ such that:</p>
 $$
 \lVert \bold{v} \rVert \leq \beta \text{, } \bold{A}\cdot\bold{v} = \bold{0} \pmod q \text{ and } \bold{v} \notin \mathbb{Q}-span(\lbrace \bold{e_1},\cdots, \bold{e_k} \rbrace)
-$$<h4 id="security-and-estimator">
+$$</div>
+<h4 id="security-and-estimator">
   Security and estimator
   <a class="anchor" href="#security-and-estimator">#</a>
 </h4>
@@ -348,10 +356,12 @@ $$<h4 id="security-and-estimator">
   <a class="anchor" href="#k-m-sis">#</a>
 </h3>
 <p>k-M-SIS and k-R-SIS are the k-SIS versions lifted up in the module and rings settings respectively.</p>
+<div style="background-color: rgba(173, 216, 230, 0.3); padding: 10px; border-radius: 5px; margin: 10px 0;">
 <p><strong>k-M-SIS definition [<a class="hugo-simplecite-cite-hyperlink" href="#bibreference-2" title="M. Albrecht, V. Cini, R. Lai, G. Malavolta, and S. Thyagarajan, Lattice-based snarks: Publicly verifiable, preprocessing, and recursively composable, In Proc. Annual international cryptology conference, 2022, pp. 102–132. ">2</a>]:</strong></p>
 <p>For any integer $k\geq 0$, an instance of the k-M-SIS problem is represented by a matrix $\bold{A}\in R_q^{h\times w}$ and a set of k vectors $\bold{v_0}, \ldots, \bold{v_{k-1}}$ such that:</p>
 $$\bold{A}\cdot\bold{v_i} = 0 \pmod q \text{ and } \lVert \bold{v_i} \rVert \leq \beta$$<p>and the goal is to find a non-vector $\bold{v^*} \in R^w$ such that:</p>
-$$\lVert \bold{v^*} \rVert \leq \beta^* \text{ and }\bold{v}\notin \mathcal{K}-span(\lbrace \bold{v_0}, \ldots, \bold{v_{k-1}}\rbrace)$$<h4 id="security-and-estimator-1">
+$$\lVert \bold{v^*} \rVert \leq \beta^* \text{ and }\bold{v}\notin \mathcal{K}-span(\lbrace \bold{v_0}, \ldots, \bold{v_{k-1}}\rbrace)$$</div>
+<h4 id="security-and-estimator-1">
   Security and estimator
   <a class="anchor" href="#security-and-estimator-1">#</a>
 </h4>
@@ -383,7 +393,8 @@ Previous approaches, like those based on collision-resistant hash functions (e.g
   BASIS$_{rand}$
   <a class="anchor" href="#basis_rand">#</a>
 </h3>
-<p><strong>BASISrand definition [<a class="hugo-simplecite-cite-hyperlink" href="#bibreference-3" title="H. Wee and D. Wu, Succinct vector, polynomial, and functional commitments from lattices, In Proc. Annual international conference on the theory and applications of cryptographic techniques, 2023, pp. 385–416. ">3</a>]:</strong></p>
+<div style="background-color: rgba(173, 216, 230, 0.3); padding: 10px; border-radius: 5px; margin: 10px 0;">
+<p><strong>BASIS definition [<a class="hugo-simplecite-cite-hyperlink" href="#bibreference-3" title="H. Wee and D. Wu, Succinct vector, polynomial, and functional commitments from lattices, In Proc. Annual international conference on the theory and applications of cryptographic techniques, 2023, pp. 385–416. ">3</a>]:</strong></p>
 <p>An instance of the BASIS problem can be represented with a matrix $\bold{A} \in \mathbb{Z}_q^{h\times w}$, $s$ a Gaussian width parameter and a security parameter $\lambda$. Let&rsquo;s imagine a sampling algorithm <em>Samp</em> that takes $\bold{A}$ as input and outputs a matrix $\bold{B} \in  \mathbb{Z}_q^{h&rsquo;\times w&rsquo;}$ and an auxiliary input <em>aux</em>. We say that basis augmented SIS BASIS holds with respect to the sampling algorithm <em>Samp</em> if for all efficient adversary $\mathcal{A}$, the following holds:</p>
 <p><code>BASISstruct.new(h, w, q, length_bound, sigma, k, Norm)</code></p>
 $$
@@ -397,7 +408,9 @@ $$
     \end{array}
 \right]
 = \text{negl}(\lambda).
-$$<p>Essentially, this SIS problem should remain hard even given a Trapdoor matrix $\bold{B}$. This means that if $\bold{B}$ contains too much information about $\bold{A}$, the problem becomes feasible. $\text{BASIS}_{rand}$ is a concrete instanciation that is defined as follows.</p>
+$$</div>
+<p>Essentially, this SIS problem should remain hard even given a Trapdoor matrix $\bold{B}$. This means that if $\bold{B}$ contains too much information about $\bold{A}$, the problem becomes feasible. $\text{BASIS}_{rand}$ is a concrete instanciation that is defined as follows.</p>
+<div style="background-color: rgba(173, 216, 230, 0.3); padding: 10px; border-radius: 5px; margin: 10px 0;">
 <blockquote>
 <p>The sampling algorithm <em>$\text{Samp}(1^\lambda, A)$</em> is defined as follows:</p>
 <ol>
@@ -422,6 +435,7 @@ $$
 and $\text{aux} = i^*$.</li>
 </ol>
 </blockquote>
+</div>
 <p>This is referred to as &ldquo;the BASIS assumption with random matrices.&rdquo;</p>
 <h4 id="security-and-estimator-3">
   Security and estimator
@@ -437,6 +451,7 @@ assumption holds with parameters $BASIS_{rand}(h,w,q,\beta,s,\ell, p)$. The redu
   <a class="anchor" href="#basis_struct">#</a>
 </h3>
 <p>Another instanciation is presented in the same paper as follows.</p>
+<div style="background-color: rgba(173, 216, 230, 0.3); padding: 10px; border-radius: 5px; margin: 10px 0;">
 <blockquote>
 <p>The sampling algorithm $\text{Samp}(1^\lambda, A)$ is defined as follows:</p>
 <ol>
@@ -453,6 +468,7 @@ $$
 and $\text{aux} = (W_1, \ldots, W_\ell)$.</li>
 </ol>
 </blockquote>
+</div>
 <p>This is essentially $BASIS_{rand}$ with structured matrices $A_1, \cdots, A_{l}$. It is referred to as &ldquo;the BASIS assumption with structured matrices.&rdquo;</p>
 <h4 id="security-and-estimator-4">
   Security and estimator
@@ -470,6 +486,7 @@ You can instanciate an instance of $BASIS_{struct}$ via:</p>
 <p>PRISIS (Power-Ring Short Integer Solution) is a variant of the BASIS assumption designed to strengthen lattice-based cryptographic commitment schemes. Unlike its predecessors, PRISIS introduces a structure where matrix multipliers in the commitment scheme are replaced by scalar multiplications with random ring elements, specifically uniformly random polynomials from a defined ring
 $R_q$. The primary motivation for introducing PRISIS is to simplify the structure of the sampling process in lattice-based schemes while maintaining robust binding and security guarantees. PRISIS allows for more efficient commitment constructions by reducing the complexity of operations and maintaining small proof sizes. Furthermore, it retains security under standard lattice assumptions, supporting succinct, zero-knowledge proofs of polynomial evaluations, even for large degrees. This makes it particularly useful for applications requiring succinct non-interactive arguments and zero-knowledge proofs with minimal verification overhead.</p>
 <p>Let us first define PowerBASIS as a first step. We denote GL($n, R$) to be the group of $n\times n$ invertible matrices over the ring R.</p>
+<div style="background-color: rgba(173, 216, 230, 0.3); padding: 10px; border-radius: 5px; margin: 10px 0;">
 <blockquote>
 <p>The sampling algorithm <em>$\text{Samp}(1^\lambda, A)$</em> is defined as follows:</p>
 <ol>
@@ -496,7 +513,9 @@ $$
 and $\text{aux} = \bold{W}$.</li>
 </ol>
 </blockquote>
+</div>
 <p>Let us now define the proper PRISIS assumption.</p>
+<div style="background-color: rgba(173, 216, 230, 0.3); padding: 10px; border-radius: 5px; margin: 10px 0;">
 <p><strong>PRISIS definition [<a class="hugo-simplecite-cite-hyperlink" href="#bibreference-4" title="G. Fenzi, H. Moghaddas, and N. Nguyen, Lattice-based polynomial commitments: Towards asymptotic and concrete efficiency, Journal of Cryptology, vol. 37, no. 3, p. 31, 2024. ">4</a>]:</strong></p>
 <blockquote>
 <p>The sampling algorithm <em>$\text{Samp}(1^\lambda, A)$</em> is defined as follows:</p>
@@ -524,6 +543,7 @@ $$
 and $\text{aux} = w$.</li>
 </ol>
 </blockquote>
+</div>
 <h4 id="security-and-estimator-5">
   Security and estimator
   <a class="anchor" href="#security-and-estimator-5">#</a>
@@ -537,8 +557,10 @@ $2^{10N}q^{-\lfloor \epsilon N \rfloor}$ is negligible. Then for $\sigma \geq \d
   h-PRISIS
   <a class="anchor" href="#h-prisis">#</a>
 </h3>
+<div style="background-color: rgba(173, 216, 230, 0.3); padding: 10px; border-radius: 5px; margin: 10px 0;">
 <p><strong>h-PRISIS definition [<a class="hugo-simplecite-cite-hyperlink" href="#bibreference-4" title="G. Fenzi, H. Moghaddas, and N. Nguyen, Lattice-based polynomial commitments: Towards asymptotic and concrete efficiency, Journal of Cryptology, vol. 37, no. 3, p. 31, 2024. ">4</a>]:</strong></p>
 <p>h-PRISIS is a multi-instance PRISIS problem. The problem can be summarized as given $(\lbrace \bold{A_i} \rBrace, \lbrace \bold{B_i} \rBrace, \lbrace w_i \rBrace, \lbrace \bold{T_i} \rBrace)_{i=0}^{h-1}$ defined as classical PRISIS problems, find short vectors $\bold{x_i}$ s.t. $\sum \bold{A_i}\cdot\bold{x_i} = \bold{0}$</p>
+</div>
 <h2 id="isisf">
   ISISf
   <a class="anchor" href="#isisf">#</a>
@@ -568,6 +590,7 @@ The structure of ISISf supports constructing non-interactive zero-knowledge proo
 f is chosen as a linear or random function.</p>
 </li>
 </ol>
+<div style="background-color: rgba(173, 216, 230, 0.3); padding: 10px; border-radius: 5px; margin: 10px 0;">
 <p><strong>ISISf definition [<a class="hugo-simplecite-cite-hyperlink" href="#bibreference-5" title="J. Bootle, V. Lyubashevsky, N. Nguyen, and A. Sorniotti, A framework for practical anonymous credentials from lattices, In Proc. Annual international cryptology conference, 2023, pp. 384–417. ">5</a>]:</strong>
 An instance of the ISISf problem is defined as follows:</p>
 <p>Let $\boldsymbol{A} \in \mathbb{Z}_q^{h \times w}$ and $f: \mathbb{Z}_N \rightarrow \mathbb{Z}_q^h$ be a function. Given $(\boldsymbol{A}, f)$ and access to an oracle that samples fresh $x \leftarrow \mathbb{Z}_N$ and outputs $x, \boldsymbol{u}_x$ such that:</p>
@@ -577,7 +600,8 @@ $$<p>where k is the number of times the oracle is used (number of hints).</p>
 <p>the goal is to output a fresh tuple $(x^*, \boldsymbol{u}^*)$ such that:</p>
 $$
 \boldsymbol{A} \cdot \boldsymbol{u}^* = f(x^*) \mod q \quad \text{and} \quad \lVert \boldsymbol{u}^* \rVert \leq \beta^*.
-$$<h4 id="security-and-estimator-6">
+$$</div>
+<h4 id="security-and-estimator-6">
   Security and estimator
   <a class="anchor" href="#security-and-estimator-6">#</a>
 </h4>
@@ -594,6 +618,7 @@ However, if we want to attack the scheme without making any assumption about f, 
 <li>Support recursive composition: recursive SNARKs require efficient verification of algebraic relations over bounded-norm vectors.</li>
 <li>Enable polynomial commitments beyond linear functions: many SNARK applications, especially in zero-knowledge systems, involve verifying polynomial maps with constant degrees greater than 1.</li>
 </ol>
+<div style="background-color: rgba(173, 216, 230, 0.3); padding: 10px; border-radius: 5px; margin: 10px 0;">
 <p><strong>Definitions [<a class="hugo-simplecite-cite-hyperlink" href="#bibreference-2" title="M. Albrecht, V. Cini, R. Lai, G. Malavolta, and S. Thyagarajan, Lattice-based snarks: Publicly verifiable, preprocessing, and recursively composable, In Proc. Annual international cryptology conference, 2022, pp. 102–132. ">2</a>]:</strong></p>
 <p><em>k-M-ISIS admissibility:</em></p>
 <p>Let $g(\bold{X})\in R(\bold{X})$ be a Laurent monomial (which is simply a monomial with possibly negative powers). We can write $g(\bold{X}) = \bold{X^e} = \prod_{i\in\mathbb{Z_l}}\bold{X}^{e_i}_i$ for some exponent vector $\bold{e}\in \mathbb{Z}^l$. Now let $\mathcal{G} \subset R(\bold{X})$ be a set of Laurent monomials and $|\mathcal{G}|=k$ and $g^*\in R(\bold{X})$ be a target Laurent monomial.</p>
@@ -617,6 +642,7 @@ g(\mathbf{v}) \cdot \mathbf{t} \equiv \mathbf{A} \cdot \mathbf{u}_g \mod q
 \[
 \mathbf{s}^* \cdot g^*(\mathbf{v}) \cdot \mathbf{t} \equiv \mathbf{A} \cdot \mathbf{u}_{g^*} \mod q.
 \]<p>When $h = 1$, i.e., when $\bold{A}$ is just a vector, we call the problem $k$-R-ISIS.</p>
+</div>
 <h4 id="security-and-estimator-7">
   Security and estimator
   <a class="anchor" href="#security-and-estimator-7">#</a>
@@ -631,10 +657,12 @@ You can instanciate these SIS assumptions via</p>
   <a class="anchor" href="#vanishing-sis">#</a>
 </h2>
 <p>The Vanishing Short Integer Solution (vSIS) assumption introduces a novel approach to constructing lattice-based cryptographic schemes using vanishing polynomials, enabling succinct and homomorphic commitment schemes that are logarithmic in size relative to the input and support bounded multiplicative homomorphism. These commitments can be “folded,” compressing proof sizes in a manner similar to Bulletproofs. The vSIS assumption allows for efficient construction of succinct non-interactive arguments of knowledge (SNARKs) with quasi-linear prover time and polylogarithmic verifier runtime for structured relations, making verifiable delay functions (VDFs) possible in a lattice-based setting. Additionally, vSIS supports recursive proof composition and enhances prover efficiency, overcoming previous bottlenecks in lattice-based protocols. Building on the hardness of finding short vanishing polynomials at specific points, the vSIS problem extends the classical SIS problem, is no weaker than the k-R-ISIS assumption, and relates to the NTRU problem under specific conditions, offering robust post-quantum security guarantees.</p>
+<div style="background-color: rgba(173, 216, 230, 0.3); padding: 10px; border-radius: 5px; margin: 10px 0;">
 <p><strong>Definition [<a class="hugo-simplecite-cite-hyperlink" href="#bibreference-6" title="V. Cini, R. Lai, and G. Malavolta, Lattice-based succinct arguments from vanishing polynomials, In Proc. Annual international cryptology conference, 2023, pp. 72–105. ">6</a>]:</strong></p>
 <p>Let $h, w, d, q, \beta \in \mathbb{N}$ and $\mathcal{G}$ be a set of w-variate monomials of degree at most d. The vanishing SIS problem is represented by a set $V=\lbrace \bold{v_i} \rbrace_{i=1}^n \in (R^{\times}_q)^w$ of $h$
 uniformely random points in $(R^{\times}_q)^w$. The goal is to find a non-zero polynomial $p\in R[X_1, \cdots, X_w]$ with monomial support over $\mathcal{G}$ such that</p>
-$$\forall i \in [n], p(\bold{v_i}) = 0 \pmod{q} \text{ and } \lVert p \rVert \leq \beta$$<h4 id="security-and-estimator-8">
+$$\forall i \in [n], p(\bold{v_i}) = 0 \pmod{q} \text{ and } \lVert p \rVert \leq \beta$$</div>
+<h4 id="security-and-estimator-8">
   Security and estimator
   <a class="anchor" href="#security-and-estimator-8">#</a>
 </h4>
@@ -657,6 +685,7 @@ $$<p>and you can instanciate a vanishing SIS problem via</p>
 </h2>
 <p>The <strong>one-more-ISIS</strong> (Inhomogeneous Short Integer Solution) assumption is a lattice-based analogue of the one-more-RSA assumption introduced to address the challenges of constructing practical and efficient post-quantum blind signatures. The one-more-ISIS assumption involves a game where an adversary is given a matrix \( C \) and can make a limited number of preimage queries for vectors \( t \) such that \( C y = t \) while ensuring \( y \) is short. The adversary wins if it can output one additional valid pair \( (y, t) \) beyond the number of queries it made. This assumption was introduced to support unforgeability in blind signature schemes by ensuring that even when multiple signatures are requested, forgery remains computationally infeasible.</p>
 <p>The one-more-ISIS assumption allows for the construction of efficient, two-round, lattice-based blind signature schemes that are secure under post-quantum settings. It replaces the need for general-purpose zero-knowledge arguments with more efficient lattice-based non-interactive zero-knowledge proofs (NIZKs) for linear relations, significantly reducing signature sizes and computational costs. This development enables the creation of practical blind signature schemes with smaller signatures (around 45 KB) and low runtime for both the signer and the user, making them suitable for use in e-cash, e-voting, and other privacy-preserving applications.</p>
+<div style="background-color: rgba(173, 216, 230, 0.3); padding: 10px; border-radius: 5px; margin: 10px 0;">
 <p><strong>Definition [<a class="hugo-simplecite-cite-hyperlink" href="#bibreference-7" title="S. Agrawal, E. Kirshanova, D. Stehlé, and A. Yadav, Practical, round-optimal lattice-based blind signatures, In Proc. Proceedings of the 2022 acm sigsac conference on computer and communications security, 2022, pp. 39–53. ">7</a>]</strong></p>
 <p>An instance of the one-more-ISIS problem is represented by a matrix $\bold{A}\in\mathbb{Z}_q^{h\times w}$. An adversary receives this matrix and is able to perform two times of queries:</p>
 <ol>
@@ -670,7 +699,8 @@ $$<p>and you can instanciate a vanishing SIS problem via</p>
 $$\bold{y'} \leftarrow D_{\mathbb{Z^w,\sigma}} \text{ such that } \bold{A}\cdot \bold{y'} = \bold{t'} \pmod q$$<p>.</p>
 <p>We denote the number of preimage queries done with $k$.</p>
 <p>The adversary wins if he can output $k+1$ pairs $\lbrace (\bold{y_i}, \bold{t_i}) \rBrace_{0\leq i &lt; k+1}$ satisfying</p>
-$$\bold{A} \cdot \bold{y_i} = \bold{t_i} \pmod q \text{, } \lVert \bold{y_i} \rVert\leq \beta  \text{ and } \bold{t_i}\in\mathcal{T}$$<h4 id="security-and-estimator-9">
+$$\bold{A} \cdot \bold{y_i} = \bold{t_i} \pmod q \text{, } \lVert \bold{y_i} \rVert\leq \beta  \text{ and } \bold{t_i}\in\mathcal{T}$$</div>
+<h4 id="security-and-estimator-9">
   Security and estimator
   <a class="anchor" href="#security-and-estimator-9">#</a>
 </h4>
