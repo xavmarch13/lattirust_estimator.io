@@ -152,25 +152,45 @@ The cost of the SVP oracle is defined by the internal cost that the user will se
 
 ## L-inf norm strategy
 
-As in {{< cite "cryptoeprint:2015/046" >}}, we separate between the Matzov and the Kyber analysis. Both however follow the same high-level strategy. First, we evaluate the security for the L2-bound as explained previously.This will act as a lower bound on the hardness of our infinity bound problem. The strategy is then to analyze the probability of obtaining a vector that respects the infinity bound constraints on all coordinates. When $\sqrt{w}\beta < q$ we apply the analysis in {{< cite "matzov_2022_6493704" >}} and when  $\sqrt{w}\beta \geq q$, we apply the analysis in {{< cite "lyubashevsky2020crystals" >}}. The attack is composed on 2 parts. First, we use lattice reduction to find many short vectors of the lattice. Let's imagine we receive a secret $\bold{y}$ such that $\bold{y} = \bold{A}\bold{x}$ where $\bold{x}$ is short. This is in fact an ISIS instance. Our goal in the second step is to determine with statistical tools if $\bold{y}$ was sampled from the uniform distribution or computed using the secret $\bold{x}$. Imagining for have a statistical distinguisher between the 2 distribution, the attacker can now for each coordinate of the secret $\bold{x}$ guess its value and use the distinguisher to determine if it is good.
+As in {{< cite "cryptoeprint:2015/046" >}}, we separate between the Matzov and the Kyber analysis. Both however follow the same high-level strategy. First, we evaluate the security for the L2-bound as explained previously.This will act as a lower bound on the hardness of our infinity bound problem. The strategy is then to analyze the probability of obtaining a vector that respects the infinity bound constraints on all coordinates. When $\sqrt{w}\beta < q$ we apply the analysis in {{< cite "matzov_2022_6493704" >}} and when  $\sqrt{w}\beta \geq q$, we apply the analysis in {{< cite "lyubashevsky2020crystals" >}}. The attack is composed on 2 parts. First, we use lattice reduction to find many short vectors of the lattice. Then, we assume something about the many short vectors that were outputed and analyze the probability of obtaining at least one short vectors that respects the infinity bound on all coordinates. The difference in the style of analysis is brought down to the assumptions that we make about our vectors after sampling them. 
 
 ### Matzov analysis
 
-The improvements made is that first, the attacker can iterate over several coordinates of the secret at the same time. This lets us recover more coordinate and reduces the dimension of the lattice. The second improvement is the use of the Fast Fourier Transform (FFT) as a dstinghuishing algorithm, which allows to check all guesses simultaneously with a single FFT computation. The computation is actually done in a modulus p smaller than q, with the argument being that since the secret is short, we do not introduce bug errors by doing so. The steps can be summarized in:
+Matzov introduces in his paper an enhanced way to sample many short vectors from running BKZ. First, the algorithm runs BKZ with a block-size $\beta_1$ to find a reduced basis of $\Lambda$. In this phase, we apply the dimension-for-free technique since we only wish for a reduced basis. Then as a second step, we perform sieving with another block-size $\beta_2$ without the dimension-for-free technique because in this step we want as output as many short vectors as possible and will use all of them.
 
-1. Generate many pairs of short vectors $(\bold{x}, \bold{y})$. This step is improved by using the dimension for free optimisation for all SVP calls excepts the last and using a different block-size for the last call.
-2. Enumerate over guesses of the secret.
-3. For each guesses, use the FFT dstinguisher. 
+The algorithm can be summarized as
 
-For a detailed overview of the attack, we encourage the reader to go to {{< cite "matzov_2022_6493704" >}} as we will only dig into the cost of the attack.
+>**Short Vectors Sampling Procedure**
+>1. **Input:** A basis $B = (b_1, \ldots, b_d)$ for a lattice, integers $\beta_1$, $\beta_2 \leq d$, and the desired number of short vectors $D$. Let $N_{sieve}(\beta_2)$ be the number of vectors after performing lattice sieving with a block-size of $\beta_2$.
+>2. **Output:** A list of at least $D$ short vectors from the lattice.
+>3. For $i = 1, \ldots, \left\lceil \frac{D}{N_{\text{sieve}}(\beta_2)}\right\rceil$:
+>     - Randomize the basis $B$.
+>     - Run BKZ$_{d, \beta_1}$ on $B$ to obtain a reduced basis $(b'_1,   \ldots, b'_d)$.
+>     - Run a sieve of dimension $\beta_2$ on the sublattice  $$(b'_1,   \ldots, b'_{\beta_{2}})$$ to obtain a list of vectors and add them to $L$.
+>4. Return $L$.
 
-#### Cost
+Note that a similar procedure was presented in {{< cite "guo2021faster" >}}. We consider the running time of this algorithm to be 
+
+$$
+\lceil\frac{D}{N_{\text{sieve}}(\beta_2)}\rceil(T_{BKZ(d, \beta_1)} + T_{sieve}(\beta_2))
+$$
+
+Most importantly, we then make the assumption that if $\ell$ is the expected length of the vectors from the short vectors sampling procedure, then the coordinates if the returned vectors have approximately independent Gaussian distributions with mean 0 and standard deviation $\frac{\ell}{ \sqrt{d}}$. This means that if we want the probability of $d$ vectors respecting the infinity bound, we can compute it via:
+
+$$p = (2*\Phi(\text{length bound}_{\infty}) - 1) ^ d \text{ where } \Phi \sim \mathcal{N}(0, \frac{\ell}{ \sqrt{d}})$$
+
+Now when we find a block size and a number of dimension for which we have a probability of finding such vectors, then we simply repeat the experiment until we get the success probability that we want. As a generalization and to not overwhelm the user with custumization possibilities, we fix the overall probability of success to attain to 0.99. Also, for most parameters that are useful in cryptography, we follow one remark of the original authors that approximate $N_{\text{sieve}}(\beta_2)\approx D$
+
+#### Cost of sampling short vectors
+
+For a detailed overview of the analysis, we encourage the interested reader to go to {{< cite "matzov_2022_6493704" >}}.
+
 
 ### Kyber analysis
 
-### The tradeoffs
+In this analysis, we don't consider only the GSA but we consider the q-ary structure of the lattice. As such, we consider that BKZ could now produce q-vectors at the given length bound. Only the middle region of the basis will produce gaussian independent vectors as in the Matzov analysis. This is why when sampling our vectors, we will only keep the vectors starting from the zone where they are not q-ary. To account for the q-ary structure, the simulator used is automatically ZGSA or if need be you can use LGSA that forgets q-vectors by using rerandomization. The standard deviation used to calculate the probability of vectors respecting our infinity bound is then corrected to $\frac{l}{d'}$ where d' is the number if coordinates that are gaussians after we remove q-vectors. The probability is then computed similarly as in Matzov.   
 
-### The search function
+#### Cost of sampling short vectors
 
 
 # References

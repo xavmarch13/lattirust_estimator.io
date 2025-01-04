@@ -354,5 +354,30 @@
     },
     "title": "Crystals-dilithium",
     "type": "article-journal"
+  },
+  {
+    "author": [
+      {
+        "family": "Guo",
+        "given": "Qian"
+      },
+      {
+        "family": "Johansson",
+        "given": "Thomas"
+      }
+    ],
+    "container-title": "Advances in cryptology–ASIACRYPT 2021: 27th international conference on the theory and application of cryptology and information security, singapore, december 6–10, 2021, proceedings, part IV 27",
+    "id": "guo2021faster",
+    "issued": {
+      "date-parts": [
+        [
+          2021
+        ]
+      ]
+    },
+    "page": "33-62",
+    "publisher": "Springer",
+    "title": "Faster dual lattice attacks for solving LWE with applications to CRYSTALS",
+    "type": "paper-conference"
   }
 ]
