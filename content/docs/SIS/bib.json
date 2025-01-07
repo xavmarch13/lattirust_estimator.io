@@ -35,7 +35,7 @@
         "given": "Vinod"
       }
     ],
-    "container-title": "Proceedings of the fortieth annual ACM symposium on theory of computing",
+    "container-title": "Proceedings of the fortieth annual acm symposium on theory of computing",
     "id": "gentry2008trapdoors",
     "issued": {
       "date-parts": [
@@ -70,7 +70,7 @@
     },
     "page": "21-39",
     "publisher": "Springer",
-    "title": "Hardness of SIS and LWE with small parameters",
+    "title": "Hardness of sis and lwe with small parameters",
     "type": "paper-conference"
   },
   {
@@ -124,8 +124,8 @@
     },
     "page": "23-42",
     "publisher": "Springer",
-    "title": "Coded-BKW: Solving LWE using lattice codes",
-    "title-short": "Coded-BKW",
+    "title": "Coded-bkw: Solving lwe using lattice codes",
+    "title-short": "Coded-bkw",
     "type": "paper-conference"
   },
   {
@@ -195,7 +195,7 @@
         "given": "Steven D"
       }
     ],
-    "container-title": "Information security and privacy: 19th australasian conference, ACISP 2014, wollongong, NSW, australia, july 7-9, 2014. Proceedings 19",
+    "container-title": "Information security and privacy: 19th australasian conference, acisp 2014, wollongong, nsw, australia, july 7-9, 2014. Proceedings 19",
     "id": "bai2014lattice",
     "issued": {
       "date-parts": [
@@ -206,7 +206,7 @@
     },
     "page": "322-337",
     "publisher": "Springer",
-    "title": "Lattice decoding attacks on binary LWE",
+    "title": "Lattice decoding attacks on binary lwe",
     "type": "paper-conference"
   },
   {
@@ -220,7 +220,7 @@
         "given": "Chris"
       }
     ],
-    "container-title": "Topics in cryptology–CT-RSA 2011: The cryptographers’ track at the RSA conference 2011, san francisco, CA, USA, february 14-18, 2011. proceedings",
+    "container-title": "Topics in cryptology–ct-rsa 2011: The cryptographers’ track at the rsa conference 2011, san francisco, ca, usa, february 14-18, 2011. Proceedings",
     "id": "lindner2011better",
     "issued": {
       "date-parts": [
@@ -231,7 +231,7 @@
     },
     "page": "319-339",
     "publisher": "Springer",
-    "title": "Better key sizes (and attacks) for LWE-based encryption",
+    "title": "Better key sizes (and attacks) for lwe-based encryption",
     "type": "paper-conference"
   },
   {
@@ -254,8 +254,8 @@
         ]
       ]
     },
-    "title": "Lattice attacks on NTRU and LWE: A history of refinements",
-    "title-short": "Lattice attacks on NTRU and LWE",
+    "title": "Lattice attacks on ntru and lwe: A history of refinements",
+    "title-short": "Lattice attacks on ntru and lwe",
     "type": "article-journal"
   },
   {
@@ -284,7 +284,7 @@
     },
     "publisher": "Cryptology ePrint Archive, Paper 2015/046",
     "title": "On the concrete hardness of learning with errors",
-    "type": ""
+    "type": "no-type"
   },
   {
     "DOI": "10.5281/zenodo.6493704",
@@ -304,9 +304,9 @@
       ]
     },
     "publisher": "Zenodo",
-    "title": "Report on the security of LWE: Improved dual lattice attack",
-    "title-short": "Report on the security of LWE",
-    "type": ""
+    "title": "Report on the security of lwe: Improved dual lattice attack",
+    "title-short": "Report on the security of lwe",
+    "type": "no-type"
   },
   {
     "author": [
@@ -366,7 +366,7 @@
         "given": "Thomas"
       }
     ],
-    "container-title": "Advances in cryptology–ASIACRYPT 2021: 27th international conference on the theory and application of cryptology and information security, singapore, december 6–10, 2021, proceedings, part IV 27",
+    "container-title": "Advances in cryptology–asiacrypt 2021: 27th international conference on the theory and application of cryptology and information security, singapore, december 6–10, 2021, proceedings, part iv 27",
     "id": "guo2021faster",
     "issued": {
       "date-parts": [
@@ -377,7 +377,29 @@
     },
     "page": "33-62",
     "publisher": "Springer",
-    "title": "Faster dual lattice attacks for solving LWE with applications to CRYSTALS",
+    "title": "Faster dual lattice attacks for solving lwe with applications to crystals",
+    "type": "paper-conference"
+  },
+  {
+    "author": [
+      {
+        "family": "Ducas",
+        "given": "Léo"
+      }
+    ],
+    "container-title": "Annual international conference on the theory and applications of cryptographic techniques",
+    "id": "ducas2018shortest",
+    "issued": {
+      "date-parts": [
+        [
+          2018
+        ]
+      ]
+    },
+    "page": "125-145",
+    "publisher": "Springer",
+    "title": "Shortest vector from lattice sieving: A few dimensions for free",
+    "title-short": "Shortest vector from lattice sieving",
     "type": "paper-conference"
   }
 ]
