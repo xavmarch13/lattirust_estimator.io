@@ -7,21 +7,19 @@
   Our tool
   #
 
+In this section, we will provide an overview of how to use the lattirust estimator. We will present the options for costing the problems, the type of errors you may encounter and also the search functions we provide over the parameter spaces and their characteristic.
 
-  Searching for the best parameters on single SIS instances
+  Instanciating and evaluating the hardness of SIS instances
   #
 
-
-  Searching for the best parameters on multiple SIS instances
-  #
-
-TODO">
+You can set the type and the parameters of an SIS-based instance via:">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
 <meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/lattirust_estimator.io/docs/estimator-options/">
   <meta property="og:site_name" content="Lattirust estimator 0.1">
   <meta property="og:title" content="Estimator options and API">
-  <meta property="og:description" content="Our tool # Searching for the best parameters on single SIS instances # Searching for the best parameters on multiple SIS instances # TODO">
+  <meta property="og:description" content="Our tool # In this section, we will provide an overview of how to use the lattirust estimator. We will present the options for costing the problems, the type of errors you may encounter and also the search functions we provide over the parameter spaces and their characteristic.
+Instanciating and evaluating the hardness of SIS instances # You can set the type and the parameters of an SIS-based instance via:">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="website">
 <title>Estimator options and API | Lattirust estimator 0.1</title>
@@ -30,7 +28,7 @@ TODO">
 <link rel="canonical" href="http://localhost:1313/lattirust_estimator.io/docs/estimator-options/">
 <link rel="stylesheet" href="/lattirust_estimator.io/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
   <script defer src="/lattirust_estimator.io/fuse.min.js"></script>
-  <script defer src="/lattirust_estimator.io/en.search.min.c44444a88c47bfed367cdd8b4b6f79b09f739289f4b3fb85c8e463c1153dc529.js" integrity="sha256-xEREqIxHv&#43;02fN2LS295sJ9zkon0s/uFyORjwRU9xSk=" crossorigin="anonymous"></script>
+  <script defer src="/lattirust_estimator.io/en.search.min.cba919c3f5f95f9ccc6a05dac861d614131d287d46dc06dcb415e9fe23c28f09.js" integrity="sha256-y6kZw/X5X5zMagXayGHWFBMdKH1G3AbctBXp/iPCjwk=" crossorigin="anonymous"></script>
 <link rel="alternate" type="application/rss+xml" href="http://localhost:1313/lattirust_estimator.io/docs/estimator-options/index.xml" title="Lattirust estimator 0.1" />
 <!--
 Made with Book Theme
@@ -270,6 +268,13 @@ https://github.com/alex-shpak/hugo-book
   
 <nav id="TableOfContents">
   <ul>
+    <li><a href="#instanciating-and-evaluating-the-hardness-of-sis-instances">Instanciating and evaluating the hardness of SIS instances</a>
+      <ul>
+        <li><a href="#the-estimates-enum">The Estimates enum</a></li>
+        <li><a href="#the-simulator-enum">The Simulator enum</a></li>
+        <li><a href="#lattice-estimator-errors">Lattice estimator errors</a></li>
+      </ul>
+    </li>
     <li><a href="#searching-for-the-best-parameters-on-single-sis-instances">Searching for the best parameters on single SIS instances</a></li>
     <li><a href="#searching-for-the-best-parameters-on-multiple-sis-instances">Searching for the best parameters on multiple SIS instances</a></li>
   </ul>
@@ -288,15 +293,90 @@ https://github.com/alex-shpak/hugo-book
   Our tool
   <a class="anchor" href="#our-tool">#</a>
 </h1>
+<p>In this section, we will provide an overview of how to use the lattirust estimator. We will present the options for costing the problems, the type of errors you may encounter and also the search functions we provide over the parameter spaces and their characteristic.</p>
+<h2 id="instanciating-and-evaluating-the-hardness-of-sis-instances">
+  Instanciating and evaluating the hardness of SIS instances
+  <a class="anchor" href="#instanciating-and-evaluating-the-hardness-of-sis-instances">#</a>
+</h2>
+<p>You can set the type and the parameters of an SIS-based instance via:</p>
+<ul>
+<li>
+<p><code>SIS.new(h, w, q, length_bound, Norm)</code> for a classical SIS instance where $\bold{A}\in \mathbb{Z}^{h\times w}_q$ and you look for a vector such that $
+\boldsymbol{A} \boldsymbol{y} = \boldsymbol{0} \mod q \quad \text{and} \quad \lVert\boldsymbol{y}\rVert \leq$ <code>length_bound</code>. The norm is selected via a Rust enum as  <code>Norm::L2</code> or <code>Norm::Linf</code>. For example,</p>
+<p><code>let falcon512_unf: SIS = SIS::new(512, 1024, 12289u64.into(), 5833.9072, Norm::L2);</code></p>
+</li>
+<li>
+<p><code>MSIS.new(h, w, d, q, length_bound, Norm)</code> for a module SIS instance where the additional parameter $d$ is the rank of the module used. Again the norm is selected via a Rust enum as  <code>Norm::L2</code> or <code>Norm::Linf</code>. For example,</p>
+<p><code>let msis_instance: MSIS = MSIS::new(24, 512, 4, 122898899u64.into(), 5833.9072, Norm::L2);</code></p>
+</li>
+<li>
+<p>For specific variants that have extra parameters, please refer to the page presenting all variants to see how to instanciate them.</p>
+</li>
+</ul>
+<p>Now to evaluate the hardness of an instance via a lattice reduction attack, you must choose the specific model you want to use for the SVP oracle that is part of BKZ and the simulator you want to use for the assumed shape of vectors after lattice reduction. If you evaluate the hardness of an SIS instance under an euclidean norm, then the actual shape assumed after lattice reduction does not matter as we directly optimize over a function between the hermite factor and the block-size, however, it does matter under an infinity norm. You get the hardness by calling</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span>sis_instance.security_level(estimate_type, simulator_type)-&gt;Result<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">f64</span>, LatticeEstimatorError<span style="color:#f92672">&gt;</span>
+</span></span></code></pre></div><ul>
+<li>estimate_type is an <code>Option&lt;Estimates&gt;</code> where Estimates is a Rust enum, where None defaults to <code>Matzov(true)</code></li>
+<li>simulator_type is an <code>Option&lt;Simulator&gt;</code> where Simulator is a Rust enum, where None defaults to <code>GSA</code></li>
+<li>The return value of the <code>security_level</code> is either a lattice estimator error, or a float $\lambda$ that represents the security level $2^\lambda$</li>
+</ul>
+<h3 id="the-estimates-enum">
+  The Estimates enum
+  <a class="anchor" href="#the-estimates-enum">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">enum</span> <span style="color:#a6e22e">Estimates</span> {
+</span></span><span style="display:flex;"><span>    BdglSieve,       <span style="color:#75715e">// Implements the Becker-Ducas-Gama-Laarhoven sieve
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    QSieve,          <span style="color:#75715e">// Quantum sieve model for quantum-enhanced sieving
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    BjgSieve,        <span style="color:#75715e">// Bai-Jeng-Groves sieve for lattice sieving optimizations
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    AdpsSieve(<span style="color:#66d9ef">bool</span>), <span style="color:#75715e">// ADPS sieve (Albrecht-Ducas-Poppelmann-Steinwandt), with optimizations for dual attack settings
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    ChaLoySieve,     <span style="color:#75715e">// Chatterjee-Loyd sieve for structured lattices
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    CheNgueEnum,     <span style="color:#75715e">// Chen-Nguyen enumeration model combining enumeration with sieving
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    AbfEnum(<span style="color:#66d9ef">bool</span>),   <span style="color:#75715e">// ABF enumeration technique with an optimization flag
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    AblrEnum,        <span style="color:#75715e">// Albrecht-Bai-Laarhoven-Reith (ABLR) enumeration
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    LotusEnum,       <span style="color:#75715e">// LOTUS enumeration for module-SIS problems
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    Kyber(<span style="color:#66d9ef">bool</span>),     <span style="color:#75715e">// Kyber-specific estimator with an optimization boolean
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    Matzov(<span style="color:#66d9ef">bool</span>)     <span style="color:#75715e">// Matzov estimator with optional advanced heuristics
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
+</span></span></code></pre></div><p>For Estimates that have a bool integrated to them, it is because they offer both a classical and a quantum estimate. So you if set <code>Matzov(true)</code> you will get the classical estimates whereas is you set <code>Matzov(false)</code> you will get the quantum estimate,</p>
+<h3 id="the-simulator-enum">
+  The Simulator enum
+  <a class="anchor" href="#the-simulator-enum">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">enum</span> <span style="color:#a6e22e">Simulator</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">GSA</span>,  <span style="color:#75715e">// Geometric Series Assumption (exponential decay in norms)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">ZGSA</span>, <span style="color:#75715e">// Z-shaped profile for q-ary lattices with plateaus
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">LGSA</span>  <span style="color:#75715e">// L-shaped profile for q-vectors that are rerandomized
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
+</span></span></code></pre></div><h3 id="lattice-estimator-errors">
+  Lattice estimator errors
+  <a class="anchor" href="#lattice-estimator-errors">#</a>
+</h3>
+<p>While using our tool, you may encounter three types of error all represented by an enum.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">enum</span> <span style="color:#a6e22e">LatticeEstimatorError</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">/// Invalid parameter error with details
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"></span>    InvalidParameter {
+</span></span><span style="display:flex;"><span>        param_name: String,
+</span></span><span style="display:flex;"><span>        reason: String,
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">/// Computation-related error
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"></span>    ComputationError {
+</span></span><span style="display:flex;"><span>        message: String,
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">/// Configuration error with a specific message
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"></span>    ConfigurationError {
+</span></span><span style="display:flex;"><span>        message: String,
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>They can be thrown either while actually costing a scheme or at the beginning because of parameters that can not be used. They represent critical errors and the estimator can not run while encountering one of these. You may also encounter another type or &ldquo;errors&rdquo; that we call warnings. Warning are just possible problem that could present with the set of parameters you choose for a specific instance. Since they are mostly asymptotics, warnings have the goal to make you think about what parameters you are choosing because the reduction that is proven does not cover them or they seem sensitive given the asymptotic bound. These warnings will print on the standard output but the estimator will still be able to run. We did not want to stop the user everytime the parameter choices seemed to conflict with asymptotics bound to prevent too much restriction on usage.</p>
 <h2 id="searching-for-the-best-parameters-on-single-sis-instances">
   Searching for the best parameters on single SIS instances
   <a class="anchor" href="#searching-for-the-best-parameters-on-single-sis-instances">#</a>
 </h2>
+<p>For an already defined SIS instance, we provide a way to find the tightest set of parameters to achieve a certain level security.</p>
 <h2 id="searching-for-the-best-parameters-on-multiple-sis-instances">
   Searching for the best parameters on multiple SIS instances
   <a class="anchor" href="#searching-for-the-best-parameters-on-multiple-sis-instances">#</a>
 </h2>
-<p>TODO</p>
 </article>
  
       
@@ -338,6 +418,13 @@ https://github.com/alex-shpak/hugo-book
   
 <nav id="TableOfContents">
   <ul>
+    <li><a href="#instanciating-and-evaluating-the-hardness-of-sis-instances">Instanciating and evaluating the hardness of SIS instances</a>
+      <ul>
+        <li><a href="#the-estimates-enum">The Estimates enum</a></li>
+        <li><a href="#the-simulator-enum">The Simulator enum</a></li>
+        <li><a href="#lattice-estimator-errors">Lattice estimator errors</a></li>
+      </ul>
+    </li>
     <li><a href="#searching-for-the-best-parameters-on-single-sis-instances">Searching for the best parameters on single SIS instances</a></li>
     <li><a href="#searching-for-the-best-parameters-on-multiple-sis-instances">Searching for the best parameters on multiple SIS instances</a></li>
   </ul>
