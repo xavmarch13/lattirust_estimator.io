@@ -95,8 +95,7 @@ They can be thrown either while actually costing a scheme or at the beginning be
 
 ## Searching for the best parameters on single SIS instances
 
-For an already defined SIS instance, we provide a way to find the tightest set of parameters to achieve a certain level security.
-
+For an already defined SIS instance, we provide a way to find the tightest set of parameters to achieve a certain level security. We give a way to optimize separately for $h$ which is the primary security indicator, but also for the length bound and for $d$ the dimension of the module and $k$ the number of hints, when it applies. We also give a function to optimize both principal parameters ($h$ and the length bound) simultaneously.
 
 ## Searching for the best parameters on multiple SIS instances
 

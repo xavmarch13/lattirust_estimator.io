@@ -22,7 +22,7 @@ In practice, basic SIS leads to large key sizes and large parameters overall. Th
 <link rel="canonical" href="http://localhost:1313/lattirust_estimator.io/docs/rsis-msis/">
 <link rel="stylesheet" href="/lattirust_estimator.io/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
   <script defer src="/lattirust_estimator.io/fuse.min.js"></script>
-  <script defer src="/lattirust_estimator.io/en.search.min.cba919c3f5f95f9ccc6a05dac861d614131d287d46dc06dcb415e9fe23c28f09.js" integrity="sha256-y6kZw/X5X5zMagXayGHWFBMdKH1G3AbctBXp/iPCjwk=" crossorigin="anonymous"></script>
+  <script defer src="/lattirust_estimator.io/en.search.min.28699bc6a655822ad060f67278eb3dc57d62f76da35350292b1d07af4370bc11.js" integrity="sha256-KGmbxqZVgirQYPZyeOs9xX1i922jU1ApKx0Hr0NwvBE=" crossorigin="anonymous"></script>
 <link rel="alternate" type="application/rss+xml" href="http://localhost:1313/lattirust_estimator.io/docs/rsis-msis/index.xml" title="Lattirust estimator 0.1" />
 <!--
 Made with Book Theme
@@ -288,13 +288,13 @@ https://github.com/alex-shpak/hugo-book
   Compact versions of SIS
   <a class="anchor" href="#compact-versions-of-sis">#</a>
 </h1>
-<p>In practice, basic SIS leads to large key sizes and large parameters overall. Thinking about $\bold{A} \in \mathbb{Z}_q^{h\times w}$ with $m &gt; n$ leads to at least quadratic complexity. This is why more compact version have been introduced like Ring-SIS and Module-SIS. By using such underlying structures, we are able to obtain much smaller key sizes in the schemes that use an SIS instance as the basis for their security. As a refresher on the module and ring structure the reader can consult [<a class="hugo-simplecite-cite-hyperlink" href="#bibreference-1" title="J. Lambek, Lectures on rings and modules. American Mathematical Soc., 2009. ">1</a>]. Consider that we choose some $h = 2^k$ and that we choose the columns of $\bold{A}$ to be elements of the ring $\mathbb{Z}_q / \langle x^h + 1 \rangle$, if $h$ is a power of two it is irreducible over the rationals, then we need to precise less elements to describe the same SIS instance. Using a module, we can get an even compacter structure.</p>
+<p>In practice, basic SIS leads to large key sizes and large parameters overall. Thinking about $\bold{A} \in \mathbb{Z}_q^{h\times w}$ with $m &gt; n$ leads to at least quadratic complexity. This is why more compact version have been introduced like Ring-SIS and Module-SIS. By using such underlying structures, we are able to obtain much smaller key sizes in the schemes that use an SIS instance as the basis for their security. As a refresher on the module and ring structure the reader can consult [<a id="cite-1" class="hugo-simplecite-cite-hyperlink" href="#bibreference-1" title="J. Lambek, Lectures on rings and modules. American Mathematical Soc., 2009. ">1</a>]. Consider that we choose some $h = 2^k$ and that we choose the columns of $\bold{A}$ to be elements of the ring $\mathbb{Z}_q / \langle x^h + 1 \rangle$, if $h$ is a power of two it is irreducible over the rationals, then we need to precise less elements to describe the same SIS instance. Using a module, we can get an even compacter structure.</p>
 <h2 id="ring-sis">
   Ring SIS
   <a class="anchor" href="#ring-sis">#</a>
 </h2>
 <div style="background-color: rgba(173, 216, 230, 0.3); padding: 10px; border-radius: 5px; margin: 10px 0;">
-<p><strong>Definition:[<a class="hugo-simplecite-cite-hyperlink" href="#bibreference-2" title="A. Langlois and D. Stehlé, Worst-case to average-case reductions for module lattices, Designs, Codes and Cryptography, vol. 75, no. 3, pp. 565–599, 2015. ">2</a>]</strong><br>
+<p><strong>Definition:[<a id="cite-2" class="hugo-simplecite-cite-hyperlink" href="#bibreference-2" title="A. Langlois and D. Stehlé, Worst-case to average-case reductions for module lattices, Designs, Codes and Cryptography, vol. 75, no. 3, pp. 565–599, 2015. ">2</a>]</strong><br>
 We define the <strong>Ring Short Integer Solution (Ring-SIS)</strong> problem as follows $RSIS(h, w, q, \beta, p)$. Let:</p>
 <ul>
 <li>\( R_q = \mathbb{Z}_q / \langle x^h + 1 \rangle \), where \( h \) is a power of two (ensuring \( x^h + 1 \) is irreducible over \( \mathbb{Q} \)),</li>
@@ -326,7 +326,7 @@ $$<h3 id="security-and-estimator">
   <a class="anchor" href="#module-sis">#</a>
 </h2>
 <div style="background-color: rgba(173, 216, 230, 0.3); padding: 10px; border-radius: 5px; margin: 10px 0;">
-<p><strong>Definition:[<a class="hugo-simplecite-cite-hyperlink" href="#bibreference-2" title="A. Langlois and D. Stehlé, Worst-case to average-case reductions for module lattices, Designs, Codes and Cryptography, vol. 75, no. 3, pp. 565–599, 2015. ">2</a>]</strong><br>
+<p><strong>Definition:[<a id="cite-2" class="hugo-simplecite-cite-hyperlink" href="#bibreference-2" title="A. Langlois and D. Stehlé, Worst-case to average-case reductions for module lattices, Designs, Codes and Cryptography, vol. 75, no. 3, pp. 565–599, 2015. ">2</a>]</strong><br>
 We define the <strong>Module Short Integer Solution (Module-SIS)</strong> problem as follows $MSIS(h, w, d, q, \beta, p)$. Let:</p>
 <ul>
 <li>\( R = \mathbb{Z}_q / \langle x^h + 1 \rangle \), where \( h \) is a power of two,</li>
@@ -366,7 +366,7 @@ b_{n-1} & b_{n-2} & b_{n-3} & \cdots & b_0
   References
   <a class="anchor" href="#references">#</a>
 </h1>
-<ol class="hugo-simplecite-reference-list"><li class="hugo-simplecite-reference-list-item" id="bibreference-1">J. Lambek,&#32;<em>Lectures on rings and modules</em>.&#32;American Mathematical Soc., 2009.&#32;</li><li class="hugo-simplecite-reference-list-item" id="bibreference-2">A. Langlois and&#32;D. Stehlé,&#32;<q>Worst-case to average-case reductions for module lattices,</q>&#32;<em>Designs, Codes and Cryptography</em>,&#32;vol. 75,&#32;no. 3,&#32;pp. 565–599,&#32;2015.&#32;</li></ol>
+<ol class="hugo-simplecite-reference-list"><li class="hugo-simplecite-reference-list-item" id="bibreference-1">J. Lambek,&#32;<em>Lectures on rings and modules</em>.&#32;American Mathematical Soc., 2009.&#32;<a href="#cite-1" class="back-arrow" title="Back to text">↩</a></li><li class="hugo-simplecite-reference-list-item" id="bibreference-2">A. Langlois and&#32;D. Stehlé,&#32;<q>Worst-case to average-case reductions for module lattices,</q>&#32;<em>Designs, Codes and Cryptography</em>,&#32;vol. 75,&#32;no. 3,&#32;pp. 565–599,&#32;2015.&#32;<a href="#cite-2" class="back-arrow" title="Back to text">↩</a></li></ol>
 </article>
  
       
