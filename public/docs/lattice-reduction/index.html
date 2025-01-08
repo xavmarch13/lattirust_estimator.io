@@ -7,13 +7,13 @@
   How to solve SVP ?
   #
 
-The way we solve the Shortest Vector Problem (SVP) and similar problems depends a lot on the lattice dimension. In lower dimensions, exact solvers are practical, and there are two main approaches: enumeration and sieving. Both methods perform some exhaustive search over all short lattice vectors—enumeration does this deterministically, while sieving is typically randomized. However, as the lattice dimension grows, the number of possible solutions increases exponentially, making these methods infeasible for high dimensions (think 100 and more).">
+The way we solve the Shortest Vector Problem (SVP) and similar problems depends significantly on the lattice dimension. In lower dimensions, exact solvers are practical, and there are two main approaches: enumeration and sieving. Both methods perform an exhaustive search over all short lattice vectors—enumeration does this deterministically, while sieving is typically randomized. However, as the lattice dimension grows, the number of possible solutions increases exponentially, making these methods infeasible for high dimensions (think 100 and more).">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
 <meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/lattirust_estimator.io/docs/lattice-reduction/">
   <meta property="og:site_name" content="Lattirust estimator 0.1">
   <meta property="og:title" content="Lattice reduction">
-  <meta property="og:description" content="How to solve SVP ? # The way we solve the Shortest Vector Problem (SVP) and similar problems depends a lot on the lattice dimension. In lower dimensions, exact solvers are practical, and there are two main approaches: enumeration and sieving. Both methods perform some exhaustive search over all short lattice vectors—enumeration does this deterministically, while sieving is typically randomized. However, as the lattice dimension grows, the number of possible solutions increases exponentially, making these methods infeasible for high dimensions (think 100 and more).">
+  <meta property="og:description" content="How to solve SVP ? # The way we solve the Shortest Vector Problem (SVP) and similar problems depends significantly on the lattice dimension. In lower dimensions, exact solvers are practical, and there are two main approaches: enumeration and sieving. Both methods perform an exhaustive search over all short lattice vectors—enumeration does this deterministically, while sieving is typically randomized. However, as the lattice dimension grows, the number of possible solutions increases exponentially, making these methods infeasible for high dimensions (think 100 and more).">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="website">
 <title>Lattice reduction | Lattirust estimator 0.1</title>
@@ -22,7 +22,7 @@ The way we solve the Shortest Vector Problem (SVP) and similar problems depends 
 <link rel="canonical" href="http://localhost:1313/lattirust_estimator.io/docs/lattice-reduction/">
 <link rel="stylesheet" href="/lattirust_estimator.io/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
   <script defer src="/lattirust_estimator.io/fuse.min.js"></script>
-  <script defer src="/lattirust_estimator.io/en.search.min.28699bc6a655822ad060f67278eb3dc57d62f76da35350292b1d07af4370bc11.js" integrity="sha256-KGmbxqZVgirQYPZyeOs9xX1i922jU1ApKx0Hr0NwvBE=" crossorigin="anonymous"></script>
+  <script defer src="/lattirust_estimator.io/en.search.min.cc68f8e452ee388dbf978c66324d2754a9fb387b81371658a9d56882d2591076.js" integrity="sha256-zGj45FLuOI2/l4xmMk0nVKn7OHuBNxZYqdVogtJZEHY=" crossorigin="anonymous"></script>
 <link rel="alternate" type="application/rss+xml" href="http://localhost:1313/lattirust_estimator.io/docs/lattice-reduction/index.xml" title="Lattirust estimator 0.1" />
 <!--
 Made with Book Theme
@@ -92,6 +92,24 @@ https://github.com/alex-shpak/hugo-book
   
 
   
+    <a href="/lattirust_estimator.io/docs/introduction/" class="">Introduction</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
     <a href="/lattirust_estimator.io/docs/preliminaries/" class="">Preliminaries</a>
   
 
@@ -110,7 +128,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/lattirust_estimator.io/docs/lattice-reduction/" class="active">Lattice reduction</a>
+    <a href="/lattirust_estimator.io/docs/cost-models/" class="">Cost Models</a>
   
 
           
@@ -128,7 +146,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/lattirust_estimator.io/docs/cost-models/" class="">Cost Models</a>
+    <a href="/lattirust_estimator.io/docs/lattice-reduction/" class="active">Lattice reduction</a>
   
 
           
@@ -264,7 +282,9 @@ https://github.com/alex-shpak/hugo-book
   <ul>
     <li><a href="#lattice-reduction">Lattice reduction</a>
       <ul>
-        <li><a href="#gram-shmidt-orthogonalization">Gram-Shmidt orthogonalization</a></li>
+        <li><a href="#key-lattice-reduction-algorithms">Key Lattice Reduction Algorithms</a></li>
+        <li><a href="#cost-considerations">Cost Considerations</a></li>
+        <li><a href="#gram-schmidt-orthogonalization">Gram-Schmidt Orthogonalization</a></li>
         <li><a href="#root-hermite-factor">Root hermite factor</a></li>
         <li><a href="#geometric-series-assumption-gsa">Geometric Series Assumption (GSA)</a></li>
       </ul>
@@ -304,22 +324,19 @@ https://github.com/alex-shpak/hugo-book
   How to solve SVP ?
   <a class="anchor" href="#how-to-solve-svp-">#</a>
 </h1>
-<p>The way we solve the Shortest Vector Problem (SVP) and similar problems depends a lot on the lattice dimension. In lower dimensions, exact solvers are practical, and there are two main approaches: enumeration and sieving. Both methods perform some exhaustive search over all short lattice vectors—enumeration does this deterministically, while sieving is typically randomized. However, as the lattice dimension grows, the number of possible solutions increases exponentially, making these methods infeasible for high dimensions (think 100 and more).</p>
-<p>In higher dimensions, we rely on approximation algorithms, better known as lattice reduction algorithms. These algorithms don’t find the exact solution but instead provide an approximation where the vector length is upper bounded by a function of the dimension. Lattice reduction can be thought of as the algorithmic equivalent of inequalities like Hermite’s and Mordell’s [<a id="cite-1" class="hugo-simplecite-cite-hyperlink" href="#bibreference-1" title="P. Nguyen, Hermite’s constant and lattice algorithms, in The LLL algorithm: Survey and applications, Springer, 2009, pp. 19–69.">1</a>], which bound the shortest vector length in theoretical terms.</p>
+<p>The way we solve the Shortest Vector Problem (SVP) and similar problems depends significantly on the lattice dimension. In lower dimensions, exact solvers are practical, and there are two main approaches: <tag><strong>enumeration and sieving</strong></tag>. Both methods perform an exhaustive search over all short lattice vectors—enumeration does this deterministically, while sieving is typically randomized. However, as the lattice dimension grows, the number of possible solutions increases exponentially, making these methods infeasible for high dimensions (think 100 and more).</p>
+<p>In higher dimensions, we rely on <strong>approximation algorithms</strong>, better known as lattice reduction algorithms. These algorithms don’t find the exact solution but instead provide an approximation where the vector length is upper bounded by a function of the dimension. Lattice reduction can be thought of as the algorithmic equivalent of inequalities like <strong>Hermite’s</strong> and <strong>Mordell’s</strong> [<a id="cite-1" class="hugo-simplecite-cite-hyperlink" href="#bibreference-1" title="P. Nguyen, Hermite’s constant and lattice algorithms, in The LLL algorithm: Survey and applications, Springer, 2009, pp. 19–69.">1</a>], which bound the shortest vector length in theoretical terms.</p>
 <ul>
-<li>
-<p>Hermite&rsquo;s inequality: $\forall d \geq 2: \gamma_d \leq (\sqrt{\frac{4}{3}})^{d-1}$</p>
-</li>
-<li>
-<p>Mordell&rsquo;s inequality: $\forall d,k \text{ such that } 2\leq k \leq d: \gamma_d \leq \sqrt{\gamma_k}^{\frac{d-1}{k-1}}$</p>
-</li>
+<li>Hermite&rsquo;s inequality: $$\forall d \geq 2: \gamma_d \leq \left(\sqrt{\frac{4}{3}}\right)^{d-1}$$</li>
+<li>Mordell&rsquo;s inequality: $$\forall d,k \text{ such that } 2\leq k \leq d: \gamma_d \leq \sqrt{\gamma_k}^{\frac{d-1}{k-1}}$$</li>
 </ul>
-<p>In practice, both exact and approximate solvers are used together. Exact solvers usually start with a preprocessing step using lattice reduction to simplify the problem. On the other hand, lattice reduction algorithms often call exact solvers as subroutines, using them multiple times during their process. This section focuses on explaining the cost of approximation algorithm such as LLL and BKZ as a whole and we will refer to the cost of the exact SVP solver used as a subroutine as the &ldquo;cost models&rdquo;, described in the next section.</p>
+<p>In practice, both exact and approximate solvers are used together. Exact solvers usually start with a preprocessing step using lattice reduction to simplify the problem. On the other hand, lattice reduction algorithms often call exact solvers as subroutines, using them multiple times during their process. This section focuses on explaining the cost of approximation algorithms such as LLL and BKZ as a whole, and we will refer to the cost of the exact SVP solver used as a subroutine as the &ldquo;cost models,&rdquo; described in the next section.</p>
 <h2 id="lattice-reduction">
   Lattice reduction
   <a class="anchor" href="#lattice-reduction">#</a>
 </h2>
-<p><em>Lattice reduction algorithms</em> aim to transform a given basis of a lattice into a &ldquo;reduced&rdquo; basis, where the vectors are shorter and closer to being orthogonal. Indeed, while a lattice may not have an orthogonal basis in contrary from Euclidean space, the goal of lattice reduction is to get closer to a basis that is not far from orthogonal. This section is mostly based on the following works [<a id="cite-1" class="hugo-simplecite-cite-hyperlink" href="#bibreference-1" title="P. Nguyen, Hermite’s constant and lattice algorithms, in The LLL algorithm: Survey and applications, Springer, 2009, pp. 19–69.">1</a>][<a id="cite-2" class="hugo-simplecite-cite-hyperlink" href="#bibreference-2" title="P. Nguyen and B. Vallee, The LLL algorithm. Springer, 2010. ">2</a>][<a id="cite-3" class="hugo-simplecite-cite-hyperlink" href="#bibreference-3" title="Y. Chen and P. Nguyen, BKZ 2.0: Better lattice security estimates, In Proc. International conference on the theory and application of cryptology and information security, 2011, pp. 1–20. ">3</a>][<a id="cite-4" class="hugo-simplecite-cite-hyperlink" href="#bibreference-4" title="N. Gama, N. Howgrave-Graham, H. Koy, and P. Nguyen, Rankin’s constant and blockwise lattice reduction, In Proc. Advances in cryptology-CRYPTO 2006: 26th annual international cryptology conference, santa barbara, california, USA, august 20-24, 2006. Proceedings 26, 2006, pp. 112–130. ">4</a>][<a id="cite-5" class="hugo-simplecite-cite-hyperlink" href="#bibreference-5" title="A. Lenstra, H. Lenstra, and L. Lovász, Factoring polynomials with rational coefficients, Mathematische annalen, vol. 261, pp. 515–534, 1982. ">5</a>][<a id="cite-6" class="hugo-simplecite-cite-hyperlink" href="#bibreference-6" title="M. Albrecht and L. Ducas, Lattice attacks on NTRU and LWE: A history of refinements, Cryptology ePrint Archive, 2021. ">6</a>][<a id="cite-7" class="hugo-simplecite-cite-hyperlink" href="#bibreference-7" title="N. Gama and P. Nguyen, Predicting lattice reduction, In Proc. Advances in cryptology–EUROCRYPT 2008: 27th annual international conference on the theory and applications of cryptographic techniques, istanbul, turkey, april 13-17, 2008. Proceedings 27, 2008, pp. 31–51. ">7</a>].</p>
+<p><em>Lattice reduction algorithms</em> are designed to transform a given basis of a lattice into a &ldquo;reduced&rdquo; basis, where the vectors are shorter and closer to being orthogonal. While a lattice does not generally have an orthogonal basis (unlike in Euclidean space), the goal of lattice reduction is to produce a basis that approximates orthogonality as closely as possible. This transformation simplifies solving challenging lattice problems such as the Shortest Vector Problem (SVP).</p>
+<p>This section is based on the works of [<a id="cite-1" class="hugo-simplecite-cite-hyperlink" href="#bibreference-1" title="P. Nguyen, Hermite’s constant and lattice algorithms, in The LLL algorithm: Survey and applications, Springer, 2009, pp. 19–69.">1</a>], [<a id="cite-2" class="hugo-simplecite-cite-hyperlink" href="#bibreference-2" title="P. Nguyen and B. Vallee, The LLL algorithm. Springer, 2010. ">2</a>], [<a id="cite-3" class="hugo-simplecite-cite-hyperlink" href="#bibreference-3" title="Y. Chen and P. Nguyen, BKZ 2.0: Better lattice security estimates, In Proc. International conference on the theory and application of cryptology and information security, 2011, pp. 1–20. ">3</a>], [<a id="cite-4" class="hugo-simplecite-cite-hyperlink" href="#bibreference-4" title="N. Gama, N. Howgrave-Graham, H. Koy, and P. Nguyen, Rankin’s constant and blockwise lattice reduction, In Proc. Advances in cryptology-CRYPTO 2006: 26th annual international cryptology conference, santa barbara, california, USA, august 20-24, 2006. Proceedings 26, 2006, pp. 112–130. ">4</a>], [<a id="cite-5" class="hugo-simplecite-cite-hyperlink" href="#bibreference-5" title="A. Lenstra, H. Lenstra, and L. Lovász, Factoring polynomials with rational coefficients, Mathematische annalen, vol. 261, pp. 515–534, 1982. ">5</a>], [<a id="cite-6" class="hugo-simplecite-cite-hyperlink" href="#bibreference-6" title="M. Albrecht and L. Ducas, Lattice attacks on NTRU and LWE: A history of refinements, Cryptology ePrint Archive, 2021. ">6</a>], and [<a id="cite-7" class="hugo-simplecite-cite-hyperlink" href="#bibreference-7" title="N. Gama and P. Nguyen, Predicting lattice reduction, In Proc. Advances in cryptology–EUROCRYPT 2008: 27th annual international conference on the theory and applications of cryptographic techniques, istanbul, turkey, april 13-17, 2008. Proceedings 27, 2008, pp. 31–51. ">7</a>].</p>
 <figure style="text-align: center; margin: 1em auto; max-width: 100%;">
     <img src="lattice_orthogonal.png" alt="Depiction of a closer to orthogonal basis" style="max-width: 100%; height: auto; border: 1px solid #ddd; padding: 4px;">
     
@@ -330,30 +347,42 @@ https://github.com/alex-shpak/hugo-book
         
     
 </figure>
-<p>This reduction makes it easier to approximate solutions to hard lattice problems like the Shortest Vector Problem. In short, the quality of a basis can be improved to make the problem easier. The most prominent lattice reduction algorithms include:</p>
-<ul>
-<li><strong>LLL Algorithm (Lenstra–Lenstra–Lovász)</strong>: it produces a reduced basis in polynomial time, where the vectors are guaranteed to be within a known factor of the shortest vector, but doesn’t necessarily find the shortest vector [<a id="cite-5" class="hugo-simplecite-cite-hyperlink" href="#bibreference-5" title="A. Lenstra, H. Lenstra, and L. Lovász, Factoring polynomials with rational coefficients, Mathematische annalen, vol. 261, pp. 515–534, 1982. ">5</a>].</li>
-<li><strong>BKZ Algorithm (Block Korkine-Zolotarev)</strong>: the BKZ algorithm is a generalization of the LLL algorithm and provides better reduction at the cost of higher computational complexity. By working in blocks of the lattice and applying LLL reduction to these blocks, BKZ achieves stronger approximations of the shortest vector, though it requires more computational resources [<a id="cite-4" class="hugo-simplecite-cite-hyperlink" href="#bibreference-4" title="N. Gama, N. Howgrave-Graham, H. Koy, and P. Nguyen, Rankin’s constant and blockwise lattice reduction, In Proc. Advances in cryptology-CRYPTO 2006: 26th annual international cryptology conference, santa barbara, california, USA, august 20-24, 2006. Proceedings 26, 2006, pp. 112–130. ">4</a>].</li>
-</ul>
-<p>As explained previously, LLL and BKZ make iterative local improvements to a basis by calling an exact SVP oracle. This means that the global cost can be seen as two-folds: how costly is it to make the local improvements, and how costly is the global behavior of the algorithm.</p>
-<h3 id="gram-shmidt-orthogonalization">
-  Gram-Shmidt orthogonalization
-  <a class="anchor" href="#gram-shmidt-orthogonalization">#</a>
+<h3 id="key-lattice-reduction-algorithms">
+  Key Lattice Reduction Algorithms
+  <a class="anchor" href="#key-lattice-reduction-algorithms">#</a>
 </h3>
-<p>Gram-Schmidt orthogonalization is a method for orthonormalizing a set of vectors in an inner product space, most commonly the Euclidean space $\mathbb{R}^n$. The process transforms a set of linearly independent vectors into an orthonormal set of vectors that spans the same subspace.</p>
-<p>Given a set of linearly independent vectors $\lbrace\mathbf{b}_1, \mathbf{b}_2, \ldots, \mathbf{b}_n\rbrace$, the Gram-Schmidt process produces an orthogonal set $\lbrace\mathbf{b}^*_1, \ldots, \mathbf{b}^*_n\rbrace$ as follows:</p>
+<ul>
+<li><strong>LLL Algorithm (Lenstra–Lenstra–Lovász)</strong>: This algorithm produces a reduced basis in polynomial time. The resulting basis vectors are guaranteed to be within a known factor of the shortest vector, although the algorithm does not necessarily find the shortest vector itself [<a id="cite-5" class="hugo-simplecite-cite-hyperlink" href="#bibreference-5" title="A. Lenstra, H. Lenstra, and L. Lovász, Factoring polynomials with rational coefficients, Mathematische annalen, vol. 261, pp. 515–534, 1982. ">5</a>].</li>
+<li><strong>BKZ Algorithm (Block Korkine-Zolotarev)</strong>: A more advanced generalization of the LLL algorithm that provides stronger reductions at the cost of increased computational complexity. The BKZ algorithm divides the lattice into overlapping blocks and applies LLL reduction within each block, achieving more accurate approximations of the shortest vector [<a id="cite-4" class="hugo-simplecite-cite-hyperlink" href="#bibreference-4" title="N. Gama, N. Howgrave-Graham, H. Koy, and P. Nguyen, Rankin’s constant and blockwise lattice reduction, In Proc. Advances in cryptology-CRYPTO 2006: 26th annual international cryptology conference, santa barbara, california, USA, august 20-24, 2006. Proceedings 26, 2006, pp. 112–130. ">4</a>].</li>
+</ul>
+<h3 id="cost-considerations">
+  Cost Considerations
+  <a class="anchor" href="#cost-considerations">#</a>
+</h3>
+<p>Both LLL and BKZ make iterative local improvements to a basis by using an exact SVP solver (often referred to as an SVP oracle). Therefore, the overall cost of the algorithm can be divided into two components:</p>
+<ol>
+<li><strong>Local cost</strong>: The computational cost associated with solving the SVP within each block.</li>
+<li><strong>Global cost</strong>: The number of times the algorithm needs to invoke the SVP oracle during the entire basis reduction process.</li>
+</ol>
+<p>Together, these components determine the total cost of performing lattice reduction.</p>
+<h3 id="gram-schmidt-orthogonalization">
+  Gram-Schmidt Orthogonalization
+  <a class="anchor" href="#gram-schmidt-orthogonalization">#</a>
+</h3>
+<p>Gram-Schmidt orthogonalization is a method for orthonormalizing a set of vectors in an inner product space, most commonly the Euclidean space $\mathbb{R}^n$. The process transforms a set of linearly independent vectors into an orthogonal set of vectors that spans the same subspace.</p>
+<p>Given a set of linearly independent vectors ${\mathbf{b}_1, \mathbf{b}_2, \ldots, \mathbf{b}_n}$, the Gram-Schmidt process produces an orthogonal set ${\mathbf{b}^{*}_1, \ldots, \mathbf{b}^*_n}$ as follows:</p>
 <ol>
 <li>$\mathbf{b}_1^* = \mathbf{b}_1$</li>
 <li>For $i = 2$ to $n$:
 $$
    \mathbf{b}_i^* = \mathbf{b}_i - \sum_{j=1}^{i-1} \text{proj}_{\mathbf{b}_j^*}(\mathbf{b}_i)
    $$
-where $\text{proj}_{\mathbf{b}_j^*}(\mathbf{b}_i)$ is the projection of $\mathbf{b}_i$ onto $\mathbf{b}_j^*$, given by:
+where $\text{proj}_{\mathbf{b}_j^{*}}(\mathbf{b}_i)$ is the projection of $\mathbf{b}_i$ onto $\mathbf{b}_j^*$, given by:
 $$
-   \text{proj}_{\mathbf{b}_j^*}(\mathbf{b}_i) = \frac{\langle \mathbf{b}_i, \mathbf{b}_j^* \rangle}{\langle \mathbf{b}_j^*, \mathbf{b}_j^* \rangle} \mathbf{b}_j^* = \mu_{i,j}
+   \text{proj}_{\mathbf{b}_j^*}(\mathbf{b}_i) = \frac{\langle \mathbf{b}_i, \mathbf{b}_j^* \rangle}{\langle \mathbf{b}_j^*, \mathbf{b}_j^* \rangle} \mathbf{b}_j^*.
    $$</li>
 </ol>
-<p>Gram-Schmidt orthogonalization is widely used in lattice reduction is because it allows to triangularize the basis. More precisely, we can get  a new basis:</p>
+<p>Gram-Schmidt orthogonalization is widely used in lattice reduction because it allows the basis to be triangularized. More precisely, it transforms the basis into the following form:</p>
 $$
 \begin{pmatrix}
 \|\mathbf{b}_1^*\| & 0 & \ldots & 0 \\
@@ -361,10 +390,11 @@ $$
 \vdots & \vdots & \ddots & \vdots \\
 \mu_{d,1} \|\mathbf{b}_1^*\| & \mu_{d,2} \|\mathbf{b}_2^*\| & \ldots & \|\mathbf{b}_d^*\|
 \end{pmatrix}
-$$<p>So $B = \mu B^*$ [<a id="cite-7" class="hugo-simplecite-cite-hyperlink" href="#bibreference-7" title="N. Gama and P. Nguyen, Predicting lattice reduction, In Proc. Advances in cryptology–EUROCRYPT 2008: 27th annual international conference on the theory and applications of cryptographic techniques, istanbul, turkey, april 13-17, 2008. Proceedings 27, 2008, pp. 31–51. ">7</a>][<a id="cite-1" class="hugo-simplecite-cite-hyperlink" href="#bibreference-1" title="P. Nguyen, Hermite’s constant and lattice algorithms, in The LLL algorithm: Survey and applications, Springer, 2009, pp. 19–69.">1</a>]. And we can easily confirm from the matrix that $Vol(\Lambda) =\prod_{i=0}^{d-1} \lVert \bold{b_i}^*\rVert$ (the determinant is the diagonal). We can also state the following lemma that relates our shortest vector to the Gram-Schmidt vectors for all $1 \leq i \leq d$:</p>
+$$<p>Thus, $B = \mu B^{*}$ [<a id="cite-7" class="hugo-simplecite-cite-hyperlink" href="#bibreference-7" title="N. Gama and P. Nguyen, Predicting lattice reduction, In Proc. Advances in cryptology–EUROCRYPT 2008: 27th annual international conference on the theory and applications of cryptographic techniques, istanbul, turkey, april 13-17, 2008. Proceedings 27, 2008, pp. 31–51. ">7</a>][<a id="cite-1" class="hugo-simplecite-cite-hyperlink" href="#bibreference-1" title="P. Nguyen, Hermite’s constant and lattice algorithms, in The LLL algorithm: Survey and applications, Springer, 2009, pp. 19–69.">1</a>]. We can confirm from this matrix that $\text{Vol}(\Lambda) = \prod_{i=1}^{d} \lVert \bold{b}_i^* \rVert$ (the determinant is the product of the diagonal elements).</p>
+<p>We can also state the following lemma that relates the shortest vector to the Gram-Schmidt vectors for all $1 \leq i \leq d$:</p>
 $$
 \lambda_i(\Lambda) \geq \min_{i \leq j \leq d} \|\mathbf{b}_j^*\|.
-$$<p><em>Remember that the volume is an invariant so not all GS vectors can be small at the same time.</em></p>
+$$<p><em>Remember that the volume is an invariant, so not all Gram-Schmidt vectors can be small at the same time.</em></p>
 <h3 id="root-hermite-factor">
   Root hermite factor
   <a class="anchor" href="#root-hermite-factor">#</a>
@@ -379,7 +409,7 @@ for a d-dimensional lattice.</p>
   Geometric Series Assumption (GSA)
   <a class="anchor" href="#geometric-series-assumption-gsa">#</a>
 </h3>
-<p>How large the minimas can be after lattice reduction is therefore looking for how short we expect the basis vector to be after applying Gram-Schmidt ortogonalization followed by lattice reduction. It is often useful to look at the length of all gram-schmidt vectors, not only the first one. As a small experiment, let us consider a basis in $\mathbb{Z}_q$ and let us compute the Gram-Schmidt orthogonalization. If we look at the log of these lengths we obtain the Z-shape because the first are orthogonal components of q magnitude and the rest are all vectors of length 1:</p>
+<p>How large the minimas can be after lattice reduction is therefore looking for how short we expect the basis vectors to be after applying lattice reduction (which contains Gram-Schmidt orthogonalization). It is often useful to look at the length of all gram-schmidt vectors, not only the first one. As a small experiment, let us consider a basis in $\mathbb{Z}_q$ and let us compute the Gram-Schmidt orthogonalization. If we look at the log of these lengths we obtain the Z-shape because the first are orthogonal components of q magnitude and the rest are all vectors of length 1:</p>
 <figure style="text-align: center; margin: 1em auto; max-width: 100%;">
     <img src="before_LLL.png" alt="Log lengths of GS vectors" style="max-width: 100%; height: auto; border: 1px solid #ddd; padding: 4px;">
     
@@ -401,7 +431,7 @@ for a d-dimensional lattice.</p>
         
     
 </figure>
-<p>You can observe this merely looks like a straight and indeed this the assumption that we will make. <em>The Geometric Series Assumption</em> conceptually tells us that the Gram-Schmidt vectors log-length outputed by a lattice reducion algorithm will follow a geometric series and such a line in log lengths. We can formulate it as:</p>
+<p>You can observe this merely looks like a straight line and indeed this is the assumption that we will make. <em>The Geometric Series Assumption</em> conceptually tells us that the Gram-Schmidt vectors log-length outputed by a lattice reducion algorithm will follow a geometric series and such a line in log lengths. We can formulate it as:</p>
 $$\lVert \bold{b_i}^*\rVert \approx \alpha^{i-1}\lVert \bold{b_1}\rVert$$<p>and in fact by combining it with the fact that output vector of lattice reduction follow $\lVert \bold{b_0} \rVert = \delta_0 Vol(\Lambda)^{\frac{1}{d}}$ we can get a relation between the quality of the reduction and the slope of the GSA assumption as $\alpha \approx \delta^{-2}$ leading to</p>
 $$ \lVert \bold{b_i}^*\rVert \approx \alpha^{i-1} \delta^d Vol(\Lambda)^\frac{1}{d} = \delta^{-1(i+1) + d} Vol(\Lambda)^\frac{1}{d}$$<h2 id="lll-algorithm">
   LLL algorithm
@@ -449,18 +479,18 @@ For $k=2,&hellip;,d$ $$\omega \Vert \mathbf{b}^*_{k-1}\Vert^2  \leq \Vert \mathb
     </figcaption>
     
 </figure>
-<p>While there exists some theorems bounding the worst cases of lattice reduction algorithms, they tend to perform better in practice. Reasoning about the behaviors of such algorithms has therefore become a game of heuristics and approximations. Typically, the vectors that are outputed by the LLL algorithm are said to follow the geometric series assumption in their length. Again, this assumption tells us that the shape after lattice reduction is a line with a flatter slope as lattice reduction gets stronger. The goal of lattice reduction algorithm can therefore be interpreted seen by watching a graph of the log-length of vectors after reductions. The overall goal being to flatten the line, leading to a small basis.</p>
+<p>Although there are theorems bounding the worst-case performance of lattice reduction algorithms, they tend to perform better in practice. Reasoning about the behavior of such algorithms has therefore become a matter of heuristics and approximations. Typically, the vectors that are output by the LLL algorithm are said to follow the geometric series assumption in their length. Again, this assumption tells us that the shape after lattice reduction forms a line with a flatter slope as the reduction becomes stronger. The goal of a lattice reduction algorithm can therefore be visualized by examining a plot of the log-length of vectors after reductions. The overall goal is to flatten this line, leading to a smaller basis.</p>
 <h3 id="cost-of-lll">
   Cost of LLL
   <a class="anchor" href="#cost-of-lll">#</a>
 </h3>
-<p>The theoretic bound on the quality of the LLL is $\delta^d = (\frac{4}{3})^\frac{d-1}{4}$ [<a id="cite-1" class="hugo-simplecite-cite-hyperlink" href="#bibreference-1" title="P. Nguyen, Hermite’s constant and lattice algorithms, in The LLL algorithm: Survey and applications, Springer, 2009, pp. 19–69.">1</a>] leading to approximately $\delta \approx 1.075$. In practice, we get much better results on average, empirically about $\delta \approx 1.021$ .</p>
+<p>The theoretical bound on the quality of the LLL is $\delta^d = (\frac{4}{3})^\frac{d-1}{4}$ [<a id="cite-1" class="hugo-simplecite-cite-hyperlink" href="#bibreference-1" title="P. Nguyen, Hermite’s constant and lattice algorithms, in The LLL algorithm: Survey and applications, Springer, 2009, pp. 19–69.">1</a>] leading to approximately $\delta \approx 1.075$. In practice, we get much better results on average, empirically about $\delta \approx 1.021$ .</p>
 <p>In terms of runtime, we will consider a heuristic bound (which better approximates empirical results) of $O(d^3 \log^2(B))$.</p>
 <h2 id="bkz-algorithm">
   BKZ algorithm
   <a class="anchor" href="#bkz-algorithm">#</a>
 </h2>
-<p>The Block Korkine-Zolotarev (BKZ) algorithm is a lattice reduction algorithm that generalizes the LLL algorithm to achieve stronger reduction properties. The BKZ algorithm is defined as a blockwise reduction algorithm that iteratively applies a form of lattice basis reduction to overlapping blocks of vectors within the basis. The assumption made in its analysis is that iterative blocks taken behaves like a random lattice. It is in fact a relaxation of the Hermite-Korkine-Zolotarev (HKZ). The HKZ reduction is a stronger form of lattice reduction that ensures each vector in the basis is the shortest vector in the lattice projected orthogonally onto the space spanned by the preceding basis vectors.</p>
+<p>The Block Korkine-Zolotarev (BKZ) algorithm is a lattice reduction algorithm that generalizes the LLL algorithm to achieve stronger reduction properties. The BKZ algorithm is defined as a blockwise reduction algorithm that iteratively applies a form of lattice basis reduction to overlapping blocks of vectors within the basis. The assumption made in its analysis is that iterative blocks taken behaves like a random lattice. It is in fact a relaxation of the Hermite-Korkine-Zolotarev (HKZ) reduction. The HKZ reduction is a stronger form of lattice reduction that ensures each vector in the basis is the shortest vector in the lattice projected orthogonally onto the space spanned by the preceding basis vectors.</p>
 <h3 id="hkz-reduction">
   HKZ reduction
   <a class="anchor" href="#hkz-reduction">#</a>
@@ -502,7 +532,6 @@ repeat until no changes
 <p>Theoretically, a BKZ-$\beta$ reduced basis satisfies, for $\epsilon &gt; 0$:</p>
 $$\lVert \bold{b_0} \rVert \leq \sqrt{(1 + \epsilon) \gamma_{\beta}}^{(\frac{d-1}{\beta - 1} + 1)} Vol(\Lambda(\bold{B}))$$$$\gamma_\beta =  \sup \{ \lambda_1(\Lambda) | \Lambda \in \mathbb{R}^\beta, Vol(\Lambda) = 1 \}$$<p>Several variants of BKZ exist, the one giving asymptotically the best worst-case guarantees is the Slide reduction described in [<a id="cite-8" class="hugo-simplecite-cite-hyperlink" href="#bibreference-8" title="N. Gama and P. Nguyen, Finding short lattice vectors within mordell’s inequality, In Proc. Proceedings of the fortieth annual ACM symposium on theory of computing, 2008, pp. 207–216. ">8</a>] and it achieves</p>
 $$\lVert \bold{b_0} \rVert \leq \sqrt{(1 + \epsilon) \gamma_{\beta}}^\frac{d-1}{\beta - 1} Vol(\Lambda(\bold{B}))$$<p>By combining the gaussian heuristic and the definition of a BKZ-$\beta$ reduced basis, we arrive again at the geometric assumption, which states that the log-lengths of reduced vectors follow a geometric series (which we can plot as a line as we did for LLL). This time however, it depends on the block-size chosen to run BKZ.</p>
-<p><em>Note: maybe here explain between the Hermite regime and the approximation regime</em></p>
 <p>We can write</p>
 $$\log(\lVert \bold{b_i}^*\rVert) = \frac{d - 1 - 2i}{2}\log(\alpha_\beta) + \frac{1}{d}\log(Vol(\Lambda))$$<p>where $\alpha_\beta$ is the slope under the geometric assumption that can be calculated from the gaussian assumption as</p>
 $$\alpha_\beta = \sqrt{\frac{d}{2\pi e}}^\frac{2}{\beta - 1}$$<p>This result from [<a id="cite-6" class="hugo-simplecite-cite-hyperlink" href="#bibreference-6" title="M. Albrecht and L. Ducas, Lattice attacks on NTRU and LWE: A history of refinements, Cryptology ePrint Archive, 2021. ">6</a>] is reasonably accurate only if $d\gg\beta$ and $\beta &gt; 50$, which is why we will use fixed estimates for small dimensions (also, small dimension can be directly solved by an exact solver).</p>
@@ -520,7 +549,7 @@ $$cost = \tau \cdot d \cdot T_{SVP}$$
 where</li>
 </ul>
 <ol>
-<li>the number of tours we do $\tau$ is considered to be 8.</li>
+<li>the number of BKZ tours we do $\tau$ is considered to be 8.</li>
 <li>The number of times the SVP oracle is called per tour, which is about the dimension of the lattice d</li>
 <li>The cost of the SVP oracle is $T_{SVP}$</li>
 </ol>
@@ -528,6 +557,7 @@ where</li>
   Refinements
   <a class="anchor" href="#refinements">#</a>
 </h2>
+<p>A good history of the refinements that have been made about BKZ runtime and the way we assume security in problems based on lattice reduction can be found in [<a id="cite-6" class="hugo-simplecite-cite-hyperlink" href="#bibreference-6" title="M. Albrecht and L. Ducas, Lattice attacks on NTRU and LWE: A history of refinements, Cryptology ePrint Archive, 2021. ">6</a>]. Indeed, it appears some of our assumptions are not entirelly true, especially GSA. In the estimator, most refinements are either directly modelled into a new simulator for the GSA shape or through adjusted cost models of SVP oracles. The way we cost BKZ as a whole stays the same.</p>
 <h3 id="the-first-gsa-lie">
   The first GSA lie
   <a class="anchor" href="#the-first-gsa-lie">#</a>
@@ -594,6 +624,10 @@ where \( \text{GH}(L[j,k]) \) is the Gaussian heuristic for the local block and 
 </ul>
 </li>
 </ul>
+<h1 id="references">
+  References
+  <a class="anchor" href="#references">#</a>
+</h1>
 <ol class="hugo-simplecite-reference-list"><li class="hugo-simplecite-reference-list-item" id="bibreference-1">P. Nguyen,&#32;<q>Hermite’s constant and lattice algorithms,</q>&#32;in <em>The LLL algorithm: Survey and applications</em>,&#32;Springer, 2009, pp. 19–69.<a href="#cite-1" class="back-arrow" title="Back to text">↩</a></li><li class="hugo-simplecite-reference-list-item" id="bibreference-2">P. Nguyen and&#32;B. Vallee,&#32;<em>The LLL algorithm</em>.&#32;Springer, 2010.&#32;<a href="#cite-2" class="back-arrow" title="Back to text">↩</a></li><li class="hugo-simplecite-reference-list-item" id="bibreference-3">Y. Chen and&#32;P. Nguyen,&#32;<q>BKZ 2.0: Better lattice security estimates,</q>&#32;In Proc. International conference on the theory and application of cryptology and information security,&#32;2011, pp. 1–20.&#32;<a href="#cite-3" class="back-arrow" title="Back to text">↩</a></li><li class="hugo-simplecite-reference-list-item" id="bibreference-4">N. Gama,&#32;N. Howgrave-Graham,&#32;H. Koy, and&#32;P. Nguyen,&#32;<q>Rankin’s constant and blockwise lattice reduction,</q>&#32;In Proc. Advances in cryptology-CRYPTO 2006: 26th annual international cryptology conference, santa barbara, california, USA, august 20-24, 2006. Proceedings 26,&#32;2006, pp. 112–130.&#32;<a href="#cite-4" class="back-arrow" title="Back to text">↩</a></li><li class="hugo-simplecite-reference-list-item" id="bibreference-5">A. Lenstra,&#32;H. Lenstra, and&#32;L. Lovász,&#32;<q>Factoring polynomials with rational coefficients,</q>&#32;<em>Mathematische annalen</em>,&#32;vol. 261,&#32;pp. 515–534,&#32;1982.&#32;<a href="#cite-5" class="back-arrow" title="Back to text">↩</a></li><li class="hugo-simplecite-reference-list-item" id="bibreference-6">M. Albrecht and&#32;L. Ducas,&#32;<q>Lattice attacks on NTRU and LWE: A history of refinements,</q>&#32;<em>Cryptology ePrint Archive</em>,&#32;2021.&#32;<a href="#cite-6" class="back-arrow" title="Back to text">↩</a></li><li class="hugo-simplecite-reference-list-item" id="bibreference-7">N. Gama and&#32;P. Nguyen,&#32;<q>Predicting lattice reduction,</q>&#32;In Proc. Advances in cryptology–EUROCRYPT 2008: 27th annual international conference on the theory and applications of cryptographic techniques, istanbul, turkey, april 13-17, 2008. Proceedings 27,&#32;2008, pp. 31–51.&#32;<a href="#cite-7" class="back-arrow" title="Back to text">↩</a></li><li class="hugo-simplecite-reference-list-item" id="bibreference-8">N. Gama and&#32;P. Nguyen,&#32;<q>Finding short lattice vectors within mordell’s inequality,</q>&#32;In Proc. Proceedings of the fortieth annual ACM symposium on theory of computing,&#32;2008, pp. 207–216.&#32;<a href="#cite-8" class="back-arrow" title="Back to text">↩</a></li><li class="hugo-simplecite-reference-list-item" id="bibreference-9">Y. Chen,&#32;<em>Reduction de reseau et securite concrete du chiffrement completement homomorphe</em>.&#32;Paris 7, 2013.&#32;<a href="#cite-9" class="back-arrow" title="Back to text">↩</a></li><li class="hugo-simplecite-reference-list-item" id="bibreference-10">M. Albrecht,&#32;R. Player, and&#32;S. Scott,&#32;<em>On the concrete hardness of learning with errors</em>.&#32;Cryptology ePrint Archive, Paper 2015/046, 2015.&#32;[Online]. Available: <a class="hugo-simplecite-url-hyperlink" rel="noopener" target="_blank" href="https://eprint.iacr.org/2015/046">https://eprint.iacr.org/2015/046</a>&#32;
 <a href="#cite-10" class="back-arrow" title="Back to text">↩</a></li></ol>
 </article>
@@ -639,7 +673,9 @@ where \( \text{GH}(L[j,k]) \) is the Gaussian heuristic for the local block and 
   <ul>
     <li><a href="#lattice-reduction">Lattice reduction</a>
       <ul>
-        <li><a href="#gram-shmidt-orthogonalization">Gram-Shmidt orthogonalization</a></li>
+        <li><a href="#key-lattice-reduction-algorithms">Key Lattice Reduction Algorithms</a></li>
+        <li><a href="#cost-considerations">Cost Considerations</a></li>
+        <li><a href="#gram-schmidt-orthogonalization">Gram-Schmidt Orthogonalization</a></li>
         <li><a href="#root-hermite-factor">Root hermite factor</a></li>
         <li><a href="#geometric-series-assumption-gsa">Geometric Series Assumption (GSA)</a></li>
       </ul>

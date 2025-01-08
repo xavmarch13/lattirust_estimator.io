@@ -1,5 +1,5 @@
 ---
-weight: 4
+weight: 6
 bookFlatSection: true
 title: "Module SIS and Ring SIS"
 math: true

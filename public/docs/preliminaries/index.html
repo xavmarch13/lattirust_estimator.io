@@ -22,7 +22,7 @@ This section is based on the following resources [1][2][3][4].">
 <link rel="canonical" href="http://localhost:1313/lattirust_estimator.io/docs/preliminaries/">
 <link rel="stylesheet" href="/lattirust_estimator.io/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
   <script defer src="/lattirust_estimator.io/fuse.min.js"></script>
-  <script defer src="/lattirust_estimator.io/en.search.min.28699bc6a655822ad060f67278eb3dc57d62f76da35350292b1d07af4370bc11.js" integrity="sha256-KGmbxqZVgirQYPZyeOs9xX1i922jU1ApKx0Hr0NwvBE=" crossorigin="anonymous"></script>
+  <script defer src="/lattirust_estimator.io/en.search.min.cc68f8e452ee388dbf978c66324d2754a9fb387b81371658a9d56882d2591076.js" integrity="sha256-zGj45FLuOI2/l4xmMk0nVKn7OHuBNxZYqdVogtJZEHY=" crossorigin="anonymous"></script>
 <link rel="alternate" type="application/rss+xml" href="http://localhost:1313/lattirust_estimator.io/docs/preliminaries/index.xml" title="Lattirust estimator 0.1" />
 <!--
 Made with Book Theme
@@ -92,6 +92,24 @@ https://github.com/alex-shpak/hugo-book
   
 
   
+    <a href="/lattirust_estimator.io/docs/introduction/" class="">Introduction</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
     <a href="/lattirust_estimator.io/docs/preliminaries/" class="active">Preliminaries</a>
   
 
@@ -110,7 +128,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/lattirust_estimator.io/docs/lattice-reduction/" class="">Lattice reduction</a>
+    <a href="/lattirust_estimator.io/docs/cost-models/" class="">Cost Models</a>
   
 
           
@@ -128,7 +146,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/lattirust_estimator.io/docs/cost-models/" class="">Cost Models</a>
+    <a href="/lattirust_estimator.io/docs/lattice-reduction/" class="">Lattice reduction</a>
   
 
           
@@ -264,12 +282,12 @@ https://github.com/alex-shpak/hugo-book
   <ul>
     <li><a href="#lattices">Lattices</a>
       <ul>
-        <li><a href="#volume-of-a-lattice">Volume of a lattice</a></li>
-        <li><a href="#dual-of-a-lattice">Dual of a lattice</a></li>
-        <li><a href="#minima-of-a-lattice-and-root-hermite-factor">Minima of a lattice and root hermite factor</a></li>
+        <li><a href="#volume-of-a-lattice">Volume of a Lattice</a></li>
+        <li><a href="#dual-of-a-lattice">Dual of a Lattice</a></li>
+        <li><a href="#minima-of-a-lattice-and-root-hermite-factor">Minima of a Lattice and Root Hermite Factor</a></li>
+        <li><a href="#random-lattices-and-gaussian-heuristic">Random Lattices and Gaussian Heuristic</a></li>
       </ul>
     </li>
-    <li><a href="#random-lattices-and-gaussian-heuristic">Random lattices and Gaussian heuristic</a></li>
     <li><a href="#hard-problems-in-lattices">Hard Problems in Lattices</a></li>
     <li><a href="#summary-table-of-lattice-problems">Summary Table of Lattice Problems</a></li>
     <li><a href="#security">Security</a></li>
@@ -299,9 +317,10 @@ https://github.com/alex-shpak/hugo-book
   Lattices
   <a class="anchor" href="#lattices">#</a>
 </h2>
-<p>A <em>lattice</em> is defined as a discrete subgroup in n-dimensional $\mathbb{R}^n$ space with a periodic structure. It can be represented by a set of linearly independent vectors commonly named the basis of the lattice. If $\bold{b_1}, &hellip;, \bold{b_d}$ denote basis vectors we can then describe a lattice by:</p>
-$$\Lambda(\bold{b_1}, ..., \bold{b_d}) = \{\sum_{i=1}^{d}x_i\bold{b_i}: x_i \in \mathbb{Z}\}$$<p>
-which is the set of all linear combinations of basis vectors. $\it{d}$ is the dimension of the lattice in $\mathbb{R}^n$.</p>
+<p>A <em>lattice</em> is defined as a discrete subgroup in $n$-dimensional $\mathbb{R}^n$ space with a periodic structure. It can be represented by a set of linearly independent vectors, commonly referred to as the basis of the lattice. If $\bold{b_1}, &hellip;, \bold{b_d}$ denote basis vectors, we can describe a lattice as:</p>
+$$
+\Lambda(\bold{b_1}, ..., \bold{b_d}) = \left\{\sum_{i=1}^{d} x_i \bold{b_i} : x_i \in \mathbb{Z} \right\}
+$$<p>This represents the set of all linear combinations of the basis vectors. Here, $d$ is the dimension of the lattice in $\mathbb{R}^n$.</p>
 <figure style="text-align: center; margin: 1em auto; max-width: 100%;">
     <img src="lattices-1.png" alt="Lattice grid 2D" style="max-width: 100%; height: auto; border: 1px solid #ddd; padding: 4px;">
     
@@ -312,16 +331,18 @@ which is the set of all linear combinations of basis vectors. $\it{d}$ is the di
         
     
 </figure>
-<p>A lattice has many bases but some are more interesting than others. The goal of lattice reduction presented in the future sections is to find a qualitatively good basis composed of short and almost orthogonal vectors.</p>
-<p>In the rest of this work, we will especially consider q-ary lattices described by a basis $\bold{B}$, in which coefficients are taken modulo q. The membership of a vector to the lattice is then determined by $\bold{x} \text{ mod q}$.</p>
+<p>A lattice has many possible bases, but some are more useful than others. The goal of lattice reduction, as presented in later sections, is to find a qualitatively good basis composed of short and nearly orthogonal vectors.</p>
+<p>In this work, we will specifically focus on $q$-ary lattices described by a basis $\bold{B}$, where the coefficients are taken modulo $q$. The membership of a vector to the lattice is determined by $\bold{x} \pmod{q}$.</p>
 <h3 id="volume-of-a-lattice">
-  Volume of a lattice
+  Volume of a Lattice
   <a class="anchor" href="#volume-of-a-lattice">#</a>
 </h3>
-<p>In each lattice, we can define the volume of the lattice as the volume of its fundamental parallellepiped (the area delimited by the basis vectors). This quantity is an invariant of the lattice and does not depend on the basis chosen. This means applying Gram-Schmidt orthogonalization to any basis will give us an orthogonal basis from which we can approximate the volume of the lattice as</p>
-$$ Vol(\Lambda) =  \prod_{i=0}^{d-1} \lVert \bold{b_i}^*\rVert $$<p>where $\bold{b_i}*$ are the orthogonal Gram-Schmidt vectors. It is also good to remember that $Vol(\Lambda) = |Det(\bold{B})|$, where $\bold{B}$ is the basis matrix.</p>
+<p>In each lattice, we can define the volume of the lattice as the volume of its fundamental parallelepiped (the region enclosed by the basis vectors). This quantity is an <em>invariant</em> of the lattice and does not depend on the chosen basis. This means that applying Gram-Schmidt orthogonalization to any basis will yield an orthogonal basis from which we can approximate the volume of the lattice as:</p>
+$$
+\text{Vol}(\Lambda) =  \prod_{i=1}^{d} \lVert \bold{b_i}^* \rVert 
+$$<p>where $\bold{b_i}^*$ are the orthogonal Gram-Schmidt vectors. It is also important to note that $\text{Vol}(\Lambda) = |\text{Det}(\bold{B})|$, where $\bold{B}$ is the basis matrix.</p>
 <figure style="text-align: center; margin: 1em auto; max-width: 100%;">
-    <img src="volume.png" alt="Volume of a lattice 2d" style="max-width: 100%; height: auto; border: 1px solid #ddd; padding: 4px;">
+    <img src="volume.png" alt="Volume of a lattice 2D" style="max-width: 100%; height: auto; border: 1px solid #ddd; padding: 4px;">
     
         
             <figcaption style="font-size: 0.9em; margin-top: 0.5em; font-style: italic; text-align: center; color: #555;">
@@ -330,70 +351,93 @@ $$ Vol(\Lambda) =  \prod_{i=0}^{d-1} \lVert \bold{b_i}^*\rVert $$<p>where $\bold
         
     
 </figure>
-<p>This invariant is conceptually important because it tells us that not all basis vectors can be small at the same time.</p>
+<p>This invariant is conceptually significant because it demonstrates that not all basis vectors can be small simultaneously.</p>
 <h3 id="dual-of-a-lattice">
-  Dual of a lattice
+  Dual of a Lattice
   <a class="anchor" href="#dual-of-a-lattice">#</a>
 </h3>
-<p>The dual of a lattice $\Lambda$ in $\mathbb{R}^d$ is denoted $\Lambda^*$ and is the lattice defined by vectors $\bold{y}$ such that:</p>
-$$\langle \bold{x}, \bold{y}\rangle \in \mathbb{Z}, \forall \bold{x} \in \Lambda$$<p>We have that for any lattice described by basis $\bold{B}$,</p>
-$$\Lambda(\bold{B})^*=\Lambda((\bold{B}^{-1})^T) \text{ and } Vol(\bold{\Lambda^*})=\frac{1}{Vol(\bold{\Lambda})}$$<h3 id="minima-of-a-lattice-and-root-hermite-factor">
-  Minima of a lattice and root hermite factor
+<p>The dual of a lattice $\Lambda$ in $\mathbb{R}^d$ is denoted $\Lambda^*$ and is defined as the lattice composed of vectors $\bold{y}$ such that:</p>
+$$
+\langle \bold{x}, \bold{y} \rangle \in \mathbb{Z}, \forall \bold{x} \in \Lambda
+$$<p>For any lattice described by basis $\bold{B}$, we have:</p>
+$$
+\Lambda(\bold{B})^* = \Lambda((\bold{B}^{-1})^T) \quad \text{and} \quad \text{Vol}(\Lambda^*) = \frac{1}{\text{Vol}(\Lambda)}
+$$<h3 id="minima-of-a-lattice-and-root-hermite-factor">
+  Minima of a Lattice and Root Hermite Factor
   <a class="anchor" href="#minima-of-a-lattice-and-root-hermite-factor">#</a>
 </h3>
-<p>We denote by $\lambda_i(\bold{B})$ the $i$-th minimum of a lattice described by a basis B, note that for the rest of the work we sometimes interchangeably use $\lambda_i(\bold{B})$, $\lambda_i(\Lambda(\bold{B}))$ or $\lambda_i(\Lambda)$ for minimas and other measures. We can think of it as the radius of the smallest zero-centered ball containing at least $i$ linearly independent lattice vectors. The root hermite constant $\gamma_n$ is a constant that determines how short a lattice element can be. It is known exactly only for $n\in \lbrace 1, 2, 3, 4, 5, 6, 7, 8, 24 \rbrace$ but we know upper bounds for other values and can be found in [<a id="cite-5" class="hugo-simplecite-cite-hyperlink" href="#bibreference-5" title="H. Cohn and N. Elkies, New upper bounds on sphere packings i, Annals of mathematics, pp. 689–714, 2003. ">5</a>]. In general, determining $\lambda_i(\bold{B})$ is hard so we usually refer to upper bounds.</p>
-<p><em>Minkowksi second theorem:</em> For any lattice in $\mathbb{R}^n$, and any $1 \leq d \leq n$, we have</p>
-$$ (\prod^{d}_{i=1} \lambda_i{(\Lambda)})^{\frac{1}{d}} \leq \sqrt{\gamma_n}Vol(\Lambda)^{\frac{1}{n}}$$<p>Formally, the hermite constant over a full rank lattice in $\mathbb{R}^n$ is defined as:</p>
-$$\gamma_n = \sup_{\Lambda \subset \mathbb{R}^n} \frac{\lambda_1^2(\Lambda)}{\det(\Lambda)^{2/n}}$$<p>and it is closely related to the root hermite factor $\delta_n = \left( \frac{\lambda_1^2}{\det(\Lambda)^{2/n}} \right)^{1/2}$ that we will present in more detail in the lattice reduction chapter. It is used to qualify the quality of a basis and we have $\delta_n = \sqrt{\gamma_n}$.</p>
-<h2 id="random-lattices-and-gaussian-heuristic">
-  Random lattices and Gaussian heuristic
+<p>We denote by $\lambda_i(\bold{B})$ the $i$-th minimum of a lattice described by a basis $\bold{B}$. Note that for the remainder of this work, we may interchangeably use $\lambda_i(\bold{B})$, $\lambda_i(\Lambda(\bold{B}))$, or $\lambda_i(\Lambda)$ for minima and other related measures. Intuitively, $\lambda_i(\bold{B})$ represents the radius of the smallest zero-centered ball containing at least $i$ linearly independent lattice vectors.</p>
+<p>The root Hermite constant $\gamma_n$ is a constant that determines how short a lattice element can be. It is known exactly only for $n \in {1, 2, 3, 4, 5, 6, 7, 8, 24}$, but upper bounds for other values are available and can be found in [<a id="cite-5" class="hugo-simplecite-cite-hyperlink" href="#bibreference-5" title="H. Cohn and N. Elkies, New upper bounds on sphere packings i, Annals of mathematics, pp. 689–714, 2003. ">5</a>]. In general, determining $\lambda_i(\bold{B})$ is difficult, so we often refer to upper bounds.</p>
+<p><strong>Minkowski&rsquo;s Second Theorem:</strong> For any lattice in $\mathbb{R}^n$ and any $1 \leq d \leq n$, we have:</p>
+$$
+\left( \prod_{i=1}^{d} \lambda_i(\Lambda) \right)^{\frac{1}{d}} \leq \sqrt{\gamma_n} \cdot \text{Vol}(\Lambda)^{\frac{1}{n}}
+$$<p>Formally, the Hermite constant for a full-rank lattice in $\mathbb{R}^n$ is defined as:</p>
+$$
+\gamma_n = \sup_{\Lambda \subset \mathbb{R}^n} \frac{\lambda_1^2(\Lambda)}{\det(\Lambda)^{2/n}}
+$$<p>The Hermite constant $\gamma_n$ is closely related to the root Hermite factor $\delta_n$, which we will describe in more detail in the lattice reduction chapter. The root Hermite factor is used to evaluate the quality of a basis, and we have $\delta_n = \sqrt{\gamma_n}$.</p>
+<h3 id="random-lattices-and-gaussian-heuristic">
+  Random Lattices and Gaussian Heuristic
   <a class="anchor" href="#random-lattices-and-gaussian-heuristic">#</a>
-</h2>
-<p>The notion of a random lattice is somewhat mathematically complicated (see Haar measures), as a simplifying assumption, imagine such a lattice to be sampled from an existing random distribution to follow with overwhelming probability the gaussian heuristic that follows.</p>
-$$\frac{\lambda_i(\Lambda)}{\text{Vol}(\Lambda)^{1/n}} \approx \frac{\Gamma\left(1 + \frac{n}{2}\right)^{1/n}}{\sqrt{\pi}} \approx \sqrt{\frac{n}{2\pi e}}$$<p>The gaussian heuristic predicts that the number of lattice points inside any measurable body $\mathcal{B} \subset \mathbb{R}^d$ is approximately $\frac{Vol(\mathcal{B})}{Vol(\Lambda)}$. Applied to an euclidean d-ball, this would give that the length of the first vector is approximately:</p>
-$$\lambda_1(\Lambda) \approx (\frac{Vol(\mathcal{B})}{Vol(\Lambda)})^{\frac{1}{d}} \approx \sqrt{\frac{d}{2\pi e}} Vol(\Lambda)^{\frac{1}{d}}$$<h2 id="hard-problems-in-lattices">
+</h3>
+<p>The notion of a random lattice is mathematically complex (see Haar measures). As a simplifying assumption, imagine such a lattice being sampled from an existing random distribution that adheres, with overwhelming probability, to the Gaussian heuristic described below.</p>
+$$
+\frac{\lambda_i(\Lambda)}{\text{Vol}(\Lambda)^{1/n}} \approx \frac{\Gamma\left(1 + \frac{n}{2}\right)^{1/n}}{\sqrt{\pi}} \approx \sqrt{\frac{n}{2\pi e}}
+$$<p>The Gaussian heuristic predicts that the number of lattice points inside any measurable body $\mathcal{B} \subset \mathbb{R}^d$ is approximately $\frac{\text{Vol}(\mathcal{B})}{\text{Vol}(\Lambda)}$. Applied to a Euclidean $d$-ball, this implies that the length of the first vector is approximately:</p>
+$$
+\lambda_1(\Lambda) \approx \left(\frac{\text{Vol}(\mathcal{B})}{\text{Vol}(\Lambda)}\right)^{\frac{1}{d}} \approx \sqrt{\frac{d}{2\pi e}} \cdot \text{Vol}(\Lambda)^{\frac{1}{d}}
+$$<h2 id="hard-problems-in-lattices">
   Hard Problems in Lattices
   <a class="anchor" href="#hard-problems-in-lattices">#</a>
 </h2>
-<p>The security of lattice-based constructions relies on several variants of the same problem. The foundation of security is based on the fact that finding a short non-zero vector in a lattice is computationally hard. Below are definitions of the key problems:</p>
+<p>The security of lattice-based constructions relies on several variants of related problems. The foundation of this security is based on the fact that finding a short non-zero vector in a lattice is computationally hard. Below are the definitions of the key problems:</p>
 <ol>
 <li>
-<p>Shortest Vector Problem (SVP)</p>
-<p><strong>Definition</strong>:<br>
-Given a lattice $\Lambda$ with basis $\bold{B}$ , the <strong>Shortest Vector Problem (SVP)</strong> is the problem of finding a non-zero vector $\bold{v} \in \Lambda$ such that:</p>
-$$\|\bold{v}\| = \lambda_1(\Lambda)$$<p>where $\lambda_1(\Lambda)$ is the length of the shortest non-zero vector in the lattice. This is a well-known NP-hard problem in the worst case, and its approximation remains challenging for cryptographic settings.</p>
+<p><strong>Shortest Vector Problem (SVP)</strong></p>
+<p><strong>Definition:</strong><br>
+Given a lattice $\Lambda$ with basis $\bold{B}$, the <strong>Shortest Vector Problem (SVP)</strong> is the problem of finding a non-zero vector $\bold{v} \in \Lambda$ such that:</p>
+$$
+    \|\bold{v}\| = \lambda_1(\Lambda)
+    $$<p>where $\lambda_1(\Lambda)$ is the length of the shortest non-zero vector in the lattice. This is a well-known NP-hard problem in the worst case, and its approximation remains challenging for cryptographic settings.</p>
 </li>
 <li>
-<p>Hermite Shortest Vector Problem (H-SVP)</p>
-<p><strong>Definition</strong>:<br>
+<p><strong>Hermite Shortest Vector Problem (H-SVP)</strong></p>
+<p><strong>Definition:</strong><br>
 The <strong>Hermite Shortest Vector Problem (H-SVP)</strong> is a scaled version of the SVP. It asks for a non-zero vector $\bold{v} \in \Lambda$ such that:</p>
-$$\|\bold{v}\| \leq \delta_n \cdot \text{Vol}(\Lambda)^{1/n}$$<p>where $\delta_n$ is the root Hermite factor. Unlike exact SVP, H-SVP allows finding a vector that is &ldquo;short enough&rdquo; relative to the lattice volume. H-SVP is easier to approximate than SVP and is central to lattice reduction algorithms like LLL or BKZ.</p>
+$$
+    \|\bold{v}\| \leq \delta_n \cdot \text{Vol}(\Lambda)^{1/n}
+    $$<p>where $\delta_n$ is the root Hermite factor. Unlike exact SVP, H-SVP allows finding a vector that is &ldquo;short enough&rdquo; relative to the lattice volume. H-SVP is easier to approximate than SVP and is central to lattice reduction algorithms like LLL and BKZ.</p>
 </li>
 <li>
-<p>Approximate Shortest Vector Problem (Approx-SVP)</p>
-<p><strong>Definition</strong>:<br>
+<p><strong>Approximate Shortest Vector Problem (Approx-SVP)</strong></p>
+<p><strong>Definition:</strong><br>
 The <strong>Approximate Shortest Vector Problem (Approx-SVP)</strong> generalizes SVP by relaxing the requirement to find the exact shortest vector. Given a lattice $\Lambda$ and an approximation factor $\gamma \geq 1$, the goal is to find a non-zero vector $\bold{v} \in \Lambda$ such that:</p>
-$$\|\bold{v}\| \leq \gamma \cdot \lambda_1(\Lambda)$$<p>For sufficiently large $\gamma$, Approx-SVP becomes computationally easier, but it remains hard for small $\gamma$, especially in high-dimensional lattices.</p>
+$$
+    \|\bold{v}\| \leq \gamma \cdot \lambda_1(\Lambda)
+    $$<p>For sufficiently large $\gamma$, Approx-SVP becomes computationally easier, but it remains hard for small $\gamma$, especially in high-dimensional lattices.</p>
 </li>
 <li>
-<p>Unique Shortest Vector Problem (Unique-SVP)</p>
-<p><strong>Definition</strong>:<br>
+<p><strong>Unique Shortest Vector Problem (Unique-SVP)</strong></p>
+<p><strong>Definition:</strong><br>
 The <strong>Unique Shortest Vector Problem (Unique-SVP)</strong> is a variant of SVP where the shortest vector is guaranteed to be significantly shorter than all other lattice vectors. Specifically, there exists a gap $\beta &gt; 1$ such that:</p>
-$$\lambda_2(\Lambda) \geq \beta \cdot \lambda_1(\Lambda)$$<p>where $\lambda_2(\Lambda)$ is the length of the second shortest lattice vector. The task is to find the unique shortest vector $\bold{v} \in \Lambda$. This problem is somewhat easier than general SVP due to the presence of a unique solution, but it still remains computationally challenging.</p>
+$$
+    \lambda_2(\Lambda) \geq \beta \cdot \lambda_1(\Lambda)
+    $$<p>where $\lambda_2(\Lambda)$ is the length of the second shortest lattice vector. The task is to find the unique shortest vector $\bold{v} \in \Lambda$. This problem is somewhat easier than general SVP due to the presence of a unique solution, but it still remains computationally challenging.</p>
 </li>
 <li>
-<p>Closest Vector Problem (CVP)</p>
-<p><strong>Definition</strong>:<br>
-Given a lattice $\Lambda$ with basis $\bold{B}$ and a target vector$\bold{t} \in \mathbb{R}^n$, the <strong>Closest Vector Problem (CVP)</strong> is the problem of finding a vector $\bold{v} \in \Lambda$</p>
-$$\|\bold{t} - \bold{v}\| = \min_{\bold{w} \in \Lambda} \|\bold{t} - \bold{w}\|$$<p>CVP is generally harder than SVP and is also NP-hard in the worst case. Approximation versions of CVP, like $\gamma$-CVP (finding $\bold{v}$ within a $\gamma$-factor of the closest vector), are frequently studied in lattice cryptography.</p>
+<p><strong>Closest Vector Problem (CVP)</strong></p>
+<p><strong>Definition:</strong><br>
+Given a lattice $\Lambda$ with basis $\bold{B}$ and a target vector $\bold{t} \in \mathbb{R}^n$, the <strong>Closest Vector Problem (CVP)</strong> is the problem of finding a vector $\bold{v} \in \Lambda$ such that:</p>
+$$
+    \|\bold{t} - \bold{v}\| = \min_{\bold{w} \in \Lambda} \|\bold{t} - \bold{w}\|
+    $$<p>CVP is generally harder than SVP and is also NP-hard in the worst case. Approximation versions of CVP, such as $\gamma$-CVP (finding $\bold{v}$ within a $\gamma$-factor of the closest vector), are frequently studied in lattice cryptography.</p>
 </li>
 <li>
-<p>Shortest Independent Vector Problem (SIVP)</p>
-<p><strong>Definition</strong>:<br>
-The <strong>Shortest Independent Vector Problem (SIVP)</strong> involves finding \( n \) linearly independent vectors \( \{\bold{v}_1, \bold{v}_2, \dots, \bold{v}_n\} \) in a lattice \( \Lambda \) such that the maximum norm of the vectors is minimized:</p>
+<p><strong>Shortest Independent Vector Problem (SIVP)</strong></p>
+<p><strong>Definition:</strong><br>
+The <strong>Shortest Independent Vector Problem (SIVP)</strong> involves finding $n$ linearly independent vectors ${\bold{v}_1, \bold{v}_2, \dots, \bold{v}_n}$ in a lattice $\Lambda$ such that the maximum norm of the vectors is minimized:</p>
 $$
     \max_{i=1}^n \|\bold{v}_i\| = \lambda_n(\Lambda)
-    $$<p>where \( \lambda_n(\Lambda) \) represents the length of the \( n \)-th successive minimum of the lattice. SIVP is closely related to the geometry of the lattice and remains computationally hard. It is used in cryptographic constructions and reduction proofs, often connecting the hardness of lattice problems to cryptographic assumptions.</p>
+    $$<p>where $\lambda_n(\Lambda)$ represents the length of the $n$-th successive minimum of the lattice. SIVP is closely related to the geometry of the lattice and remains computationally hard. It is used in cryptographic constructions and reduction proofs, often connecting the hardness of lattice problems to cryptographic assumptions.</p>
 </li>
 </ol>
 <h2 id="summary-table-of-lattice-problems">
@@ -413,51 +457,52 @@ $$
       <tr>
           <td><strong>(I)SVP</strong></td>
           <td>Find the shortest vector</td>
-          <td>\( \bold{v} \in \Lambda, \|\bold{v}\| = \lambda_1 \)</td>
+          <td>$\bold{v} \in \Lambda, |\bold{v}| = \lambda_1$</td>
           <td>NP-hard in the worst case</td>
       </tr>
       <tr>
           <td><strong>H-SVP</strong></td>
           <td>Find a short enough vector</td>
-          <td>\( \bold{v} \in \Lambda, \|\bold{v}\| \leq \delta_n \cdot \text{Vol}(\Lambda)^{1/n} \)</td>
+          <td>$\bold{v} \in \Lambda, |\bold{v}| \leq \delta_n \cdot \text{Vol}(\Lambda)^{1/n}$</td>
           <td>Easier than SVP, used in reduction</td>
       </tr>
       <tr>
           <td><strong>Approx-(I)SVP</strong></td>
           <td>Approximate the shortest vector</td>
-          <td>\( \bold{v} \in \Lambda, \|\bold{v}\| \leq \gamma \lambda_1 \)</td>
-          <td>Hard for small \( \gamma \)</td>
+          <td>$\bold{v} \in \Lambda, |\bold{v}| \leq \gamma \lambda_1$</td>
+          <td>Hard for small $\gamma$</td>
       </tr>
       <tr>
           <td><strong>Unique-(I)SVP</strong></td>
           <td>Find the unique shortest vector</td>
-          <td>\( \bold{v} \in \Lambda, \lambda_2 \geq \beta \lambda_1 \)</td>
-          <td>Easier than SVP (gap \( \beta \))</td>
+          <td>$\bold{v} \in \Lambda, \lambda_2 \geq \beta \lambda_1$</td>
+          <td>Easier than SVP (gap $\beta$)</td>
       </tr>
       <tr>
           <td><strong>CVP</strong></td>
           <td>Find the closest lattice vector to target</td>
-          <td>\( \bold{v} \in \Lambda, \|\bold{t} - \bold{v}\| \)</td>
+          <td>$\bold{v} \in \Lambda, |\bold{t} - \bold{v}|$</td>
           <td>NP-hard, harder than SVP</td>
       </tr>
   </tbody>
 </table>
-<p>Importantly for later, any algorithm solving Approx-SVP with factor $\alpha$ also solves Hermite-SVP for factor $\alpha\sqrt{\gamma_n}$ in polynomial time. Also any algoritm solving H-SVP in $\alpha$ can be used a linear number of times to solves Approx-SVP with factor $\alpha^2$ in polyomial time.[<a id="cite-6" class="hugo-simplecite-cite-hyperlink" href="#bibreference-6" title="L. Lovász, An algorithmic theory of numbers, graphs and convexity. SIAM, 1986. ">6</a>]There also exists from worst-case Approx-SVP to average-case H-SVP for certain class of lattices.</p>
+<p>Importantly, for later sections, note that any algorithm solving Approx-SVP with factor $\alpha$ also solves Hermite-SVP for factor $\alpha\sqrt{\gamma_n}$ in polynomial time. Additionally, any algorithm solving H-SVP with factor $\alpha$ can be used a linear number of times to solve Approx-SVP with factor $\alpha^2$ in polynomial time [<a id="cite-6" class="hugo-simplecite-cite-hyperlink" href="#bibreference-6" title="L. Lovász, An algorithmic theory of numbers, graphs and convexity. SIAM, 1986. ">6</a>]. There also exist reductions from worst-case Approx-SVP to average-case H-SVP for certain classes of lattices.</p>
 <h2 id="security">
   Security
   <a class="anchor" href="#security">#</a>
 </h2>
-<p>The foundational belief of security in new lattice-based primitives stems from one key finding. Ajtai’s theorem connected the hardness of certain average-case problems to the difficulty of worst-case problems in lattices [<a id="cite-7" class="hugo-simplecite-cite-hyperlink" href="#bibreference-7" title="M. Ajtai, Generating hard instances of lattice problems, In Proc. Proceedings of the twenty-eighth annual ACM symposium on theory of computing, 1996, pp. 99–108. ">7</a>]. Specifically, Ajtai demonstrated that for the Short Integer Solution (SIS) problem which we will define later, the average-case instances are at least as hard as the worst-case instances of the Shortest Vector Problem (SVP) on lattices. This means that if one could efficiently solve random instances of SIS, then they could also solve the worst-case SVP, a problem believed to be intractable even for quantum computers. Ajtai’s theorem provides a strong security guarantee for lattice-based cryptographic schemes by grounding their security in the hardness of well-studied lattice problems like SVP.</p>
-<p>The security beliefs (hardness of SVP) can be summarized by two conjectures from [<a id="cite-3" class="hugo-simplecite-cite-hyperlink" href="#bibreference-3" title="D. Micciancio and O. Regev, Lattice-based cryptography, in Post-quantum cryptography, Springer, 2009, pp. 147–191.">3</a>]:</p>
+<p>The foundational belief in the security of new lattice-based primitives stems from a key result: Ajtai’s theorem, which connected the hardness of certain average-case problems to the difficulty of worst-case problems in lattices [<a id="cite-7" class="hugo-simplecite-cite-hyperlink" href="#bibreference-7" title="M. Ajtai, Generating hard instances of lattice problems, In Proc. Proceedings of the twenty-eighth annual ACM symposium on theory of computing, 1996, pp. 99–108. ">7</a>]. Specifically, Ajtai demonstrated that for the Short Integer Solution (SIS) problem—which we will define later—the average-case instances are at least as hard as the worst-case instances of the Shortest Vector Problem (SVP) on lattices. This implies that if one could efficiently solve random instances of SIS, they could also solve the worst-case SVP, a problem believed to be intractable even for quantum computers. Ajtai’s theorem provides a strong security guarantee for lattice-based cryptographic schemes by grounding their security in the hardness of well-studied lattice problems like SVP.</p>
+<p>The security assumptions based on the hardness of SVP can be summarized by two conjectures from [<a id="cite-3" class="hugo-simplecite-cite-hyperlink" href="#bibreference-3" title="D. Micciancio and O. Regev, Lattice-based cryptography, in Post-quantum cryptography, Springer, 2009, pp. 147–191.">3</a>]:</p>
 <ol>
-<li>There is no polynomial time algorithm that approximates lattice problems to within polynomial factors.</li>
-<li>There is no polynomial time quantum algorithm that approximates lattice problems within polynomial factors.</li>
+<li>There is no polynomial-time algorithm that approximates lattice problems to within polynomial factors.</li>
+<li>There is no polynomial-time quantum algorithm that approximates lattice problems within polynomial factors.</li>
 </ol>
+<p>These conjectures underpin the belief that lattice-based cryptosystems remain secure even in the presence of quantum adversaries, making them promising candidates for post-quantum security.</p>
 <h2 id="norms">
   Norms
   <a class="anchor" href="#norms">#</a>
 </h2>
-<p>We give a brief overview of norms we will use later on and their relationships. We will also need norms in modulus and rings.</p>
+<p>We provide a brief overview of norms that will be used later and their relationships. We also introduce norms for elements in modules and rings.</p>
 <h4 id="definition-of--ell_p--norms">
   Definition of \( \ell_p \)-Norms
   <a class="anchor" href="#definition-of--ell_p--norms">#</a>
@@ -468,17 +513,19 @@ $$
 \|\boldsymbol{f}\|_2 = \sqrt{\sum_{i=1}^n f_i^2}, \quad
 \|\boldsymbol{f}\|_p = \left(\sum_{i=1}^n |f_i|^p\right)^{1/p}, \quad
 \|\boldsymbol{f}\|_\infty = \max_{i} |f_i|.
-$$<p>These norms generalize to module elements $\boldsymbol{f} \in R_q^m$ (where $R_q$ is a quotient ring, e.g., $\mathbb{Z}_q[x]/\langle x^n + 1 \rangle$), by viewing them as $m \cdot n$-dimensional vectors[<a id="cite-8" class="hugo-simplecite-cite-hyperlink" href="#bibreference-8" title="C. Baum, I. Damgård, V. Lyubashevsky, S. Oechsner, and C. Peikert, More efficient commitments from structured lattice assumptions, In Proc. International conference on security and cryptography for networks, 2018, pp. 368–385. ">8</a>]. Also remember that module generalize rings, so a vector $\bold{f}$ in the ring $R_q^1$ is a set of coefficients $f_i$ such that $\bold{f}=\sum_if_ix^i$</p>
-<h4 id="relationships-between-norms">
+$$<p>These norms generalize to module elements $\boldsymbol{f} \in R_q^m$ (where $R_q$ is a quotient ring, e.g., $\mathbb{Z}_q[x]/\langle x^n + 1 \rangle$), by viewing them as $m \cdot n$-dimensional vectors [<a id="cite-8" class="hugo-simplecite-cite-hyperlink" href="#bibreference-8" title="C. Baum, I. Damgård, V. Lyubashevsky, S. Oechsner, and C. Peikert, More efficient commitments from structured lattice assumptions, In Proc. International conference on security and cryptography for networks, 2018, pp. 368–385. ">8</a>]. Note that modules generalize rings, so a vector $\boldsymbol{f}$ in the ring $R_q^1$ is represented by a set of coefficients $f_i$ such that:</p>
+$$
+\boldsymbol{f} = \sum_i f_i x^i.
+$$<h4 id="relationships-between-norms">
   Relationships Between Norms
   <a class="anchor" href="#relationships-between-norms">#</a>
 </h4>
 <p>For $p, q \geq 1$ with $p \leq q$, the following relationships hold for $\boldsymbol{f} \in \mathbb{R}^n$:</p>
 $$
 \|\boldsymbol{f}\|_\infty \leq \|\boldsymbol{f}\|_q \leq \|\boldsymbol{f}\|_p \leq \|\boldsymbol{f}\|_1.
-$$<p>This means that the $\ell_\infty$-norm is always the smallest, while the $\ell_1$-norm is the largest.</p>
+$$<p>This inequality indicates that the $\ell_\infty$-norm is always the smallest, while the $\ell_1$-norm is the largest.</p>
 <h4 id="applications-in-lattice-problem-hardness-estimation">
-  Applications in lattice problem hardness estimation
+  Applications in Lattice Problem Hardness Estimation
   <a class="anchor" href="#applications-in-lattice-problem-hardness-estimation">#</a>
 </h4>
 <p>Norms are crucial for bounding errors and ensuring security in lattice-based cryptography. For example:</p>
@@ -535,12 +582,12 @@ $$<p>This means that the $\ell_\infty$-norm is always the smallest, while the $\
   <ul>
     <li><a href="#lattices">Lattices</a>
       <ul>
-        <li><a href="#volume-of-a-lattice">Volume of a lattice</a></li>
-        <li><a href="#dual-of-a-lattice">Dual of a lattice</a></li>
-        <li><a href="#minima-of-a-lattice-and-root-hermite-factor">Minima of a lattice and root hermite factor</a></li>
+        <li><a href="#volume-of-a-lattice">Volume of a Lattice</a></li>
+        <li><a href="#dual-of-a-lattice">Dual of a Lattice</a></li>
+        <li><a href="#minima-of-a-lattice-and-root-hermite-factor">Minima of a Lattice and Root Hermite Factor</a></li>
+        <li><a href="#random-lattices-and-gaussian-heuristic">Random Lattices and Gaussian Heuristic</a></li>
       </ul>
     </li>
-    <li><a href="#random-lattices-and-gaussian-heuristic">Random lattices and Gaussian heuristic</a></li>
     <li><a href="#hard-problems-in-lattices">Hard Problems in Lattices</a></li>
     <li><a href="#summary-table-of-lattice-problems">Summary Table of Lattice Problems</a></li>
     <li><a href="#security">Security</a></li>

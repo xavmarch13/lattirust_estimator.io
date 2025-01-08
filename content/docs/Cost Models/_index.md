@@ -21,14 +21,17 @@ In terms of cost, sieving algorithm can solve the SVP in a lattice of dimension 
 
 The following sieving estimates are available in the estimator:
 
-| Name      | Reference | Cost | Regime |
-| ----------- | ----------- | ----------- | ----------- |
-| BDGL-sieve      | {{< cite "becker2016new" >}}       | $2^{0.292\beta + 16.4}$ big $\beta$ $2^{0.387\beta + 16.4}$ small $\beta$|  classical       |
-| Q-sieve      | {{< cite "alkim2016post" >}}   {{< cite "laarhoven2015finding" >}}     | $2^{0.265\beta}$      |  quantum       |
-| ADPS-sieve   | {{< cite "alkim2016post" >}}        | $2^{0.292\beta}$| classical       | t2       |
-| BGJ-sieve   | {{< cite "albrecht2018estimate" >}}        | $2^{0.311\beta}$       | classical       |
-| ChaLoy-sieve   | {{< cite "chailloux2021lattice" >}}        | $2^{0.257\beta}$       | quantum       |
-
+| Name               | Reference              | Cost                                 | Regime             |
+|--------------------|------------------------|---------------------------------------|--------------------|
+| BDGL-sieve         | {{< cite "becker2016new" >}} | $2^{0.292\beta + 16.4}$ big $\beta$ $2^{0.387\beta + 16.4}$ small $\beta$ | classical          |
+| Q-sieve            | {{< cite "alkim2016post" >}}   {{< cite "laarhoven2015finding" >}} | $2^{0.265\beta}$ | quantum            |
+| ADPS-sieve         | {{< cite "alkim2016post" >}}   | $2^{0.292\beta}$                     | classical          |
+| BGJ-sieve          | {{< cite "albrecht2018estimate" >}} | $2^{0.311\beta}$                     | classical          |
+| ChaLoy-sieve       | {{< cite "chailloux2021lattice" >}} | $2^{0.257\beta}$                     | quantum            |
+| Kyber-sieve        | {{< cite "lyubashevsky2020crystals" >}}     | $5.46 \times 2^{0.2988\beta + 26.0111}$ | classical          |
+| Kyber-sieve        | {{< cite "lyubashevsky2020crystals" >}}    | $5.46 \times 2^{0.2694\beta + 28.9724}$ | quantum            |
+| Matzov-sieve       | {{< cite "matzov_2022_6493704" >}}     | $5.46 \times 2^{0.2961\beta + 20.3879}$ | classical          |
+| Matzov-sieve       | {{< cite "matzov_2022_6493704" >}}   | $5.46 \times 2^{0.2664\beta + 25.2995}$ | quantum            |
 
 
 {{< figure src="sieving.png" alt="cost plot" caption="Cost of sieving SVP solvers" >}}
@@ -42,6 +45,10 @@ As a very high overview, we give a list of amelioration brought by each kind of 
 - BGJ-sieve significantly reduces the time complexity to \(2^{0.292d + o(d)}\) through algorithmic optimizations. Key contributions include the introduction of hypersphere partitioning to reduce vector comparison costs, the use of nearby vector replacement to iteratively refine the list of vectors towards shorter ones, and a probabilistic framework that efficiently handles high-dimensional spaces.
 
 - ChaLoy-sieve introduces a quantum algorithm based on quantum random walks that improves the asymptotic complexity of solving the Shortest Vector Problem (SVP). The key innovation is replacing Grover's algorithm with a quantum random walk, enabling faster resolution of reducible vector pairs. This enhancement reduces the heuristic running time from \(2^{0.2653d + o(d)}\) to \(2^{0.2570d + o(d)}\), while optimizing resource usage. Notably, it decreases quantum memory requirements to \(2^{0.0495d}\) and quantum RAM to \(2^{0.0767d}\).
+
+ - Kyber-sieve leverages the hardness of the Module Learning With Errors (MLWE) problem in module lattices, making it highly efficient due to its use of number-theoretic transforms (NTT) and structured lattice encodings. The Kyber cryptosystem improves lattice reductions by balancing the complexity of sieving-based attacks through modular parameter tuning, including optimized noise levels for secure encryption.
+
+ - Matzov-sieve presents significant improvements to dual lattice attacks by introducing optimizations for the cost of sieving in the RAM model, improving the efficiency of decoding using random product codes, and reducing the number of gates required for each operation. The attack leverages a tailored FFT-based distinguisher combined with modulus switching to reduce the overall computation while maintaining accuracy. Additionally, the approach applies advanced parameter tuning to optimize the BKZ-based reduction and introduces techniques such as "dimensions-for-free" to further reduce the dimension of the lattice needed for effective cryptanalysis. These improvements allow the Matzov attack to outperform primal attacks and achieve substantial reductions in the security levels of post-quantum cryptosystems like Kyber, Saber, and Dilithium.
 
 ### The Dimension for free
 

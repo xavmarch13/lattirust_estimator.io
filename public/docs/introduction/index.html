@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head><script src="/lattirust_estimator.io/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=lattirust_estimator.io/livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+  Introduction
+  #
+
+As quantum computing advances, many of the cryptographic techniques that underpin our current digital security may soon become vulnerable [1]. Quantum computers, leveraging algorithms like Shor’s [2], have the potential to break widely-used public key cryptosystems such as RSA and ECC, posing a serious threat to data confidentiality and integrity. In response, researchers are developing post-quantum cryptography (PQC)—new cryptographic algorithms designed to withstand quantum attacks [3].">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/lattirust_estimator.io/docs/introduction/">
+  <meta property="og:site_name" content="Lattirust estimator 0.1">
+  <meta property="og:title" content="Introduction">
+  <meta property="og:description" content="Introduction # As quantum computing advances, many of the cryptographic techniques that underpin our current digital security may soon become vulnerable [1]. Quantum computers, leveraging algorithms like Shor’s [2], have the potential to break widely-used public key cryptosystems such as RSA and ECC, posing a serious threat to data confidentiality and integrity. In response, researchers are developing post-quantum cryptography (PQC)—new cryptographic algorithms designed to withstand quantum attacks [3].">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="website">
+<title>Introduction | Lattirust estimator 0.1</title>
+<link rel="icon" href="/lattirust_estimator.io/favicon.png" >
+<link rel="manifest" href="/lattirust_estimator.io/manifest.json">
+<link rel="canonical" href="http://localhost:1313/lattirust_estimator.io/docs/introduction/">
+<link rel="stylesheet" href="/lattirust_estimator.io/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
+  <script defer src="/lattirust_estimator.io/fuse.min.js"></script>
+  <script defer src="/lattirust_estimator.io/en.search.min.cc68f8e452ee388dbf978c66324d2754a9fb387b81371658a9d56882d2591076.js" integrity="sha256-zGj45FLuOI2/l4xmMk0nVKn7OHuBNxZYqdVogtJZEHY=" crossorigin="anonymous"></script>
+<link rel="alternate" type="application/rss+xml" href="http://localhost:1313/lattirust_estimator.io/docs/introduction/index.xml" title="Lattirust estimator 0.1" />
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body);"></script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body, {
+            delimiters: [
+                {left: "$$", right: "$$", display: true},
+                {left: "$", right: "$", display: false}
+            ]
+        });
+    });
+</script>
+
+
+<link rel="stylesheet" type="text/css" href="http://localhost:1313/lattirust_estimator.io/scss/hugo-simplecite.min.138dd14c6aaf1b1a9b55c4fe22f82166812ce8081413d67a3b464e411d2b63ef.css">
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/lattirust_estimator.io/"><span>Lattirust estimator 0.1</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/lattirust_estimator.io/docs/introduction/" class="active">Introduction</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/lattirust_estimator.io/docs/preliminaries/" class="">Preliminaries</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/lattirust_estimator.io/docs/cost-models/" class="">Cost Models</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/lattirust_estimator.io/docs/lattice-reduction/" class="">Lattice reduction</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/lattirust_estimator.io/docs/sis/" class="">SIS</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/lattirust_estimator.io/docs/rsis-msis/" class="">Module SIS and Ring SIS</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/lattirust_estimator.io/docs/sis-variants/" class="">SIS variants</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/lattirust_estimator.io/docs/estimator-options/" class="">Estimator options and API</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/lattirust_estimator.io/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Introduction</h3>
+
+  <label for="toc-control">
+    
+    <img src="/lattirust_estimator.io/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents"></nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="introduction">
+  Introduction
+  <a class="anchor" href="#introduction">#</a>
+</h1>
+<p>As quantum computing advances, many of the cryptographic techniques that underpin our current digital security may soon become vulnerable [<a id="cite-1" class="hugo-simplecite-cite-hyperlink" href="#bibreference-1" title="A. Kitaev, A. Shen, and M. Vyalyi, Classical and quantum computation. American Mathematical Soc., 2002. ">1</a>]. Quantum computers, leveraging algorithms like Shor’s [<a id="cite-2" class="hugo-simplecite-cite-hyperlink" href="#bibreference-2" title="V. Bhatia and K. Ramkumar, An efficient quantum computing technique for cracking RSA using shor’s algorithm, In Proc. 2020 IEEE 5th international conference on computing communication and automation (ICCCA), 2020, pp. 89–94. ">2</a>], have the potential to break widely-used public key cryptosystems such as RSA and ECC, posing a serious threat to data confidentiality and integrity. In response, researchers are developing <strong>post-quantum cryptography (PQC)</strong>—new cryptographic algorithms designed to withstand quantum attacks [<a id="cite-3" class="hugo-simplecite-cite-hyperlink" href="#bibreference-3" title="D. Bernstein and T. Lange, Post-quantum cryptography, Nature, vol. 549, no. 7671, pp. 188–194, 2017. ">3</a>].</p>
+<p>One of the most promising approaches in PQC is <strong>lattice-based cryptography</strong> [<a id="cite-4" class="hugo-simplecite-cite-hyperlink" href="#bibreference-4" title="D. Micciancio and O. Regev, Lattice-based cryptography, in Post-quantum cryptography, Springer, 2009, pp. 147–191.">4</a>], which relies on the difficulty of certain mathematical problems involving high-dimensional lattices. Two of the most significant problems in this domain are the <strong>Short Integer Solution (SIS) problem</strong> [<a id="cite-5" class="hugo-simplecite-cite-hyperlink" href="#bibreference-5" title="M. Ajtai, Generating hard instances of lattice problems, In Proc. Proceedings of the twenty-eighth annual ACM symposium on theory of computing, 1996, pp. 99–108. ">5</a>] and the <strong>Learning With Errors (LWE) problem</strong> [<a id="cite-6" class="hugo-simplecite-cite-hyperlink" href="#bibreference-6" title="O. Regev, On lattices, learning with errors, random linear codes, and cryptography, Journal of the ACM (JACM), vol. 56, no. 6, pp. 1–40, 2009. ">6</a>]. Both problems are related and widely believed to remain hard even in the post-quantum era, making them ideal candidates as the foundation for new cryptographic primitives.</p>
+<p>However, the effectiveness and practicality of lattice-based cryptography hinge on selecting the appropriate <strong>security parameters</strong>—such as the lattice dimension, modulus, and the error distribution (for LWE) [<a id="cite-7" class="hugo-simplecite-cite-hyperlink" href="#bibreference-7" title="R. Player, Parameter selection in lattice-based cryptography. Royal Holloway, University of London, 2018. ">7</a>]. These parameters directly influence the system’s resistance to quantum attacks, as well as its efficiency in real-world implementations. Striking the right balance is critical: overly conservative parameters may offer high security but at the cost of performance and practicality, while weaker parameters may leave the system vulnerable to attack. Moreover, the algorithms used to solve problems like SIS and LWE, known as <strong>lattice reduction algorithms</strong> [<a id="cite-8" class="hugo-simplecite-cite-hyperlink" href="#bibreference-8" title="P. Nguyen, Lattice reduction algorithms: Theory and practice, In Proc. Annual international conference on the theory and applications of cryptographic techniques, 2011, pp. 2–6. ">8</a>], are still not fully understood, often performing better in practice than theoretical worst-case analysis would suggest.</p>
+<p>In this blog, we will take a closer look at the SIS problem and its variants, and demonstrate the importance of <strong>security parameter estimation</strong> in building secure and efficient post-quantum cryptosystems. As part of our effort to port lattice-based systems from research to practice, we designed and implemented a Rust library for lattice parameter selection. Concretely, this library aims to:</p>
+<ul>
+<li>provide an intuitive and hard-to-misuse interface for proof frontends,</li>
+<li>internally use precise estimates for the hardness of lattice problems (e.g., by reducing to the shortest vector problem),</li>
+<li>compute estimates for variants of standard problems of interest (e.g., new lattice assumptions, or standard assumptions with additional leakage).</li>
+</ul>
+<p>This library is to be integrated into <code>lattirust</code>, our library for lattice-based proofs. This work was conducted as part of a research project at the Computational Security Laboratory (COMPSEC) at EPFL.</p>
+<p>The blog will be structured into several sections. First, we will explore the theoretical foundations of lattices and lattice reduction. Then, we will discuss the cost models that relate different methods of solving these problems to actual security estimates. After that, we will explain the SIS problem and its variants and how we model their security for the Euclidean ($L_2$) and infinity ($L_{\infty}$) norms. Finally, we will provide a detailed walkthrough of how to use the Rust tool, including how to use it for security parameter estimation in practical applications.</p>
+<p>Note that our tool will be based on the state-of-the-art estimator developed by Martin Albrecht et al. [<a id="cite-9" class="hugo-simplecite-cite-hyperlink" href="#bibreference-9" title="M. Albrecht, R. Player, and S. Scott, On the concrete hardness of learning with errors. Cryptology ePrint Archive, Paper 2015/046, 2015. [Online]. Available: https://eprint.iacr.org/2015/046  ">9</a>]. Most of our design decisions will align with their work, as it is, to the best of our knowledge, the most precise and up-to-date estimator available for lattice-based problem security estimations. However, we will differ by centering our estimator on the SIS problem and its variants to specifically target zkSNARKs (zero-knowledge succinct non-interactive arguments). Additionally, we will port the estimator logic from Python and Sage into Rust, offering a modern and hopefully efficient implementation.</p>
+<h1 id="references">
+  References
+  <a class="anchor" href="#references">#</a>
+</h1>
+<ol class="hugo-simplecite-reference-list"><li class="hugo-simplecite-reference-list-item" id="bibreference-1">A. Kitaev,&#32;A. Shen, and&#32;M. Vyalyi,&#32;<em>Classical and quantum computation</em>.&#32;American Mathematical Soc., 2002.&#32;<a href="#cite-1" class="back-arrow" title="Back to text">↩</a></li><li class="hugo-simplecite-reference-list-item" id="bibreference-2">V. Bhatia and&#32;K. Ramkumar,&#32;<q>An efficient quantum computing technique for cracking RSA using shor’s algorithm,</q>&#32;In Proc. 2020 IEEE 5th international conference on computing communication and automation (ICCCA),&#32;2020, pp. 89–94.&#32;<a href="#cite-2" class="back-arrow" title="Back to text">↩</a></li><li class="hugo-simplecite-reference-list-item" id="bibreference-3">D. Bernstein and&#32;T. Lange,&#32;<q>Post-quantum cryptography,</q>&#32;<em>Nature</em>,&#32;vol. 549,&#32;no. 7671,&#32;pp. 188–194,&#32;2017.&#32;<a href="#cite-3" class="back-arrow" title="Back to text">↩</a></li><li class="hugo-simplecite-reference-list-item" id="bibreference-4">D. Micciancio and&#32;O. Regev,&#32;<q>Lattice-based cryptography,</q>&#32;in <em>Post-quantum cryptography</em>,&#32;Springer, 2009, pp. 147–191.<a href="#cite-4" class="back-arrow" title="Back to text">↩</a></li><li class="hugo-simplecite-reference-list-item" id="bibreference-5">M. Ajtai,&#32;<q>Generating hard instances of lattice problems,</q>&#32;In Proc. Proceedings of the twenty-eighth annual ACM symposium on theory of computing,&#32;1996, pp. 99–108.&#32;<a href="#cite-5" class="back-arrow" title="Back to text">↩</a></li><li class="hugo-simplecite-reference-list-item" id="bibreference-6">O. Regev,&#32;<q>On lattices, learning with errors, random linear codes, and cryptography,</q>&#32;<em>Journal of the ACM (JACM)</em>,&#32;vol. 56,&#32;no. 6,&#32;pp. 1–40,&#32;2009.&#32;<a href="#cite-6" class="back-arrow" title="Back to text">↩</a></li><li class="hugo-simplecite-reference-list-item" id="bibreference-7">R. Player,&#32;<em>Parameter selection in lattice-based cryptography</em>.&#32;Royal Holloway, University of London, 2018.&#32;<a href="#cite-7" class="back-arrow" title="Back to text">↩</a></li><li class="hugo-simplecite-reference-list-item" id="bibreference-8">P. Nguyen,&#32;<q>Lattice reduction algorithms: Theory and practice,</q>&#32;In Proc. Annual international conference on the theory and applications of cryptographic techniques,&#32;2011, pp. 2–6.&#32;<a href="#cite-8" class="back-arrow" title="Back to text">↩</a></li><li class="hugo-simplecite-reference-list-item" id="bibreference-9">M. Albrecht,&#32;R. Player, and&#32;S. Scott,&#32;<em>On the concrete hardness of learning with errors</em>.&#32;Cryptology ePrint Archive, Paper 2015/046, 2015.&#32;[Online]. Available: <a class="hugo-simplecite-url-hyperlink" rel="noopener" target="_blank" href="https://eprint.iacr.org/2015/046">https://eprint.iacr.org/2015/046</a>&#32;
+<a href="#cite-9" class="back-arrow" title="Back to text">↩</a></li></ol>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents"></nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

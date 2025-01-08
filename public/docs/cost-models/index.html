@@ -28,7 +28,7 @@ Sieving # Sieving algorithms for SVP work by iteratively refining a large set of
 <link rel="canonical" href="http://localhost:1313/lattirust_estimator.io/docs/cost-models/">
 <link rel="stylesheet" href="/lattirust_estimator.io/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
   <script defer src="/lattirust_estimator.io/fuse.min.js"></script>
-  <script defer src="/lattirust_estimator.io/en.search.min.28699bc6a655822ad060f67278eb3dc57d62f76da35350292b1d07af4370bc11.js" integrity="sha256-KGmbxqZVgirQYPZyeOs9xX1i922jU1ApKx0Hr0NwvBE=" crossorigin="anonymous"></script>
+  <script defer src="/lattirust_estimator.io/en.search.min.cc68f8e452ee388dbf978c66324d2754a9fb387b81371658a9d56882d2591076.js" integrity="sha256-zGj45FLuOI2/l4xmMk0nVKn7OHuBNxZYqdVogtJZEHY=" crossorigin="anonymous"></script>
 <link rel="alternate" type="application/rss+xml" href="http://localhost:1313/lattirust_estimator.io/docs/cost-models/index.xml" title="Lattirust estimator 0.1" />
 <!--
 Made with Book Theme
@@ -98,6 +98,24 @@ https://github.com/alex-shpak/hugo-book
   
 
   
+    <a href="/lattirust_estimator.io/docs/introduction/" class="">Introduction</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
     <a href="/lattirust_estimator.io/docs/preliminaries/" class="">Preliminaries</a>
   
 
@@ -116,7 +134,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/lattirust_estimator.io/docs/lattice-reduction/" class="">Lattice reduction</a>
+    <a href="/lattirust_estimator.io/docs/cost-models/" class="active">Cost Models</a>
   
 
           
@@ -134,7 +152,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/lattirust_estimator.io/docs/cost-models/" class="active">Cost Models</a>
+    <a href="/lattirust_estimator.io/docs/lattice-reduction/" class="">Lattice reduction</a>
   
 
           
@@ -325,32 +343,56 @@ https://github.com/alex-shpak/hugo-book
   <tbody>
       <tr>
           <td>BDGL-sieve</td>
-          <td>[<a id="cite-1" class="hugo-simplecite-cite-hyperlink" href="#bibreference-1" title="A. Becker, L. Ducas, N. Gama, and T. Laarhoven, New directions in nearest neighbor searching with applications to lattice sieving, In Proc. Proceedings of the twenty-seventh annual ACM-SIAM symposium on discrete algorithms, 2016, pp. 10–24. ">1</a>]</td>
+          <td>[<a id="cite-1" class="hugo-simplecite-cite-hyperlink" href="#bibreference-1" title="A. Becker, L. Ducas, N. Gama, and T. Laarhoven, New directions in nearest neighbor searching with applications to lattice sieving, In Proc. Proceedings of the twenty-seventh annual acm-siam symposium on discrete algorithms, 2016, pp. 10–24. ">1</a>]</td>
           <td>$2^{0.292\beta + 16.4}$ big $\beta$ $2^{0.387\beta + 16.4}$ small $\beta$</td>
           <td>classical</td>
       </tr>
       <tr>
           <td>Q-sieve</td>
-          <td>[<a id="cite-2" class="hugo-simplecite-cite-hyperlink" href="#bibreference-2" title="E. Alkim, L. Ducas, T. Pöppelmann, and P. Schwabe, Post-quantum key Exchange—A new hope, In Proc. 25th USENIX security symposium (USENIX security 16), 2016, pp. 327–343. ">2</a>]   [<a id="cite-3" class="hugo-simplecite-cite-hyperlink" href="#bibreference-3" title="T. Laarhoven, M. Mosca, and J. Van De Pol, Finding shortest lattice vectors faster using quantum search, Designs, Codes and Cryptography, vol. 77, pp. 375–400, 2015. ">3</a>]</td>
+          <td>[<a id="cite-2" class="hugo-simplecite-cite-hyperlink" href="#bibreference-2" title="E. Alkim, L. Ducas, T. Pöppelmann, and P. Schwabe, Post-quantum key Exchange—A new hope, In Proc. 25th usenix security symposium (usenix security 16), 2016, pp. 327–343. ">2</a>]   [<a id="cite-3" class="hugo-simplecite-cite-hyperlink" href="#bibreference-3" title="T. Laarhoven, M. Mosca, and J. Van De Pol, Finding shortest lattice vectors faster using quantum search, Designs, Codes and Cryptography, vol. 77, pp. 375–400, 2015. ">3</a>]</td>
           <td>$2^{0.265\beta}$</td>
           <td>quantum</td>
       </tr>
       <tr>
           <td>ADPS-sieve</td>
-          <td>[<a id="cite-2" class="hugo-simplecite-cite-hyperlink" href="#bibreference-2" title="E. Alkim, L. Ducas, T. Pöppelmann, and P. Schwabe, Post-quantum key Exchange—A new hope, In Proc. 25th USENIX security symposium (USENIX security 16), 2016, pp. 327–343. ">2</a>]</td>
+          <td>[<a id="cite-2" class="hugo-simplecite-cite-hyperlink" href="#bibreference-2" title="E. Alkim, L. Ducas, T. Pöppelmann, and P. Schwabe, Post-quantum key Exchange—A new hope, In Proc. 25th usenix security symposium (usenix security 16), 2016, pp. 327–343. ">2</a>]</td>
           <td>$2^{0.292\beta}$</td>
           <td>classical</td>
       </tr>
       <tr>
           <td>BGJ-sieve</td>
-          <td>[<a id="cite-4" class="hugo-simplecite-cite-hyperlink" href="#bibreference-4" title="M. Albrecht, B. Curtis, A. Deo, A. Davidson, R. Player, E. Postlethwaite, F. Virdia, and T. Wunderer, Estimate all the ${$LWE, NTRU$}$ schemes!, In Proc. Security and cryptography for networks: 11th international conference, SCN 2018, amalfi, italy, september 5–7, 2018, proceedings 11, 2018, pp. 351–367. ">4</a>]</td>
+          <td>[<a id="cite-4" class="hugo-simplecite-cite-hyperlink" href="#bibreference-4" title="M. Albrecht, B. Curtis, A. Deo, A. Davidson, R. Player, E. Postlethwaite, F. Virdia, and T. Wunderer, Estimate all the ${$lwe, ntru$}$ schemes!, In Proc. Security and cryptography for networks: 11th international conference, scn 2018, amalfi, italy, september 5–7, 2018, proceedings 11, 2018, pp. 351–367. ">4</a>]</td>
           <td>$2^{0.311\beta}$</td>
           <td>classical</td>
       </tr>
       <tr>
           <td>ChaLoy-sieve</td>
-          <td>[<a id="cite-5" class="hugo-simplecite-cite-hyperlink" href="#bibreference-5" title="A. Chailloux and J. Loyer, Lattice sieving via quantum random walks, In Proc. Advances in cryptology–ASIACRYPT 2021: 27th international conference on the theory and application of cryptology and information security, singapore, december 6–10, 2021, proceedings, part IV 27, 2021, pp. 63–91. ">5</a>]</td>
+          <td>[<a id="cite-5" class="hugo-simplecite-cite-hyperlink" href="#bibreference-5" title="A. Chailloux and J. Loyer, Lattice sieving via quantum random walks, In Proc. Advances in cryptology–asiacrypt 2021: 27th international conference on the theory and application of cryptology and information security, singapore, december 6–10, 2021, proceedings, part iv 27, 2021, pp. 63–91. ">5</a>]</td>
           <td>$2^{0.257\beta}$</td>
+          <td>quantum</td>
+      </tr>
+      <tr>
+          <td>Kyber-sieve</td>
+          <td>[<a id="cite-6" class="hugo-simplecite-cite-hyperlink" href="#bibreference-6" title="V. Lyubashevsky, L. Ducas, E. Kiltz, T. Lepoint, P. Schwabe, G. Seiler, D. Stehlé, and S. Bai, Crystals-dilithium, Algorithm Specifications and Supporting Documentation, 2020. ">6</a>]</td>
+          <td>$5.46 \times 2^{0.2988\beta + 26.0111}$</td>
+          <td>classical</td>
+      </tr>
+      <tr>
+          <td>Kyber-sieve</td>
+          <td>[<a id="cite-6" class="hugo-simplecite-cite-hyperlink" href="#bibreference-6" title="V. Lyubashevsky, L. Ducas, E. Kiltz, T. Lepoint, P. Schwabe, G. Seiler, D. Stehlé, and S. Bai, Crystals-dilithium, Algorithm Specifications and Supporting Documentation, 2020. ">6</a>]</td>
+          <td>$5.46 \times 2^{0.2694\beta + 28.9724}$</td>
+          <td>quantum</td>
+      </tr>
+      <tr>
+          <td>Matzov-sieve</td>
+          <td>[<a id="cite-7" class="hugo-simplecite-cite-hyperlink" href="#bibreference-7" title="MATZOV, Report on the security of lwe: Improved dual lattice attack. Zenodo, 2022. doi:10.5281/zenodo.6493704">7</a>]</td>
+          <td>$5.46 \times 2^{0.2961\beta + 20.3879}$</td>
+          <td>classical</td>
+      </tr>
+      <tr>
+          <td>Matzov-sieve</td>
+          <td>[<a id="cite-7" class="hugo-simplecite-cite-hyperlink" href="#bibreference-7" title="MATZOV, Report on the security of lwe: Improved dual lattice attack. Zenodo, 2022. doi:10.5281/zenodo.6493704">7</a>]</td>
+          <td>$5.46 \times 2^{0.2664\beta + 25.2995}$</td>
           <td>quantum</td>
       </tr>
   </tbody>
@@ -379,12 +421,18 @@ https://github.com/alex-shpak/hugo-book
 <li>
 <p>ChaLoy-sieve introduces a quantum algorithm based on quantum random walks that improves the asymptotic complexity of solving the Shortest Vector Problem (SVP). The key innovation is replacing Grover&rsquo;s algorithm with a quantum random walk, enabling faster resolution of reducible vector pairs. This enhancement reduces the heuristic running time from \(2^{0.2653d + o(d)}\) to \(2^{0.2570d + o(d)}\), while optimizing resource usage. Notably, it decreases quantum memory requirements to \(2^{0.0495d}\) and quantum RAM to \(2^{0.0767d}\).</p>
 </li>
+<li>
+<p>Kyber-sieve leverages the hardness of the Module Learning With Errors (MLWE) problem in module lattices, making it highly efficient due to its use of number-theoretic transforms (NTT) and structured lattice encodings. The Kyber cryptosystem improves lattice reductions by balancing the complexity of sieving-based attacks through modular parameter tuning, including optimized noise levels for secure encryption.</p>
+</li>
+<li>
+<p>Matzov-sieve presents significant improvements to dual lattice attacks by introducing optimizations for the cost of sieving in the RAM model, improving the efficiency of decoding using random product codes, and reducing the number of gates required for each operation. The attack leverages a tailored FFT-based distinguisher combined with modulus switching to reduce the overall computation while maintaining accuracy. Additionally, the approach applies advanced parameter tuning to optimize the BKZ-based reduction and introduces techniques such as &ldquo;dimensions-for-free&rdquo; to further reduce the dimension of the lattice needed for effective cryptanalysis. These improvements allow the Matzov attack to outperform primal attacks and achieve substantial reductions in the security levels of post-quantum cryptosystems like Kyber, Saber, and Dilithium.</p>
+</li>
 </ul>
 <h3 id="the-dimension-for-free">
   The Dimension for free
   <a class="anchor" href="#the-dimension-for-free">#</a>
 </h3>
-<p>In recent advancements, Ducas introduces a significant improvement in lattice sieving algorithms through the &ldquo;dimension for free&rdquo; technique [<a id="cite-6" class="hugo-simplecite-cite-hyperlink" href="#bibreference-6" title="L. Ducas, Shortest vector from lattice sieving: A few dimensions for free, In Proc. Annual international conference on the theory and applications of cryptographic techniques, 2018, pp. 125–145. ">6</a>]. This approach leverages the observation that short lattice vectors generated during sieving in lower dimensions can be reused to accelerate sieving in higher dimensions. By projecting and reusing these vectors across multiple dimensions, the algorithm effectively reduces the computational overhead without compromising accuracy. This method achieves a practical speedup of up to 10x in mid-range dimensions (e.g., 70–80). Our estimators will automatically provide this improvement by adapting the size of the needed lattice reduction computation. In practice, we can reduce the SVP problem of dimension $n$ to solving an SVP problem of dimension $n-d$ as long as $d$ is $\Theta(\frac{n}{\log(n)})$. The paper mentions a concrete prediction of $d \approx \frac{n\ln(4/3)}{\ln(n/2\pi e)}$.</p>
+<p>In recent advancements, Ducas introduces a significant improvement in lattice sieving algorithms through the &ldquo;dimension for free&rdquo; technique [<a id="cite-8" class="hugo-simplecite-cite-hyperlink" href="#bibreference-8" title="L. Ducas, Shortest vector from lattice sieving: A few dimensions for free, In Proc. Annual international conference on the theory and applications of cryptographic techniques, 2018, pp. 125–145. ">8</a>]. This approach leverages the observation that short lattice vectors generated during sieving in lower dimensions can be reused to accelerate sieving in higher dimensions. By projecting and reusing these vectors across multiple dimensions, the algorithm effectively reduces the computational overhead without compromising accuracy. This method achieves a practical speedup of up to 10x in mid-range dimensions (e.g., 70–80). Our estimators will automatically provide this improvement by adapting the size of the needed lattice reduction computation. In practice, we can reduce the SVP problem of dimension $n$ to solving an SVP problem of dimension $n-d$ as long as $d$ is $\Theta(\frac{n}{\log(n)})$. The paper mentions a concrete prediction of $d \approx \frac{n\ln(4/3)}{\ln(n/2\pi e)}$.</p>
 <h2 id="enumeration">
   Enumeration
   <a class="anchor" href="#enumeration">#</a>
@@ -418,31 +466,31 @@ https://github.com/alex-shpak/hugo-book
   <tbody>
       <tr>
           <td>Lotus</td>
-          <td>[<a id="cite-4" class="hugo-simplecite-cite-hyperlink" href="#bibreference-4" title="M. Albrecht, B. Curtis, A. Deo, A. Davidson, R. Player, E. Postlethwaite, F. Virdia, and T. Wunderer, Estimate all the ${$LWE, NTRU$}$ schemes!, In Proc. Security and cryptography for networks: 11th international conference, SCN 2018, amalfi, italy, september 5–7, 2018, proceedings 11, 2018, pp. 351–367. ">4</a>] [<a id="cite-7" class="hugo-simplecite-cite-hyperlink" href="#bibreference-7" title="T. Le Trieu Phong, Y. Aono, and S. Moriai, Lotus. Technical report, National Institute of Standards; Technology, 2017 …, 2017. ">7</a>]</td>
+          <td>[<a id="cite-4" class="hugo-simplecite-cite-hyperlink" href="#bibreference-4" title="M. Albrecht, B. Curtis, A. Deo, A. Davidson, R. Player, E. Postlethwaite, F. Virdia, and T. Wunderer, Estimate all the ${$lwe, ntru$}$ schemes!, In Proc. Security and cryptography for networks: 11th international conference, scn 2018, amalfi, italy, september 5–7, 2018, proceedings 11, 2018, pp. 351–367. ">4</a>] [<a id="cite-9" class="hugo-simplecite-cite-hyperlink" href="#bibreference-9" title="T. Le Trieu Phong, Y. Aono, and S. Moriai, Lotus. Technical report, National Institute of Standards; Technology, 2017 …, 2017. ">9</a>]</td>
           <td>$2^{0.125\beta\log\beta -0.755\beta + 22.74}$</td>
           <td>classical</td>
       </tr>
       <tr>
           <td>CheNgue-enum (BKZ 2.0)</td>
-          <td>[<a id="cite-8" class="hugo-simplecite-cite-hyperlink" href="#bibreference-8" title="Y. Chen and P. Nguyen, BKZ 2.0: Better lattice security estimates, In Proc. International conference on the theory and application of cryptology and information security, 2011, pp. 1–20. ">8</a>]</td>
+          <td>[<a id="cite-10" class="hugo-simplecite-cite-hyperlink" href="#bibreference-10" title="Y. Chen and P. Nguyen, BKZ 2.0: Better lattice security estimates, In Proc. International conference on the theory and application of cryptology and information security, 2011, pp. 1–20. ">10</a>]</td>
           <td>$2^{0.27\beta\log\beta -1.019\beta + 2.254}$</td>
           <td>classical</td>
       </tr>
       <tr>
           <td>ABF-enum</td>
-          <td>[<a id="cite-9" class="hugo-simplecite-cite-hyperlink" href="#bibreference-9" title="M. Albrecht, S. Bai, P. Fouque, P. Kirchner, D. Stehlé, and W. Wen, Faster enumeration-based lattice reduction: Root hermite factor time, In Proc. Annual international cryptology conference, 2020, pp. 186–212. ">9</a>]</td>
+          <td>[<a id="cite-11" class="hugo-simplecite-cite-hyperlink" href="#bibreference-11" title="M. Albrecht, S. Bai, P. Fouque, P. Kirchner, D. Stehlé, and W. Wen, Faster enumeration-based lattice reduction: Root hermite factor time, In Proc. Annual international cryptology conference, 2020, pp. 186–212. ">11</a>]</td>
           <td>$2^{0.184\beta\log\beta - 0.995\beta + 22.25}$ small $\beta$ $2^{0.125\beta\log\beta-0.547\beta+16.4}$ big $\beta$</td>
           <td>classical</td>
       </tr>
       <tr>
           <td>ABF-Q-enum</td>
-          <td>[<a id="cite-9" class="hugo-simplecite-cite-hyperlink" href="#bibreference-9" title="M. Albrecht, S. Bai, P. Fouque, P. Kirchner, D. Stehlé, and W. Wen, Faster enumeration-based lattice reduction: Root hermite factor time, In Proc. Annual international cryptology conference, 2020, pp. 186–212. ">9</a>]</td>
+          <td>[<a id="cite-11" class="hugo-simplecite-cite-hyperlink" href="#bibreference-11" title="M. Albrecht, S. Bai, P. Fouque, P. Kirchner, D. Stehlé, and W. Wen, Faster enumeration-based lattice reduction: Root hermite factor time, In Proc. Annual international cryptology conference, 2020, pp. 186–212. ">11</a>]</td>
           <td>$2^{0.0625\beta\log\beta}$</td>
           <td>quantum</td>
       </tr>
       <tr>
           <td>ABLR-enum</td>
-          <td>[<a id="cite-10" class="hugo-simplecite-cite-hyperlink" href="#bibreference-10" title="M. Albrecht, S. Bai, J. Li, and J. Rowell, Lattice reduction with approximate enumeration oracles: Practical algorithms and concrete performance, In Proc. Annual international cryptology conference, 2021, pp. 732–759. ">10</a>]</td>
+          <td>[<a id="cite-12" class="hugo-simplecite-cite-hyperlink" href="#bibreference-12" title="M. Albrecht, S. Bai, J. Li, and J. Rowell, Lattice reduction with approximate enumeration oracles: Practical algorithms and concrete performance, In Proc. Annual international cryptology conference, 2021, pp. 732–759. ">12</a>]</td>
           <td>$2^{0.184\beta\log\beta - 1.077\beta + 35.12}$ small $\beta$ $2^{0.125\beta\log\beta-0.655\beta+31.84}$ big $\beta$</td>
           <td>classical</td>
       </tr>
@@ -493,7 +541,7 @@ https://github.com/alex-shpak/hugo-book
   References
   <a class="anchor" href="#references">#</a>
 </h1>
-<ol class="hugo-simplecite-reference-list"><li class="hugo-simplecite-reference-list-item" id="bibreference-1">A. Becker,&#32;L. Ducas,&#32;N. Gama, and&#32;T. Laarhoven,&#32;<q>New directions in nearest neighbor searching with applications to lattice sieving,</q>&#32;In Proc. Proceedings of the twenty-seventh annual ACM-SIAM symposium on discrete algorithms,&#32;2016, pp. 10–24.&#32;<a href="#cite-1" class="back-arrow" title="Back to text">↩</a></li><li class="hugo-simplecite-reference-list-item" id="bibreference-2">E. Alkim,&#32;L. Ducas,&#32;T. Pöppelmann, and&#32;P. Schwabe,&#32;<q>Post-quantum key Exchange—A new hope,</q>&#32;In Proc. 25th USENIX security symposium (USENIX security 16),&#32;2016, pp. 327–343.&#32;<a href="#cite-2" class="back-arrow" title="Back to text">↩</a></li><li class="hugo-simplecite-reference-list-item" id="bibreference-3">T. Laarhoven,&#32;M. Mosca, and&#32;J. Van De Pol,&#32;<q>Finding shortest lattice vectors faster using quantum search,</q>&#32;<em>Designs, Codes and Cryptography</em>,&#32;vol. 77,&#32;pp. 375–400,&#32;2015.&#32;<a href="#cite-3" class="back-arrow" title="Back to text">↩</a></li><li class="hugo-simplecite-reference-list-item" id="bibreference-4">M. Albrecht,&#32;B. Curtis,&#32;A. Deo,&#32;A. Davidson,&#32;R. Player,&#32;E. Postlethwaite,&#32;F. Virdia, and&#32;T. Wunderer,&#32;<q>Estimate all the ${$LWE, NTRU$}$ schemes!,</q>&#32;In Proc. Security and cryptography for networks: 11th international conference, SCN 2018, amalfi, italy, september 5–7, 2018, proceedings 11,&#32;2018, pp. 351–367.&#32;<a href="#cite-4" class="back-arrow" title="Back to text">↩</a></li><li class="hugo-simplecite-reference-list-item" id="bibreference-5">A. Chailloux and&#32;J. Loyer,&#32;<q>Lattice sieving via quantum random walks,</q>&#32;In Proc. Advances in cryptology–ASIACRYPT 2021: 27th international conference on the theory and application of cryptology and information security, singapore, december 6–10, 2021, proceedings, part IV 27,&#32;2021, pp. 63–91.&#32;<a href="#cite-5" class="back-arrow" title="Back to text">↩</a></li><li class="hugo-simplecite-reference-list-item" id="bibreference-6">L. Ducas,&#32;<q>Shortest vector from lattice sieving: A few dimensions for free,</q>&#32;In Proc. Annual international conference on the theory and applications of cryptographic techniques,&#32;2018, pp. 125–145.&#32;<a href="#cite-6" class="back-arrow" title="Back to text">↩</a></li><li class="hugo-simplecite-reference-list-item" id="bibreference-7">T. Le Trieu Phong,&#32;Y. Aono, and&#32;S. Moriai,&#32;<em>Lotus</em>.&#32;Technical report, National Institute of Standards; Technology, 2017 …, 2017.&#32;<a href="#cite-7" class="back-arrow" title="Back to text">↩</a></li><li class="hugo-simplecite-reference-list-item" id="bibreference-8">Y. Chen and&#32;P. Nguyen,&#32;<q>BKZ 2.0: Better lattice security estimates,</q>&#32;In Proc. International conference on the theory and application of cryptology and information security,&#32;2011, pp. 1–20.&#32;<a href="#cite-8" class="back-arrow" title="Back to text">↩</a></li><li class="hugo-simplecite-reference-list-item" id="bibreference-9">M. Albrecht,&#32;S. Bai,&#32;P. Fouque,&#32;P. Kirchner,&#32;D. Stehlé, and&#32;W. Wen,&#32;<q>Faster enumeration-based lattice reduction: Root hermite factor time,</q>&#32;In Proc. Annual international cryptology conference,&#32;2020, pp. 186–212.&#32;<a href="#cite-9" class="back-arrow" title="Back to text">↩</a></li><li class="hugo-simplecite-reference-list-item" id="bibreference-10">M. Albrecht,&#32;S. Bai,&#32;J. Li, and&#32;J. Rowell,&#32;<q>Lattice reduction with approximate enumeration oracles: Practical algorithms and concrete performance,</q>&#32;In Proc. Annual international cryptology conference,&#32;2021, pp. 732–759.&#32;<a href="#cite-10" class="back-arrow" title="Back to text">↩</a></li></ol>
+<ol class="hugo-simplecite-reference-list"><li class="hugo-simplecite-reference-list-item" id="bibreference-1">A. Becker,&#32;L. Ducas,&#32;N. Gama, and&#32;T. Laarhoven,&#32;<q>New directions in nearest neighbor searching with applications to lattice sieving,</q>&#32;In Proc. Proceedings of the twenty-seventh annual acm-siam symposium on discrete algorithms,&#32;2016, pp. 10–24.&#32;<a href="#cite-1" class="back-arrow" title="Back to text">↩</a></li><li class="hugo-simplecite-reference-list-item" id="bibreference-2">E. Alkim,&#32;L. Ducas,&#32;T. Pöppelmann, and&#32;P. Schwabe,&#32;<q>Post-quantum key Exchange—A new hope,</q>&#32;In Proc. 25th usenix security symposium (usenix security 16),&#32;2016, pp. 327–343.&#32;<a href="#cite-2" class="back-arrow" title="Back to text">↩</a></li><li class="hugo-simplecite-reference-list-item" id="bibreference-3">T. Laarhoven,&#32;M. Mosca, and&#32;J. Van De Pol,&#32;<q>Finding shortest lattice vectors faster using quantum search,</q>&#32;<em>Designs, Codes and Cryptography</em>,&#32;vol. 77,&#32;pp. 375–400,&#32;2015.&#32;<a href="#cite-3" class="back-arrow" title="Back to text">↩</a></li><li class="hugo-simplecite-reference-list-item" id="bibreference-4">M. Albrecht,&#32;B. Curtis,&#32;A. Deo,&#32;A. Davidson,&#32;R. Player,&#32;E. Postlethwaite,&#32;F. Virdia, and&#32;T. Wunderer,&#32;<q>Estimate all the ${$lwe, ntru$}$ schemes!,</q>&#32;In Proc. Security and cryptography for networks: 11th international conference, scn 2018, amalfi, italy, september 5–7, 2018, proceedings 11,&#32;2018, pp. 351–367.&#32;<a href="#cite-4" class="back-arrow" title="Back to text">↩</a></li><li class="hugo-simplecite-reference-list-item" id="bibreference-5">A. Chailloux and&#32;J. Loyer,&#32;<q>Lattice sieving via quantum random walks,</q>&#32;In Proc. Advances in cryptology–asiacrypt 2021: 27th international conference on the theory and application of cryptology and information security, singapore, december 6–10, 2021, proceedings, part iv 27,&#32;2021, pp. 63–91.&#32;<a href="#cite-5" class="back-arrow" title="Back to text">↩</a></li><li class="hugo-simplecite-reference-list-item" id="bibreference-6">V. Lyubashevsky,&#32;L. Ducas,&#32;E. Kiltz,&#32;T. Lepoint,&#32;P. Schwabe,&#32;G. Seiler,&#32;D. Stehlé, and&#32;S. Bai,&#32;<q>Crystals-dilithium,</q>&#32;<em>Algorithm Specifications and Supporting Documentation</em>,&#32;2020.&#32;<a href="#cite-6" class="back-arrow" title="Back to text">↩</a></li><li class="hugo-simplecite-reference-list-item" id="bibreference-7">MATZOV,&#32;<em>Report on the security of lwe: Improved dual lattice attack</em>.&#32;Zenodo, 2022.&#32;doi:<a class="hugo-simplecite-doi-hyperlink" rel="noopener" target="_blank" href="https://doi.org/10.5281/zenodo.6493704">10.5281/zenodo.6493704</a><a href="#cite-7" class="back-arrow" title="Back to text">↩</a></li><li class="hugo-simplecite-reference-list-item" id="bibreference-8">L. Ducas,&#32;<q>Shortest vector from lattice sieving: A few dimensions for free,</q>&#32;In Proc. Annual international conference on the theory and applications of cryptographic techniques,&#32;2018, pp. 125–145.&#32;<a href="#cite-8" class="back-arrow" title="Back to text">↩</a></li><li class="hugo-simplecite-reference-list-item" id="bibreference-9">T. Le Trieu Phong,&#32;Y. Aono, and&#32;S. Moriai,&#32;<em>Lotus</em>.&#32;Technical report, National Institute of Standards; Technology, 2017 …, 2017.&#32;<a href="#cite-9" class="back-arrow" title="Back to text">↩</a></li><li class="hugo-simplecite-reference-list-item" id="bibreference-10">Y. Chen and&#32;P. Nguyen,&#32;<q>BKZ 2.0: Better lattice security estimates,</q>&#32;In Proc. International conference on the theory and application of cryptology and information security,&#32;2011, pp. 1–20.&#32;<a href="#cite-10" class="back-arrow" title="Back to text">↩</a></li><li class="hugo-simplecite-reference-list-item" id="bibreference-11">M. Albrecht,&#32;S. Bai,&#32;P. Fouque,&#32;P. Kirchner,&#32;D. Stehlé, and&#32;W. Wen,&#32;<q>Faster enumeration-based lattice reduction: Root hermite factor time,</q>&#32;In Proc. Annual international cryptology conference,&#32;2020, pp. 186–212.&#32;<a href="#cite-11" class="back-arrow" title="Back to text">↩</a></li><li class="hugo-simplecite-reference-list-item" id="bibreference-12">M. Albrecht,&#32;S. Bai,&#32;J. Li, and&#32;J. Rowell,&#32;<q>Lattice reduction with approximate enumeration oracles: Practical algorithms and concrete performance,</q>&#32;In Proc. Annual international cryptology conference,&#32;2021, pp. 732–759.&#32;<a href="#cite-12" class="back-arrow" title="Back to text">↩</a></li></ol>
 </article>
  
       

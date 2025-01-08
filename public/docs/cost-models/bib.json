@@ -76,7 +76,7 @@
         "given": "Thomas"
       }
     ],
-    "container-title": "Security and cryptography for networks: 11th international conference, SCN 2018, amalfi, italy, september 5–7, 2018, proceedings 11",
+    "container-title": "Security and cryptography for networks: 11th international conference, scn 2018, amalfi, italy, september 5–7, 2018, proceedings 11",
     "id": "albrecht2018estimate",
     "issued": {
       "date-parts": [
@@ -87,7 +87,7 @@
     },
     "page": "351-367",
     "publisher": "Springer",
-    "title": "Estimate all the $\\{$LWE, NTRU$\\}$ schemes!",
+    "title": "Estimate all the $\\{$lwe, ntru$\\}$ schemes!",
     "type": "paper-conference"
   },
   {
@@ -196,7 +196,7 @@
         "given": "Thijs"
       }
     ],
-    "container-title": "Proceedings of the twenty-seventh annual ACM-SIAM symposium on discrete algorithms",
+    "container-title": "Proceedings of the twenty-seventh annual acm-siam symposium on discrete algorithms",
     "id": "becker2016new",
     "issued": {
       "date-parts": [
@@ -229,7 +229,7 @@
         "given": "Peter"
       }
     ],
-    "container-title": "25th USENIX security symposium (USENIX security 16)",
+    "container-title": "25th usenix security symposium (usenix security 16)",
     "id": "alkim2016post",
     "issued": {
       "date-parts": [
@@ -283,7 +283,7 @@
         "given": "Johanna"
       }
     ],
-    "container-title": "Advances in cryptology–ASIACRYPT 2021: 27th international conference on the theory and application of cryptology and information security, singapore, december 6–10, 2021, proceedings, part IV 27",
+    "container-title": "Advances in cryptology–asiacrypt 2021: 27th international conference on the theory and application of cryptology and information security, singapore, december 6–10, 2021, proceedings, part iv 27",
     "id": "chailloux2021lattice",
     "issued": {
       "date-parts": [
@@ -345,5 +345,74 @@
     "title": "Shortest vector from lattice sieving: A few dimensions for free",
     "title-short": "Shortest vector from lattice sieving",
     "type": "paper-conference"
+  },
+  {
+    "DOI": "10.5281/zenodo.6493704",
+    "URL": "https://doi.org/10.5281/zenodo.6493704",
+    "author": [
+      {
+        "family": "MATZOV"
+      }
+    ],
+    "id": "matzov_2022_6493704",
+    "issued": {
+      "date-parts": [
+        [
+          2022,
+          4
+        ]
+      ]
+    },
+    "publisher": "Zenodo",
+    "title": "Report on the security of lwe: Improved dual lattice attack",
+    "title-short": "Report on the security of lwe",
+    "type": "no-type"
+  },
+  {
+    "author": [
+      {
+        "family": "Lyubashevsky",
+        "given": "Vadim"
+      },
+      {
+        "family": "Ducas",
+        "given": "Léo"
+      },
+      {
+        "family": "Kiltz",
+        "given": "Eike"
+      },
+      {
+        "family": "Lepoint",
+        "given": "Tancrède"
+      },
+      {
+        "family": "Schwabe",
+        "given": "Peter"
+      },
+      {
+        "family": "Seiler",
+        "given": "Gregor"
+      },
+      {
+        "family": "Stehlé",
+        "given": "Damien"
+      },
+      {
+        "family": "Bai",
+        "given": "Shi"
+      }
+    ],
+    "container-title": "Algorithm Specifications and Supporting Documentation",
+    "id": "lyubashevsky2020crystals",
+    "issued": {
+      "date-parts": [
+        [
+          2020
+        ]
+      ]
+    },
+    "title": "Crystals-dilithium",
+    "type": "article-journal"
   }
 ]

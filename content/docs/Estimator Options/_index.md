@@ -1,5 +1,5 @@
 ---
-weight: 6
+weight: 8
 bookFlatSection: true
 title: "Estimator options and API"
 math: true
