@@ -2,11 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>http://localhost:1313/lattirust_estimator.io/docs/introduction/</loc>
+  </url><url>
     <loc>http://localhost:1313/lattirust_estimator.io/docs/preliminaries/</loc>
   </url><url>
-    <loc>http://localhost:1313/lattirust_estimator.io/docs/lattice-reduction/</loc>
-  </url><url>
     <loc>http://localhost:1313/lattirust_estimator.io/docs/cost-models/</loc>
+  </url><url>
+    <loc>http://localhost:1313/lattirust_estimator.io/docs/lattice-reduction/</loc>
   </url><url>
     <loc>http://localhost:1313/lattirust_estimator.io/docs/sis/</loc>
   </url><url>
@@ -17,8 +19,6 @@
     <loc>http://localhost:1313/lattirust_estimator.io/docs/estimator-options/</loc>
   </url><url>
     <loc>http://localhost:1313/lattirust_estimator.io/</loc>
-  </url><url>
-    <loc>http://localhost:1313/lattirust_estimator.io/docs/introduction/</loc>
   </url><url>
     <loc>http://localhost:1313/lattirust_estimator.io/categories/</loc>
   </url><url>
