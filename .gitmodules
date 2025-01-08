@@ -6,4 +6,4 @@
 	url = https://github.com/loup-brun/hugo-cite.git
 [submodule "themes/hugo-simplecite"]
 	path = themes/hugo-simplecite
-	url = https://github.com/joksas/hugo-simplecite
+	url = https://github.com/xavmarch13/hugo-simplecite
