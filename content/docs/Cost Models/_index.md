@@ -1,5 +1,5 @@
 ---
-weight: 3
+weight: 4
 bookFlatSection: true
 title: "Cost Models"
 math: true
