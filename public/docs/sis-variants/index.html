@@ -7,16 +7,15 @@
   SIS variants
   #
 
-We will now present all SIS problem variants implemented in our tools. Most effectively hand out additional hints to the adversary, while hoping that the problem remains hard. In all cases, we will try to define the SIS variants precisely,
-give the reduction to the basic SIS problem we use (SIS, RSIS, or MSIS) and also give a rough idea of what kind of scheme the problem variant allowed to construct.
-While we will try to be as close as possible from the original papers, this (and the entire webpage) could probably still contains mistakes.
-If you are involved in any of these schemes, feel free to reach out with any corrections. In all cases, we will also show an example of how the variants can be called via the estimator.">
+We will now present all SIS problem variants implemented in our tools. Most of these variants provide additional hints to the adversary while assuming that the problem remains hard. In all cases, we will aim to define the SIS variants precisely, describe the reduction to the basic SIS problem used (SIS, RSIS, or MSIS).
+While we will strive to stay as true as possible to the original papers, this content (and the entire webpage) may still contain errors. If you are involved in any of these schemes, feel free to reach out with corrections.">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
 <meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/lattirust_estimator.io/docs/sis-variants/">
   <meta property="og:site_name" content="Lattirust estimator 0.1">
   <meta property="og:title" content="SIS variants">
-  <meta property="og:description" content="SIS variants # We will now present all SIS problem variants implemented in our tools. Most effectively hand out additional hints to the adversary, while hoping that the problem remains hard. In all cases, we will try to define the SIS variants precisely, give the reduction to the basic SIS problem we use (SIS, RSIS, or MSIS) and also give a rough idea of what kind of scheme the problem variant allowed to construct. While we will try to be as close as possible from the original papers, this (and the entire webpage) could probably still contains mistakes. If you are involved in any of these schemes, feel free to reach out with any corrections. In all cases, we will also show an example of how the variants can be called via the estimator.">
+  <meta property="og:description" content="SIS variants # We will now present all SIS problem variants implemented in our tools. Most of these variants provide additional hints to the adversary while assuming that the problem remains hard. In all cases, we will aim to define the SIS variants precisely, describe the reduction to the basic SIS problem used (SIS, RSIS, or MSIS).
+While we will strive to stay as true as possible to the original papers, this content (and the entire webpage) may still contain errors. If you are involved in any of these schemes, feel free to reach out with corrections.">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="website">
 <title>SIS variants | Lattirust estimator 0.1</title>
@@ -25,7 +24,7 @@ If you are involved in any of these schemes, feel free to reach out with any cor
 <link rel="canonical" href="http://localhost:1313/lattirust_estimator.io/docs/sis-variants/">
 <link rel="stylesheet" href="/lattirust_estimator.io/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
   <script defer src="/lattirust_estimator.io/fuse.min.js"></script>
-  <script defer src="/lattirust_estimator.io/en.search.min.cc68f8e452ee388dbf978c66324d2754a9fb387b81371658a9d56882d2591076.js" integrity="sha256-zGj45FLuOI2/l4xmMk0nVKn7OHuBNxZYqdVogtJZEHY=" crossorigin="anonymous"></script>
+  <script defer src="/lattirust_estimator.io/en.search.min.ab710d7184d1da92e9afe7f84b054dc9aa5f56c2674c8fba3136865ef46f391d.js" integrity="sha256-q3ENcYTR2pLpr&#43;f4SwVNyapfVsJnTI&#43;6MTaGXvRvOR0=" crossorigin="anonymous"></script>
 <link rel="alternate" type="application/rss+xml" href="http://localhost:1313/lattirust_estimator.io/docs/sis-variants/index.xml" title="Lattirust estimator 0.1" />
 <!--
 Made with Book Theme
@@ -322,6 +321,7 @@ https://github.com/alex-shpak/hugo-book
         <li></li>
       </ul>
     </li>
+    <li><a href="#multiple-sis-instances">multiple-SIS instances</a></li>
   </ul>
 </nav>
 
@@ -338,10 +338,9 @@ https://github.com/alex-shpak/hugo-book
   SIS variants
   <a class="anchor" href="#sis-variants">#</a>
 </h1>
-<p>We will now present all SIS problem variants implemented in our tools. Most effectively hand out additional hints to the adversary, while hoping that the problem remains hard. In all cases, we will try to define the SIS variants precisely,
-give the reduction to the basic SIS problem we use (SIS, RSIS, or MSIS) and also give a rough idea of what kind of scheme the problem variant allowed to construct.
-While we will try to be as close as possible from the original papers, this (and the entire webpage) could probably still contains mistakes.
-If you are involved in any of these schemes, feel free to reach out with any corrections. In all cases, we will also show an example of how the variants can be called via the estimator.</p>
+<p>We will now present all SIS problem variants implemented in our tools. Most of these variants provide additional hints to the adversary while assuming that the problem remains hard. In all cases, we will aim to define the SIS variants precisely, describe the reduction to the basic SIS problem used (SIS, RSIS, or MSIS).</p>
+<p>While we will strive to stay as true as possible to the original papers, this content (and the entire webpage) may still contain errors. If you are involved in any of these schemes, feel free to reach out with corrections.</p>
+<p>In all cases, we will also show an example of how the variants can be instanciated using the estimator.</p>
 <h2 id="k-sis">
   k-SIS
   <a class="anchor" href="#k-sis">#</a>
@@ -362,9 +361,9 @@ $$</div>
   Security and estimator
   <a class="anchor" href="#security-and-estimator">#</a>
 </h4>
-<p><em>Theorem:</em> Suppose $w\geq 2h \log q$, $\frac{w}{k} &gt; h$, $\sigma &gt; \omega(\sqrt{\log w})$, $t&gt; \omega(\sqrt{\log h})$ and $q &gt; \sigma\omega(\sqrt{\log w})$. If we let $\beta&rsquo; = \beta(k^{\frac{3}{2} + 1})k!(t\sigma)^k$, then if we can solve the $k-SIS(h, w, q, \beta, \sigma, k, p)$ problem, then we can solve the $SIS(h, w-k, q, \beta&rsquo;, \sigma, p)$ problem.</p>
+<p><em>Theorem:</em> Suppose $w\geq 2h \log q$, $\frac{w}{k} &gt; h$, $\sigma &gt; \omega(\sqrt{\log w})$, $t&gt; \omega(\sqrt{\log h})$ and $q &gt; \sigma\omega(\sqrt{\log w})$. If we let $\beta&rsquo; = \beta(k^{\frac{3}{2} + 1})k!(t\sigma)^k$, then if we can solve the $k-\text{SIS}(h, w, q, \beta, \sigma, k, p)$ problem, then we can solve the $\text{SIS}(h, w-k, q, \beta&rsquo;, \sigma, p)$ problem.</p>
 <p>You can call an SIS instance in the estimator as
-<code>kSIS.new(h, w, q, length_bound, sigma, k, Norm)</code></p>
+<code>KSIS::new(h, w, q, length_bound, k, Norm)</code></p>
 <h2 id="k-m-sis-and-k-r-sis">
   k-M-SIS and k-R-SIS
   <a class="anchor" href="#k-m-sis-and-k-r-sis">#</a>
@@ -383,8 +382,8 @@ $$\lVert \bold{v^*} \rVert \leq \beta^* \text{ and }\bold{v}\notin \mathcal{K}-s
   Security and estimator
   <a class="anchor" href="#security-and-estimator-1">#</a>
 </h4>
-<p>No proof was provided in the original paper but following our previous work on reducing M-SIS to SIS and k-SIS to SIS we reduced an instance $k-M-SIS(h, w, d, q, \beta, k, p)$ to an instance of $M-SIS(h, w - k, d, q, \beta, k, p)$ that itself gets reduced to a standard SIS instance. You can instantiate a k-M-SIS instance instance via
-<code>KMSIS.new(h, w, d, q, length_bound, k, Norm)</code>.</p>
+<p>No proof was provided in the original paper but following our previous work on reducing M-SIS to SIS and k-SIS to SIS we reduced an instance $\text{k-M-SIS}(h, w, d, q, \beta, k, p)$ to an instance of $\text{M-SIS}(h, w - k, d, q, \beta, k, p)$ that itself gets reduced to a standard SIS instance. You can instantiate a k-M-SIS instance instance via
+<code>KMSIS::new(h, w, d, q, length_bound, k, Norm)</code>.</p>
 <h3 id="k-r-sis">
   k-R-SIS
   <a class="anchor" href="#k-r-sis">#</a>
@@ -394,8 +393,8 @@ $$\lVert \bold{v^*} \rVert \leq \beta^* \text{ and }\bold{v}\notin \mathcal{K}-s
   Security and estimator
   <a class="anchor" href="#security-and-estimator-2">#</a>
 </h4>
-<p>Again we use the same reduction from $k-R-SIS(h, w, q, \beta, k, p)$ to $R-SIS(h, w - k, q, \beta, k, p)$ and then to standard SIS. You can instantiate an instance of k-R-SIS via</p>
-<p><code>KRSIS.new(h, w, q, length_bound, k, Norm)</code>.</p>
+<p>Again we use the same reduction from $\text{k-R-SIS}(h, w, q, \beta, k, p)$ to $\text{R-SIS}(h, w - k, q, \beta, k, p)$ and then to standard SIS. You can instantiate an instance of k-R-SIS via</p>
+<p><code>KRSIS::new(h, w, q, length_bound, k, Norm)</code>.</p>
 <h2 id="basis">
   BASIS
   <a class="anchor" href="#basis">#</a>
@@ -407,14 +406,9 @@ Previous approaches, like those based on collision-resistant hash functions (e.g
 <li>Improving Private Openings: The construction based on BASISrand ensures that commitments and openings are statistically close to uniform, facilitating privacy-preserving operations.</li>
 <li>Enhancing Functional Openings: By incorporating structured randomness (as seen in BASISstruct), the framework supports opening commitments to computed values, such as the output of Boolean circuits or polynomial evaluations.</li>
 </ol>
-<h3 id="basis_rand">
-  BASIS$_{rand}$
-  <a class="anchor" href="#basis_rand">#</a>
-</h3>
 <div style="background-color: rgba(173, 216, 230, 0.3); padding: 10px; border-radius: 5px; margin: 10px 0;">
 <p><strong>BASIS definition [<a id="cite-3" class="hugo-simplecite-cite-hyperlink" href="#bibreference-3" title="H. Wee and D. Wu, Succinct vector, polynomial, and functional commitments from lattices, In Proc. Annual international conference on the theory and applications of cryptographic techniques, 2023, pp. 385–416. ">3</a>]:</strong></p>
 <p>An instance of the BASIS problem can be represented with a matrix $\bold{A} \in \mathbb{Z}_q^{h\times w}$, $s$ a Gaussian width parameter and a security parameter $\lambda$. Let&rsquo;s imagine a sampling algorithm <em>Samp</em> that takes $\bold{A}$ as input and outputs a matrix $\bold{B} \in  \mathbb{Z}_q^{h&rsquo;\times w&rsquo;}$ and an auxiliary input <em>aux</em>. We say that basis augmented SIS BASIS holds with respect to the sampling algorithm <em>Samp</em> if for all efficient adversary $\mathcal{A}$, the following holds:</p>
-<p><code>BASISstruct.new(h, w, q, length_bound, sigma, k, Norm)</code></p>
 $$
 \Pr\left[
     A \mathbf{x} = 0 \text{ and } 0 < \|\mathbf{x}\| \leq \beta :
@@ -427,6 +421,10 @@ $$
 \right]
 = \text{negl}(\lambda).
 $$</div>
+<h3 id="basis_rand">
+  BASIS$_{rand}$
+  <a class="anchor" href="#basis_rand">#</a>
+</h3>
 <p>Essentially, this SIS problem should remain hard even given a Trapdoor matrix $\bold{B}$. This means that if $\bold{B}$ contains too much information about $\bold{A}$, the problem becomes feasible. $\text{BASIS}_{rand}$ is a concrete instanciation that is defined as follows.</p>
 <div style="background-color: rgba(173, 216, 230, 0.3); padding: 10px; border-radius: 5px; margin: 10px 0;">
 <blockquote>
@@ -459,10 +457,10 @@ and $\text{aux} = i^*$.</li>
   Security and estimator
   <a class="anchor" href="#security-and-estimator-3">#</a>
 </h4>
-<p><em>Theorem:</em> Let $\lambda$ a security parameter and take any polynomial $\ell$. If we suppose $h \geq \lambda$, $w\geq O(h\log q)$ and $s \geq O(\ell w\log(h\ell))$. Then under the $SIS(h,w,q,\beta, p)$ assumption, the BASIS
+<p><em>Theorem:</em> Let $\lambda$ a security parameter and take any polynomial $\ell$. If we suppose $h \geq \lambda$, $w\geq O(h\log q)$ and $s \geq O(\ell w\log(h\ell))$. Then under the $\text{SIS}(h,w,q,\beta, p)$ assumption, the BASIS
 assumption holds with parameters $BASIS_{rand}(h,w,q,\beta,s,\ell, p)$. The reduction is straightforward as SIS needs to hold for $A_i$ even given $B_\ell$.</p>
-<p>In our tool, we therefore simply reduce $BASIS_{rand}(h,w,q,\beta,s,\ell, p)$ to $SIS(h,w,q,\beta, p)$  you can call an instance of BASIS$_{rand}$ by instancianting a BASIS class as</p>
-<p><code>BASISrand.new(h, w, q, length_bound, sigma, k, Norm)</code></p>
+<p>In our tool, we therefore simply reduce $BASIS_{rand}(h,w,q,\beta,s,\ell, p)$ to $\text{SIS}(h,w,q,\beta, p)$  you can call an instance of BASIS$_{rand}$ by instancianting a BASIS class as</p>
+<p><code>BASISrand::new(h, w, q, length_bound, sigma, k, Norm)</code></p>
 <p>where $k$ is $\ell$, length_bound is $\beta$, sigma is $s$ and Norm is either L2 or Linf.</p>
 <h3 id="basis_struct">
   BASIS$_{struct}$
@@ -488,15 +486,6 @@ and $\text{aux} = (W_1, \ldots, W_\ell)$.</li>
 </blockquote>
 </div>
 <p>This is essentially $BASIS_{rand}$ with structured matrices $A_1, \cdots, A_{l}$. It is referred to as &ldquo;the BASIS assumption with structured matrices.&rdquo;</p>
-<h4 id="security-and-estimator-4">
-  Security and estimator
-  <a class="anchor" href="#security-and-estimator-4">#</a>
-</h4>
-<p>While reducing to standard SIS is not possible for this structured version, the authors have shown that given an algorithm to solve $BASIS_{struct}$,
-we can solve k-M-ISIS as long as as the $BASIS_{struct}$ instance is of size $\ell &lt; \frac{h}{k&rsquo;}$ where k&rsquo; is the parameter k in the k-M-ISIS instance.
-Our tool therefore reduces $BASIS_{struct}(h,w,q,\beta,s,\ell, p)$ to $k-M-ISIS(h,w,\ell, q, \beta, s, k&rsquo;, p)$
-You can instanciate an instance of $BASIS_{struct}$ via:</p>
-<p><code>BASISstruct.new(h, w, q, length_bound, sigma, k, Norm)</code></p>
 <h3 id="prisis">
   PRISIS
   <a class="anchor" href="#prisis">#</a>
@@ -562,15 +551,15 @@ and $\text{aux} = w$.</li>
 </ol>
 </blockquote>
 </div>
-<h4 id="security-and-estimator-5">
+<h4 id="security-and-estimator-4">
   Security and estimator
-  <a class="anchor" href="#security-and-estimator-5">#</a>
+  <a class="anchor" href="#security-and-estimator-4">#</a>
 </h4>
 <p>The security have only been analyzed for 2 hints, so $l=2$ but it has been shown that $BASIS_{struct}$ and $BASIS_{power}$ are equivalent in hardness for certain parameter choices. More directly for PRISIS we have that:
 <em>Theorem:</em> Let $h&gt;0, w\geq h$ and $t=(h+1)(\lfloor \log_{\delta}(q)\rfloor + 1)$. Let $q=\omega(N)$, $\epsilon \in (0, \frac{1}{3})$ and $s\geq \max(\sqrt{N\ln(8Nq)}q^{\frac{1}{2} + \epsilon}, \omega(N^{\frac{3}{2}}\ln(N)^{\frac{3}{2}}))$ such that
-$2^{10N}q^{-\lfloor \epsilon N \rfloor}$ is negligible. Then for $\sigma \geq \delta \sqrt{tN(N^2s^2w + 2t)}\omega(\sqrt{N\log h N})$, we have that PRISIS is hard under the $M-SIS(h, w, N, q, \beta, p)$ assumption.</p>
+$2^{10N}q^{-\lfloor \epsilon N \rfloor}$ is negligible. Then for $\sigma \geq \delta \sqrt{tN(N^2s^2w + 2t)}\omega(\sqrt{N\log h N})$, we have that PRISIS is hard under the $\text{M-SIS}(h, w, N, q, \beta, p)$ assumption.</p>
 <p>We therefore reduce a PRISIS instance to an M-SIS instance and therefore an M-SIS instance to a standard SIS instance. You can instanciate a PRISIS instance via</p>
-<p><code>PRISIS.new(h, w, d, q, length_bound, sigma, k, Norm)</code>.</p>
+<p><code>PRISIS::new(h, w, d, q, length_bound, sigma, k, Norm)</code>.</p>
 <h3 id="h-prisis">
   h-PRISIS
   <a class="anchor" href="#h-prisis">#</a>
@@ -619,14 +608,14 @@ $$<p>where k is the number of times the oracle is used (number of hints).</p>
 $$
 \boldsymbol{A} \cdot \boldsymbol{u}^* = f(x^*) \mod q \quad \text{and} \quad \lVert \boldsymbol{u}^* \rVert \leq \beta^*.
 $$</div>
-<h4 id="security-and-estimator-6">
+<h4 id="security-and-estimator-5">
   Security and estimator
-  <a class="anchor" href="#security-and-estimator-6">#</a>
+  <a class="anchor" href="#security-and-estimator-5">#</a>
 </h4>
 <p>The hardness of the ISISf assumption effectively depends on the function f chosen. If we consider f to be in the ROM (Random Oracle Model), then ISISf is as hard as SIS.
-However, if we want to attack the scheme without making any assumption about f, then we have to reduce to k-M-ISIS but the actual reduction would depend on the actual instanciation of the ISISf function and as such, we provide only the ROM road.</p>
-<p>In the ROM case we reduce $ISISf(h,w,q,\beta, k, p)$ to $SIS(h,w - k,q,\beta, p)$ and you can call
-<code>ISIf.new(h, w, q, length_bound, sigma, k, Norm)</code>.</p>
+However, if we want to attack the scheme without making any assumption about f, then we have to reduce to k-M-ISIS but the actual reduction would depend on the actual instanciation of the ISISf function and as such, we provide only the ROM choice.</p>
+<p>In the ROM case we reduce $\text{ISISf}(h,w,q,\beta, k, p)$ to $\text{SIS}(h,w - k,q,\beta, p)$ and you can call
+<code>ISIf::new(h, w, q, length_bound, sigma, k, Norm)</code>.</p>
 <h2 id="k-r-isis">
   k-R-ISIS
   <a class="anchor" href="#k-r-isis">#</a>
@@ -661,15 +650,15 @@ g(\mathbf{v}) \cdot \mathbf{t} \equiv \mathbf{A} \cdot \mathbf{u}_g \mod q
 \mathbf{s}^* \cdot g^*(\mathbf{v}) \cdot \mathbf{t} \equiv \mathbf{A} \cdot \mathbf{u}_{g^*} \mod q.
 \]<p>When $h = 1$, i.e., when $\bold{A}$ is just a vector, we call the problem $k$-R-ISIS.</p>
 </div>
-<h4 id="security-and-estimator-7">
+<h4 id="security-and-estimator-6">
   Security and estimator
-  <a class="anchor" href="#security-and-estimator-7">#</a>
+  <a class="anchor" href="#security-and-estimator-6">#</a>
 </h4>
 <p>The authors explore different special cases with parameters that do not really fit any real applications but show that the problem seems to be at least as hard as R-SIS.
-Several attacks can be considered, to evaluate the security of this scheme we rely upon the direct SIS attack on $\bold{A}$, so we reduce $k-R-ISIS(h, w, q, \beta, k, p)$ to $SIS(h, (w+1)h, q, \beta, p)$. We similarly reduce $k-M-ISIS(h, w, d, q, \beta, k, p)$ to $SIS(dh, d(w+1)h, q, \beta, p)$.
+Several attacks can be considered, to evaluate the security of this scheme we rely upon the direct SIS attack on $\bold{A}$, so we reduce $\text{k-R-ISIS}(h, w, q, \beta, k, p)$ to $\text{SIS}(h, (w+1)h, q, \beta, p)$. We similarly reduce $\text{k-M-ISIS}(h, w, d, q, \beta, k, p)$ to $\text{SIS}(dh, d(w+1)h, q, \beta, p)$.
 You can instanciate these SIS assumptions via</p>
-<p><code>KRISIS.new(h, w, q, length_bound, k, Norm)</code>.</p>
-<p><code>KMISIS.new(h, w, d, q, length_bound, k, Norm)</code>.</p>
+<p><code>KRISIS::new(h, w, q, length_bound, k, Norm)</code>.</p>
+<p><code>KMISIS::new(h, w, d, q, length_bound, k, Norm)</code>.</p>
 <h2 id="vanishing-sis">
   vanishing-SIS
   <a class="anchor" href="#vanishing-sis">#</a>
@@ -680,9 +669,9 @@ You can instanciate these SIS assumptions via</p>
 <p>Let $h, w, d, q, \beta \in \mathbb{N}$ and $\mathcal{G}$ be a set of w-variate monomials of degree at most d. The vanishing SIS problem is represented by a set $V=\lbrace \bold{v_i} \rbrace_{i=1}^n \in (R^{\times}_q)^w$ of $h$
 uniformely random points in $(R^{\times}_q)^w$. The goal is to find a non-zero polynomial $p\in R[X_1, \cdots, X_w]$ with monomial support over $\mathcal{G}$ such that</p>
 $$\forall i \in [n], p(\bold{v_i}) = 0 \pmod{q} \text{ and } \lVert p \rVert \leq \beta$$</div>
-<h4 id="security-and-estimator-8">
+<h4 id="security-and-estimator-7">
   Security and estimator
-  <a class="anchor" href="#security-and-estimator-8">#</a>
+  <a class="anchor" href="#security-and-estimator-7">#</a>
 </h4>
 <p>The link between vanishing SIS and standard SIS can bee seen by writing the v-SIS problem as such</p>
 $$
@@ -696,7 +685,7 @@ $$
 \right) \cdot \mathbf{p} = 0 \mod q
 \text{ and} \quad \|\mathbf{p}\| \leq \beta,
 $$<p>and you can instanciate a vanishing SIS problem via</p>
-<p><code>VSIS.new(h, w, d, q, length_bound, k, Norm)</code>.</p>
+<p><code>VSIS::new(h, w, d, q, length_bound, k, Norm)</code>.</p>
 <h2 id="one-more-isis">
   one-more-ISIS
   <a class="anchor" href="#one-more-isis">#</a>
@@ -718,9 +707,9 @@ $$\bold{y'} \leftarrow D_{\mathbb{Z^w,\sigma}} \text{ such that } \bold{A}\cdot 
 <p>We denote the number of preimage queries done with $k$.</p>
 <p>The adversary wins if he can output $k+1$ pairs $\lbrace (\bold{y_i}, \bold{t_i}) \rBrace_{0\leq i &lt; k+1}$ satisfying</p>
 $$\bold{A} \cdot \bold{y_i} = \bold{t_i} \pmod q \text{, } \lVert \bold{y_i} \rVert\leq \beta  \text{ and } \bold{t_i}\in\mathcal{T}$$</div>
-<h4 id="security-and-estimator-9">
+<h4 id="security-and-estimator-8">
   Security and estimator
-  <a class="anchor" href="#security-and-estimator-9">#</a>
+  <a class="anchor" href="#security-and-estimator-8">#</a>
 </h4>
 <p>The security of the scheme is evaluated with respect to the following lattice reduction attack described in [<a id="cite-7" class="hugo-simplecite-cite-hyperlink" href="#bibreference-7" title="S. Agrawal, E. Kirshanova, D. Stehlé, and A. Yadav, Practical, round-optimal lattice-based blind signatures, In Proc. Proceedings of the 2022 acm sigsac conference on computer and communications security, 2022, pp. 39–53. ">7</a>]:</p>
 <ol>
@@ -730,7 +719,22 @@ $$\bold{A} \cdot \bold{y_i} = \bold{t_i} \pmod q \text{, } \lVert \bold{y_i} \rV
 <li>Run Babai&rsquo;s nearest plane algorithm on $(\bold{B}, \bold{z})$. Let $\bold{v}\in \Lambda^T_q(C)$ be the output tjem we return $\bold{z}-\bold{v}$ as solution for one-more-ISIS for $\bold{t}$.</li>
 </ol>
 <p>As such, we reduce the security of the one-more-ISIS problem to solving SIS on a matrix about the size of $\bold{A}$. You can instanciate a one-more SIS problem via
-<code>onemoreISIS.new(h, w, q, length_bound, Norm)</code>.</p>
+<code>onemoreISIS::new(h, w, q, length_bound, Norm)</code>.</p>
+<h2 id="multiple-sis-instances">
+  multiple-SIS instances
+  <a class="anchor" href="#multiple-sis-instances">#</a>
+</h2>
+<p>As some scheme use several SIS instances as a chain, we provide a way to group basic SIS instances under one structure, that has its own seach function and security level functions. To make keep things simple here is what the structure looks like in Rust.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Rust" data-lang="Rust"><span style="display:flex;"><span><span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">MultiSIS</span> {
+</span></span><span style="display:flex;"><span>    instances: Vec<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">SIS</span><span style="color:#f92672">&gt;</span>,
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>that can be instanciated via <code>MultiSIS::new(vec![sis_i])</code>.</p>
+<p>We also provide simple ways to add/remove and SIS instance from the chain via the functions:</p>
+<ul>
+<li><code>pub fn add_instance(&amp;mut self, sis: SIS)</code></li>
+<li><code>pub fn remove_instance(&amp;mut self, index: usize) -&gt; Result&lt;(), &amp;'static str&gt; </code></li>
+</ul>
+<p>The next and last section will provide an overview and our search functions and how to actually get security estimations from an SIS or SIS-variant instance.</p>
 <h1 id="references">
   References
   <a class="anchor" href="#references">#</a>
@@ -816,6 +820,7 @@ $$\bold{A} \cdot \bold{y_i} = \bold{t_i} \pmod q \text{, } \lVert \bold{y_i} \rV
         <li></li>
       </ul>
     </li>
+    <li><a href="#multiple-sis-instances">multiple-SIS instances</a></li>
   </ul>
 </nav>
 

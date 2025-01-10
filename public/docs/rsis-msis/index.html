@@ -7,13 +7,13 @@
   Compact versions of SIS
   #
 
-In practice, basic SIS leads to large key sizes and large parameters overall. Thinking about $\bold{A} \in \mathbb{Z}_q^{h\times w}$ with $m &gt; n$ leads to at least quadratic complexity. This is why more compact version have been introduced like Ring-SIS and Module-SIS. By using such underlying structures, we are able to obtain much smaller key sizes in the schemes that use an SIS instance as the basis for their security. As a refresher on the module and ring structure the reader can consult [1]. Consider that we choose some $h = 2^k$ and that we choose the columns of $\bold{A}$ to be elements of the ring $\mathbb{Z}_q / \langle x^h &#43; 1 \rangle$, if $h$ is a power of two it is irreducible over the rationals, then we need to precise less elements to describe the same SIS instance. Using a module, we can get an even compacter structure.">
+In practice, basic SIS leads to large key sizes and overall large parameters. Considering \( \bold{A} \in \mathbb{Z}_q^{h \times w} \) with \( m &gt; n \) results in at least quadratic complexity. This is why more compact versions, such as Ring-SIS and Module-SIS, have been introduced. By using such underlying structures, we can achieve significantly smaller key sizes in schemes that use an SIS instance as the basis for their security. For a refresher on module and ring structures, the reader can consult [1].">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
 <meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/lattirust_estimator.io/docs/rsis-msis/">
   <meta property="og:site_name" content="Lattirust estimator 0.1">
   <meta property="og:title" content="Module SIS and Ring SIS">
-  <meta property="og:description" content="Compact versions of SIS # In practice, basic SIS leads to large key sizes and large parameters overall. Thinking about $\bold{A} \in \mathbb{Z}_q^{h\times w}$ with $m &gt; n$ leads to at least quadratic complexity. This is why more compact version have been introduced like Ring-SIS and Module-SIS. By using such underlying structures, we are able to obtain much smaller key sizes in the schemes that use an SIS instance as the basis for their security. As a refresher on the module and ring structure the reader can consult [1]. Consider that we choose some $h = 2^k$ and that we choose the columns of $\bold{A}$ to be elements of the ring $\mathbb{Z}_q / \langle x^h &#43; 1 \rangle$, if $h$ is a power of two it is irreducible over the rationals, then we need to precise less elements to describe the same SIS instance. Using a module, we can get an even compacter structure.">
+  <meta property="og:description" content="Compact versions of SIS # In practice, basic SIS leads to large key sizes and overall large parameters. Considering \( \bold{A} \in \mathbb{Z}_q^{h \times w} \) with \( m &gt; n \) results in at least quadratic complexity. This is why more compact versions, such as Ring-SIS and Module-SIS, have been introduced. By using such underlying structures, we can achieve significantly smaller key sizes in schemes that use an SIS instance as the basis for their security. For a refresher on module and ring structures, the reader can consult [1].">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="website">
 <title>Module SIS and Ring SIS | Lattirust estimator 0.1</title>
@@ -22,7 +22,7 @@ In practice, basic SIS leads to large key sizes and large parameters overall. Th
 <link rel="canonical" href="http://localhost:1313/lattirust_estimator.io/docs/rsis-msis/">
 <link rel="stylesheet" href="/lattirust_estimator.io/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
   <script defer src="/lattirust_estimator.io/fuse.min.js"></script>
-  <script defer src="/lattirust_estimator.io/en.search.min.cc68f8e452ee388dbf978c66324d2754a9fb387b81371658a9d56882d2591076.js" integrity="sha256-zGj45FLuOI2/l4xmMk0nVKn7OHuBNxZYqdVogtJZEHY=" crossorigin="anonymous"></script>
+  <script defer src="/lattirust_estimator.io/en.search.min.ab710d7184d1da92e9afe7f84b054dc9aa5f56c2674c8fba3136865ef46f391d.js" integrity="sha256-q3ENcYTR2pLpr&#43;f4SwVNyapfVsJnTI&#43;6MTaGXvRvOR0=" crossorigin="anonymous"></script>
 <link rel="alternate" type="application/rss+xml" href="http://localhost:1313/lattirust_estimator.io/docs/rsis-msis/index.xml" title="Lattirust estimator 0.1" />
 <!--
 Made with Book Theme
@@ -306,23 +306,24 @@ https://github.com/alex-shpak/hugo-book
   Compact versions of SIS
   <a class="anchor" href="#compact-versions-of-sis">#</a>
 </h1>
-<p>In practice, basic SIS leads to large key sizes and large parameters overall. Thinking about $\bold{A} \in \mathbb{Z}_q^{h\times w}$ with $m &gt; n$ leads to at least quadratic complexity. This is why more compact version have been introduced like Ring-SIS and Module-SIS. By using such underlying structures, we are able to obtain much smaller key sizes in the schemes that use an SIS instance as the basis for their security. As a refresher on the module and ring structure the reader can consult [<a id="cite-1" class="hugo-simplecite-cite-hyperlink" href="#bibreference-1" title="J. Lambek, Lectures on rings and modules. American Mathematical Soc., 2009. ">1</a>]. Consider that we choose some $h = 2^k$ and that we choose the columns of $\bold{A}$ to be elements of the ring $\mathbb{Z}_q / \langle x^h + 1 \rangle$, if $h$ is a power of two it is irreducible over the rationals, then we need to precise less elements to describe the same SIS instance. Using a module, we can get an even compacter structure.</p>
+<p>In practice, basic SIS leads to large key sizes and overall large parameters. Considering \( \bold{A} \in \mathbb{Z}_q^{h \times w} \) with \( m > n \) results in at least quadratic complexity. This is why more compact versions, such as Ring-SIS and Module-SIS, have been introduced. By using such underlying structures, we can achieve significantly smaller key sizes in schemes that use an SIS instance as the basis for their security. For a refresher on module and ring structures, the reader can consult [<a id="cite-1" class="hugo-simplecite-cite-hyperlink" href="#bibreference-1" title="J. Lambek, Lectures on rings and modules. American Mathematical Soc., 2009. ">1</a>].</p>
+<p>Suppose we choose \( h = 2^k \) and select the columns of \( \bold{A} \) as elements of the ring \( \mathbb{Z}_q / \langle x^h + 1 \rangle \). If \( h \) is a power of two, the polynomial \( x^h + 1 \) is irreducible over the rationals, allowing us to specify fewer elements to describe the same SIS instance. Using a module structure, we can achieve an even more compact representation.</p>
 <h2 id="ring-sis">
   Ring SIS
   <a class="anchor" href="#ring-sis">#</a>
 </h2>
 <div style="background-color: rgba(173, 216, 230, 0.3); padding: 10px; border-radius: 5px; margin: 10px 0;">
 <p><strong>Definition:[<a id="cite-2" class="hugo-simplecite-cite-hyperlink" href="#bibreference-2" title="A. Langlois and D. Stehlé, Worst-case to average-case reductions for module lattices, Designs, Codes and Cryptography, vol. 75, no. 3, pp. 565–599, 2015. ">2</a>]</strong><br>
-We define the <strong>Ring Short Integer Solution (Ring-SIS)</strong> problem as follows $RSIS(h, w, q, \beta, p)$. Let:</p>
+We define the <strong>Ring Short Integer Solution (Ring-SIS)</strong> problem as follows $\text{RSIS}(h, w, q, \beta, p)$. Let:</p>
 <ul>
 <li>\( R_q = \mathbb{Z}_q / \langle x^h + 1 \rangle \), where \( h \) is a power of two (ensuring \( x^h + 1 \) is irreducible over \( \mathbb{Q} \)),</li>
 </ul>
-<p>Given $a_1, \ldots, a_w$ in R_q, chosen independently from the uniform distribution, find $s_1, \ldots, s_w \in R$ such that:</p>
+<p>Given $a_1, \ldots, a_w$ in $R_q$, chosen independently from the uniform distribution, find $s_1, \ldots, s_w \in R$ such that:</p>
 $$
 \sum_{i=1}^{w}a_i s_i = 0 \pmod{q} \text{ and } 0 < \|\mathbf{s}\|_p \leq \beta
 $$<p>where $\bold{s} = (s_1, \ldots, s_w)^T \in R^m$.</p>
 </div>
-<p>Each ring element $r\in R$ can be interpreted as an $h$-dimensional vector with coefficients $r_i$ such that $r = \sum_{i=0}^{n-1}r_ix^i$. Now if we compare RSIS to SIS, each matrix element $a_i$ in RSIS actually actually corresponds to the $h\times h$ nega-circulant matrix. In this setup, R-SIS is just a variant of SIS where $\bold{A}$ is restricted to being block negacirculant $\bold{A}= [Rot(a_1)|\ldots|Rot(a_n)]$ where Rot(b) is defined as</p>
+<p>Each ring element $r\in R$ can be interpreted as an $h$-dimensional vector with coefficients $r_i$ such that $r = \sum_{i=0}^{n-1}r_ix^i$. Now if we compare RSIS to SIS, each matrix element $a_i$ in RSIS corresponds to the $h\times h$ nega-circulant matrix. In this setup, R-SIS is just a variant of SIS where $\bold{A}$ is restricted to being block negacirculant $\bold{A}= [Rot(a_1)|\ldots|Rot(a_n)]$ where Rot(b) is defined as</p>
 $$
 \text{Rot}(b) =
 \begin{bmatrix}
@@ -336,8 +337,8 @@ $$<h3 id="security-and-estimator">
   Security and estimator
   <a class="anchor" href="#security-and-estimator">#</a>
 </h3>
-<p>To estimate the security of a ring SIS instance, we then effectively transform an RSIS instance $RSIS(h, w, q, \beta, p)$ to an SIS instance $SIS(h, h \cdot w, q, \beta, p)$. You can instanciate an instance of RSIS in the estimator via
-<code>RSIS.new(h, w, q, length_bound, Norm)</code>.</p>
+<p>To estimate the security of a ring SIS instance, we then effectively transform an RSIS instance $\text{RSIS}(h, w, q, \beta, p)$ to an SIS instance $\text{SIS}(h, h \cdot w, q, \beta, p)$. You can instanciate an instance of RSIS in the estimator via
+<code>RSIS::new(h, w, q, length_bound, Norm)</code>.</p>
 <hr>
 <h2 id="module-sis">
   Module SIS
@@ -345,7 +346,7 @@ $$<h3 id="security-and-estimator">
 </h2>
 <div style="background-color: rgba(173, 216, 230, 0.3); padding: 10px; border-radius: 5px; margin: 10px 0;">
 <p><strong>Definition:[<a id="cite-2" class="hugo-simplecite-cite-hyperlink" href="#bibreference-2" title="A. Langlois and D. Stehlé, Worst-case to average-case reductions for module lattices, Designs, Codes and Cryptography, vol. 75, no. 3, pp. 565–599, 2015. ">2</a>]</strong><br>
-We define the <strong>Module Short Integer Solution (Module-SIS)</strong> problem as follows $MSIS(h, w, d, q, \beta, p)$. Let:</p>
+We define the <strong>Module Short Integer Solution (Module-SIS)</strong> problem as follows $\text{MSIS}(h, w, d, q, \beta, p)$. Let:</p>
 <ul>
 <li>\( R = \mathbb{Z}_q / \langle x^h + 1 \rangle \), where \( h \) is a power of two,</li>
 <li>\( \mathcal{M} = R^d \), a rank-\( d \) module over \( R \),</li>
@@ -378,8 +379,8 @@ b_{n-1} & b_{n-2} & b_{n-3} & \cdots & b_0
   Security and estimator
   <a class="anchor" href="#security-and-estimator-1">#</a>
 </h3>
-<p>To estimate the security of a module SIS instance, we then effectively transform an MSIS instance $MSIS(h, w, d, q, \beta, p)$ to an SIS instance $SIS(h \cdot d, h \cdot w, q, \beta, p)$. Also, note that by using $d=1$, we effectively come back to RSIS. Indeed, modules are a generalization of rings. You can instanciate an instance of MSIS in the estimator via
-<code>MSIS.new(h, w, d, q, length_bound, Norm)</code>.</p>
+<p>To estimate the security of a module SIS instance, we then effectively transform an MSIS instance $\text{MSIS}(h, w, d, q, \beta, p)$ to an SIS instance $\text{SIS}(h \cdot d, h \cdot w, q, \beta, p)$. Also, note that by using $d=1$, we effectively come back to RSIS. Indeed, modules are a generalization of rings. You can instanciate an instance of MSIS in the estimator via
+<code>MSIS::new(h, w, d, q, length_bound, Norm)</code>.</p>
 <h1 id="references">
   References
   <a class="anchor" href="#references">#</a>
