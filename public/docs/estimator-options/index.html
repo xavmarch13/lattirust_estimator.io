@@ -293,8 +293,23 @@ https://github.com/alex-shpak/hugo-book
         <li><a href="#lattice-estimator-errors">Lattice estimator errors</a></li>
       </ul>
     </li>
-    <li><a href="#searching-for-the-best-parameters-on-single-sis-instances">Searching for the best parameters on single SIS instances</a></li>
-    <li><a href="#searching-for-the-best-parameters-on-multiple-sis-instances">Searching for the best parameters on multiple SIS instances</a></li>
+    <li><a href="#searching-for-the-best-parameters-on-single-sis-instances">Searching for the best parameters on single SIS instances</a>
+      <ul>
+        <li><a href="#security_level">security_level</a></li>
+        <li><a href="#find_optimal_h_annealing">find_optimal_h_annealing</a></li>
+        <li><a href="#find_optimal_length_bound_annealing">find_optimal_length_bound_annealing</a></li>
+        <li><a href="#quick_search_h">quick_search_h</a></li>
+      </ul>
+    </li>
+    <li><a href="#searching-for-the-best-parameters-on-multiple-sis-instances">Searching for the best parameters on multiple SIS instances</a>
+      <ul>
+        <li><a href="#quick_search_h-1">quick_search_h</a></li>
+        <li><a href="#quick_search_h_constrained">quick_search_h_constrained</a></li>
+        <li><a href="#optimize_h">optimize_h</a></li>
+        <li><a href="#optimize_h_constrained">optimize_h_constrained</a></li>
+      </ul>
+    </li>
+    <li><a href="#conclusion">Conclusion</a></li>
   </ul>
 </nav>
 
@@ -319,7 +334,7 @@ https://github.com/alex-shpak/hugo-book
 <p>You can set the type and the parameters of an SIS-based instance via:</p>
 <ul>
 <li>
-<p><code>SIS.new(h, w, q, length_bound, Norm)</code> for a classical SIS instance where $\bold{A}\in \mathbb{Z}^{h\times w}_q$ and you look for a vector such that $
+<p><code>SIS::new(h, w, q, length_bound, Norm)</code> for a classical SIS instance where $\bold{A}\in \mathbb{Z}^{h\times w}_q$ and you look for a vector such that $
 \boldsymbol{A} \boldsymbol{y} = \boldsymbol{0} \mod q \quad \text{and} \quad \lVert\boldsymbol{y}\rVert \leq$ <code>length_bound</code>. The norm is selected via a Rust enum as  <code>Norm::L2</code> or <code>Norm::Linf</code>. For example,</p>
 <p><code>let falcon512_unf: SIS = SIS::new(512, 1024, 12289u64.into(), 5833.9072, Norm::L2);</code></p>
 </li>
@@ -331,12 +346,12 @@ https://github.com/alex-shpak/hugo-book
 <p>For specific variants that have extra parameters, please refer to the page presenting all variants to see how to instanciate them.</p>
 </li>
 </ul>
-<p>Now to evaluate the hardness of an instance via a lattice reduction attack, you must choose the specific model you want to use for the SVP oracle that is part of BKZ and the simulator you want to use for the assumed shape of vectors after lattice reduction. If you evaluate the hardness of an SIS instance under an euclidean norm, then the actual shape assumed after lattice reduction does not matter as we directly optimize over a function between the hermite factor and the block-size, however, it does matter under an infinity norm. You get the hardness by calling</p>
+<p>Now to evaluate the hardness of an instance via a lattice reduction attack, you must choose the specific model you want to use for the SVP oracle that is part of BKZ and the simulator you want to use for the assumed shape of vectors after lattice reduction. If you evaluate the hardness of an SIS instance under an euclidean norm, then the actual shape assumed after lattice reduction does not matter as we directly optimize over a function between the hermite factor and the block-size, however, it does matter under an infinity norm. You get the hardness by calling the folllowing.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span>sis_instance.security_level(estimate_type, simulator_type)-&gt;Result<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">f64</span>, LatticeEstimatorError<span style="color:#f92672">&gt;</span>
 </span></span></code></pre></div><ul>
-<li>estimate_type is an <code>Option&lt;Estimates&gt;</code> where Estimates is a Rust enum, where None defaults to <code>Matzov(true)</code></li>
-<li>simulator_type is an <code>Option&lt;Simulator&gt;</code> where Simulator is a Rust enum, where None defaults to <code>GSA</code></li>
-<li>The return value of the <code>security_level</code> is either a lattice estimator error, or a float $\lambda$ that represents the security level $2^\lambda$</li>
+<li>estimate_type is an <code>Option&lt;Estimates&gt;</code> where Estimates is a Rust enum, where None defaults to <code>Matzov(true)</code>.</li>
+<li>simulator_type is an <code>Option&lt;Simulator&gt;</code> where Simulator is a Rust enum, where None defaults to <code>GSA</code>.</li>
+<li>The return value of <code>security_level</code> is either a lattice estimator error, or a float $\lambda$ that represents the security level $2^\lambda$.</li>
 </ul>
 <h3 id="the-estimates-enum">
   The Estimates enum
@@ -355,11 +370,12 @@ https://github.com/alex-shpak/hugo-book
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    Kyber(<span style="color:#66d9ef">bool</span>),     <span style="color:#75715e">// Kyber-specific estimator with an optimization boolean
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    Matzov(<span style="color:#66d9ef">bool</span>)     <span style="color:#75715e">// Matzov estimator with optional advanced heuristics
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
-</span></span></code></pre></div><p>For Estimates that have a bool integrated to them, it is because they offer both a classical and a quantum estimate. So you if set <code>Matzov(true)</code> you will get the classical estimates whereas is you set <code>Matzov(false)</code> you will get the quantum estimate,</p>
+</span></span></code></pre></div><p>For Estimates that have a bool integrated to them, it is because they offer both a classical and a quantum estimate. So you if set <code>Matzov(true)</code> you will get the classical estimates whereas is you set <code>Matzov(false)</code> you will get the quantum estimate.</p>
 <h3 id="the-simulator-enum">
   The Simulator enum
   <a class="anchor" href="#the-simulator-enum">#</a>
 </h3>
+<p>You can choose a simulator by passing one of the three choices to <code>security_level()</code>. By default (so by passing <code>None</code>), it will use the GSA.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">enum</span> <span style="color:#a6e22e">Simulator</span> {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">GSA</span>,  <span style="color:#75715e">// Geometric Series Assumption (exponential decay in norms)
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">ZGSA</span>, <span style="color:#75715e">// Z-shaped profile for q-ary lattices with plateaus
@@ -373,7 +389,7 @@ https://github.com/alex-shpak/hugo-book
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">enum</span> <span style="color:#a6e22e">LatticeEstimatorError</span> {
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">/// Invalid parameter error with details
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74"></span>    InvalidParameter {
-</span></span><span style="display:flex;"><span>        param_name: String,
+</span></span><span style="display:flex;"><span>        param_value: String,
 </span></span><span style="display:flex;"><span>        reason: String,
 </span></span><span style="display:flex;"><span>    },
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">/// Computation-related error
@@ -383,18 +399,325 @@ https://github.com/alex-shpak/hugo-book
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">/// Configuration error with a specific message
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74"></span>    ConfigurationError {
 </span></span><span style="display:flex;"><span>        message: String,
-</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    },
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p>They can be thrown either while actually costing a scheme or at the beginning because of parameters that can not be used. They represent critical errors and the estimator can not run while encountering one of these. You may also encounter another type or &ldquo;errors&rdquo; that we call warnings. Warning are just possible problem that could present with the set of parameters you choose for a specific instance. Since they are mostly asymptotics, warnings have the goal to make you think about what parameters you are choosing because the reduction that is proven does not cover them or they seem sensitive given the asymptotic bound. These warnings will print on the standard output but the estimator will still be able to run. We did not want to stop the user everytime the parameter choices seemed to conflict with asymptotics bound to prevent too much restriction on usage.</p>
+</span></span></code></pre></div><p>Errors can occur either during the estimation process due to issues encountered while evaluating a scheme or at the start due to invalid parameters. These represent critical errors, and the estimator cannot proceed when one of them is encountered.</p>
+<p>You may also encounter another type of &ldquo;error&rdquo; that we refer to as a warning. Warnings indicate potential issues that may arise with the set of parameters chosen for a specific instance. Since these issues are primarily based on asymptotic behavior, warnings are meant to prompt you to carefully consider your parameter choices, as the proven reduction may not cover these cases or the parameters may seem sensitive with respect to asymptotic bounds.</p>
+<p>Warnings will print to the standard output, but the estimator will still be able to run. We chose not to halt execution every time parameter choices appear to conflict with asymptotic bounds to avoid unnecessary restrictions on usage. Here is an example of a sitation with warnings, if you run</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> falcon512_unf: <span style="color:#a6e22e">KSIS</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">KSIS</span>::new(<span style="color:#ae81ff">400</span>, <span style="color:#ae81ff">1024</span>, <span style="color:#ae81ff">1228999</span><span style="color:#66d9ef">u64</span>.into(), <span style="color:#ae81ff">3500.9072</span>,  <span style="color:#ae81ff">2</span>, Norm::L2);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> lambda_prior<span style="color:#f92672">=</span> falcon512_unf.security_level(None, None).unwrap();
+</span></span></code></pre></div><p>you will get a log warning saying:</p>
+<p><code>[WARN  lattice_estimator::ksis] The reduction was only proven for  w &gt; 2hlog_2(q)</code></p>
 <h2 id="searching-for-the-best-parameters-on-single-sis-instances">
   Searching for the best parameters on single SIS instances
   <a class="anchor" href="#searching-for-the-best-parameters-on-single-sis-instances">#</a>
 </h2>
-<p>For an already defined SIS instance, we provide a way to find the tightest set of parameters to achieve a certain level security. We give a way to optimize separately for $h$ which is the primary security indicator, but also for the length bound and for $d$ the dimension of the module and $k$ the number of hints, when it applies. We also give a function to optimize both principal parameters ($h$ and the length bound) simultaneously.</p>
+<p>For each SIS or SIS variant instance, you are guaranteed to be offered the following functions:</p>
+<h3 id="security_level">
+  security_level
+  <a class="anchor" href="#security_level">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">security_level</span>(<span style="color:#f92672">&amp;</span>self, estimate_type: Option<span style="color:#f92672">&lt;</span>Estimates<span style="color:#f92672">&gt;</span>, simulator_type: Option<span style="color:#f92672">&lt;</span>Simulator<span style="color:#f92672">&gt;</span>) -&gt; Result<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">f64</span>, LatticeEstimatorError<span style="color:#f92672">&gt;</span> 
+</span></span></code></pre></div><p>This is the backbone of our estimator, it allows to cost any single SIS instance in the way we described in previous sections. It is almost instantaneous for L2, may take a little time for Linf because of the grid search. It may return an error in the given parameters do not accept a solution, are trivially solvable or if something goes wrong in the computation or during the grid search.</p>
+<h4 id="example">
+  Example
+  <a class="anchor" href="#example">#</a>
+</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> sis: <span style="color:#a6e22e">SIS</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">SIS</span>::new(<span style="color:#ae81ff">1024</span>, <span style="color:#ae81ff">2304</span>, <span style="color:#ae81ff">8380417</span><span style="color:#66d9ef">u64</span>.into(), <span style="color:#ae81ff">350209.</span>, Norm::Linf);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> lambda:<span style="color:#66d9ef">f64</span> <span style="color:#f92672">=</span> sis.security_level(None, None).unwrap();
+</span></span><span style="display:flex;"><span>print!(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{sis}</span><span style="color:#e6db74"> -&gt; lambda: </span><span style="color:#e6db74">{lambda}</span><span style="color:#e6db74">&#34;</span>);
+</span></span></code></pre></div><p>returns <code>SIS[h=1024, w=2304, q=8380417, length_bound=350209, norm=Linf] -&gt; lambda: 158.2610392271431</code></p>
+<h3 id="find_optimal_h_annealing">
+  find_optimal_h_annealing
+  <a class="anchor" href="#find_optimal_h_annealing">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">find_optimal_h_annealing</span>(<span style="color:#f92672">&amp;</span>self, lambda: <span style="color:#66d9ef">usize</span>, estimate_type: Option<span style="color:#f92672">&lt;</span>Estimates<span style="color:#f92672">&gt;</span>, simulator_type: Option<span style="color:#f92672">&lt;</span>Simulator<span style="color:#f92672">&gt;</span>) -&gt; Result<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">usize</span>, LatticeEstimatorError<span style="color:#f92672">&gt;</span> 
+</span></span></code></pre></div><p>This function takes as input an additional parameter \( \lambda \) that represents the desired security level. The function is more complex than its name suggests because it aims to find a valid solution, even if the input parameters come from an invalid set of SIS parameters. The function follows these steps:</p>
+<ol>
+<li>
+<p><strong>Validate Input Parameters:</strong><br>
+If the given parameters are not valid, the function attempts to find a valid starting point by tweaking the \( h \) parameter.</p>
+</li>
+<li>
+<p><strong>Define Direction of Adjustment:</strong><br>
+Once a valid starting point is found, the function determines the direction in which the \( h \) parameter must be adjusted to approach the desired security level.</p>
+</li>
+<li>
+<p><strong>Initial Broad Search:</strong><br>
+The function makes large increments in \( h \) to quickly approach the optimal value, stopping when the limit defined by \( \lambda \) is crossed.</p>
+</li>
+<li>
+<p><strong>Refinement with Simulated Annealing:</strong><br>
+As a final step, the function refines the \( h \) value using simulated annealing, gradually narrowing in on the optimal value until it converges or becomes sufficiently close to the desired level.</p>
+</li>
+</ol>
+<p><strong>Reasoning for this Approach:</strong><br>
+The security evaluation using \( \ell_\infty \)-norms is computationally expensive, necessitating an adaptive search strategy. Additionally, since SIS instances can vary widely in size, the function must be versatile enough to adapt to different parameter sets. While this approach performs well for the \( \ell_2 \)-norm, the \( \ell_\infty \)-bound still presents a challenge due to the large search space.</p>
+<p><strong>Return Value:</strong><br>
+The function returns the optimized \( h \) value or an error if:</p>
+<ul>
+<li>No valid starting point is found.</li>
+<li>An error occurs during the local search.</li>
+<li>Simulated annealing fails multiple times.</li>
+</ul>
+<p><strong>Note:</strong> Some parameter combinations may lead to situations where no valid costs exist or where the cost is always infinite due to the size constraints.</p>
+<h4 id="example-1">
+  Example
+  <a class="anchor" href="#example-1">#</a>
+</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> sis: <span style="color:#a6e22e">SIS</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">SIS</span>::new(<span style="color:#ae81ff">700</span>, <span style="color:#ae81ff">2304</span>, <span style="color:#ae81ff">8380417</span><span style="color:#66d9ef">u64</span>.into(), <span style="color:#ae81ff">350209.</span>, Norm::Linf);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> h_opt <span style="color:#f92672">=</span> sis.find_optimal_h_annealing(<span style="color:#ae81ff">128</span>, Some(Estimates::Matzov(<span style="color:#66d9ef">true</span>)), None).unwrap();
+</span></span></code></pre></div><p>allows us to get from the first SIS instance which evaluates to $\lambda=103$ to $\lambda=128$ by increasing $h$.</p>
+<pre tabindex="0"><code>SIS[h=700, w=2304, q=8380417, length_bound=350209, norm=Linf] -&gt; lambda: 103.14095563601026
+SIS[h=862, w=2304, q=8380417, length_bound=350209, norm=Linf] -&gt; lambda: 128.53191273316034
+</code></pre><h3 id="find_optimal_length_bound_annealing">
+  find_optimal_length_bound_annealing
+  <a class="anchor" href="#find_optimal_length_bound_annealing">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">find_optimal_length_bound_annealing</span>(<span style="color:#f92672">&amp;</span>self, lambda: <span style="color:#66d9ef">usize</span>, estimate_type: Option<span style="color:#f92672">&lt;</span>Estimates<span style="color:#f92672">&gt;</span>, simulator_type: Option<span style="color:#f92672">&lt;</span>Simulator<span style="color:#f92672">&gt;</span>) -&gt; Result<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">f64</span>, LatticeEstimatorError<span style="color:#f92672">&gt;</span> 
+</span></span></code></pre></div><p>This works very similarly to the find_optimal_h_annealing function. One majors difference is that the length bounds have a less direct impact on security than $h$, which leads to the optimized function search to stall in very large instances.</p>
+<h4 id="example-2">
+  Example
+  <a class="anchor" href="#example-2">#</a>
+</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> sis: <span style="color:#a6e22e">SIS</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">SIS</span>::new(<span style="color:#ae81ff">512</span>, <span style="color:#ae81ff">1024</span>, <span style="color:#ae81ff">12289</span><span style="color:#66d9ef">u64</span>.into(), <span style="color:#ae81ff">5833.9072</span>, Norm::L2);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> sec: <span style="color:#66d9ef">f64</span> <span style="color:#f92672">=</span> sis.security_level(Some(Estimates::Matzov(<span style="color:#66d9ef">true</span>)), None).unwrap();
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> best_bound: <span style="color:#66d9ef">f64</span> <span style="color:#f92672">=</span> sis.find_optimal_length_bound_annealing(<span style="color:#ae81ff">124</span>, Some(Estimates::Matzov(<span style="color:#66d9ef">true</span>)), None).unwrap();
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> new_sis <span style="color:#f92672">=</span> sis.with_length_bound(best_bound);
+</span></span></code></pre></div><p>leads to an instance being updated from and to:</p>
+<pre tabindex="0"><code>SIS[h=512, w=1024, q=12289, length_bound=5833.9072, norm=L2] -&gt; lambda: 143.96281000571494
+SIS[h=512, w=1024, q=12289, length_bound=10209.3376, norm=L2] -&gt; lambda: 124.52002835795201
+</code></pre><h3 id="quick_search_h">
+  quick_search_h
+  <a class="anchor" href="#quick_search_h">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">quick_search_h</span>(<span style="color:#f92672">&amp;</span>self, estimate_type: Option<span style="color:#f92672">&lt;</span>Estimates<span style="color:#f92672">&gt;</span>, simulator_type: Option<span style="color:#f92672">&lt;</span>Simulator<span style="color:#f92672">&gt;</span>) 
+</span></span></code></pre></div><p>This is a practical function that gives you an overview of the security by power of 2 in $h$. Here is an example of its output for</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> falcon512_unf: <span style="color:#a6e22e">SIS</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">SIS</span>::new(<span style="color:#ae81ff">512</span>, <span style="color:#ae81ff">1024</span>, <span style="color:#ae81ff">12289</span><span style="color:#66d9ef">u64</span>.into(), <span style="color:#ae81ff">5833.9072</span>, Norm::L2);
+</span></span><span style="display:flex;"><span>falcon512_unf.quick_search_h(Some(Estimates::Matzov(<span style="color:#66d9ef">true</span>)), None);
+</span></span></code></pre></div><div align="center">
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: center"><strong>h</strong></th>
+          <th style="text-align: center"><strong>Security Level</strong></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center">1</td>
+          <td style="text-align: center">Error/Impossible</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">2</td>
+          <td style="text-align: center">Error/Impossible</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">4</td>
+          <td style="text-align: center">Error/Impossible</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">8</td>
+          <td style="text-align: center">Error/Impossible</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">16</td>
+          <td style="text-align: center">Error/Impossible</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">32</td>
+          <td style="text-align: center">33.13</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">64</td>
+          <td style="text-align: center">37.71</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">128</td>
+          <td style="text-align: center">39.59</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">256</td>
+          <td style="text-align: center">67.67</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">512</td>
+          <td style="text-align: center">143.96</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">1024</td>
+          <td style="text-align: center">Error/Impossible</td>
+      </tr>
+  </tbody>
+</table>
+</div>
 <h2 id="searching-for-the-best-parameters-on-multiple-sis-instances">
   Searching for the best parameters on multiple SIS instances
   <a class="anchor" href="#searching-for-the-best-parameters-on-multiple-sis-instances">#</a>
 </h2>
+<p>On multiple SIS instance, we firstly of course offer the security security_level function, which evaluates the sum of the SIS instance in the multiSIS instance but also some other exploration functions. We present them here.</p>
+<h3 id="quick_search_h-1">
+  quick_search_h
+  <a class="anchor" href="#quick_search_h-1">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">quick_search_h</span>(<span style="color:#f92672">&amp;</span>self, estimate_type: Option<span style="color:#f92672">&lt;</span>Estimates<span style="color:#f92672">&gt;</span>, simulator_type: Option<span style="color:#f92672">&lt;</span>Simulator<span style="color:#f92672">&gt;</span>) -&gt; ()
+</span></span></code></pre></div><p>This is a function that outputs all combination security possibilities for power of 2 of the $h$ parameters for all SIS instances contained in the multiSIS instance. It skips every combination that gets an error in one of its instances. Here is an example of outputs</p>
+<div align="center">
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: center"><strong>Combination</strong></th>
+          <th style="text-align: center"><strong>h Values</strong></th>
+          <th style="text-align: center"><strong>Combined Security Level</strong></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center">Combination 1</td>
+          <td style="text-align: center">h_1: 32, h_2: 16, h_3: 32</td>
+          <td style="text-align: center">99.38</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">Combination 2</td>
+          <td style="text-align: center">h_1: 32, h_2: 16, h_3: 64</td>
+          <td style="text-align: center">103.97</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">Combination 3</td>
+          <td style="text-align: center">h_1: 32, h_2: 16, h_3: 128</td>
+          <td style="text-align: center">106.13</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">&hellip;</td>
+          <td style="text-align: center">&hellip;</td>
+          <td style="text-align: center">&hellip;</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">Combination 50</td>
+          <td style="text-align: center">h_1: 64, h_2: 512, h_3: 64</td>
+          <td style="text-align: center">184.58</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">&hellip;</td>
+          <td style="text-align: center">&hellip;</td>
+          <td style="text-align: center">&hellip;</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">Combination 100</td>
+          <td style="text-align: center">h_1: 256, h_2: 128, h_3: 256</td>
+          <td style="text-align: center">193.61</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">&hellip;</td>
+          <td style="text-align: center">&hellip;</td>
+          <td style="text-align: center">&hellip;</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">Combination 140</td>
+          <td style="text-align: center">h_1: 512, h_2: 1024, h_3: 256</td>
+          <td style="text-align: center">476.58</td>
+      </tr>
+  </tbody>
+</table>
+</div>
+<h3 id="quick_search_h_constrained">
+  quick_search_h_constrained
+  <a class="anchor" href="#quick_search_h_constrained">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">quick_search_h_constrained</span>(<span style="color:#f92672">&amp;</span>self, estimate_type: Option<span style="color:#f92672">&lt;</span>Estimates<span style="color:#f92672">&gt;</span>, simulator_type: Option<span style="color:#f92672">&lt;</span>Simulator<span style="color:#f92672">&gt;</span>) 
+</span></span></code></pre></div><p>This function behaves similarly as the previous one except it will only accept solutions that are non-increasing in sizes throughout the different SIS instances. Here is an example output.</p>
+<div align="center">
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: center"><strong>Combination</strong></th>
+          <th style="text-align: center"><strong>h Values</strong></th>
+          <th style="text-align: center"><strong>Combined Security Level</strong></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center">Combination 1</td>
+          <td style="text-align: center">h_1: 32, h_2: 32, h_3: 32</td>
+          <td style="text-align: center">99.38</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">Combination 2</td>
+          <td style="text-align: center">h_1: 64, h_2: 32, h_3: 32</td>
+          <td style="text-align: center">103.97</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">Combination 3</td>
+          <td style="text-align: center">h_1: 64, h_2: 64, h_3: 32</td>
+          <td style="text-align: center">108.55</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">&hellip;</td>
+          <td style="text-align: center">&hellip;</td>
+          <td style="text-align: center">&hellip;</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">Combination 10</td>
+          <td style="text-align: center">h_1: 128, h_2: 128, h_3: 128</td>
+          <td style="text-align: center">119.05</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">&hellip;</td>
+          <td style="text-align: center">&hellip;</td>
+          <td style="text-align: center">&hellip;</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">Combination 20</td>
+          <td style="text-align: center">h_1: 256, h_2: 256, h_3: 256</td>
+          <td style="text-align: center">207.39</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">&hellip;</td>
+          <td style="text-align: center">&hellip;</td>
+          <td style="text-align: center">&hellip;</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">Combination 30</td>
+          <td style="text-align: center">h_1: 512, h_2: 256, h_3: 256</td>
+          <td style="text-align: center">283.68</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">&hellip;</td>
+          <td style="text-align: center">&hellip;</td>
+          <td style="text-align: center">&hellip;</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">Combination 34</td>
+          <td style="text-align: center">h_1: 512, h_2: 512, h_3: 256</td>
+          <td style="text-align: center">339.47</td>
+      </tr>
+  </tbody>
+</table>
+</div>
+<h3 id="optimize_h">
+  optimize_h
+  <a class="anchor" href="#optimize_h">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">optimize_h</span>(<span style="color:#f92672">&amp;</span>self, lambda: <span style="color:#66d9ef">usize</span>, estimate_type: Option<span style="color:#f92672">&lt;</span>Estimates<span style="color:#f92672">&gt;</span>, simulator_type: Option<span style="color:#f92672">&lt;</span>Simulator<span style="color:#f92672">&gt;</span>)-&gt; Result<span style="color:#f92672">&lt;</span>Vec<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">usize</span><span style="color:#f92672">&gt;</span>, LatticeEstimatorError<span style="color:#f92672">&gt;</span>
+</span></span></code></pre></div><p>This function will give the combination of different h parameters throughout the SIS instances that gets the closest to the wanted security parameter lambda. It does so with no constraints.</p>
+<h3 id="optimize_h_constrained">
+  optimize_h_constrained
+  <a class="anchor" href="#optimize_h_constrained">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">optimize_h_constrained</span>(<span style="color:#f92672">&amp;</span>self, lambda: <span style="color:#66d9ef">usize</span>, estimate_type: Option<span style="color:#f92672">&lt;</span>Estimates<span style="color:#f92672">&gt;</span>, simulator_type: Option<span style="color:#f92672">&lt;</span>Simulator<span style="color:#f92672">&gt;</span>) -&gt; Result<span style="color:#f92672">&lt;</span>Vec<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">usize</span><span style="color:#f92672">&gt;</span>, LatticeEstimatorError<span style="color:#f92672">&gt;</span> 
+</span></span></code></pre></div><p>This function will give the combination of different h parameters throughout the SIS instances that gets the closest to the wanted security parameter lambda. It does in a constrained way where the different $h_i$ parameters are non-increasing.</p>
+<h2 id="conclusion">
+  Conclusion
+  <a class="anchor" href="#conclusion">#</a>
+</h2>
+<p>In this work, we have presented a comprehensive overview of the concepts and implementations introduced so far. Possible future directions for this work include:</p>
+<ul>
+<li>Further optimization for the \( \ell_\infty \)-norm.</li>
+<li>Adding support for other \( p \)-norms.</li>
+<li>Staying updated with new SIS variants.</li>
+<li>Establishing a clear consensus on how to accurately estimate the cost of lattice reduction algorithms in practice.</li>
+</ul>
+<p>Thank you for your attention and for following our work!</p>
 </article>
  
       
@@ -443,8 +766,23 @@ https://github.com/alex-shpak/hugo-book
         <li><a href="#lattice-estimator-errors">Lattice estimator errors</a></li>
       </ul>
     </li>
-    <li><a href="#searching-for-the-best-parameters-on-single-sis-instances">Searching for the best parameters on single SIS instances</a></li>
-    <li><a href="#searching-for-the-best-parameters-on-multiple-sis-instances">Searching for the best parameters on multiple SIS instances</a></li>
+    <li><a href="#searching-for-the-best-parameters-on-single-sis-instances">Searching for the best parameters on single SIS instances</a>
+      <ul>
+        <li><a href="#security_level">security_level</a></li>
+        <li><a href="#find_optimal_h_annealing">find_optimal_h_annealing</a></li>
+        <li><a href="#find_optimal_length_bound_annealing">find_optimal_length_bound_annealing</a></li>
+        <li><a href="#quick_search_h">quick_search_h</a></li>
+      </ul>
+    </li>
+    <li><a href="#searching-for-the-best-parameters-on-multiple-sis-instances">Searching for the best parameters on multiple SIS instances</a>
+      <ul>
+        <li><a href="#quick_search_h-1">quick_search_h</a></li>
+        <li><a href="#quick_search_h_constrained">quick_search_h_constrained</a></li>
+        <li><a href="#optimize_h">optimize_h</a></li>
+        <li><a href="#optimize_h_constrained">optimize_h_constrained</a></li>
+      </ul>
+    </li>
+    <li><a href="#conclusion">Conclusion</a></li>
   </ul>
 </nav>
 
